@@ -24,7 +24,7 @@ export default function Home() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop" 
+            src="https://optimal-immobilien.ch/wp-content/uploads/2024/03/Optimal-Immobilien-Makler-Kauf-Verkauf.jpg" 
             alt="Luxuriöse Immobilie Zürich" 
             className="w-full h-full object-cover"
           />
@@ -50,17 +50,16 @@ export default function Home() {
           variants={staggerContainer}
         >
           <motion.div variants={fadeInUp} className="inline-block mb-6 px-4 py-1.5 border border-amber-500/50 rounded-full backdrop-blur-md bg-stone-900/30">
-            <span className="text-amber-400 uppercase tracking-widest text-xs font-semibold">Zürichs Premium Immobilienmakler</span>
+            <span className="text-amber-400 uppercase tracking-widest text-xs font-semibold">Zürichs innovativer Immobilienmakler</span>
           </motion.div>
           
           <motion.h1 variants={fadeInUp} className="font-serif text-5xl md:text-7xl lg:text-8xl text-white mb-8 leading-[1.1]">
-            Wir verkaufen Ihr Haus.<br />
-            <span className="italic text-amber-500">Zum Höchstpreis.</span>
+            Ihr Weg zur <br />
+            <span className="italic text-amber-500">provisionsfreien Immobilie</span>
           </motion.h1>
           
-          <motion.p variants={fadeInUp} className="text-stone-300 text-lg md:text-2xl font-light max-w-2xl mx-auto mb-12">
-            Maximaler Profit. Absolute Diskretion. Null Stress.<br className="hidden md:block"/> 
-            Lassen Sie uns die Arbeit machen, während Sie sich auf Ihr nächstes Kapitel freuen.
+          <motion.p variants={fadeInUp} className="text-lg md:text-2xl text-stone-300 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
+            Entdecken Sie die Freiheit des Immobilienmarkts in Zürich. Wir garantieren Ihnen <strong className="text-white font-medium">0% Provision und 100% Transparenz</strong> beim Kauf und Verkauf.
           </motion.p>
           
           <motion.div variants={fadeInUp}>
@@ -107,9 +106,9 @@ export default function Home() {
             >
               <div className="absolute inset-0 bg-amber-200 translate-x-4 translate-y-4 md:translate-x-8 md:translate-y-8" />
               <img 
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop" 
+                src="https://optimal-immobilien.ch/wp-content/uploads/2024/05/Optimal-Immobilien-B16.jpg" 
                 alt="Geschäftsführer Optimal Immobilien" 
-                className="relative z-10 w-full h-[600px] object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700"
+                className="relative z-10 w-full h-[600px] object-cover hover:scale-105 transition-all duration-700"
               />
               <div className="absolute bottom-10 -right-4 md:-right-12 z-20 bg-stone-900 text-white p-6 md:p-8 max-w-xs shadow-2xl">
                 <div className="flex text-amber-500 mb-3">
