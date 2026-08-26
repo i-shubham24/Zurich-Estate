@@ -204,18 +204,67 @@ export default function Home() {
         </div>
       </section>
 
+      {/* VALUATION: Interactive Lead Magnet */}
+      <section className="relative py-32 bg-stone-50" id="valuation">
+        <div className="relative max-w-4xl mx-auto px-4 z-10">
+          <div className="text-center mb-16">
+            <motion.h2 variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="font-serif text-4xl md:text-5xl text-stone-900 mb-6 leading-tight">Interaktive Immobilienbewertung</motion.h2>
+            <motion.p variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-stone-500 text-lg">Ihre kostenlose und unverbindliche Einschätzung in weniger als 2 Minuten.</motion.p>
+          </div>
+          <ValuationForm />
+        </div>
+      </section>
+
       {/* 4. ACTION: One obvious next step, zero friction */}
       <section className="relative py-32 bg-stone-100" id="action">
         {/* Subtle background pattern */}
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23000000\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }} />
         
         <div className="relative max-w-4xl mx-auto px-4 z-10">
-          <div className="text-center mb-16">
-            <motion.h2 variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="font-serif text-4xl md:text-5xl text-stone-900 mb-6 leading-tight">Lassen Sie uns starten.</motion.h2>
-            <motion.p variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-stone-500 text-lg">Ihre kostenlose und unverbindliche Einschätzung in weniger als 2 Minuten.</motion.p>
+          <div className="bg-white shadow-2xl p-8 md:p-16 border-t-4 border-amber-500">
+            <motion.div 
+              className="text-center mb-12"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+            >
+              <h2 className="font-serif text-4xl md:text-5xl text-stone-900 mb-6 leading-tight">Lassen Sie uns starten.</h2>
+              <p className="text-stone-500 text-lg">Eine kostenlose und unverbindliche Einschätzung des Marktwerts Ihrer Immobilie in Zürich.</p>
+            </motion.div>
+            
+            <motion.form 
+              className="space-y-6"
+              action="javascript:void(0);"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+            >
+              <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="name" className="block text-xs uppercase tracking-widest text-stone-400 mb-2 font-semibold">Ihr Name</label>
+                  <input type="text" id="name" className="w-full px-0 py-3 bg-transparent border-b-2 border-stone-200 focus:border-amber-500 outline-none transition-colors text-stone-900 text-lg" placeholder="Max Muster" required />
+                </div>
+                <div>
+                  <label htmlFor="contact" className="block text-xs uppercase tracking-widest text-stone-400 mb-2 font-semibold">Telefon oder E-Mail</label>
+                  <input type="text" id="contact" className="w-full px-0 py-3 bg-transparent border-b-2 border-stone-200 focus:border-amber-500 outline-none transition-colors text-stone-900 text-lg" placeholder="079 123 45 67" required />
+                </div>
+              </motion.div>
+              
+              <motion.div variants={fadeInUp} className="pt-4">
+                <label htmlFor="address" className="block text-xs uppercase tracking-widest text-stone-400 mb-2 font-semibold">Adresse der Immobilie</label>
+                <input type="text" id="address" className="w-full px-0 py-3 bg-transparent border-b-2 border-stone-200 focus:border-amber-500 outline-none transition-colors text-stone-900 text-lg" placeholder="Strassenname, PLZ Zürich" required />
+              </motion.div>
+              
+              <motion.div variants={fadeInUp} className="pt-10 text-center">
+                <button type="submit" className="w-full md:w-auto bg-stone-900 hover:bg-amber-600 text-white px-12 py-5 text-lg font-semibold uppercase tracking-widest transition-all duration-300">
+                  Unverbindlich anfragen
+                </button>
+                <p className="mt-6 text-stone-400 text-sm">Diskretion ist unser oberstes Gebot. Wir melden uns innert 24 Stunden.</p>
+              </motion.div>
+            </motion.form>
           </div>
-          
-          <ValuationForm />
         </div>
       </section>
 
