@@ -3,6 +3,7 @@
 import { motion, Variants } from "framer-motion";
 import { CheckCircle2, TrendingUp, ShieldCheck, ArrowRight, Star, Clock, Home as HomeIcon } from "lucide-react";
 import ValuationForm from "@/components/ValuationForm";
+import Link from "next/link";
 
 export default function Home() {
   const fadeInUp: Variants = {
@@ -38,9 +39,14 @@ export default function Home() {
           <div className="text-white font-serif text-2xl tracking-widest">
             OPTIMAL<span className="text-amber-500 font-sans font-light">.</span>
           </div>
-          <a href="#action" className="hidden md:inline-flex items-center gap-2 text-white border border-white/30 hover:bg-white hover:text-stone-900 px-6 py-2 rounded-full transition-all duration-300 backdrop-blur-sm uppercase tracking-wider text-xs font-semibold">
-            Kostenlose Bewertung
-          </a>
+          <div className="flex items-center gap-6">
+            <Link href="/kaufen" className="hidden md:inline-flex items-center text-white/80 hover:text-white transition-colors uppercase tracking-wider text-xs font-semibold">
+              Immobilien finden
+            </Link>
+            <a href="#valuation" className="hidden md:inline-flex items-center gap-2 text-white border border-white/30 hover:bg-white hover:text-stone-900 px-6 py-2 rounded-full transition-all duration-300 backdrop-blur-sm uppercase tracking-wider text-xs font-semibold">
+              Kostenlose Bewertung
+            </a>
+          </div>
         </nav>
 
         {/* Hero Content */}
