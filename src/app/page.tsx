@@ -46,6 +46,9 @@ export default function Home() {
             <Link href="/ratgeber" className="hidden md:inline-flex items-center text-white/80 hover:text-white transition-colors uppercase tracking-wider text-xs font-semibold">
               Ratgeber
             </Link>
+            <Link href="/ueber-uns" className="hidden md:inline-flex items-center text-white/80 hover:text-white transition-colors uppercase tracking-wider text-xs font-semibold">
+              Über Uns
+            </Link>
             <a href="#valuation" className="hidden md:inline-flex items-center gap-2 text-white border border-white/30 hover:bg-white hover:text-stone-900 px-6 py-2 rounded-full transition-all duration-300 backdrop-blur-sm uppercase tracking-wider text-xs font-semibold">
               Kostenlose Bewertung
             </a>
