@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Home, Building, MapPin, ArrowRight, ArrowLeft, CheckCircle2 } from "lucide-react";
+import { Home, Building2, MapPin, ArrowRight, ArrowLeft, CheckCircle2, ShieldCheck } from "lucide-react";
 
 type Step = 1 | 2 | 3 | 4 | 5;
+
+const intents = ["So schnell wie möglich", "In 1–3 Monaten", "In 3–6 Monaten", "Ich bin nur neugierig"];
 
 export default function ValuationForm() {
   const [step, setStep] = useState<Step>(1);
@@ -16,85 +18,74 @@ export default function ValuationForm() {
     contact: "",
   });
 
-  const nextStep = () => setStep((s) => Math.min(s + 1, 5) as Step);
-  const prevStep = () => setStep((s) => Math.max(s - 1, 1) as Step);
+  const next = () => setStep((s) => Math.min(s + 1, 5) as Step);
+  const prev = () => setStep((s) => Math.max(s - 1, 1) as Step);
 
-  const handleSelect = (field: string, value: string) => {
-    setFormData({ ...formData, [field]: value });
-    setTimeout(nextStep, 400); // Auto-advance after selection
+  const select = (field: string, value: string) => {
+    setFormData((d) => ({ ...d, [field]: value }));
+    setTimeout(next, 350);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate API call
-    setTimeout(() => {
-      nextStep();
-    }, 1000);
+    setTimeout(next, 700);
   };
+
+  const optionBase =
+    "p-6 border text-left transition-all duration-200 hover:border-gold hover:bg-gold/[0.04]";
 
   return (
-    <div className="w-full max-w-2xl mx-auto bg-white shadow-2xl rounded-2xl overflow-hidden min-h-[400px] flex flex-col relative border-t-4 border-amber-500" id="valuation-form">
-      {/* Progress Bar */}
+    <div
+      id="bewertung-form"
+      className="relative flex min-h-[420px] w-full flex-col overflow-hidden border-t-2 border-gold bg-white shadow-[var(--shadow-luxe)]"
+    >
       {step < 5 && (
-        <div className="w-full bg-stone-100 h-2">
-          <div 
-            className="bg-amber-500 h-full transition-all duration-500 ease-out"
+        <div className="h-1 w-full bg-sand">
+          <div
+            className="h-full bg-gold transition-all duration-500 ease-out"
             style={{ width: `${(step / 4) * 100}%` }}
           />
         </div>
       )}
 
-      <div className="p-8 md:p-12 flex-grow flex flex-col justify-center">
+      <div className="flex flex-grow flex-col justify-center p-8 md:p-12">
         <AnimatePresence mode="wait">
           {step === 1 && (
-            <motion.div
-              key="step1"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              className="space-y-6"
-            >
-              <h3 className="text-2xl md:text-3xl font-serif font-bold text-stone-900 text-center mb-8">
-                Was für eine Immobilie möchten Sie bewerten?
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <button 
-                  onClick={() => handleSelect('propertyType', 'Haus')}
-                  className={`p-6 border-2 rounded-xl flex flex-col items-center gap-4 transition-all hover:border-amber-500 hover:bg-amber-50/50 ${formData.propertyType === 'Haus' ? 'border-amber-500 bg-amber-50' : 'border-stone-100'}`}
-                >
-                  <Home className="w-12 h-12 text-stone-700" />
-                  <span className="font-medium text-stone-900 text-lg">Haus</span>
-                </button>
-                <button 
-                  onClick={() => handleSelect('propertyType', 'Wohnung')}
-                  className={`p-6 border-2 rounded-xl flex flex-col items-center gap-4 transition-all hover:border-amber-500 hover:bg-amber-50/50 ${formData.propertyType === 'Wohnung' ? 'border-amber-500 bg-amber-50' : 'border-stone-100'}`}
-                >
-                  <Building className="w-12 h-12 text-stone-700" />
-                  <span className="font-medium text-stone-900 text-lg">Wohnung</span>
-                </button>
+            <motion.div key="s1" initial={{ opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -18 }}>
+              <p className="eyebrow text-gold-deep">Schritt 1 von 4</p>
+              <h3 className="mt-3 font-serif text-2xl text-ink md:text-3xl">Was möchten Sie bewerten?</h3>
+              <div className="mt-8 grid grid-cols-2 gap-4">
+                {[
+                  { v: "Haus", icon: Home },
+                  { v: "Wohnung", icon: Building2 },
+                ].map(({ v, icon: Icon }) => (
+                  <button
+                    key={v}
+                    onClick={() => select("propertyType", v)}
+                    className={`${optionBase} flex flex-col items-center gap-4 ${
+                      formData.propertyType === v ? "border-gold bg-gold/[0.06]" : "border-line"
+                    }`}
+                  >
+                    <Icon className="h-10 w-10 text-graphite" strokeWidth={1.3} />
+                    <span className="font-medium text-ink">{v}</span>
+                  </button>
+                ))}
               </div>
             </motion.div>
           )}
 
           {step === 2 && (
-            <motion.div
-              key="step2"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              className="space-y-6"
-            >
-              <h3 className="text-2xl md:text-3xl font-serif font-bold text-stone-900 text-center mb-8">
-                Wann planen Sie den Verkauf?
-              </h3>
-              <div className="flex flex-col gap-3">
-                {['So schnell wie möglich', 'In 1-3 Monaten', 'In 3-6 Monaten', 'Ich bin nur neugierig'].map((option) => (
-                  <button 
-                    key={option}
-                    onClick={() => handleSelect('intent', option)}
-                    className={`p-4 border-2 rounded-xl text-left transition-all hover:border-amber-500 hover:bg-amber-50/50 ${formData.intent === option ? 'border-amber-500 bg-amber-50' : 'border-stone-100'}`}
+            <motion.div key="s2" initial={{ opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -18 }}>
+              <p className="eyebrow text-gold-deep">Schritt 2 von 4</p>
+              <h3 className="mt-3 font-serif text-2xl text-ink md:text-3xl">Wann planen Sie den Verkauf?</h3>
+              <div className="mt-8 flex flex-col gap-3">
+                {intents.map((opt) => (
+                  <button
+                    key={opt}
+                    onClick={() => select("intent", opt)}
+                    className={`${optionBase} ${formData.intent === opt ? "border-gold bg-gold/[0.06]" : "border-line"}`}
                   >
-                    <span className="font-medium text-stone-900">{option}</span>
+                    <span className="font-medium text-ink">{opt}</span>
                   </button>
                 ))}
               </div>
@@ -102,109 +93,85 @@ export default function ValuationForm() {
           )}
 
           {step === 3 && (
-            <motion.div
-              key="step3"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              className="space-y-6"
-            >
-              <h3 className="text-2xl md:text-3xl font-serif font-bold text-stone-900 text-center mb-8">
-                Wo befindet sich die Immobilie?
-              </h3>
-              <div className="relative">
-                <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-400 w-6 h-6" />
-                <input 
-                  type="text" 
+            <motion.div key="s3" initial={{ opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -18 }}>
+              <p className="eyebrow text-gold-deep">Schritt 3 von 4</p>
+              <h3 className="mt-3 font-serif text-2xl text-ink md:text-3xl">Wo befindet sich die Immobilie?</h3>
+              <div className="relative mt-8">
+                <MapPin className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-graphite/50" />
+                <input
+                  type="text"
                   value={formData.location}
-                  onChange={(e) => setFormData({...formData, location: e.target.value})}
-                  onKeyDown={(e) => e.key === 'Enter' && formData.location && nextStep()}
-                  className="w-full pl-14 pr-4 py-4 bg-stone-50 border-2 border-stone-100 rounded-xl focus:border-amber-500 focus:bg-white outline-none transition-colors text-lg text-stone-900"
-                  placeholder="PLZ oder Ort (z.B. 8001 Zürich)"
+                  onChange={(e) => setFormData((d) => ({ ...d, location: e.target.value }))}
+                  onKeyDown={(e) => e.key === "Enter" && formData.location && next()}
+                  className="w-full border border-line bg-sand/50 py-4 pl-12 pr-4 text-lg text-ink outline-none transition-colors focus:border-gold focus:bg-white"
+                  placeholder="PLZ oder Ort (z. B. 8700 Küsnacht)"
                   autoFocus
                 />
               </div>
-              <button 
-                onClick={nextStep}
+              <button
+                onClick={next}
                 disabled={!formData.location}
-                className="w-full bg-stone-900 text-white py-4 rounded-xl font-medium hover:bg-stone-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="mt-6 flex w-full items-center justify-center gap-2 bg-ink py-4 font-semibold uppercase tracking-[0.14em] text-white transition-colors hover:bg-slate disabled:cursor-not-allowed disabled:opacity-40"
               >
-                Weiter <ArrowRight className="w-5 h-5" />
+                Weiter <ArrowRight className="h-4 w-4" />
               </button>
             </motion.div>
           )}
 
           {step === 4 && (
-            <motion.div
-              key="step4"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              className="space-y-6"
-            >
-              <h3 className="text-2xl md:text-3xl font-serif font-bold text-stone-900 text-center mb-2">
-                Ihre Auswertung ist bereit!
-              </h3>
-              <p className="text-stone-500 text-center mb-8">
-                Wo dürfen wir Ihnen die Bewertung zustellen?
-              </p>
-              
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <input 
-                  type="text" 
+            <motion.div key="s4" initial={{ opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -18 }}>
+              <p className="eyebrow text-gold-deep">Fast geschafft</p>
+              <h3 className="mt-3 font-serif text-2xl text-ink md:text-3xl">Wohin dürfen wir die Bewertung senden?</h3>
+              <form onSubmit={submit} className="mt-8 space-y-4">
+                <input
                   required
                   value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="w-full px-4 py-4 bg-stone-50 border-2 border-stone-100 rounded-xl focus:border-amber-500 focus:bg-white outline-none transition-colors text-stone-900"
+                  onChange={(e) => setFormData((d) => ({ ...d, name: e.target.value }))}
+                  className="w-full border border-line bg-sand/50 px-4 py-4 text-ink outline-none transition-colors focus:border-gold focus:bg-white"
                   placeholder="Ihr Name"
                 />
-                <input 
-                  type="text" 
+                <input
                   required
                   value={formData.contact}
-                  onChange={(e) => setFormData({...formData, contact: e.target.value})}
-                  className="w-full px-4 py-4 bg-stone-50 border-2 border-stone-100 rounded-xl focus:border-amber-500 focus:bg-white outline-none transition-colors text-stone-900"
-                  placeholder="Telefonnummer oder E-Mail"
+                  onChange={(e) => setFormData((d) => ({ ...d, contact: e.target.value }))}
+                  className="w-full border border-line bg-sand/50 px-4 py-4 text-ink outline-none transition-colors focus:border-gold focus:bg-white"
+                  placeholder="Telefon oder E-Mail"
                 />
-                <button 
+                <button
                   type="submit"
-                  className="w-full bg-amber-500 text-stone-900 py-4 rounded-xl font-bold uppercase tracking-wide hover:bg-amber-400 transition-colors mt-4 shadow-lg shadow-amber-500/20"
+                  className="w-full bg-gold py-4 font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-gold-bright"
                 >
                   Kostenlose Bewertung erhalten
                 </button>
+                <p className="flex items-center justify-center gap-2 pt-1 text-xs text-graphite/60">
+                  <ShieldCheck className="h-4 w-4 text-gold" /> Diskret & unverbindlich. Keine Weitergabe an Dritte.
+                </p>
               </form>
             </motion.div>
           )}
 
           {step === 5 && (
-            <motion.div
-              key="step5"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="text-center space-y-6 py-8"
-            >
-              <div className="w-20 h-20 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle2 className="w-10 h-10" />
+            <motion.div key="s5" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} className="py-6 text-center">
+              <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gold/15 text-gold">
+                <CheckCircle2 className="h-10 w-10" />
               </div>
-              <h3 className="text-3xl font-serif font-bold text-stone-900">
-                Vielen Dank!
-              </h3>
-              <p className="text-stone-600 text-lg leading-relaxed max-w-sm mx-auto">
-                Wir haben Ihre Anfrage erhalten und melden uns in Kürze mit Ihrer individuellen Markteinschätzung bei Ihnen.
+              <h3 className="font-serif text-3xl text-ink">Vielen Dank!</h3>
+              <p className="mx-auto mt-4 max-w-sm text-graphite/80">
+                Wir haben Ihre Anfrage erhalten und melden uns innert 24 Stunden mit Ihrer
+                individuellen Markteinschätzung – provisionsfrei und unverbindlich.
               </p>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
 
-      {/* Navigation Footer */}
       {step > 1 && step < 5 && (
-        <div className="p-4 border-t border-stone-100 bg-stone-50 flex justify-start">
-          <button 
-            onClick={prevStep}
-            className="text-stone-500 hover:text-stone-900 flex items-center gap-2 font-medium text-sm transition-colors"
+        <div className="flex justify-start border-t border-line bg-sand/50 p-4">
+          <button
+            onClick={prev}
+            className="flex items-center gap-2 text-sm font-medium text-graphite/70 transition-colors hover:text-ink"
           >
-            <ArrowLeft className="w-4 h-4" /> Zurück
+            <ArrowLeft className="h-4 w-4" /> Zurück
           </button>
         </div>
       )}

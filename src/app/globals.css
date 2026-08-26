@@ -1,26 +1,176 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------ *
+ * Optimal Immobilien — Brand Design System
+ * Palette derived from the logo: graphite slate + champagne gold.
+ * ------------------------------------------------------------------ */
+@theme {
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-playfair), ui-serif, Georgia, "Times New Roman", serif;
+
+  /* Brand */
+  --color-ink: #191e23;        /* deepest near-black slate */
+  --color-slate: #232c33;      /* dark section background */
+  --color-graphite: #363f48;   /* logo panel tone */
+  --color-graphite-2: #46515b;
+
+  --color-gold: #b8935e;       /* champagne — primary accent */
+  --color-gold-bright: #d0ae78;/* accent on dark backgrounds */
+  --color-gold-deep: #8a6a3c;  /* gold text on light backgrounds (AA) */
+
+  --color-sand: #f4f1ea;       /* warm section background */
+  --color-cream: #faf8f3;      /* page background */
+  --color-line: #e6e0d5;       /* hairline on light */
+  --color-line-dark: rgba(255, 255, 255, 0.12);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --shadow-luxe: 0 30px 60px -25px rgba(25, 30, 35, 0.35);
+  --ease-out-luxe: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  border-color: var(--color-line);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-gold) 35%, transparent);
+  color: var(--color-ink);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  letter-spacing: -0.01em;
+}
+
+/* Consistent centred content column */
+.container-lux {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+@media (min-width: 768px) {
+  .container-lux {
+    padding-inline: 2rem;
+  }
+}
+
+/* Small caps brand eyebrow */
+.eyebrow {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+/* ---------- Scroll reveal (progressive enhancement) ----------
+ * Content is fully visible by default. Only when JS marks <html class="js">
+ * do we hide-then-reveal, so crawlers and no-JS users always see content. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.8s var(--ease-out-luxe), transform 0.8s var(--ease-out-luxe);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.js .reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Hero background slow zoom */
+@keyframes slow-zoom {
+  from { transform: scale(1.04); }
+  to { transform: scale(1.14); }
+}
+.animate-slow-zoom {
+  animation: slow-zoom 18s ease-out forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-slow-zoom { animation: none; }
+}
+
+/* Thin gold divider */
+.rule-gold {
+  height: 1px;
+  width: 3.5rem;
+  background: var(--color-gold);
+}
+
+/* Article prose */
+.prose-lux {
+  color: #3a4149;
+  font-size: 1.075rem;
+  line-height: 1.85;
+}
+.prose-lux > * + * { margin-top: 1.35rem; }
+.prose-lux h2 {
+  font-size: 1.85rem;
+  line-height: 1.2;
+  color: var(--color-ink);
+  margin-top: 3rem;
+  margin-bottom: 0.25rem;
+}
+.prose-lux h3 {
+  font-size: 1.35rem;
+  color: var(--color-ink);
+  margin-top: 2rem;
+}
+.prose-lux a {
+  color: var(--color-gold-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-lux ul { list-style: none; padding-left: 0; }
+.prose-lux ul li {
+  position: relative;
+  padding-left: 1.6rem;
+  margin-top: 0.65rem;
+}
+.prose-lux ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--color-gold);
+  transform: rotate(45deg);
+}
+.prose-lux strong { color: var(--color-ink); font-weight: 700; }
+.prose-lux blockquote {
+  border-left: 2px solid var(--color-gold);
+  padding-left: 1.5rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--color-ink);
 }
