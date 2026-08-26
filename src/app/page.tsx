@@ -2,7 +2,6 @@
 
 import { motion, Variants } from "framer-motion";
 import { CheckCircle2, TrendingUp, ShieldCheck, ArrowRight, Star, Clock, Home as HomeIcon } from "lucide-react";
-import Image from "next/image";
 
 export default function Home() {
   const fadeInUp: Variants = {
