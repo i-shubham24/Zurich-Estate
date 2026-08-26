@@ -116,7 +116,7 @@ export default function Home() {
                   {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
                 </div>
                 <p className="italic text-stone-300 text-sm md:text-base leading-relaxed mb-4">
-                  "Exzellente Beratung, diskrete Abwicklung und ein Preis, der unsere Erwartungen übertroffen hat."
+                  &quot;Exzellente Beratung, diskrete Abwicklung und ein Preis, der unsere Erwartungen übertroffen hat.&quot;
                 </p>
                 <p className="font-serif font-bold text-white">— Dr. Müller, Zürich</p>
               </div>
@@ -131,7 +131,7 @@ export default function Home() {
             >
               <h2 className="text-amber-600 uppercase tracking-widest text-sm font-semibold mb-4">Ihr Partner in Zürich</h2>
               <h3 className="font-serif text-4xl md:text-5xl text-stone-900 mb-8 leading-tight">
-                "Wir verkaufen nicht nur Immobilien.<br/>Wir realisieren Werte."
+                &quot;Wir verkaufen nicht nur Immobilien.<br/>Wir realisieren Werte.&quot;
               </h3>
               <div className="space-y-6 text-stone-600 text-lg font-light leading-relaxed mb-10">
                 <p>
