@@ -4,8 +4,12 @@ import { motion, Variants } from "framer-motion";
 import { CheckCircle2, TrendingUp, ShieldCheck, ArrowRight, Star, Clock, Home as HomeIcon } from "lucide-react";
 import ValuationForm from "@/components/ValuationForm";
 import Link from "next/link";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { useLanguage } from "@/components/LanguageContext";
 
 export default function Home() {
+  const { t } = useLanguage();
+
   const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" as const } }
@@ -26,12 +30,11 @@ export default function Home() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://optimal-immobilien.ch/wp-content/uploads/2024/03/Optimal-Immobilien-Makler-Kauf-Verkauf.jpg" 
-            alt="Luxuriöse Immobilie Zürich" 
-            className="w-full h-full object-cover"
+            src="https://optimal-immobilien.ch/wp-content/uploads/2024/05/Optimal-Immobilien-B15.jpg"
+            alt="Luxuriöse Immobilie in Zürich" 
+            className="w-full h-full object-cover scale-105 animate-slow-zoom"
           />
-          <div className="absolute inset-0 bg-stone-900/60 mix-blend-multiply" />
-          <div className="absolute inset-0 bg-gradient-to-b from-stone-900/40 via-transparent to-stone-900/90" />
+          <div className="absolute inset-0 bg-stone-950/70" />
         </div>
 
         {/* Navbar */}
@@ -41,43 +44,44 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-6">
             <Link href="/kaufen" className="hidden md:inline-flex items-center text-white/80 hover:text-white transition-colors uppercase tracking-wider text-xs font-semibold">
-              Immobilien finden
+              {t('nav.buy')}
             </Link>
             <Link href="/ratgeber" className="hidden md:inline-flex items-center text-white/80 hover:text-white transition-colors uppercase tracking-wider text-xs font-semibold">
-              Ratgeber
+              {t('nav.guide')}
             </Link>
             <Link href="/ueber-uns" className="hidden md:inline-flex items-center text-white/80 hover:text-white transition-colors uppercase tracking-wider text-xs font-semibold">
-              Über Uns
+              {t('nav.about')}
             </Link>
             <a href="#valuation" className="hidden md:inline-flex items-center gap-2 text-white border border-white/30 hover:bg-white hover:text-stone-900 px-6 py-2 rounded-full transition-all duration-300 backdrop-blur-sm uppercase tracking-wider text-xs font-semibold">
-              Kostenlose Bewertung
+              {t('nav.valuation')}
             </a>
+            <LanguageSwitcher />
           </div>
         </nav>
 
         {/* Hero Content */}
         <motion.div 
-          className="relative z-10 text-center px-4 max-w-5xl mx-auto mt-20"
+          className="relative z-10 w-full max-w-7xl mx-auto px-4 pt-32 text-center md:text-left"
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
         >
           <motion.div variants={fadeInUp} className="inline-block mb-6 px-4 py-1.5 border border-amber-500/50 rounded-full backdrop-blur-md bg-stone-900/30">
-            <span className="text-amber-400 uppercase tracking-widest text-xs font-semibold">Zürichs innovativer Immobilienmakler</span>
+            <span className="text-amber-400 uppercase tracking-widest text-xs font-semibold">{t('hero.badge')}</span>
           </motion.div>
           
           <motion.h1 variants={fadeInUp} className="font-serif text-5xl md:text-7xl lg:text-8xl text-white mb-8 leading-[1.1]">
-            Ihr Weg zur <br />
-            <span className="italic text-amber-500">provisionsfreien Immobilie</span>
+            {t('hero.title1')} <br />
+            <span className="italic text-amber-500">{t('hero.title2')}</span>
           </motion.h1>
           
-          <motion.p variants={fadeInUp} className="text-lg md:text-2xl text-stone-300 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
-            Entdecken Sie die Freiheit des Immobilienmarkts in Zürich. Wir garantieren Ihnen <strong className="text-white font-medium">0% Provision und 100% Transparenz</strong> beim Kauf und Verkauf.
+          <motion.p variants={fadeInUp} className="text-lg md:text-2xl text-stone-300 mb-10 max-w-3xl font-light leading-relaxed">
+            {t('hero.subtitle')}
           </motion.p>
           
           <motion.div variants={fadeInUp}>
             <a href="#action" className="group relative inline-flex items-center justify-center gap-4 bg-amber-500 text-stone-900 px-8 py-5 rounded-none text-lg font-semibold uppercase tracking-wider hover:bg-amber-400 transition-all duration-300">
-              <span>Jetzt Wert ermitteln</span>
+              <span>{t('hero.cta')}</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
           </motion.div>

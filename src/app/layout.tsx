@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   keywords: "Immobilienmakler Zürich, Immobilien Zürich, Haus verkaufen Zürich, Wohnung verkaufen Zürich",
 };
 
+import Providers from "@/components/Providers";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -19,7 +21,9 @@ export default function RootLayout({
   return (
     <html lang="de" className="scroll-smooth" suppressHydrationWarning>
       <body className={`${montserrat.variable} ${playfair.variable} font-sans antialiased bg-stone-50 text-stone-900 selection:bg-amber-500/30 selection:text-amber-900`}>
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );
