@@ -1,72 +1,60 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
 import { useEffect, useState } from "react";
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.04,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const childVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      damping: 12,
-      stiffness: 100,
-    },
-  },
-};
+import { motion } from "framer-motion";
 
 export default function Typewriter({
   text,
   className = "",
+  speed = 80,
+  delay = 300,
 }: {
   text: string;
   className?: string;
+  speed?: number;
+  delay?: number;
 }) {
-  const [mounted, setMounted] = useState(false);
+  const [displayedText, setDisplayedText] = useState("");
+  const [hasStarted, setHasStarted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    // Start delay
+    const startTimer = setTimeout(() => {
+      setHasStarted(true);
+    }, delay);
+    return () => clearTimeout(startTimer);
+  }, [delay]);
 
-  if (!mounted) {
-    return <span className={className}>{text}</span>;
-  }
+  useEffect(() => {
+    if (!hasStarted) return;
+    
+    let currentIndex = 0;
+    
+    const interval = setInterval(() => {
+      if (currentIndex <= text.length) {
+        setDisplayedText(text.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(interval);
+      }
+    }, speed);
 
-  // Split into words, then characters to allow word wrapping but character animation
-  const words = text.split(" ");
+    return () => clearInterval(interval);
+  }, [text, speed, hasStarted]);
 
   return (
-    <motion.span
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      className={`inline-block ${className}`}
-    >
-      {words.map((word, wordIndex) => (
-        <span key={wordIndex} className="inline-block whitespace-nowrap mr-[0.25em]">
-          {word.split("").map((char, charIndex) => (
-            <motion.span
-              key={`${wordIndex}-${charIndex}`}
-              variants={childVariants}
-              className="inline-block"
-            >
-              {char}
-            </motion.span>
-          ))}
-        </span>
-      ))}
-    </motion.span>
+    <span className={`inline-block ${className}`}>
+      {displayedText}
+      <motion.span
+        animate={{ opacity: [1, 0] }}
+        transition={{ 
+          duration: 0.8, 
+          repeat: Infinity, 
+          ease: "linear" 
+        }}
+        className="inline-block w-[0.1em] h-[1em] bg-current ml-[2px] align-middle"
+        style={{ transform: "translateY(-10%)" }}
+      />
+    </span>
   );
 }
