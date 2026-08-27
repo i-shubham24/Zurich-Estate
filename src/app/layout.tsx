@@ -4,6 +4,8 @@ import "./globals.css";
 import { SITE_URL, site } from "@/lib/site";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import SmoothScrolling from "@/components/SmoothScrolling";
+import CustomCursor from "@/components/CustomCursor";
 import { OrganizationJsonLd } from "@/components/StructuredData";
 
 const montserrat = Montserrat({
@@ -91,10 +93,13 @@ export default function RootLayout({
             __html: "document.documentElement.classList.add('js')",
           }}
         />
-        <OrganizationJsonLd />
-        <SiteHeader />
-        {children}
-        <SiteFooter />
+        <SmoothScrolling>
+          <CustomCursor />
+          <OrganizationJsonLd />
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+        </SmoothScrolling>
       </body>
     </html>
   );

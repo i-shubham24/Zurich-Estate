@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------ *
- * Optimal Immobilien — Brand Design System
+ * Optimal Immobilien – Brand Design System
  * Palette derived from the logo: graphite slate + champagne gold.
  * ------------------------------------------------------------------ */
 @theme {
@@ -14,7 +14,7 @@
   --color-graphite: #363f48;   /* logo panel tone */
   --color-graphite-2: #46515b;
 
-  --color-gold: #b8935e;       /* champagne — primary accent */
+  --color-gold: #b8935e;       /* champagne – primary accent */
   --color-gold-bright: #d0ae78;/* accent on dark backgrounds */
   --color-gold-deep: #8a6a3c;  /* gold text on light backgrounds (AA) */
 
@@ -34,14 +34,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
 }
 
 body {
@@ -173,4 +166,28 @@ h1, h2, h3, h4 {
   font-style: italic;
   font-size: 1.35rem;
   color: var(--color-ink);
+}
+
+/* Lenis base CSS */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Hide default cursor for custom cursor */
+@media (pointer: fine) {
+  body, a, button, input, textarea, select {
+    cursor: none !important;
+  }
 }

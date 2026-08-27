@@ -8,8 +8,12 @@ import {
   Lock,
   Building2,
   ArrowUpRight,
+  Check,
+  MapPin,
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import ParallaxImage from "@/components/ParallaxImage";
+import Marquee from "@/components/Marquee";
 import { Eyebrow, SectionHeading, ButtonLink, Stat } from "@/components/ui";
 import Method from "@/components/Method";
 import LocationsGrid from "@/components/LocationsGrid";
@@ -121,14 +125,22 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Trust ticker */}
+        {/* Trust ticker / Marquee */}
         <div className="absolute inset-x-0 bottom-0 z-10 border-t border-white/10 bg-ink/40 backdrop-blur-sm">
-          <div className="container-lux flex flex-wrap items-center gap-x-8 gap-y-2 py-4 text-xs uppercase tracking-[0.16em] text-white/70">
-            <span className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-gold" /> 0 % Provision</span>
-            <span className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-gold" /> {site.fixedPrice} Fixpreis</span>
-            <span className="hidden items-center gap-2 sm:flex"><BadgeCheck className="h-4 w-4 text-gold" /> 480+ verkaufte Objekte</span>
-            <span className="hidden items-center gap-2 md:flex"><BadgeCheck className="h-4 w-4 text-gold" /> Experten für die Goldküste</span>
-          </div>
+          <Marquee speed={30} className="py-4">
+            {[...Array(5)].map((_, i) => (
+              <div key={i} className="flex items-center text-xs uppercase tracking-[0.16em] text-white/70">
+                <span className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-gold" /> 0 % Provision</span>
+                <span className="mx-8 h-1 w-1 rounded-full bg-white/20" />
+                <span className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-gold" /> {site.fixedPrice} Fixpreis</span>
+                <span className="mx-8 h-1 w-1 rounded-full bg-white/20" />
+                <span className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-gold" /> 480+ verkaufte Objekte</span>
+                <span className="mx-8 h-1 w-1 rounded-full bg-white/20" />
+                <span className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-gold" /> Experten für die Region Zürich</span>
+                <span className="mx-8 h-1 w-1 rounded-full bg-white/20" />
+              </div>
+            ))}
+          </Marquee>
         </div>
       </section>
 
@@ -216,19 +228,15 @@ export default function HomePage() {
         <div className="container-lux">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <Reveal>
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <Image
-                  src={flagshipProject.image}
-                  alt="Neubau-Residenz mit Seesicht – Referenzprojekt von Optimal Immobilien"
-                  fill
-                  quality={82}
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
-                />
-                <span className="absolute left-5 top-5 bg-gold px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-ink">
-                  Referenzprojekt
-                </span>
-              </div>
+            <div className="relative aspect-[4/3] w-full">
+              <ParallaxImage
+                src={flagshipProject.image}
+                alt="Neubau-Residenz mit Seesicht – Referenzprojekt von Optimal Immobilien"
+              />
+              <span className="absolute left-5 top-5 bg-gold px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-ink z-10">
+                Referenzprojekt
+              </span>
+            </div>
             </Reveal>
             <Reveal delay={120}>
               <Eyebrow tone="onDark">Das Resultat, nicht die Dienstleistung</Eyebrow>
