@@ -5,7 +5,6 @@ import { MapPin, ArrowRight, Check, TrendingUp } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import { SectionHeading, Eyebrow, ButtonLink } from "@/components/ui";
-import Method from "@/components/Method";
 import ValuationCta from "@/components/ValuationCta";
 import CtaBanner from "@/components/CtaBanner";
 import FaqAccordion from "@/components/FaqAccordion";
@@ -176,10 +175,25 @@ export default async function LocationPage({
         </div>
       </section>
 
-      {/* Method */}
+      {/* Transparenz */}
       <section className="bg-cream py-20 md:py-24">
         <div className="container-lux">
-          <Method tone="onLight" />
+          <div className="mx-auto max-w-4xl text-center">
+            <Reveal>
+              <Eyebrow className="justify-center">Philosophie</Eyebrow>
+              <h2 className="mt-6 font-serif text-3xl leading-[1.15] text-ink md:text-5xl">
+                Volle Transparenz statt versteckter Kosten.
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-graphite/75 md:text-xl">
+                Wir glauben, dass eine exzellente Immobilienvermarktung in {loc.name} nicht 3 % Ihres Verkaufserlöses kosten muss. Mit unserem Fixpreis von {site.fixedPrice} erhalten Sie denselben umfassenden Service wie bei einem klassischen Makler – aber Sie behalten den gesamten Mehrwert Ihres Objekts.
+              </p>
+              <div className="mt-10 flex justify-center">
+                <ButtonLink href="/ueber-uns" variant="outline">
+                  Unsere Werte kennenlernen
+                </ButtonLink>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 

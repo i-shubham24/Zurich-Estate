@@ -14,8 +14,8 @@ import {
 import Reveal from "@/components/Reveal";
 import ParallaxImage from "@/components/ParallaxImage";
 import Marquee from "@/components/Marquee";
+import ArticleCard from "@/components/ArticleCard";
 import { Eyebrow, SectionHeading, ButtonLink, Stat } from "@/components/ui";
-import Method from "@/components/Method";
 import LocationsGrid from "@/components/LocationsGrid";
 import ValuationCta from "@/components/ValuationCta";
 import CtaBanner from "@/components/CtaBanner";
@@ -213,11 +213,26 @@ export default function HomePage() {
       </section>
 
       {/* ===================================================== *
-       * 3. METHOD — the Adi Kavzani Sales Engine
+       * 3. VALUES — Transparenz & Fixpreis
        * ===================================================== */}
-      <section className="bg-cream py-20 md:py-28">
+      <section className="bg-sand py-20 md:py-28">
         <div className="container-lux">
-          <Method tone="onLight" />
+          <div className="mx-auto max-w-4xl text-center">
+            <Reveal>
+              <Eyebrow className="justify-center">Philosophie</Eyebrow>
+              <h2 className="mt-6 font-serif text-3xl leading-[1.15] text-ink md:text-5xl">
+                Volle Transparenz statt versteckter Kosten.
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-graphite/75 md:text-xl">
+                Wir glauben, dass eine exzellente Immobilienvermarktung nicht 3 % Ihres Verkaufserlöses kosten muss. Mit unserem Fixpreis von {site.fixedPrice} erhalten Sie denselben umfassenden Service wie bei einem klassischen Makler – aber Sie behalten den gesamten Mehrwert Ihres Objekts.
+              </p>
+              <div className="mt-10 flex justify-center">
+                <ButtonLink href="/ueber-uns" variant="outline">
+                  Unsere Werte kennenlernen
+                </ButtonLink>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
@@ -334,32 +349,16 @@ export default function HomePage() {
             title="Wissen, das Ihren Verkauf besser macht"
             intro="Aktuelle Marktberichte, Experten-Tipps und Quartier-Guides für Eigentümerinnen und Eigentümer in Zürich."
           />
-          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
+          <div className="mt-12 grid grid-cols-1 gap-12 md:grid-cols-3">
             {(featuredGuides.length ? featuredGuides : guides).slice(0, 3).map((g, i) => (
               <Reveal key={g.slug} delay={i * 90}>
-                <Link href={`/ratgeber/${g.slug}`} className="group flex h-full flex-col">
-                  <div className="relative aspect-[3/2] w-full">
-                    <ParallaxImage
-                      src={g.image}
-                      alt={g.title}
-                    />
-                    <span className="absolute left-4 top-4 bg-white/90 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-ink z-10">
-                      {g.category}
-                    </span>
-                  </div>
-                  <div className="mt-5 flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-graphite/50">
-                    <Clock className="h-3.5 w-3.5" /> {g.readTime}
-                  </div>
-                  <h3 className="mt-3 font-serif text-xl leading-snug text-ink transition-colors group-hover:text-gold-deep">
-                    {g.title}
-                  </h3>
-                  <p className="mt-3 flex-grow text-sm leading-relaxed text-graphite/70">
-                    {g.excerpt}
-                  </p>
-                  <span className="mt-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-gold-deep">
-                    Artikel lesen <ArrowRight className="h-4 w-4" />
-                  </span>
-                </Link>
+                <ArticleCard
+                  href={`/ratgeber/${g.slug}`}
+                  image={g.image}
+                  title={g.title}
+                  category={g.category}
+                  excerpt={g.excerpt}
+                />
               </Reveal>
             ))}
           </div>

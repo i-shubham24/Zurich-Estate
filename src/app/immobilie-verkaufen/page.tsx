@@ -4,7 +4,6 @@ import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import Typewriter from "@/components/Typewriter";
 import { SectionHeading, Eyebrow, ButtonLink } from "@/components/ui";
-import Method from "@/components/Method";
 import ValuationCta from "@/components/ValuationCta";
 import CtaBanner from "@/components/CtaBanner";
 import FaqAccordion from "@/components/FaqAccordion";
@@ -226,12 +225,6 @@ export default function VerkaufenPage() {
       </section>
 
       {/* Method */}
-      <section className="bg-slate py-20 md:py-28">
-        <div className="container-lux">
-          <Method tone="onDark" />
-        </div>
-      </section>
-
       <ValuationCta />
 
       <section className="bg-cream py-20 md:py-28">
