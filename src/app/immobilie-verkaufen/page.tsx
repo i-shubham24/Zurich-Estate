@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Camera, FileCheck2, Megaphone, Users, KeyRound, Check } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
+import Typewriter from "@/components/Typewriter";
 import { SectionHeading, Eyebrow, ButtonLink } from "@/components/ui";
 import Method from "@/components/Method";
 import ValuationCta from "@/components/ValuationCta";
@@ -116,7 +117,7 @@ export default function VerkaufenPage() {
         title={
           <>
             Immobilie verkaufen in Zürich –{" "}
-            <span className="italic text-gold">provisionsfrei</span>.
+            <span className="italic text-gold"><Typewriter text="provisionsfrei" /></span>.
           </>
         }
         subtitle={`Dieselbe erstklassige Vermarktung wie beim klassischen Makler – aber zum Fixpreis von ${site.fixedPrice} statt 2–3 % Provision. Den Unterschied behalten Sie.`}
