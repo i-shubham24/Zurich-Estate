@@ -1,77 +1,77 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+
+type Phase = "typing" | "holdFull" | "deleting" | "holdEmpty";
 
 export default function Typewriter({
   text,
   className = "",
-  speed = 80,
+  speed = 85,
+  deleteSpeed = 40,
   delay = 300,
   loop = true,
-  loopDelay = 3000,
+  holdFull = 2200,
+  holdEmpty = 500,
 }: {
   text: string;
   className?: string;
   speed?: number;
+  deleteSpeed?: number;
   delay?: number;
   loop?: boolean;
-  loopDelay?: number;
+  holdFull?: number;
+  holdEmpty?: number;
 }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [hasStarted, setHasStarted] = useState(false);
+  const [count, setCount] = useState(0);
+  const [phase, setPhase] = useState<Phase>("typing");
+  const [started, setStarted] = useState(false);
 
+  // Initial start delay
   useEffect(() => {
-    // Start delay
-    const startTimer = setTimeout(() => {
-      setHasStarted(true);
-    }, delay);
-    return () => clearTimeout(startTimer);
+    const t = setTimeout(() => setStarted(true), delay);
+    return () => clearTimeout(t);
   }, [delay]);
 
+  // Drive the type / hold / erase cycle
   useEffect(() => {
-    if (!hasStarted) return;
-    
-    if (currentIndex < text.length) {
-      const timer = setTimeout(() => {
-        setCurrentIndex((prev) => prev + 1);
-      }, speed);
-      return () => clearTimeout(timer);
-    } else if (loop && currentIndex === text.length) {
-      const timer = setTimeout(() => {
-        setCurrentIndex(0);
-      }, loopDelay);
-      return () => clearTimeout(timer);
-    }
-  }, [currentIndex, text.length, speed, hasStarted, loop, loopDelay]);
+    if (!started) return;
+    let t: ReturnType<typeof setTimeout>;
 
-  const Cursor = () => (
-    <motion.span
-      animate={{ opacity: [1, 0] }}
-      transition={{ 
-        duration: 0.8, 
-        repeat: Infinity, 
-        ease: "linear" 
-      }}
-      className="inline-block w-[0.1em] h-[1em] bg-current mx-[1px] align-middle"
-      style={{ transform: "translateY(-10%)" }}
-    />
-  );
+    if (phase === "typing") {
+      if (count < text.length) {
+        t = setTimeout(() => setCount((c) => c + 1), speed);
+      } else {
+        setPhase("holdFull");
+      }
+    } else if (phase === "holdFull") {
+      if (loop) t = setTimeout(() => setPhase("deleting"), holdFull);
+    } else if (phase === "deleting") {
+      if (count > 0) {
+        t = setTimeout(() => setCount((c) => c - 1), deleteSpeed);
+      } else {
+        setPhase("holdEmpty");
+      }
+    } else if (phase === "holdEmpty") {
+      t = setTimeout(() => setPhase("typing"), holdEmpty);
+    }
+
+    return () => clearTimeout(t);
+  }, [phase, count, started, text.length, speed, deleteSpeed, loop, holdFull, holdEmpty]);
 
   return (
-    <span className={`inline ${className}`}>
-      {text.split("").map((char, i) => {
-        const isCurrent = i === currentIndex;
-        const isTyped = i < currentIndex;
-        
-        return (
-          <span key={i}>
-            {isCurrent && <Cursor />}
-            <span className={isTyped ? "" : "opacity-0"}>{char}</span>
-          </span>
-        );
-      })}
-      {currentIndex === text.length && <Cursor />}
+    <span className={`inline-block whitespace-pre ${className}`}>
+      {/* Reserve the full width so the heading never shifts as characters
+          appear or disappear; only opacity toggles. */}
+      {text.split("").map((char, i) => (
+        <span key={i} className={i < count ? "" : "opacity-0"}>
+          {char}
+        </span>
+      ))}
+      <span
+        aria-hidden="true"
+        className="typewriter-caret ml-[2px] inline-block h-[0.9em] w-[2px] translate-y-[0.06em] bg-current align-baseline"
+      />
     </span>
   );
 }

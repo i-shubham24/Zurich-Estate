@@ -9,7 +9,6 @@ import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
 import { OrganizationJsonLd } from "@/components/StructuredData";
 import IntroCurtain from "@/components/IntroCurtain";
-import PageTransition from "@/components/PageTransition";
 
 const montserrat = Montserrat({
   subsets: ["latin"],

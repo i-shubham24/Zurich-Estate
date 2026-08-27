@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import Typewriter from "@/components/Typewriter";
@@ -23,12 +23,20 @@ export default function ScrollTextHero({
     offset: ["start end", "end start"],
   });
 
+  // Spring-smoothed progress → glassy parallax instead of frame jitter
+  const progress = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 30,
+    mass: 0.4,
+    restDelta: 0.001,
+  });
+
   // Background image moves slightly slower than normal scroll
-  const imageY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
-  
-  // Text moves up much faster, creating a strong parallax overlap effect
-  const textY = useTransform(scrollYProgress, [0, 1], ["20%", "-40%"]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 1, 1, 0]);
+  const imageY = useTransform(progress, [0, 1], ["-8%", "8%"]);
+
+  // Text drifts up, creating a gentle parallax overlap effect
+  const textY = useTransform(progress, [0, 1], ["12%", "-28%"]);
+  const textOpacity = useTransform(progress, [0, 0.35, 0.7, 1], [1, 1, 1, 0]);
 
   return (
     <section 
@@ -53,12 +61,12 @@ export default function ScrollTextHero({
         style={{ y: textY, opacity: textOpacity }} 
         className="relative z-10 flex w-full flex-col items-center px-4 text-center"
       >
-        <h2 className="font-sans text-[clamp(2rem,6vw,5rem)] font-bold leading-[1] tracking-wide text-white/90 uppercase mix-blend-overlay">
-          <span className="block drop-shadow-2xl">{title1}</span>
-          <span className="block drop-shadow-2xl italic text-gold">
+        <h1 className="font-sans text-[clamp(2rem,6vw,5rem)] font-bold uppercase leading-[1] tracking-wide text-white drop-shadow-2xl">
+          <span className="block">{title1}</span>
+          <span className="block italic text-gold">
             <Typewriter text={title2 || ""} delay={50} />
           </span>
-        </h2>
+        </h1>
         <p className="mt-8 max-w-2xl text-sm font-medium tracking-widest text-white/80 md:text-base">
           {subtitle}
         </p>
