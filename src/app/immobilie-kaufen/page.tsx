@@ -108,7 +108,7 @@ export default function ImmobilieKaufenPage() {
         }
         subtitle="Der schlüsselfertige Weg zu Ihrer neuen Immobilie, begleitet von erfahrenen Maklern, die Zürich und die ganze Region kennen."
       >
-        <ButtonLink href="/#bewertung" variant="gold">
+        <ButtonLink href="#bewertung" variant="gold">
           Suchprofil starten
         </ButtonLink>
         <ButtonLink href="/kaufen" variant="ghost">

@@ -97,7 +97,7 @@ export default function ImmobilieBewertenPage() {
         }
         subtitle="Unkompliziert, rasch und kompetent: Entdecken Sie den wahren Wert Ihrer Immobilie, kostenlos und unverbindlich."
       >
-        <ButtonLink href="/#bewertung" variant="gold">
+        <ButtonLink href="#bewertung" variant="gold">
           Jetzt bewerten lassen
         </ButtonLink>
       </PageHero>

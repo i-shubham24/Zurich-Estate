@@ -100,7 +100,7 @@ export default function InvestierenPage() {
         }
         subtitle="Bauen Sie Vermögen mit Immobilien in der Region Zürich auf, provisionsfrei und mit tiefen Einblicken in den lokalen Markt."
       >
-        <ButtonLink href="/#bewertung" variant="gold">
+        <ButtonLink href="#bewertung" variant="gold">
           Investment besprechen
         </ButtonLink>
       </PageHero>
