@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { ReactNode } from "react";
+import Magnetic from "@/components/Magnetic";
 
 /** Uppercase champagne eyebrow with a gold rule. */
 export function Eyebrow({
@@ -86,12 +87,14 @@ export function ButtonLink({
     ghost: "border border-white/30 text-white hover:bg-white hover:text-ink",
   };
   return (
-    <Link href={href} className={`${base} ${styles[variant]} ${className}`}>
-      <span>{children}</span>
-      {icon && (
-        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-      )}
-    </Link>
+    <Magnetic>
+      <Link href={href} className={`${base} ${styles[variant]} ${className}`}>
+        <span>{children}</span>
+        {icon && (
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+        )}
+      </Link>
+    </Magnetic>
   );
 }
 

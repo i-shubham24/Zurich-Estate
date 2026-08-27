@@ -270,14 +270,10 @@ export default function HomePage() {
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
             {flagshipProject.gallery?.slice(1, 5).map((src, i) => (
               <Reveal key={src} delay={i * 70}>
-                <div className="relative aspect-square overflow-hidden">
-                  <Image
+                <div className="relative aspect-square w-full">
+                  <ParallaxImage
                     src={src}
                     alt={`${flagshipProject.title} – Innenansicht ${i + 1}`}
-                    fill
-                    quality={70}
-                    sizes="(max-width: 640px) 50vw, 25vw"
-                    className="object-cover transition-transform duration-700 hover:scale-105"
                   />
                 </div>
               </Reveal>
@@ -342,16 +338,12 @@ export default function HomePage() {
             {(featuredGuides.length ? featuredGuides : guides).slice(0, 3).map((g, i) => (
               <Reveal key={g.slug} delay={i * 90}>
                 <Link href={`/ratgeber/${g.slug}`} className="group flex h-full flex-col">
-                  <div className="relative aspect-[3/2] overflow-hidden">
-                    <Image
+                  <div className="relative aspect-[3/2] w-full">
+                    <ParallaxImage
                       src={g.image}
                       alt={g.title}
-                      fill
-                      quality={70}
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <span className="absolute left-4 top-4 bg-white/90 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-ink">
+                    <span className="absolute left-4 top-4 bg-white/90 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-ink z-10">
                       {g.category}
                     </span>
                   </div>

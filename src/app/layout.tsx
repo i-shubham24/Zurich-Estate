@@ -6,6 +6,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import SmoothScrolling from "@/components/SmoothScrolling";
 import CustomCursor from "@/components/CustomCursor";
+import ScrollProgress from "@/components/ScrollProgress";
 import { OrganizationJsonLd } from "@/components/StructuredData";
 
 const montserrat = Montserrat({
@@ -94,6 +95,7 @@ export default function RootLayout({
           }}
         />
         <SmoothScrolling>
+          <ScrollProgress />
           <CustomCursor />
           <OrganizationJsonLd />
           <SiteHeader />
