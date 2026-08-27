@@ -38,7 +38,7 @@ export function organizationJsonLd() {
     description: site.description,
     telephone: site.phone,
     email: site.email,
-    priceRange: "CHF 12'000.– Fixpreis",
+    priceRange: "CHF 12'000 Fixpreis",
     currenciesAccepted: "CHF",
     address: postalAddress,
     geo: {
@@ -63,7 +63,7 @@ export function organizationJsonLd() {
       price: "12000",
       priceCurrency: "CHF",
       description:
-        "Kompletter Immobilienverkauf ohne prozentuale Provision – zum transparenten Fixpreis von CHF 12'000.–.",
+        "Kompletter Immobilienverkauf ohne prozentuale Provision – zum transparenten Fixpreis von CHF 12'000.",
     },
   };
 }
@@ -117,7 +117,7 @@ export function localBusinessJsonLd(loc: Location) {
     image: `${SITE_URL}/projekte/residenz-aussenansicht-1.jpg`,
     telephone: site.phone,
     email: site.email,
-    priceRange: "CHF 12'000.– Fixpreis",
+    priceRange: "CHF 12'000 Fixpreis",
     address: postalAddress,
     areaServed: { "@type": "City", name: loc.name },
     description: loc.intro,

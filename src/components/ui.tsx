@@ -15,11 +15,10 @@ export function Eyebrow({
 }) {
   return (
     <span
-      className={`eyebrow flex items-center gap-3 ${
+      className={`eyebrow inline-flex items-center ${
         tone === "onDark" ? "text-gold-bright" : "text-gold-deep"
       } ${className}`}
     >
-      <span className="h-px w-8 bg-gold" />
       {children}
     </span>
   );

@@ -49,7 +49,7 @@ export const locations: Location[] = [
     faq: [
       {
         q: "Was kostet ein Immobilienmakler in Zürich?",
-        a: "Bei klassischen Maklern zahlen Sie in Zürich meist 2–3 % des Verkaufspreises plus MwSt. Bei Optimal Immobilien verkaufen Sie provisionsfrei zum Fixpreis von CHF 12'000.– – bei einem Objekt von CHF 2 Mio. sparen Sie so schnell CHF 40'000 und mehr.",
+        a: "Bei klassischen Maklern zahlen Sie in Zürich meist 2–3 % des Verkaufspreises plus MwSt. Bei Optimal Immobilien verkaufen Sie provisionsfrei zum Fixpreis von CHF 12'000 – bei einem Objekt von CHF 2 Mio. sparen Sie so schnell CHF 40'000 und mehr.",
       },
       {
         q: "Wie lange dauert ein Immobilienverkauf in der Stadt Zürich?",
@@ -76,7 +76,7 @@ export const locations: Location[] = [
     faq: [
       {
         q: "Lohnt sich ein provisionsfreier Verkauf auch bei teuren Objekten in Küsnacht?",
-        a: "Gerade dort. Bei einem Verkaufspreis von CHF 5 Mio. betragen klassische 3 % Provision CHF 150'000. Bei Optimal zahlen Sie den Fixpreis von CHF 12'000.– – die gesamte Differenz bleibt bei Ihnen.",
+        a: "Gerade dort. Bei einem Verkaufspreis von CHF 5 Mio. betragen klassische 3 % Provision CHF 150'000. Bei Optimal zahlen Sie den Fixpreis von CHF 12'000 – die gesamte Differenz bleibt bei Ihnen.",
       },
       {
         q: "Verkaufen Sie auch diskret / Off-Market in Küsnacht?",
@@ -134,7 +134,7 @@ export const locations: Location[] = [
       },
       {
         q: "Verkaufen Sie in Zumikon wirklich ohne Provision?",
-        a: "Ja. Sie zahlen den transparenten Fixpreis von CHF 12'000.– statt einer prozentualen Provision – unabhängig vom Verkaufspreis.",
+        a: "Ja. Sie zahlen den transparenten Fixpreis von CHF 12'000 statt einer prozentualen Provision – unabhängig vom Verkaufspreis.",
       },
     ],
     featured: false,
@@ -215,7 +215,7 @@ export const locations: Location[] = [
       },
       {
         q: "Was sparen Verkäufer in Erlenbach mit dem Fixpreis?",
-        a: "Bei einem Verkaufspreis von CHF 4 Mio. liegt die klassische 3 %-Provision bei CHF 120'000. Mit dem Fixpreis von CHF 12'000.– bleibt dieser Betrag fast vollständig bei Ihnen.",
+        a: "Bei einem Verkaufspreis von CHF 4 Mio. liegt die klassische 3 %-Provision bei CHF 120'000. Mit dem Fixpreis von CHF 12'000 bleibt dieser Betrag fast vollständig bei Ihnen.",
       },
     ],
     featured: false,
@@ -269,7 +269,7 @@ export const locations: Location[] = [
       },
       {
         q: "Fallen bei Optimal versteckte Kosten an?",
-        a: "Nein. Sie zahlen ausschliesslich den Fixpreis von CHF 12'000.– – Fotos, Vermarktung und Beratung sind darin enthalten.",
+        a: "Nein. Sie zahlen ausschliesslich den Fixpreis von CHF 12'000 – Fotos, Vermarktung und Beratung sind darin enthalten.",
       },
     ],
     featured: false,
@@ -350,7 +350,7 @@ export const locations: Location[] = [
       },
       {
         q: "Wie realistisch ist der Fixpreis für Uster-Objekte?",
-        a: "Sehr. Gerade im mittleren Preissegment ist der Fixpreis von CHF 12'000.– oft günstiger als jede prozentuale Provision.",
+        a: "Sehr. Gerade im mittleren Preissegment ist der Fixpreis von CHF 12'000 oft günstiger als jede prozentuale Provision.",
       },
     ],
     featured: false,
@@ -404,7 +404,7 @@ export const locations: Location[] = [
       },
       {
         q: "Wie hoch ist die Provision bei Optimal?",
-        a: "Es gibt keine prozentuale Provision – nur den Fixpreis von CHF 12'000.– für den kompletten Verkauf.",
+        a: "Es gibt keine prozentuale Provision – nur den Fixpreis von CHF 12'000 für den kompletten Verkauf.",
       },
     ],
     featured: false,

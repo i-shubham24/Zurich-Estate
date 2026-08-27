@@ -65,8 +65,7 @@ export default function PageHero({
           )}
 
           {eyebrow && (
-            <p className={`eyebrow flex items-center gap-3 text-gold-bright ${align === "center" ? "justify-center" : ""}`}>
-              <span className="h-px w-8 bg-gold" />
+            <p className={`eyebrow text-gold-bright ${align === "center" ? "text-center" : ""}`}>
               {eyebrow}
             </p>
           )}

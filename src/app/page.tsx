@@ -19,7 +19,8 @@ import ArticleCarousel from "@/components/ArticleCarousel";
 import ScrollTextHero from "@/components/ScrollTextHero";
 import VerticalStrips from "@/components/VerticalStrips";
 import FloatingGallery from "@/components/FloatingGallery";
-import { Eyebrow, SectionHeading, ButtonLink, Stat } from "@/components/ui";
+import { Eyebrow, SectionHeading, ButtonLink } from "@/components/ui";
+import Counter from "@/components/Counter";
 import LocationsCarousel from "@/components/LocationsCarousel";
 import ValuationCta from "@/components/ValuationCta";
 import CtaBanner from "@/components/CtaBanner";
@@ -35,7 +36,7 @@ import { faqJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 const homeFaqs = [
   {
     q: "Was kostet ein Immobilienmakler in Zürich bei Optimal Immobilien?",
-    a: "Sie verkaufen provisionsfrei zum Fixpreis von CHF 12'000.– – unabhängig vom Verkaufspreis. Keine prozentuale Provision, keine versteckten Kosten. Bei einem Objekt von CHF 2 Mio. sparen Sie so gegenüber einer klassischen 3 %-Provision rund CHF 48'000.",
+    a: "Sie verkaufen provisionsfrei zum Fixpreis von CHF 12'000 – unabhängig vom Verkaufspreis. Keine prozentuale Provision, keine versteckten Kosten. Bei einem Objekt von CHF 2 Mio. sparen Sie so gegenüber einer klassischen 3 %-Provision rund CHF 48'000.",
   },
   {
     q: "In welchen Regionen ist Optimal Immobilien tätig?",
@@ -118,7 +119,7 @@ export default function HomePage() {
           { id: "1", title: "RESIDENZ AM SEE", image: "/projekte/residenz-aussenansicht-1.jpg", href: "/kaufen/residenz-am-see" },
           { id: "2", title: "ATTIKA SEEFELD", image: "/projekte/attika-wohnen-1.jpg", href: "/kaufen/attikawohnung-seefeld" },
           { id: "3", title: "VILLA KÜSNACHT", image: "/projekte/residenz-aussenansicht-2.jpg", href: "/kaufen/villa-seesicht-kuesnacht" },
-          { id: "4", title: "STADTHAUS", image: "/projekte/erdgeschoss-wohnbereich.jpg", href: "/kaufen/stadthaus-zuerichberg" },
+          { id: "4", title: "GARTENWOHNUNG MEILEN", image: "/projekte/erdgeschoss-wohnbereich.jpg", href: "/kaufen/gartenwohnung-meilen" },
         ]}
       />
 
@@ -130,7 +131,7 @@ export default function HomePage() {
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-12">
             {stats.map((s, i) => (
               <Reveal key={s.label} delay={i * 80} className="text-center">
-                <Stat value={s.value} label={s.label} />
+                <Counter value={s.value} label={s.label} />
               </Reveal>
             ))}
           </div>
@@ -341,12 +342,12 @@ export default function HomePage() {
         title="ALLE IMMOBILIEN"
         href="/kaufen"
         images={[
-          { src: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80", alt: "Property 1", width: "26vw", height: "48vh", left: "15%", top: "25%" },
-          { src: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80", alt: "Property 2", width: "24vw", height: "42vh", left: "75%", top: "20%" },
-          { src: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80", alt: "Property 3", width: "30vw", height: "36vh", left: "50%", top: "15%" },
-          { src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", alt: "Property 4", width: "33vw", height: "54vh", left: "20%", top: "75%" },
-          { src: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80", alt: "Property 5", width: "30vw", height: "50vh", left: "80%", top: "70%" },
-          { src: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80", alt: "Property 6", width: "28vw", height: "45vh", left: "50%", top: "85%" },
+          { src: "/projekte/residenz-aussenansicht-1.jpg", alt: "Neubau-Residenz mit Seesicht", width: "26vw", height: "48vh", left: "15%", top: "25%" },
+          { src: "/projekte/attika-kueche-seeblick.jpg", alt: "Attika-Küche mit Seeblick", width: "24vw", height: "42vh", left: "75%", top: "20%" },
+          { src: "/projekte/attika-wohnen-1.jpg", alt: "Wohnbereich mit Panoramafenstern", width: "30vw", height: "36vh", left: "50%", top: "15%" },
+          { src: "/projekte/residenz-aussenansicht-2.jpg", alt: "Villa an der Goldküste", width: "33vw", height: "54vh", left: "20%", top: "75%" },
+          { src: "/projekte/obergeschoss-wohnbereich.jpg", alt: "Wohnbereich im Obergeschoss", width: "30vw", height: "50vh", left: "80%", top: "70%" },
+          { src: "/projekte/erdgeschoss-wohnbereich.jpg", alt: "Offener Wohnbereich im Erdgeschoss", width: "28vw", height: "45vh", left: "50%", top: "85%" },
         ]}
       />
 

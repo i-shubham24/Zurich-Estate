@@ -5,6 +5,7 @@ import { SITE_URL, site } from "@/lib/site";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import SmoothScrolling from "@/components/SmoothScrolling";
+import ScrollToTop from "@/components/ScrollToTop";
 import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
 import { OrganizationJsonLd } from "@/components/StructuredData";
@@ -96,6 +97,7 @@ export default function RootLayout({
           }}
         />
         <SmoothScrolling>
+          <ScrollToTop />
           <ScrollProgress />
           <CustomCursor />
           <OrganizationJsonLd />

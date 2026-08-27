@@ -4,6 +4,7 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import Typewriter from "@/components/Typewriter";
+import { ButtonLink } from "@/components/ui";
 
 export default function ScrollTextHero({
   title1 = "WHERE LIGHT MEETS",
@@ -70,6 +71,14 @@ export default function ScrollTextHero({
         <p className="mt-8 max-w-2xl text-sm font-medium tracking-widest text-white/80 md:text-base">
           {subtitle}
         </p>
+        <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
+          <ButtonLink href="/#bewertung" variant="gold">
+            Kostenlose Bewertung
+          </ButtonLink>
+          <ButtonLink href="/immobilie-verkaufen" variant="ghost">
+            So verkaufen wir
+          </ButtonLink>
+        </div>
       </motion.div>
 
       {/* Scroll indicator at the bottom */}

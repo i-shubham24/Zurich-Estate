@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, Phone } from "lucide-react";
 import Logo from "./Logo";
+import Magnetic from "./Magnetic";
 import { site } from "@/lib/site";
 
 const nav = [
@@ -48,15 +49,15 @@ export default function SiteHeader() {
       <div className="container-lux flex items-center justify-between py-4 md:py-5">
         <Logo tone="onDark" />
 
-        <nav className="hidden items-center gap-8 lg:flex" aria-label="Hauptnavigation">
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Hauptnavigation">
           {nav.map((item) => {
             const active = pathname === item.href || pathname.startsWith(item.href + "/");
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`eyebrow tracking-[0.14em] transition-colors ${
-                  active ? "text-gold-bright" : "text-white/75 hover:text-white"
+                className={`eyebrow rounded-full px-4 py-3 tracking-[0.14em] transition-colors ${
+                  active ? "text-gold-bright" : "text-white/75 hover:text-gold-bright"
                 }`}
               >
                 {item.label}
@@ -73,12 +74,14 @@ export default function SiteHeader() {
             <Phone className="h-4 w-4 text-gold" />
             {site.phone}
           </a>
-          <Link
-            href="/#bewertung"
-            className="hidden rounded-full bg-gold px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-ink transition-all hover:bg-gold-bright sm:inline-flex"
-          >
-            Gratis-Bewertung
-          </Link>
+          <Magnetic>
+            <Link
+              href="/#bewertung"
+              className="hidden rounded-full bg-gold px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-ink transition-all hover:bg-gold-bright sm:inline-flex"
+            >
+              Gratis-Bewertung
+            </Link>
+          </Magnetic>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}

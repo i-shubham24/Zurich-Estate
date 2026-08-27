@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 
@@ -21,15 +21,10 @@ export default function ParallaxImage({
     offset: ["start end", "end start"],
   });
 
-  // Smooth the raw scroll progress with a spring so the parallax glides
-  // instead of jittering frame-to-frame (especially under lenis smooth-scroll).
-  const smooth = useSpring(scrollYProgress, {
-    stiffness: 120,
-    damping: 30,
-    mass: 0.4,
-    restDelta: 0.001,
-  });
-  const y = useTransform(smooth, [0, 1], ["-7%", "7%"]);
+  // Drive parallax straight from the scroll progress. Lenis already smooths
+  // the scroll, so adding a spring on top double-smooths and causes the
+  // rubber-band jitter — this glides instead. Small range keeps it subtle.
+  const y = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
 
   return (
     <div ref={ref} className="relative h-full w-full overflow-hidden">
@@ -40,10 +35,10 @@ export default function ParallaxImage({
         viewport={{ once: true, margin: "0px 0px -60px 0px" }}
         className="h-full w-full"
       >
-        {/* scale-125 overscans so the ±7% parallax shift never reveals edges */}
+        {/* scale-115 overscans so the ±6% parallax shift never reveals edges */}
         <motion.div
-          style={{ y, willChange: "transform" }}
-          className="relative h-full w-full origin-center scale-125"
+          style={{ y, willChange: "transform", backfaceVisibility: "hidden" }}
+          className="relative h-full w-full origin-center scale-[1.15]"
         >
           <Image
             src={src}

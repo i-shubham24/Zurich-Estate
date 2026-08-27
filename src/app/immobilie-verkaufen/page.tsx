@@ -14,12 +14,12 @@ import { breadcrumbJsonLd, faqJsonLd } from "@/lib/jsonld";
 export const metadata: Metadata = {
   title: "Immobilie verkaufen in Zürich – provisionsfrei zum Fixpreis",
   description:
-    "Immobilie verkaufen in Zürich zum Höchstpreis: provisionsfrei zum Fixpreis von CHF 12'000.–. Professionelle Vermarktung, 0 % Provision, volle Transparenz. Jetzt kostenlos bewerten lassen.",
+    "Immobilie verkaufen in Zürich zum Höchstpreis: provisionsfrei zum Fixpreis von CHF 12'000. Professionelle Vermarktung, 0 % Provision, volle Transparenz. Jetzt kostenlos bewerten lassen.",
   alternates: { canonical: "/immobilie-verkaufen" },
   openGraph: {
     title: "Immobilie verkaufen in Zürich – provisionsfrei | Optimal Immobilien AG",
     description:
-      "Provisionsfrei verkaufen zum Fixpreis von CHF 12'000.– – professionelle Vermarktung, 0 % Provision.",
+      "Provisionsfrei verkaufen zum Fixpreis von CHF 12'000 – professionelle Vermarktung, 0 % Provision.",
     url: `${SITE_URL}/immobilie-verkaufen`,
   },
 };
@@ -72,7 +72,7 @@ const included = [
 const faqs = [
   {
     q: "Was kostet der Verkauf meiner Immobilie?",
-    a: "Ein transparenter Fixpreis von CHF 12'000.– – unabhängig vom Verkaufspreis. Keine prozentuale Provision, keine versteckten Kosten. Alle oben genannten Leistungen sind darin enthalten.",
+    a: "Ein transparenter Fixpreis von CHF 12'000 – unabhängig vom Verkaufspreis. Keine prozentuale Provision, keine versteckten Kosten. Alle oben genannten Leistungen sind darin enthalten.",
   },
   {
     q: "Zahle ich auch, wenn nicht verkauft wird?",

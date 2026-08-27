@@ -59,7 +59,7 @@ export const guides: Guide[] = [
 
 <blockquote>Der teuerste Fehler ist, den Verkauf dem Zufall zu überlassen. Struktur schlägt Glück – jedes Mal.</blockquote>
 
-<p>Genau deshalb verkauft Optimal Immobilien provisionsfrei zum Fixpreis von CHF 12'000.– – mit professioneller Vermarktung, aber ohne prozentuale Provision. Starten Sie mit einer kostenlosen Bewertung.</p>
+<p>Genau deshalb verkauft Optimal Immobilien provisionsfrei zum Fixpreis von CHF 12'000 – mit professioneller Vermarktung, aber ohne prozentuale Provision. Starten Sie mit einer kostenlosen Bewertung.</p>
 `,
     faqs: [
       {
@@ -68,7 +68,7 @@ export const guides: Guide[] = [
       },
       {
         q: "Wie viel Provision spare ich mit einem Fixpreis-Modell?",
-        a: "Bei einem Verkaufspreis von CHF 2 Mio. liegt die klassische 3 %-Provision bei CHF 60'000. Mit dem Fixpreis von CHF 12'000.– sparen Sie hier rund CHF 48'000.",
+        a: "Bei einem Verkaufspreis von CHF 2 Mio. liegt die klassische 3 %-Provision bei CHF 60'000. Mit dem Fixpreis von CHF 12'000 sparen Sie hier rund CHF 48'000.",
       },
     ],
   },
@@ -102,7 +102,7 @@ export const guides: Guide[] = [
 <p>In der Regel zahlt die verkaufende Partei, die den Makler beauftragt. Die Provision wird bei erfolgreichem Verkauf fällig.</p>
 
 <h2>Die Alternative: Fixpreis</h2>
-<p>Immer mehr Eigentümer setzen auf transparente Fixpreis-Modelle. Sie erhalten dieselbe professionelle Vermarktung – zahlen aber einen festen Betrag statt eines Prozentsatzes. Bei Optimal Immobilien beträgt dieser <strong>CHF 12'000.–</strong>, unabhängig vom Verkaufspreis.</p>
+<p>Immer mehr Eigentümer setzen auf transparente Fixpreis-Modelle. Sie erhalten dieselbe professionelle Vermarktung – zahlen aber einen festen Betrag statt eines Prozentsatzes. Bei Optimal Immobilien beträgt dieser <strong>CHF 12'000</strong>, unabhängig vom Verkaufspreis.</p>
 
 <blockquote>Bei einem Objekt von CHF 2 Mio. bedeutet das eine Ersparnis von rund CHF 48'000 gegenüber einer 3 %-Provision.</blockquote>
 
@@ -115,7 +115,7 @@ export const guides: Guide[] = [
       },
       {
         q: "Ab wann lohnt sich ein Fixpreis gegenüber Prozent-Provision?",
-        a: "In der Regel ab einem Verkaufspreis von rund CHF 500'000. Bei CHF 12'000.– Fixpreis sparen Sie gegenüber 3 % Provision bereits ab CHF 400'000 spürbar.",
+        a: "In der Regel ab einem Verkaufspreis von rund CHF 500'000. Bei CHF 12'000 Fixpreis sparen Sie gegenüber 3 % Provision bereits ab CHF 400'000 spürbar.",
       },
     ],
   },

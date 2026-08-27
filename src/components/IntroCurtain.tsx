@@ -1,15 +1,30 @@
 "use client";
 
 import { motion, animate } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 export default function IntroCurtain() {
   const [shouldRender, setShouldRender] = useState(true);
   const [progress, setProgress] = useState(0);
   const [wiping, setWiping] = useState(false);
 
+  const unlockBody = useCallback(() => {
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.left = "";
+    document.body.style.right = "";
+    document.body.style.overflow = "";
+  }, []);
+
+  const dismiss = useCallback(() => {
+    unlockBody();
+    try {
+      sessionStorage.setItem("intro_played", "true");
+    } catch {}
+    setShouldRender(false);
+  }, [unlockBody]);
+
   useEffect(() => {
-    // Only run the curtain once per session
     if (sessionStorage.getItem("intro_played")) {
       setShouldRender(false);
       return;
@@ -19,7 +34,7 @@ export default function IntroCurtain() {
       window.history.scrollRestoration = "manual";
     }
 
-    // Bulletproof scroll lock: fix the body in place so Lenis and the browser CANNOT scroll
+    // Lock scroll while the curtain is up
     document.body.style.position = "fixed";
     document.body.style.top = "0";
     document.body.style.left = "0";
@@ -27,39 +42,30 @@ export default function IntroCurtain() {
     document.body.style.overflow = "hidden";
     window.scrollTo({ top: 0, behavior: "instant" });
 
-    // Animate 0 to 100 for buffering effect
     const controls = animate(0, 100, {
       duration: 0.8,
-      ease: [0.33, 1, 0.68, 1], // smooth ease out
+      ease: [0.33, 1, 0.68, 1],
       onUpdate: (val) => setProgress(Math.round(val)),
-      onComplete: () => {
-        // Start the wipe up animation after a tiny pause
-        setTimeout(() => setWiping(true), 250);
-      }
+      onComplete: () => setTimeout(() => setWiping(true), 250),
     });
+
+    // Hard safety net: no matter what, never leave the page locked/covered.
+    const failsafe = setTimeout(dismiss, 4000);
 
     return () => {
       controls.stop();
-      // Cleanup safety
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.left = "";
-      document.body.style.right = "";
-      document.body.style.overflow = "";
+      clearTimeout(failsafe);
+      unlockBody();
     };
-  }, []);
+  }, [dismiss, unlockBody]);
 
-  const handleWipeComplete = () => {
-    // Unlock the body fully
-    document.body.style.position = "";
-    document.body.style.top = "";
-    document.body.style.left = "";
-    document.body.style.right = "";
-    document.body.style.overflow = "";
-    
-    sessionStorage.setItem("intro_played", "true");
-    setShouldRender(false);
-  };
+  // Once the wipe starts, guarantee dismissal even if the animation callback
+  // is missed for any reason.
+  useEffect(() => {
+    if (!wiping) return;
+    const t = setTimeout(dismiss, 1600);
+    return () => clearTimeout(t);
+  }, [wiping, dismiss]);
 
   if (!shouldRender) return null;
 
@@ -68,13 +74,12 @@ export default function IntroCurtain() {
       initial={{ clipPath: "inset(0% 0% 0% 0%)" }}
       animate={{ clipPath: wiping ? "inset(0% 0% 100% 0%)" : "inset(0% 0% 0% 0%)" }}
       transition={{ duration: 1.4, ease: [0.76, 0, 0.24, 1] }}
-      onAnimationComplete={(def) => {
-        // @ts-ignore
-        if (def.clipPath === "inset(0% 0% 100% 0%)") handleWipeComplete();
+      onAnimationComplete={() => {
+        if (wiping) dismiss();
       }}
       className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-ink"
     >
-      <motion.div 
+      <motion.div
         animate={{ opacity: wiping ? 0 : 1, y: wiping ? -50 : 0 }}
         transition={{ duration: 0.6 }}
         className="flex flex-col items-center"
