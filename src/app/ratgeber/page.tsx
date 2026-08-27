@@ -1,157 +1,130 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { ArrowLeft, BookOpen, Clock, ChevronRight } from "lucide-react";
+import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { Clock, ArrowRight } from "lucide-react";
+import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
+import Typewriter from "@/components/Typewriter";
+import { SectionHeading } from "@/components/ui";
+import CtaBanner from "@/components/CtaBanner";
+import { JsonLd } from "@/components/StructuredData";
+import { guides } from "@/lib/guides";
+import { breadcrumbJsonLd } from "@/lib/jsonld";
 
-const guides = [
-  {
-    id: 1,
-    title: "Immobilienpreise in Zürich: Der grosse Report 2024",
-    excerpt: "Wie entwickeln sich die Preise am Zürichsee? Wo lohnt sich der Verkauf aktuell am meisten? Ein detaillierter Einblick in den aktuellen Markt.",
-    category: "Marktbericht",
-    readTime: "5 Min.",
-    image: "https://images.unsplash.com/photo-1506974210756-8e1b8985d348?q=80&w=1000&auto=format&fit=crop",
-    slug: "immobilienpreise-zuerich-2024"
-  },
-  {
-    id: 2,
-    title: "Haus verkaufen in Zürich: 5 Fehler, die Sie Tausende kosten",
-    excerpt: "Viele Eigentümer verschenken beim Verkauf bares Geld. Mit dem Adi Kavzani Sales Engine vermeiden Sie diese klassischen Stolpersteine.",
-    category: "Ratgeber",
-    readTime: "4 Min.",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1000&auto=format&fit=crop",
-    slug: "haus-verkaufen-zuerich-fehler"
-  },
-  {
-    id: 3,
-    title: "Wohnen im Seefeld: Warum das Quartier so begehrt ist",
-    excerpt: "Zürich Seefeld gehört zu den exklusivsten Lagen der Schweiz. Was macht die Magie dieses Quartiers aus und wie finden Sie hier Ihr Traumhaus?",
-    category: "Quartier-Guide",
-    readTime: "3 Min.",
-    image: "https://images.unsplash.com/photo-1513639776629-7b61b0ac49cb?q=80&w=1000&auto=format&fit=crop",
-    slug: "wohnen-im-seefeld-zuerich"
-  }
-];
+export const metadata: Metadata = {
+  title: "Immobilien-Ratgeber Zürich – Marktwissen & Experten-Tipps",
+  description:
+    "Marktberichte, Verkaufs-Tipps und Quartier-Guides für Eigentümer in Zürich. Fundiertes Immobilienwissen von Optimal Immobilien AG.",
+  alternates: { canonical: "/ratgeber" },
+};
 
 export default function RatgeberPage() {
+  const [featured, ...rest] = guides;
+
   return (
-    <main className="min-h-screen bg-stone-50 pt-32 pb-20">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-stone-900/90 backdrop-blur-md p-6 border-b border-white/10">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <Link href="/" className="text-white font-serif text-2xl tracking-widest hover:text-amber-500 transition-colors">
-            OPTIMAL<span className="text-amber-500 font-sans font-light">.</span>
-          </Link>
-          <Link href="/" className="flex items-center gap-2 text-stone-300 hover:text-white transition-colors text-sm font-semibold uppercase tracking-widest">
-            <ArrowLeft className="w-4 h-4" /> Zurück zur Startseite
-          </Link>
-        </div>
-      </nav>
+    <main>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Startseite", url: "/" },
+          { name: "Ratgeber", url: "/ratgeber" },
+        ])}
+      />
 
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Header */}
-        <div className="mb-16">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-block mb-4 px-4 py-1.5 border border-amber-500/30 bg-amber-50 rounded-full"
-          >
-            <span className="text-amber-700 uppercase tracking-widest text-xs font-semibold">Wissen & Insights</span>
-          </motion.div>
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="font-serif text-5xl md:text-6xl text-stone-900 mb-6"
-          >
-            Immobilien-Ratgeber <span className="italic text-amber-600">Zürich</span>
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-stone-500 text-lg md:text-xl max-w-2xl"
-          >
-            Aktuelle Marktberichte, Experten-Tipps für den Hausverkauf und exklusive Einblicke in die Zürcher Quartiere.
-          </motion.p>
-        </div>
+      <PageHero
+        eyebrow="Ratgeber & Wissen"
+        image="/projekte/erdgeschoss-wohnbereich.jpg"
+        imageAlt="Modernes Wohnen in Zürich"
+        crumbs={[
+          { name: "Start", href: "/" },
+          { name: "Ratgeber", href: "/ratgeber" },
+        ]}
+        title={
+          <>
+            Immobilien-Ratgeber <span className="italic text-gold"><Typewriter text="Zürich" /></span>
+          </>
+        }
+        subtitle="Marktberichte, Experten-Tipps für den Verkauf und exklusive Einblicke in die Zürcher Quartiere."
+      />
 
-        {/* Featured Post */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="mb-12 bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col md:flex-row group"
-        >
-          <div className="w-full md:w-1/2 h-[300px] md:h-auto relative overflow-hidden">
-            <img 
-              src={guides[0].image} 
-              alt={guides[0].title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            />
-          </div>
-          <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-            <div className="flex items-center gap-4 mb-4">
-              <span className="px-3 py-1 bg-stone-100 text-stone-600 rounded-full text-xs font-bold uppercase tracking-wider">
-                {guides[0].category}
-              </span>
-              <div className="flex items-center gap-1 text-stone-400 text-sm">
-                <Clock className="w-4 h-4" /> {guides[0].readTime}
-              </div>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-stone-900 mb-4 group-hover:text-amber-600 transition-colors">
-              {guides[0].title}
-            </h2>
-            <p className="text-stone-500 text-lg leading-relaxed mb-8">
-              {guides[0].excerpt}
-            </p>
-            <Link href={`/ratgeber/${guides[0].slug}`} className="inline-flex items-center gap-2 text-amber-600 font-semibold uppercase tracking-wider text-sm hover:text-stone-900 transition-colors">
-              Artikel lesen <ChevronRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </motion.div>
-
-        {/* Post Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {guides.slice(1).map((guide, index) => (
-            <motion.div
-              key={guide.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 + (index * 0.1) }}
-              className="group cursor-pointer bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col"
+      {/* Featured */}
+      <section className="bg-cream py-20 md:py-24">
+        <div className="container-lux">
+          <Reveal>
+            <Link
+              href={`/ratgeber/${featured.slug}`}
+              className="group grid grid-cols-1 overflow-hidden border border-line bg-white md:grid-cols-2"
             >
-              <div className="relative h-[250px] overflow-hidden">
-                <img 
-                  src={guide.image} 
-                  alt={guide.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              <div className="relative aspect-[3/2] overflow-hidden md:aspect-auto">
+                <Image
+                  src={featured.image}
+                  alt={featured.title}
+                  fill
+                  quality={82}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-stone-900 rounded-full text-xs font-bold uppercase tracking-wider">
-                    {guide.category}
+              </div>
+              <div className="flex flex-col justify-center p-8 md:p-12">
+                <div className="flex items-center gap-4 text-xs uppercase tracking-[0.14em]">
+                  <span className="bg-sand px-3 py-1 font-semibold text-gold-deep">{featured.category}</span>
+                  <span className="flex items-center gap-1 text-graphite/50">
+                    <Clock className="h-3.5 w-3.5" /> {featured.readTime}
                   </span>
                 </div>
+                <h2 className="mt-5 font-serif text-3xl leading-tight text-ink md:text-4xl">
+                  {featured.title}
+                </h2>
+                <p className="mt-4 leading-relaxed text-graphite/75">{featured.excerpt}</p>
+                <span className="mt-8 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-gold-deep">
+                  Artikel lesen <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </span>
               </div>
-              <div className="p-8 flex-grow flex flex-col">
-                <div className="flex items-center gap-1 text-stone-400 text-sm mb-3">
-                  <Clock className="w-4 h-4" /> {guide.readTime}
-                </div>
-                <h3 className="text-2xl font-serif font-bold text-stone-900 mb-4 group-hover:text-amber-600 transition-colors">
-                  {guide.title}
-                </h3>
-                <p className="text-stone-500 leading-relaxed mb-6 flex-grow">
-                  {guide.excerpt}
-                </p>
-                <Link href={`/ratgeber/${guide.slug}`} className="inline-flex items-center gap-2 text-amber-600 font-semibold uppercase tracking-wider text-sm hover:text-stone-900 transition-colors mt-auto">
-                  Artikel lesen <ChevronRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </motion.div>
-          ))}
+            </Link>
+          </Reveal>
         </div>
-      </div>
+      </section>
+
+      {/* Grid */}
+      <section className="bg-sand py-16 md:py-24">
+        <div className="container-lux">
+          <SectionHeading eyebrow="Alle Beiträge" title="Aus dem Ratgeber" />
+          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {rest.map((g, i) => (
+              <Reveal key={g.slug} delay={(i % 3) * 80}>
+                <Link href={`/ratgeber/${g.slug}`} className="group flex h-full flex-col bg-white">
+                  <div className="relative aspect-[3/2] overflow-hidden">
+                    <Image
+                      src={g.image}
+                      alt={g.title}
+                      fill
+                      quality={70}
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <span className="absolute left-4 top-4 bg-white/90 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-ink">
+                      {g.category}
+                    </span>
+                  </div>
+                  <div className="flex flex-grow flex-col p-7">
+                    <div className="flex items-center gap-1 text-xs uppercase tracking-[0.14em] text-graphite/50">
+                      <Clock className="h-3.5 w-3.5" /> {g.readTime}
+                    </div>
+                    <h3 className="mt-3 font-serif text-xl leading-snug text-ink transition-colors group-hover:text-gold-deep">
+                      {g.title}
+                    </h3>
+                    <p className="mt-3 flex-grow text-sm leading-relaxed text-graphite/70">{g.excerpt}</p>
+                    <span className="mt-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-gold-deep">
+                      Lesen <ArrowRight className="h-4 w-4" />
+                    </span>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CtaBanner />
     </main>
   );
 }

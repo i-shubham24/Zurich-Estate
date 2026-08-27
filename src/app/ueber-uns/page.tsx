@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import { SectionHeading, Eyebrow, Stat } from "@/components/ui";
-import Method from "@/components/Method";
+import Typewriter from "@/components/Typewriter";
 import ValuationCta from "@/components/ValuationCta";
 import CtaBanner from "@/components/CtaBanner";
 import { JsonLd } from "@/components/StructuredData";
@@ -41,7 +41,7 @@ export default function UeberUnsPage() {
             </div>
             <h1 className="mt-6 font-serif text-4xl leading-[1.12] text-white md:text-5xl lg:text-[3.3rem]">
               Wir revolutionieren den{" "}
-              <span className="italic text-gold">Immobilienverkauf</span> in
+              <span className="italic text-gold"><Typewriter text="Immobilienverkauf" /></span> in
               Zürich.
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/65">
@@ -67,10 +67,18 @@ export default function UeberUnsPage() {
         </div>
       </section>
 
-      {/* ── Method (Adi Kavzani Sales Engine) ── */}
+      {/* ── Werte ── */}
       <section className="bg-sand py-20 md:py-28">
         <div className="container-lux">
-          <Method tone="onLight" />
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <h2 className="font-serif text-3xl md:text-4xl text-ink">Transparenz von Anfang bis Ende</h2>
+            <p className="mt-6 text-lg text-graphite/80 leading-relaxed">
+              Wir verstecken uns nicht hinter komplizierten Prozentrechnungen. Bei uns wissen Sie ab dem ersten Tag, 
+              welche Kosten auf Sie zukommen. Der Fixpreis von {site.fixedPrice} deckt den gesamten Verkaufsprozess ab – 
+              von der Marktwertermittlung über das professionelle Fotoshooting bis hin zur finalen Schlüsselübergabe 
+              beim Notariat.
+            </p>
+          </Reveal>
         </div>
       </section>
 

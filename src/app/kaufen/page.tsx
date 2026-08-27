@@ -1,161 +1,165 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { ArrowLeft, MapPin, BedDouble, Bath, SquareMenu } from "lucide-react";
+import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight, BedDouble, Maximize, MapPin } from "lucide-react";
+import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
+import Typewriter from "@/components/Typewriter";
+import { SectionHeading, ButtonLink } from "@/components/ui";
+import CtaBanner from "@/components/CtaBanner";
+import { JsonLd } from "@/components/StructuredData";
+import { projects, flagshipProject } from "@/lib/projects";
+import { breadcrumbJsonLd } from "@/lib/jsonld";
 
-const properties = [
-  {
-    id: 1,
-    title: "Exklusive Villa mit Seesicht",
-    location: "8700 Küsnacht",
-    price: "Auf Anfrage",
-    rooms: 6.5,
-    bathrooms: 3,
-    livingSpace: 280,
-    image: "https://optimal-immobilien.ch/wp-content/uploads/2024/05/Optimal-Immobilien-B15.jpg",
-    status: "Verfügbar"
-  },
-  {
-    id: 2,
-    title: "Moderne Attikawohnung im Herzen von Zürich",
-    location: "8001 Zürich",
-    price: "CHF 2,450,000",
-    rooms: 4.5,
-    bathrooms: 2,
-    livingSpace: 145,
-    image: "https://optimal-immobilien.ch/wp-content/uploads/2024/05/Optimal-Immobilien-B13.jpg",
-    status: "Verfügbar"
-  },
-  {
-    id: 3,
-    title: "Elegantes Einfamilienhaus im Grünen",
-    location: "8126 Zumikon",
-    price: "CHF 3,100,000",
-    rooms: 5.5,
-    bathrooms: 2,
-    livingSpace: 210,
-    image: "https://optimal-immobilien.ch/wp-content/uploads/2024/05/Optimal-Immobilien-B12.jpg",
-    status: "Reserviert"
-  },
-  {
-    id: 4,
-    title: "Historisches Stadthaus mit Charme",
-    location: "8008 Zürich Seefeld",
-    price: "CHF 4,200,000",
-    rooms: 7,
-    bathrooms: 3,
-    livingSpace: 320,
-    image: "https://optimal-immobilien.ch/wp-content/uploads/2024/05/Optimal-Immobilien-B11.jpg",
-    status: "Verkauft"
-  }
-];
+export const metadata: Metadata = {
+  title: "Immobilien kaufen in Zürich & am Zürichsee",
+  description:
+    "Exklusive Wohnungen, Häuser und Neubauprojekte in Zürich, an der Goldküste und am Zürichsee. Entdecken Sie aktuelle Objekte von Optimal Immobilien AG.",
+  alternates: { canonical: "/kaufen" },
+};
+
+const statusStyles: Record<string, string> = {
+  Verfügbar: "bg-ink/85 text-white",
+  "In Vermarktung": "bg-gold text-ink",
+  Reserviert: "bg-gold/90 text-ink",
+  Verkauft: "bg-graphite/80 text-white",
+};
 
 export default function KaufenPage() {
+  const others = projects.filter((p) => !p.flagship);
+
   return (
-    <main className="min-h-screen bg-stone-50 pt-32 pb-20">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-stone-900/90 backdrop-blur-md p-6 border-b border-white/10">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <Link href="/" className="text-white font-serif text-2xl tracking-widest hover:text-amber-500 transition-colors">
-            OPTIMAL<span className="text-amber-500 font-sans font-light">.</span>
-          </Link>
-          <Link href="/" className="flex items-center gap-2 text-stone-300 hover:text-white transition-colors text-sm font-semibold uppercase tracking-widest">
-            <ArrowLeft className="w-4 h-4" /> Zurück zur Startseite
-          </Link>
-        </div>
-      </nav>
+    <main>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Startseite", url: "/" },
+          { name: "Immobilien", url: "/kaufen" },
+        ])}
+      />
 
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Header */}
-        <div className="mb-16">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-block mb-4 px-4 py-1.5 border border-amber-500/30 bg-amber-50 rounded-full"
-          >
-            <span className="text-amber-700 uppercase tracking-widest text-xs font-semibold">Immobilienangebote</span>
-          </motion.div>
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="font-serif text-5xl md:text-6xl text-stone-900 mb-6"
-          >
-            Ihr neues <span className="italic text-amber-600">Zuhause</span>
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-stone-500 text-lg md:text-xl max-w-2xl"
-          >
-            Entdecken Sie unsere aktuellen Immobilienangebote in Zürich und Umgebung. Von modernen Wohnungen bis hin zu exklusiven Villen.
-          </motion.p>
-        </div>
+      <PageHero
+        eyebrow="Aktuelle Objekte"
+        image="/projekte/attika-kueche-seeblick.jpg"
+        imageAlt="Exklusive Immobilie mit Seesicht am Zürichsee"
+        crumbs={[
+          { name: "Start", href: "/" },
+          { name: "Immobilien", href: "/kaufen" },
+        ]}
+        title={
+          <>
+            Immobilien kaufen in{" "}
+            <span className="italic text-gold"><Typewriter text="Zürich & am See" /></span>
+          </>
+        }
+        subtitle="Sorgfältig ausgewählte Wohnungen, Häuser und Neubauprojekte in den besten Lagen der Region Zürich."
+      >
+        <ButtonLink href="/kontakt" variant="gold">
+          Suchauftrag erteilen
+        </ButtonLink>
+      </PageHero>
 
-        {/* Property Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-          {properties.map((property, index) => (
-            <motion.div
-              key={property.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * index }}
-              className="group cursor-pointer bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500"
+      {/* Flagship */}
+      <section className="bg-cream py-20 md:py-24">
+        <div className="container-lux">
+          <Reveal>
+            <Link
+              href={`/kaufen/${flagshipProject.slug}`}
+              className="group grid grid-cols-1 overflow-hidden border border-line bg-white lg:grid-cols-2"
             >
-              {/* Image Container */}
-              <div className="relative h-[300px] md:h-[400px] overflow-hidden">
-                <img 
-                  src={property.image} 
-                  alt={property.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              <div className="relative aspect-[4/3] overflow-hidden lg:aspect-auto">
+                <Image
+                  src={flagshipProject.image}
+                  alt={flagshipProject.title}
+                  fill
+                  quality={82}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute top-4 left-4">
-                  <span className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider backdrop-blur-md
-                    ${property.status === 'Verfügbar' ? 'bg-stone-900/80 text-white' : 
-                      property.status === 'Reserviert' ? 'bg-amber-500/90 text-stone-900' : 
-                      'bg-red-900/80 text-white'}`}
-                  >
-                    {property.status}
-                  </span>
-                </div>
-                <div className="absolute bottom-4 right-4">
-                  <span className="px-5 py-2 bg-white/90 backdrop-blur-sm text-stone-900 font-bold rounded-lg shadow-lg">
-                    {property.price}
-                  </span>
-                </div>
+                <span
+                  className={`absolute left-5 top-5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] ${statusStyles[flagshipProject.status]}`}
+                >
+                  {flagshipProject.status}
+                </span>
               </div>
-
-              {/* Content */}
-              <div className="p-8">
-                <div className="flex items-center gap-2 text-stone-500 mb-3">
-                  <MapPin className="w-4 h-4" />
-                  <span className="text-sm font-medium">{property.location}</span>
+              <div className="flex flex-col justify-center p-8 md:p-12">
+                <div className="flex items-center gap-2 text-sm text-graphite/60">
+                  <MapPin className="h-4 w-4 text-gold" /> {flagshipProject.location}
                 </div>
-                <h3 className="text-2xl font-serif font-bold text-stone-900 mb-6 group-hover:text-amber-600 transition-colors">
-                  {property.title}
-                </h3>
-                
-                <div className="flex items-center gap-6 text-stone-500 pt-6 border-t border-stone-100">
-                  <div className="flex items-center gap-2">
-                    <BedDouble className="w-5 h-5 text-stone-400" />
-                    <span className="font-medium">{property.rooms} Zi.</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Bath className="w-5 h-5 text-stone-400" />
-                    <span className="font-medium">{property.bathrooms} Bad</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <SquareMenu className="w-5 h-5 text-stone-400" />
-                    <span className="font-medium">{property.livingSpace} m²</span>
-                  </div>
+                <h2 className="mt-3 font-serif text-3xl text-ink md:text-4xl">
+                  {flagshipProject.title}
+                </h2>
+                <p className="mt-4 leading-relaxed text-graphite/75">
+                  {flagshipProject.description}
+                </p>
+                <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 border-t border-line pt-6 text-sm text-graphite/70">
+                  <span className="flex items-center gap-2">
+                    <BedDouble className="h-4 w-4 text-graphite/40" /> {flagshipProject.rooms} Zimmer
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <Maximize className="h-4 w-4 text-graphite/40" /> {flagshipProject.area} m²
+                  </span>
+                  <span className="font-semibold text-ink">{flagshipProject.price}</span>
                 </div>
+                <span className="mt-8 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-gold-deep">
+                  Projekt ansehen <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </span>
               </div>
-            </motion.div>
-          ))}
+            </Link>
+          </Reveal>
         </div>
-      </div>
+      </section>
+
+      {/* Other listings */}
+      <section className="bg-sand py-16 md:py-24">
+        <div className="container-lux">
+          <SectionHeading
+            eyebrow="Weitere Objekte"
+            title="Aktuelle Angebote"
+            intro="Ein Auszug aus unserem Portfolio in Zürich und Umgebung."
+          />
+          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
+            {others.map((p, i) => (
+              <Reveal key={p.slug} delay={(i % 2) * 90}>
+                <Link href={`/kaufen/${p.slug}`} className="group flex h-full flex-col bg-white">
+                  <div className="relative aspect-[3/2] overflow-hidden">
+                    <Image
+                      src={p.image}
+                      alt={p.title}
+                      fill
+                      quality={70}
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className={`object-cover transition-transform duration-700 group-hover:scale-105 ${p.status === "Verkauft" ? "grayscale-[0.35]" : ""}`}
+                    />
+                    <span
+                      className={`absolute left-4 top-4 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.14em] ${statusStyles[p.status]}`}
+                    >
+                      {p.status}
+                    </span>
+                  </div>
+                  <div className="flex flex-grow flex-col p-7">
+                    <div className="flex items-center gap-2 text-sm text-graphite/55">
+                      <MapPin className="h-4 w-4" /> {p.location}
+                    </div>
+                    <h3 className="mt-2 font-serif text-2xl text-ink transition-colors group-hover:text-gold-deep">
+                      {p.title}
+                    </h3>
+                    <div className="mt-auto flex items-center gap-x-6 gap-y-2 border-t border-line pt-5 text-sm text-graphite/70">
+                      <span className="flex items-center gap-2"><BedDouble className="h-4 w-4 text-graphite/40" /> {p.rooms} Zi.</span>
+                      <span className="flex items-center gap-2"><Maximize className="h-4 w-4 text-graphite/40" /> {p.area} m²</span>
+                      <span className="ml-auto font-semibold text-ink">{p.price}</span>
+                    </div>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CtaBanner
+        title="Nicht das Richtige dabei?"
+        subtitle="Erteilen Sie uns einen Suchauftrag – wir finden auch off-market das passende Objekt für Sie."
+      />
     </main>
   );
 }

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import Typewriter from "@/components/Typewriter";
 import { Eyebrow, SectionHeading } from "@/components/ui";
+import ContactForm from "@/components/ContactForm";
 import ValuationCta from "@/components/ValuationCta";
 import CtaBanner from "@/components/CtaBanner";
 import { JsonLd } from "@/components/StructuredData";
@@ -65,7 +67,7 @@ export default function KontaktPage() {
               <Eyebrow tone="onDark">Kontakt</Eyebrow>
             </div>
             <h1 className="mt-6 font-serif text-4xl leading-[1.12] text-white md:text-5xl lg:text-[3.3rem]">
-              Sprechen Sie mit uns
+              <Typewriter text="Sprechen Sie mit uns" />
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/65">
               Ob eine erste Einschätzung Ihrer Immobilie, eine Frage zu unserem
@@ -76,67 +78,67 @@ export default function KontaktPage() {
         </div>
       </section>
 
-      {/* ── Contact Cards ── */}
+      {/* ── Contact Section (Cards + Form) ── */}
       <section className="bg-cream py-20 md:py-28">
         <div className="container-lux">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {contactCards.map((card) => (
-              <Reveal key={card.label}>
-                <a
-                  href={card.href}
-                  target={card.icon === MapPin ? "_blank" : undefined}
-                  rel={card.icon === MapPin ? "noopener noreferrer" : undefined}
-                  className="group block border border-ink/8 bg-white p-8 transition-shadow hover:shadow-lg md:p-10"
-                >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gold/10">
-                    <card.icon className="h-5 w-5 text-gold-deep" />
-                  </span>
-                  <h2 className="mt-6 font-serif text-xl text-ink">
-                    {card.label}
-                  </h2>
-                  <p className="mt-2 text-base font-medium text-ink group-hover:text-gold-deep">
-                    {card.value}
-                  </p>
-                  <p className="mt-1 text-sm text-graphite/70">
-                    {card.description}
-                  </p>
-                </a>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Opening Hours ── */}
-      <section className="bg-sand py-20 md:py-28">
-        <div className="container-lux mx-auto max-w-2xl">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Öffnungszeiten"
-              title="Wann Sie uns erreichen"
-              align="center"
-            />
-            <div className="mt-10 flex justify-center">
-              <div className="w-full max-w-md divide-y divide-ink/10">
-                {site.openingHours.map((slot) => (
-                  <div
-                    key={slot.days}
-                    className="flex items-center justify-between py-4"
-                  >
-                    <span className="flex items-center gap-3 text-ink">
-                      <Clock className="h-4 w-4 text-gold-deep" />
-                      <span className="text-sm font-semibold uppercase tracking-wide">
-                        {slot.days}
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20">
+            {/* Left Col: Contact Info & Hours */}
+            <div>
+              <Reveal>
+                <h2 className="font-serif text-3xl text-ink md:text-4xl">Wir sind für Sie da</h2>
+                <p className="mt-4 text-graphite/80 leading-relaxed mb-10">
+                  Haben Sie Fragen zum Fixpreis-Modell oder möchten Sie eine erste Einschätzung 
+                  Ihrer Immobilie? Zögern Sie nicht, uns zu kontaktieren.
+                </p>
+                <div className="space-y-6">
+                  {contactCards.map((card) => (
+                    <a
+                      key={card.label}
+                      href={card.href}
+                      target={card.icon === MapPin ? "_blank" : undefined}
+                      rel={card.icon === MapPin ? "noopener noreferrer" : undefined}
+                      className="group flex items-start gap-5 border border-ink/8 bg-white p-6 transition-shadow hover:shadow-md"
+                    >
+                      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gold/10">
+                        <card.icon className="h-5 w-5 text-gold-deep" />
                       </span>
-                    </span>
-                    <span className="text-sm text-graphite">
-                      {slot.hours}
-                    </span>
+                      <div>
+                        <h3 className="font-serif text-lg text-ink">{card.label}</h3>
+                        <p className="mt-1 text-base font-medium text-ink group-hover:text-gold-deep">
+                          {card.value}
+                        </p>
+                        <p className="mt-1 text-sm text-graphite/70">{card.description}</p>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+
+                <div className="mt-12 bg-sand/50 p-8 border border-line">
+                  <h3 className="font-serif text-xl text-ink mb-6">Öffnungszeiten</h3>
+                  <div className="divide-y divide-ink/10">
+                    {site.openingHours.map((slot) => (
+                      <div key={slot.days} className="flex items-center justify-between py-3">
+                        <span className="flex items-center gap-3 text-ink">
+                          <Clock className="h-4 w-4 text-gold-deep" />
+                          <span className="text-sm font-semibold uppercase tracking-wide">
+                            {slot.days}
+                          </span>
+                        </span>
+                        <span className="text-sm text-graphite">{slot.hours}</span>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
+              </Reveal>
             </div>
-          </Reveal>
+            
+            {/* Right Col: Contact Form */}
+            <div>
+              <Reveal delay={100}>
+                <ContactForm />
+              </Reveal>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -16,6 +16,7 @@ import LocationsGrid from "@/components/LocationsGrid";
 import ValuationCta from "@/components/ValuationCta";
 import CtaBanner from "@/components/CtaBanner";
 import FaqAccordion from "@/components/FaqAccordion";
+import Typewriter from "@/components/Typewriter";
 import { JsonLd } from "@/components/StructuredData";
 import { site, stats } from "@/lib/site";
 import { featuredLocations } from "@/lib/locations";
@@ -100,7 +101,7 @@ export default function HomePage() {
               Ihr Immobilienmakler
               <br />
               in Zürich –{" "}
-              <span className="italic text-gold">provisionsfrei</span>
+              <span className="italic text-gold"><Typewriter text="provisionsfrei" /></span>
               <br className="hidden sm:block" /> zum Höchstpreis.
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-white/80 md:text-xl">
