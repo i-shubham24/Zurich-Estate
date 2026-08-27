@@ -51,7 +51,7 @@ export default function PageHero({
                 {crumbs.map((c, i) => (
                   <li key={c.href} className="flex items-center gap-1">
                     {i > 0 && <ChevronRight className="h-3.5 w-3.5 text-white/30" />}
-                    {i === crumbs.length, 1 ? (
+                    {i === crumbs.length - 1 ? (
                       <span className="text-gold-bright">{c.name}</span>
                     ) : (
                       <Link href={c.href} className="transition-colors hover:text-white">
