@@ -19,7 +19,7 @@ export default function ArticleCard({
   excerpt: string;
 }) {
   return (
-    <Link href={href} className="group flex flex-col w-full">
+    <Link href={href} className="group flex flex-col w-full h-full">
       {/* Image container */}
       <div className="relative aspect-[16/9] w-full overflow-hidden border border-line">
         <ParallaxImage src={image} alt={title} />
@@ -33,11 +33,11 @@ export default function ArticleCard({
       {/* Content */}
       <div className="mt-6 flex flex-col">
         {/* Title and Arrow row */}
-        <div className="flex items-center justify-between">
-          <h3 className="font-serif text-2xl text-ink transition-colors duration-500 group-hover:text-gold-deep">
+        <div className="flex items-start justify-between">
+          <h3 className="font-serif text-2xl leading-snug text-ink transition-colors duration-500 group-hover:text-gold-deep line-clamp-3 pr-4 min-h-[6.5rem]">
             {title}
           </h3>
-          <ArrowRight className="h-5 w-5 text-ink transition-all duration-500 group-hover:translate-x-1 group-hover:text-gold-deep" />
+          <ArrowRight className="mt-1.5 h-5 w-5 shrink-0 text-ink transition-all duration-500 group-hover:translate-x-1 group-hover:text-gold-deep" />
         </div>
 
         {/* Animated Divider */}
