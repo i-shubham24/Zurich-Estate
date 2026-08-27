@@ -23,7 +23,7 @@ export default function ParallaxImage({
 
   // Drive parallax straight from the scroll progress. Lenis already smooths
   // the scroll, so adding a spring on top double-smooths and causes the
-  // rubber-band jitter — this glides instead. Small range keeps it subtle.
+  // rubber-band jitter, this glides instead. Small range keeps it subtle.
   const y = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
 
   return (

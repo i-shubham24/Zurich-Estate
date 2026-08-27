@@ -12,7 +12,7 @@ export const site = {
   url: SITE_URL,
   tagline: "Immobilienmakler Zürich",
   description:
-    "Optimal Immobilien AG verkauft Ihre Immobilie in Zürich provisionsfrei zum Fixpreis von CHF 12'000 – 0 % Provision, 100 % Transparenz und der Höchstpreis für Ihr Objekt.",
+    "Optimal Immobilien AG verkauft Ihre Immobilie in Zürich provisionsfrei zum Fixpreis von CHF 12'000, 0 % Provision, 100 % Transparenz und der Höchstpreis für Ihr Objekt.",
 
   // Unique selling proposition
   fixedPrice: "CHF 12'000",
@@ -37,7 +37,7 @@ export const site = {
   geo: { lat: 47.4467, lng: 8.6295 },
 
   openingHours: [
-    { days: "Mo–Fr", hours: "08:00 – 18:30" },
+    { days: "Mo bis Fr", hours: "08:00, 18:30" },
     { days: "Sa", hours: "Nach Vereinbarung" },
   ],
 } as const;
@@ -82,7 +82,7 @@ export const services = [
   {
     slug: "investieren",
     title: "In Immobilien investieren",
-    short: "Renditeobjekte und Off-Market-Chancen",
+    short: "Renditeobjekte und Off Market-Chancen",
     href: "/kontakt",
   },
 ] as const;

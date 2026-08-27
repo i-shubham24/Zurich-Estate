@@ -36,7 +36,7 @@ import { faqJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 const homeFaqs = [
   {
     q: "Was kostet ein Immobilienmakler in Zürich bei Optimal Immobilien?",
-    a: "Sie verkaufen provisionsfrei zum Fixpreis von CHF 12'000 – unabhängig vom Verkaufspreis. Keine prozentuale Provision, keine versteckten Kosten. Bei einem Objekt von CHF 2 Mio. sparen Sie so gegenüber einer klassischen 3 %-Provision rund CHF 48'000.",
+    a: "Sie verkaufen provisionsfrei zum Fixpreis von CHF 12'000, unabhängig vom Verkaufspreis. Keine prozentuale Provision, keine versteckten Kosten. Bei einem Objekt von CHF 2 Mio. sparen Sie so gegenüber einer klassischen 3 % Provision rund CHF 48'000.",
   },
   {
     q: "In welchen Regionen ist Optimal Immobilien tätig?",
@@ -48,11 +48,11 @@ const homeFaqs = [
   },
   {
     q: "Wie läuft der Verkauf ab?",
-    a: "Nach der kostenlosen Bewertung erstellen wir eine Vermarktungsstrategie, professionelle Fotos und ein Exposé, sprechen gezielt geprüfte Käufer an und begleiten Sie bis zur Beurkundung – nach der bewährten Adi Kavzani Sales Engine.",
+    a: "Nach der kostenlosen Bewertung erstellen wir eine Vermarktungsstrategie, professionelle Fotos und ein Exposé, sprechen gezielt geprüfte Käufer an und begleiten Sie bis zur Beurkundung, nach der bewährten Adi Kavzani Sales Engine.",
   },
   {
-    q: "Verkaufen Sie Immobilien auch diskret / off-market?",
-    a: "Ja. Gerade bei hochpreisigen Objekten an der Goldküste vermarkten wir auf Wunsch vollständig diskret an einen ausgewählten Kreis solventer Interessenten – ohne öffentliches Inserat.",
+    q: "Verkaufen Sie Immobilien auch diskret / off market?",
+    a: "Ja. Gerade bei hochpreisigen Objekten an der Goldküste vermarkten wir auf Wunsch vollständig diskret an einen ausgewählten Kreis solventer Interessenten, ohne öffentliches Inserat.",
   },
 ];
 
@@ -70,7 +70,7 @@ const desireItems = [
   {
     icon: Lock,
     title: "Diskretion",
-    desc: "Auf Wunsch vermarkten wir Ihr Objekt vollständig diskret – nur an geprüfte Interessenten.",
+    desc: "Auf Wunsch vermarkten wir Ihr Objekt vollständig diskret, nur an geprüfte Interessenten.",
   },
 ];
 
@@ -85,7 +85,7 @@ export default function HomePage() {
       />
 
       {/* ===================================================== *
-       * 1. HOOK — Scroll Text Hero
+       * 1. HOOK, Scroll Text Hero
        * ===================================================== */}
       <ScrollTextHero 
         title1="IHR IMMOBILIENMAKLER"
@@ -111,7 +111,7 @@ export default function HomePage() {
       </section>
 
       {/* ===================================================== *
-       * FEATURED PROJECTS — Vertical Strips
+       * FEATURED PROJECTS, Vertical Strips
        * ===================================================== */}
       <VerticalStrips 
         title="UNSERE OBJEKTE"
@@ -124,7 +124,7 @@ export default function HomePage() {
       />
 
       {/* ===================================================== *
-       * 2. TRUST — proof & numbers
+       * 2. TRUST, proof & numbers
        * ===================================================== */}
       <section className="bg-cream py-16 md:py-20">
         <div className="container-lux">
@@ -139,7 +139,7 @@ export default function HomePage() {
       </section>
 
       {/* ===================================================== *
-       * USP — the provisionsfrei / fixed-price argument
+       * USP, the provisionsfrei / fixed-price argument
        * ===================================================== */}
       <section className="bg-sand py-20 md:py-28">
         <div className="container-lux grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-20">
@@ -152,7 +152,7 @@ export default function HomePage() {
                   <br /> wenn ein <span className="italic text-gold">Fixpreis</span> reicht?
                 </>
               }
-              intro="Klassische Makler verlangen 2–3 % des Verkaufspreises – für denselben Aufwand, egal wie teuer Ihr Objekt ist. Wir drehen das um: ein fairer Fixpreis, dieselbe erstklassige Vermarktung."
+              intro="Klassische Makler verlangen 2 bis 3 % des Verkaufspreises, für denselben Aufwand, egal wie teuer Ihr Objekt ist. Wir drehen das um: ein fairer Fixpreis, dieselbe erstklassige Vermarktung."
             />
             <div className="mt-8">
               <ButtonLink href="/immobilie-verkaufen" variant="dark">
@@ -183,7 +183,7 @@ export default function HomePage() {
                 <span className="font-serif text-3xl text-gold-deep">≈ CHF 48'000</span>
               </div>
               <p className="mt-5 text-sm text-graphite/60">
-                Je höher der Verkaufspreis, desto grösser Ihre Ersparnis – bei
+                Je höher der Verkaufspreis, desto grösser Ihre Ersparnis, bei
                 gleichbleibend professioneller Vermarktung.
               </p>
             </div>
@@ -192,7 +192,7 @@ export default function HomePage() {
       </section>
 
       {/* ===================================================== *
-       * 3. VALUES — Transparenz & Fixpreis
+       * 3. VALUES, Transparenz & Fixpreis
        * ===================================================== */}
       <section className="bg-sand py-20 md:py-28">
         <div className="container-lux">
@@ -203,7 +203,7 @@ export default function HomePage() {
                 Ehrliche Beratung. Verwurzelt in Zürich.
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-graphite/75 md:text-xl">
-                Als lokales Zürcher Immobilienunternehmen kennen wir die Quartiere, die Strassen und die Menschen. Wir verzichten auf leere Versprechen und teure Maklerprovisionen. Bei uns zahlen Sie einen fairen Fixpreis von {site.fixedPrice} – so bleibt der wahre Wert Ihrer Immobilie dort, wo er hingehört: bei Ihnen.
+                Als lokales Zürcher Immobilienunternehmen kennen wir die Quartiere, die Strassen und die Menschen. Wir verzichten auf leere Versprechen und teure Maklerprovisionen. Bei uns zahlen Sie einen fairen Fixpreis von {site.fixedPrice}, so bleibt der wahre Wert Ihrer Immobilie dort, wo er hingehört: bei Ihnen.
               </p>
               <div className="mt-10 flex justify-center">
                 <ButtonLink href="/ueber-uns" variant="outline">
@@ -216,7 +216,7 @@ export default function HomePage() {
       </section>
 
       {/* ===================================================== *
-       * 4. DESIRE — show the result (flagship project)
+       * 4. DESIRE, show the result (flagship project)
        * ===================================================== */}
       <section className="bg-ink py-20 text-white md:py-28">
         <div className="container-lux">
@@ -225,7 +225,7 @@ export default function HomePage() {
             <div className="relative aspect-[4/3] w-full">
               <ParallaxImage
                 src={flagshipProject.image}
-                alt="Neubau-Residenz mit Seesicht – Referenzprojekt von Optimal Immobilien"
+                alt="Neubau-Residenz mit Seesicht, Referenzprojekt von Optimal Immobilien"
                 priority={true}
               />
               <span className="absolute left-5 top-5 bg-gold px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-ink z-10">
@@ -268,7 +268,7 @@ export default function HomePage() {
                 <div className="relative aspect-square w-full">
                   <ParallaxImage
                     src={src}
-                    alt={`${flagshipProject.title} – Innenansicht ${i + 1}`}
+                    alt={`${flagshipProject.title}, Innenansicht ${i + 1}`}
                   />
                 </div>
               </Reveal>
@@ -290,7 +290,7 @@ export default function HomePage() {
       </section>
 
       {/* ===================================================== *
-       * LOCAL COVERAGE — internal linking to town pages
+       * LOCAL COVERAGE, internal linking to town pages
        * ===================================================== */}
       <section className="bg-sand py-20 md:py-28">
         <div className="container-lux">
@@ -303,7 +303,7 @@ export default function HomePage() {
                   <span className="italic text-gold">Ihrer Region</span>
                 </>
               }
-              intro="Lokale Marktkenntnis entscheidet über den Preis. Wir kennen jede Gemeinde rund um Zürich — finden Sie Ihren Standort."
+              intro="Lokale Marktkenntnis entscheidet über den Preis. Wir kennen jede Gemeinde rund um Zürich, finden Sie Ihren Standort."
             />
             <Link
               href="/immobilienmakler"
@@ -336,7 +336,7 @@ export default function HomePage() {
       </section>
 
       {/* ===================================================== *
-       * FLOATING GALLERY — See all properties
+       * FLOATING GALLERY, See all properties
        * ===================================================== */}
       <FloatingGallery 
         title="ALLE IMMOBILIEN"
@@ -352,7 +352,7 @@ export default function HomePage() {
       />
 
       {/* ===================================================== *
-       * 5. ACTION — valuation form
+       * 5. ACTION, valuation form
        * ===================================================== */}
       <ValuationCta />
 

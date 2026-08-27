@@ -25,17 +25,17 @@ export default function Typewriter({
 }) {
   const [count, setCount] = useState(0);
   const [phase, setPhase] = useState<Phase>("typing");
-  const [started, setStarted] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  // Initial start delay
+  // Only start on client after mount to avoid hydration mismatch
   useEffect(() => {
-    const t = setTimeout(() => setStarted(true), delay);
+    const t = setTimeout(() => setMounted(true), delay);
     return () => clearTimeout(t);
   }, [delay]);
 
   // Drive the type / hold / erase cycle
   useEffect(() => {
-    if (!started) return;
+    if (!mounted) return;
     let t: ReturnType<typeof setTimeout>;
 
     if (phase === "typing") {
@@ -57,17 +57,17 @@ export default function Typewriter({
     }
 
     return () => clearTimeout(t);
-  }, [phase, count, started, text.length, speed, deleteSpeed, loop, holdFull, holdEmpty]);
+  }, [phase, count, mounted, text.length, speed, deleteSpeed, loop, holdFull, holdEmpty]);
+
+  // Server and pre-mount: render the full text invisibly to reserve space
+  // Client after mount: show typed characters
+  const displayed = mounted ? text.slice(0, count) : "";
+  const hidden = mounted ? text.slice(count) : text;
 
   return (
-    <span className={`inline-block whitespace-pre ${className}`}>
-      {/* Reserve the full width so the heading never shifts as characters
-          appear or disappear; only opacity toggles. */}
-      {text.split("").map((char, i) => (
-        <span key={i} className={i < count ? "" : "opacity-0"}>
-          {char}
-        </span>
-      ))}
+    <span className={`inline-block ${className}`}>
+      <span>{displayed}</span>
+      <span className="invisible" aria-hidden="true">{hidden}</span>
       <span
         aria-hidden="true"
         className="typewriter-caret ml-[2px] inline-block h-[0.9em] w-[2px] translate-y-[0.06em] bg-current align-baseline"

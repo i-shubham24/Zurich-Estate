@@ -29,7 +29,7 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Immobilienmakler Zürich – provisionsfrei verkaufen | Optimal Immobilien AG",
+    default: "Immobilienmakler Zürich, provisionsfrei verkaufen | Optimal Immobilien AG",
     template: "%s | Optimal Immobilien AG",
   },
   description: site.description,
@@ -52,20 +52,20 @@ export const metadata: Metadata = {
     locale: "de_CH",
     url: SITE_URL,
     siteName: "Optimal Immobilien AG",
-    title: "Immobilienmakler Zürich – provisionsfrei zum Fixpreis verkaufen",
+    title: "Immobilienmakler Zürich, provisionsfrei zum Fixpreis verkaufen",
     description: site.description,
     images: [
       {
         url: "/projekte/residenz-aussenansicht-1.jpg",
         width: 2400,
         height: 1371,
-        alt: "Moderne Neubau-Residenz mit Seesicht – Optimal Immobilien AG, Zürich",
+        alt: "Moderne Neubau-Residenz mit Seesicht, Optimal Immobilien AG, Zürich",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Immobilienmakler Zürich – Optimal Immobilien AG",
+    title: "Immobilienmakler Zürich, Optimal Immobilien AG",
     description: site.usp,
     images: ["/projekte/residenz-aussenansicht-1.jpg"],
   },

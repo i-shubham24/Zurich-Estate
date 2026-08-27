@@ -12,14 +12,14 @@ import { site, SITE_URL } from "@/lib/site";
 import { breadcrumbJsonLd, faqJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "Immobilie verkaufen in Zürich – provisionsfrei zum Fixpreis",
+  title: "Immobilie verkaufen in Zürich, provisionsfrei zum Fixpreis",
   description:
     "Immobilie verkaufen in Zürich zum Höchstpreis: provisionsfrei zum Fixpreis von CHF 12'000. Professionelle Vermarktung, 0 % Provision, volle Transparenz. Jetzt kostenlos bewerten lassen.",
   alternates: { canonical: "/immobilie-verkaufen" },
   openGraph: {
-    title: "Immobilie verkaufen in Zürich – provisionsfrei | Optimal Immobilien AG",
+    title: "Immobilie verkaufen in Zürich, provisionsfrei | Optimal Immobilien AG",
     description:
-      "Provisionsfrei verkaufen zum Fixpreis von CHF 12'000 – professionelle Vermarktung, 0 % Provision.",
+      "Provisionsfrei verkaufen zum Fixpreis von CHF 12'000, professionelle Vermarktung, 0 % Provision.",
     url: `${SITE_URL}/immobilie-verkaufen`,
   },
 };
@@ -29,7 +29,7 @@ const steps = [
     n: "01",
     icon: FileCheck2,
     title: "Kostenlose Bewertung",
-    desc: "Wir ermitteln den realistischen Marktwert Ihrer Immobilie – datenbasiert und mit Blick auf Ihre Mikrolage.",
+    desc: "Wir ermitteln den realistischen Marktwert Ihrer Immobilie, datenbasiert und mit Blick auf Ihre Mikrolage.",
   },
   {
     n: "02",
@@ -41,7 +41,7 @@ const steps = [
     n: "03",
     icon: Megaphone,
     title: "Gezielte Vermarktung",
-    desc: "Wir sprechen die richtige Zielgruppe an – über Portale, unser Netzwerk und auf Wunsch diskret off-market.",
+    desc: "Wir sprechen die richtige Zielgruppe an, über Portale, unser Netzwerk und auf Wunsch diskret off market.",
   },
   {
     n: "04",
@@ -53,7 +53,7 @@ const steps = [
     n: "05",
     icon: KeyRound,
     title: "Abschluss & Beurkundung",
-    desc: "Wir begleiten Sie durch Vertrag und Beurkundung – bis der Verkaufserlös auf Ihrem Konto ist.",
+    desc: "Wir begleiten Sie durch Vertrag und Beurkundung, bis der Verkaufserlös auf Ihrem Konto ist.",
   },
 ];
 
@@ -72,11 +72,11 @@ const included = [
 const faqs = [
   {
     q: "Was kostet der Verkauf meiner Immobilie?",
-    a: "Ein transparenter Fixpreis von CHF 12'000 – unabhängig vom Verkaufspreis. Keine prozentuale Provision, keine versteckten Kosten. Alle oben genannten Leistungen sind darin enthalten.",
+    a: "Ein transparenter Fixpreis von CHF 12'000, unabhängig vom Verkaufspreis. Keine prozentuale Provision, keine versteckten Kosten. Alle oben genannten Leistungen sind darin enthalten.",
   },
   {
     q: "Zahle ich auch, wenn nicht verkauft wird?",
-    a: "Die kostenlose Bewertung ist immer unverbindlich. Die konkreten Konditionen besprechen wir transparent, bevor Sie einen Auftrag erteilen – ohne Überraschungen.",
+    a: "Die kostenlose Bewertung ist immer unverbindlich. Die konkreten Konditionen besprechen wir transparent, bevor Sie einen Auftrag erteilen, ohne Überraschungen.",
   },
   {
     q: "Wie lange dauert ein Immobilienverkauf in Zürich?",
@@ -84,11 +84,11 @@ const faqs = [
   },
   {
     q: "Welche Unterlagen brauche ich für den Verkauf?",
-    a: "Unter anderem Grundbuchauszug, Baupläne, Gebäudeversicherungs­police und – je nach Objekt – weitere Dokumente. Wir sagen Ihnen genau, was nötig ist, und unterstützen bei der Beschaffung.",
+    a: "Unter anderem Grundbuchauszug, Baupläne, Gebäudeversicherungs­police und, je nach Objekt, weitere Dokumente. Wir sagen Ihnen genau, was nötig ist, und unterstützen bei der Beschaffung.",
   },
   {
     q: "Verkaufen Sie auch diskret?",
-    a: "Ja. Auf Wunsch vermarkten wir Ihre Immobilie vollständig diskret an einen ausgewählten Kreis solventer Interessenten – ohne öffentliches Inserat.",
+    a: "Ja. Auf Wunsch vermarkten wir Ihre Immobilie vollständig diskret an einen ausgewählten Kreis solventer Interessenten, ohne öffentliches Inserat.",
   },
 ];
 
@@ -115,11 +115,11 @@ export default function VerkaufenPage() {
         ]}
         title={
           <>
-            Immobilie verkaufen in Zürich –{" "}
+            Immobilie verkaufen in Zürich -{" "}
             <span className="italic text-gold"><Typewriter text="provisionsfrei" /></span>.
           </>
         }
-        subtitle={`Dieselbe erstklassige Vermarktung wie beim klassischen Makler – aber zum Fixpreis von ${site.fixedPrice} statt 2–3 % Provision. Den Unterschied behalten Sie.`}
+        subtitle={`Dieselbe erstklassige Vermarktung wie beim klassischen Makler, aber zum Fixpreis von ${site.fixedPrice} statt 2 bis 3 % Provision. Den Unterschied behalten Sie.`}
       >
         <ButtonLink href="/#bewertung" variant="gold">
           Kostenlose Bewertung
@@ -137,11 +137,11 @@ export default function VerkaufenPage() {
               eyebrow="0 % Provision"
               title={
                 <>
-                  Sie zahlen für die Leistung –{" "}
+                  Sie zahlen für die Leistung -{" "}
                   <span className="italic text-gold">nicht für den Preis</span>.
                 </>
               }
-              intro="Der Aufwand für einen Verkauf ist derselbe, egal ob Ihr Objekt CHF 1 Mio. oder CHF 3 Mio. kostet. Eine prozentuale Provision belohnt keinen Mehraufwand – nur einen höheren Preis. Deshalb rechnen wir fair ab: ein Fixpreis für den kompletten Verkauf."
+              intro="Der Aufwand für einen Verkauf ist derselbe, egal ob Ihr Objekt CHF 1 Mio. oder CHF 3 Mio. kostet. Eine prozentuale Provision belohnt keinen Mehraufwand, nur einen höheren Preis. Deshalb rechnen wir fair ab: ein Fixpreis für den kompletten Verkauf."
             />
           </Reveal>
           <Reveal delay={120}>
@@ -175,7 +175,7 @@ export default function VerkaufenPage() {
           <SectionHeading
             eyebrow="Der Ablauf"
             title="In 5 Schritten zum erfolgreichen Verkauf"
-            intro="Ein klar strukturierter Prozess – Sie wissen jederzeit, wo Ihr Verkauf steht."
+            intro="Ein klar strukturierter Prozess, Sie wissen jederzeit, wo Ihr Verkauf steht."
           />
           <div className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5">
             {steps.map((s, i) => (
@@ -200,7 +200,7 @@ export default function VerkaufenPage() {
           <Reveal>
             <SectionHeading
               eyebrow="Im Fixpreis enthalten"
-              title="Alles inklusive – für CHF 12'000."
+              title="Alles inklusive, für CHF 12'000."
               intro="Keine Pakete, keine Zusatzkosten. Der komplette Verkaufsprozess ist im Fixpreis enthalten."
             />
             <div className="mt-8">

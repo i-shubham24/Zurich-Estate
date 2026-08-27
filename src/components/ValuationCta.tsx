@@ -6,14 +6,14 @@ import { Eyebrow } from "./ui";
 const points = [
   "Kostenlos & unverbindlich",
   "Ergebnis innert 24 Stunden",
-  "Diskret – keine Weitergabe an Dritte",
+  "Diskret, keine Weitergabe an Dritte",
   "Von echten Marktdaten gestützt",
 ];
 
 export default function ValuationCta({
   eyebrow = "Kostenlose Bewertung",
   title = "Was ist Ihre Immobilie heute wert?",
-  intro = "Erhalten Sie eine fundierte Ersteinschätzung des Marktwerts – in weniger als zwei Minuten und ohne Verpflichtung.",
+  intro = "Erhalten Sie eine fundierte Ersteinschätzung des Marktwerts, in weniger als zwei Minuten und ohne Verpflichtung.",
 }: {
   eyebrow?: string;
   title?: string;

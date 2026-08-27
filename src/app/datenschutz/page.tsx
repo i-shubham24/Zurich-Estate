@@ -6,12 +6,12 @@ import { site, SITE_URL } from "@/lib/site";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "Datenschutzerklärung – Optimal Immobilien AG",
+  title: "Datenschutzerklärung, Optimal Immobilien AG",
   description:
     "Datenschutzerklärung der Optimal Immobilien AG. Informationen zur Erhebung, Verarbeitung und Nutzung personenbezogener Daten gemäss Schweizer DSG.",
   alternates: { canonical: "/datenschutz" },
   openGraph: {
-    title: "Datenschutzerklärung – Optimal Immobilien AG",
+    title: "Datenschutzerklärung, Optimal Immobilien AG",
     url: `${SITE_URL}/datenschutz`,
   },
 };
@@ -45,7 +45,7 @@ export default function DatenschutzPage() {
         <div className="container-lux">
           <Reveal>
             <div className="prose-lux mx-auto max-w-2xl">
-              {/* 1 – Verantwortliche Stelle */}
+              {/* 1, Verantwortliche Stelle */}
               <h2>1. Verantwortliche Stelle</h2>
               <p>
                 Verantwortlich für die Datenbearbeitung auf dieser Website ist:
@@ -70,7 +70,7 @@ export default function DatenschutzPage() {
                 </a>
               </p>
 
-              {/* 2 – Erhebung und Verarbeitung */}
+              {/* 2, Erhebung und Verarbeitung */}
               <h2>2. Erhebung und Verarbeitung personenbezogener Daten</h2>
               <p>
                 Beim Besuch unserer Website werden automatisch technische Daten
@@ -90,7 +90,7 @@ export default function DatenschutzPage() {
                 ausgewertet. Ein Rückschluss auf Ihre Person ist nicht möglich.
               </p>
 
-              {/* 3 – Cookies */}
+              {/* 3, Cookies */}
               <h2>3. Cookies</h2>
               <p>
                 Unsere Website verwendet Cookies. Dabei handelt es sich um
@@ -102,7 +102,7 @@ export default function DatenschutzPage() {
                 Funktionen der Website vollumfänglich nutzbar sind.
               </p>
 
-              {/* 4 – Google Analytics */}
+              {/* 4, Google Analytics */}
               <h2>4. Google Analytics</h2>
               <p>
                 Diese Website nutzt Google Analytics, einen Webanalysedienst der
@@ -129,7 +129,7 @@ export default function DatenschutzPage() {
                 .
               </p>
 
-              {/* 5 – Kontaktformular */}
+              {/* 5, Kontaktformular */}
               <h2>5. Kontaktformular und Immobilienbewertung</h2>
               <p>
                 Wenn Sie uns über das Kontaktformular oder das
@@ -140,7 +140,7 @@ export default function DatenschutzPage() {
                 nicht ohne Ihre Einwilligung weiter.
               </p>
 
-              {/* 6 – Rechte der betroffenen Personen */}
+              {/* 6, Rechte der betroffenen Personen */}
               <h2>6. Rechte der betroffenen Personen</h2>
               <p>
                 Gemäss dem Schweizer Bundesgesetz über den Datenschutz (DSG)
@@ -178,7 +178,7 @@ export default function DatenschutzPage() {
                 </a>
               </p>
 
-              {/* 7 – Änderungen */}
+              {/* 7, Änderungen */}
               <h2>7. Änderungen dieser Datenschutzerklärung</h2>
               <p>
                 Wir behalten uns vor, diese Datenschutzerklärung jederzeit
@@ -188,7 +188,7 @@ export default function DatenschutzPage() {
                 Datenschutzerklärung.
               </p>
 
-              {/* 8 – Anwendbares Recht */}
+              {/* 8, Anwendbares Recht */}
               <h2>8. Anwendbares Recht und Gerichtsstand</h2>
               <p>
                 Es gilt ausschliesslich schweizerisches Recht, insbesondere das

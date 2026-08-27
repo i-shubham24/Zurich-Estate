@@ -7,9 +7,9 @@ import Typewriter from "@/components/Typewriter";
 import { ButtonLink } from "@/components/ui";
 
 export default function ScrollTextHero({
-  title1 = "WHERE LIGHT MEETS",
-  title2 = "STRUCTURE",
-  subtitle = "Every shadow, every beam of light — crafted with intention and precision.",
+  title1 = "IHR IMMOBILIENMAKLER",
+  title2 = "PROVISIONSFREI",
+  subtitle = "Wir verkaufen Ihre Immobilie zum Fixpreis. Kein Risiko, keine versteckten Kosten.",
   image = "/projekte/residenz-aussenansicht-1.jpg",
 }: {
   title1?: string;
@@ -65,7 +65,7 @@ export default function ScrollTextHero({
         <h1 className="font-sans text-[clamp(2rem,6vw,5rem)] font-bold uppercase leading-[1] tracking-wide text-white drop-shadow-2xl">
           <span className="block">{title1}</span>
           <span className="block italic text-gold">
-            <Typewriter text={title2 || ""} delay={50} />
+            {title2}
           </span>
         </h1>
         <p className="mt-8 max-w-2xl text-sm font-medium tracking-widest text-white/80 md:text-base">

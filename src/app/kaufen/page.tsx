@@ -158,7 +158,7 @@ export default function KaufenPage() {
 
       <CtaBanner
         title="Nicht das Richtige dabei?"
-        subtitle="Erteilen Sie uns einen Suchauftrag – wir finden auch off-market das passende Objekt für Sie."
+        subtitle="Erteilen Sie uns einen Suchauftrag, wir finden auch off market das passende Objekt für Sie."
       />
     </main>
   );

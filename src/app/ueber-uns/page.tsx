@@ -10,12 +10,12 @@ import { site, stats, SITE_URL } from "@/lib/site";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "Über uns – Optimal Immobilien AG",
+  title: "Über uns, Optimal Immobilien AG",
   description:
-    "Lernen Sie das Team hinter Optimal Immobilien AG kennen. Wir verkaufen Ihre Immobilie in Zürich provisionsfrei zum Fixpreis – transparent, persönlich und mit nachweisbarem Erfolg.",
+    "Lernen Sie das Team hinter Optimal Immobilien AG kennen. Wir verkaufen Ihre Immobilie in Zürich provisionsfrei zum Fixpreis, transparent, persönlich und mit nachweisbarem Erfolg.",
   alternates: { canonical: "/ueber-uns" },
   openGraph: {
-    title: "Über uns – Optimal Immobilien AG",
+    title: "Über uns, Optimal Immobilien AG",
     description:
       "Provisionsfrei verkaufen zum Fixpreis. Lernen Sie das Team und die Philosophie von Optimal Immobilien AG kennen.",
     url: `${SITE_URL}/ueber-uns`,
@@ -46,7 +46,7 @@ export default function UeberUnsPage() {
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/65">
               Optimal Immobilien AG verkauft Ihre Immobilie provisionsfrei zum
-              Fixpreis von {site.fixedPrice} – mit derselben erstklassigen
+              Fixpreis von {site.fixedPrice}, mit derselben erstklassigen
               Vermarktung wie ein traditioneller Makler, aber ohne prozentuale
               Provision. Den Unterschied behalten Sie.
             </p>
@@ -74,7 +74,7 @@ export default function UeberUnsPage() {
             <h2 className="font-serif text-3xl md:text-4xl text-ink">Transparenz von Anfang bis Ende</h2>
             <p className="mt-6 text-lg text-graphite/80 leading-relaxed">
               Wir verstecken uns nicht hinter komplizierten Prozentrechnungen. Bei uns wissen Sie ab dem ersten Tag, 
-              welche Kosten auf Sie zukommen. Der Fixpreis von {site.fixedPrice} deckt den gesamten Verkaufsprozess ab – 
+              welche Kosten auf Sie zukommen. Der Fixpreis von {site.fixedPrice} deckt den gesamten Verkaufsprozess ab, 
               von der Marktwertermittlung über das professionelle Fotoshooting bis hin zur finalen Schlüsselübergabe 
               beim Notariat.
             </p>
@@ -89,7 +89,7 @@ export default function UeberUnsPage() {
             <div className="relative aspect-[4/3] overflow-hidden">
               <Image
                 src="/projekte/residenz-aussenansicht-2.jpg"
-                alt="Optimal Immobilien – Büro und Team"
+                alt="Optimal Immobilien, Büro und Team"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -110,7 +110,7 @@ export default function UeberUnsPage() {
             <p className="mt-5 text-base leading-relaxed text-graphite/80">
               Gegründet von Adi Kavzani, vereint Optimal Immobilien AG
               datenbasierte Marktanalyse mit persönlicher Betreuung. Jedes
-              Objekt wird individuell aufbereitet – mit professioneller
+              Objekt wird individuell aufbereitet, mit professioneller
               Fotografie, massgeschneidertem Exposé und gezieltem Marketing. Das
               Ergebnis: Über 480 erfolgreich verkaufte Objekte und ein
               durchschnittlicher Verkaufspreis von 3.8 % über dem Marktwert.

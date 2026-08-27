@@ -24,7 +24,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "residenz-am-see",
-    title: "Residenz am See – Neubau-Attika",
+    title: "Residenz am See, Neubau-Attika",
     location: "Region Zürichsee",
     region: "Zürichsee",
     type: "Attika · Neubau-Erstvermarktung",
@@ -65,7 +65,7 @@ export const projects: Project[] = [
     status: "Verfügbar",
     image: "/projekte/attika-wohnen-1.jpg",
     description:
-      "Grosszügige Attika im begehrten Seefeld – hell, ruhig und nur wenige Schritte vom See entfernt.",
+      "Grosszügige Attika im begehrten Seefeld, hell, ruhig und nur wenige Schritte vom See entfernt.",
   },
   {
     slug: "villa-seesicht-kuesnacht",
@@ -107,7 +107,7 @@ export const projects: Project[] = [
     status: "Verkauft",
     image: "/projekte/obergeschoss-wohnbereich.jpg",
     description:
-      "Exklusives Penthouse in Kilchberg – verkauft in nur 18 Tagen über dem Angebotspreis.",
+      "Exklusives Penthouse in Kilchberg, verkauft in nur 18 Tagen über dem Angebotspreis.",
   },
 ];
 

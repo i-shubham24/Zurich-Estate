@@ -6,7 +6,7 @@ import { Home, Building2, MapPin, ArrowRight, ArrowLeft, CheckCircle2, ShieldChe
 
 type Step = 1 | 2 | 3 | 4 | 5;
 
-const intents = ["So schnell wie möglich", "In 1–3 Monaten", "In 3–6 Monaten", "Ich bin nur neugierig"];
+const intents = ["So schnell wie möglich", "In 1 bis 3 Monaten", "In 3 bis 6 Monaten", "Ich bin nur neugierig"];
 
 export default function ValuationForm() {
   const [step, setStep] = useState<Step>(1);
@@ -19,7 +19,7 @@ export default function ValuationForm() {
   });
 
   const next = () => setStep((s) => Math.min(s + 1, 5) as Step);
-  const prev = () => setStep((s) => Math.max(s - 1, 1) as Step);
+  const prev = () => setStep((s) => Math.max(s, 1, 1) as Step);
 
   const select = (field: string, value: string) => {
     setFormData((d) => ({ ...d, [field]: value }));
@@ -158,7 +158,7 @@ export default function ValuationForm() {
               <h3 className="font-serif text-3xl text-ink">Vielen Dank!</h3>
               <p className="mx-auto mt-4 max-w-sm text-graphite/80">
                 Wir haben Ihre Anfrage erhalten und melden uns innert 24 Stunden mit Ihrer
-                individuellen Markteinschätzung – provisionsfrei und unverbindlich.
+                individuellen Markteinschätzung, provisionsfrei und unverbindlich.
               </p>
             </motion.div>
           )}

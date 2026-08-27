@@ -16,7 +16,7 @@ export default function Logo({ tone = "onDark", className = "" }: LogoProps) {
   return (
     <Link
       href="/"
-      aria-label="Optimal Immobilien AG – Startseite"
+      aria-label="Optimal Immobilien AG, Startseite"
       className={`group inline-flex items-center gap-3 ${className}`}
     >
       <svg

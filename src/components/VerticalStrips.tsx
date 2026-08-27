@@ -33,17 +33,12 @@ export default function VerticalStrips({
             const isHovered = hoveredIndex === index;
             
             return (
-              <motion.div
+              <div
                 key={strip.id}
-                onHoverStart={() => setHoveredIndex(index)}
+                onMouseEnter={() => setHoveredIndex(index)}
                 onClick={() => setHoveredIndex(index)}
-                layout
-                initial={false}
-                animate={{
-                  flex: isHovered ? 3 : 1,
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                className="group relative h-full w-full cursor-pointer overflow-hidden rounded-sm"
+                className="group relative h-full w-full cursor-pointer overflow-hidden rounded-sm transition-all duration-700 ease-out"
+                style={{ flex: isHovered ? 3 : 1 }}
               >
                 <Link href={strip.href} className="absolute inset-0 block h-full w-full">
                   <Image
@@ -60,20 +55,19 @@ export default function VerticalStrips({
                   {/* Title text */}
                   <div className="absolute bottom-0 left-0 flex h-full w-full flex-col justify-end p-4 md:p-8">
                     <div className="relative w-full">
-                      <motion.h3
-                        layout="position"
-                        className={`absolute bottom-0 left-0 font-sans text-xl font-bold uppercase tracking-widest text-white transition-all duration-500 md:text-4xl ${
+                      <h3
+                        className={`absolute bottom-0 left-0 font-sans text-xl font-bold uppercase tracking-widest text-white transition-all duration-700 ease-out md:text-4xl ${
                           isHovered 
-                            ? "rotate-0 origin-bottom-left" 
-                            : "origin-bottom-left whitespace-nowrap md:-rotate-90 md:translate-y-[200px]"
+                            ? "rotate-0 origin-bottom-left opacity-100" 
+                            : "origin-bottom-left whitespace-nowrap opacity-0 md:opacity-100 md:-rotate-90 md:translate-y-[200px]"
                         }`}
                       >
                         {strip.title}
-                      </motion.h3>
+                      </h3>
                     </div>
                   </div>
                 </Link>
-              </motion.div>
+              </div>
             );
           })}
         </div>

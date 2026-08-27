@@ -6,7 +6,7 @@ import Reveal from "./Reveal";
 
 export default function CtaBanner({
   title = "Bereit, Ihre Immobilie zum Höchstpreis zu verkaufen?",
-  subtitle = "Ein Anruf genügt. Wir beraten Sie persönlich – ehrlich, diskret und ohne Verpflichtung.",
+  subtitle = "Ein Anruf genügt. Wir beraten Sie persönlich, ehrlich, diskret und ohne Verpflichtung.",
 }: {
   title?: string;
   subtitle?: string;

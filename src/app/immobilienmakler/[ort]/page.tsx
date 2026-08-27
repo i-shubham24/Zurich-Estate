@@ -25,7 +25,7 @@ export async function generateMetadata({
   const { ort } = await params;
   const loc = getLocation(ort);
   if (!loc) return {};
-  const title = `Immobilienmakler ${loc.name} – provisionsfrei verkaufen`;
+  const title = `Immobilienmakler ${loc.name}, provisionsfrei verkaufen`;
   const description = `${loc.headline}: Verkaufen Sie Ihre Immobilie in ${loc.name} provisionsfrei zum Fixpreis von ${site.fixedPrice}. Kostenlose Bewertung von Optimal Immobilien AG.`;
   return {
     title,
@@ -67,7 +67,7 @@ export default async function LocationPage({
       <PageHero
         eyebrow={loc.regionLabel}
         image="/projekte/residenz-aussenansicht-2.jpg"
-        imageAlt={`Immobilienmakler ${loc.name} – Optimal Immobilien AG`}
+        imageAlt={`Immobilienmakler ${loc.name}, Optimal Immobilien AG`}
         crumbs={[
           { name: "Start", href: "/" },
           { name: "Standorte", href: "/immobilienmakler" },
@@ -78,7 +78,7 @@ export default async function LocationPage({
             Immobilienmakler <span className="italic text-gold">{loc.name}</span>
           </>
         }
-        subtitle={`Provisionsfrei verkaufen zum Fixpreis von ${site.fixedPrice} – mit einem Makler, der ${loc.name} und den lokalen Markt genau kennt.`}
+        subtitle={`Provisionsfrei verkaufen zum Fixpreis von ${site.fixedPrice}, mit einem Makler, der ${loc.name} und den lokalen Markt genau kennt.`}
       >
         <ButtonLink href="/#bewertung" variant="gold">
           Kostenlose Bewertung
@@ -168,7 +168,7 @@ export default async function LocationPage({
               </div>
               <p className="mt-6 text-sm leading-relaxed text-graphite/60">
                 Wir betreuen Verkäuferinnen und Verkäufer in allen Quartieren von {loc.name}
-                {loc.lakeside ? " – von der Seelage bis zum Hang." : "."}
+                {loc.lakeside ? ", von der Seelage bis zum Hang." : "."}
               </p>
             </div>
           </Reveal>
@@ -185,7 +185,7 @@ export default async function LocationPage({
                 Volle Transparenz statt versteckter Kosten.
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-graphite/75 md:text-xl">
-                Wir glauben, dass eine exzellente Immobilienvermarktung in {loc.name} nicht 3 % Ihres Verkaufserlöses kosten muss. Mit unserem Fixpreis von {site.fixedPrice} erhalten Sie denselben umfassenden Service wie bei einem klassischen Makler – aber Sie behalten den gesamten Mehrwert Ihres Objekts.
+                Wir glauben, dass eine exzellente Immobilienvermarktung in {loc.name} nicht 3 % Ihres Verkaufserlöses kosten muss. Mit unserem Fixpreis von {site.fixedPrice} erhalten Sie denselben umfassenden Service wie bei einem klassischen Makler, aber Sie behalten den gesamten Mehrwert Ihres Objekts.
               </p>
               <div className="mt-10 flex justify-center">
                 <ButtonLink href="/ueber-uns" variant="outline">
@@ -201,7 +201,7 @@ export default async function LocationPage({
       <ValuationCta
         eyebrow={`Bewertung ${loc.name}`}
         title={`Was ist Ihre Immobilie in ${loc.name} wert?`}
-        intro={`Erhalten Sie eine fundierte, kostenlose Ersteinschätzung für Ihr Objekt in ${loc.name} – in unter zwei Minuten und unverbindlich.`}
+        intro={`Erhalten Sie eine fundierte, kostenlose Ersteinschätzung für Ihr Objekt in ${loc.name}, in unter zwei Minuten und unverbindlich.`}
       />
 
       {/* FAQ */}
@@ -210,7 +210,7 @@ export default async function LocationPage({
           <SectionHeading
             align="center"
             eyebrow="Häufige Fragen"
-            title={`Immobilienmakler ${loc.name} – Ihre Fragen`}
+            title={`Immobilienmakler ${loc.name}, Ihre Fragen`}
             className="mb-12"
           />
           <FaqAccordion faqs={loc.faq} />
@@ -245,7 +245,7 @@ export default async function LocationPage({
       )}
 
       <CtaBanner
-        title={`Verkaufen Sie in ${loc.name} – provisionsfrei.`}
+        title={`Verkaufen Sie in ${loc.name}, provisionsfrei.`}
         subtitle={`Ein Anruf genügt. Wir beraten Sie persönlich zu Ihrem Verkauf in ${loc.name}.`}
       />
     </main>

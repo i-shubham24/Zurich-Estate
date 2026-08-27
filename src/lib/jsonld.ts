@@ -24,7 +24,7 @@ const openingHoursSpecification = [
   },
 ];
 
-/** Primary business entity — a RealEstateAgent (a LocalBusiness subtype). */
+/** Primary business entity, a RealEstateAgent (a LocalBusiness subtype). */
 export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
@@ -63,7 +63,7 @@ export function organizationJsonLd() {
       price: "12000",
       priceCurrency: "CHF",
       description:
-        "Kompletter Immobilienverkauf ohne prozentuale Provision – zum transparenten Fixpreis von CHF 12'000.",
+        "Kompletter Immobilienverkauf ohne prozentuale Provision, zum transparenten Fixpreis von CHF 12'000.",
     },
   };
 }
@@ -111,7 +111,7 @@ export function localBusinessJsonLd(loc: Location) {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
     "@id": `${SITE_URL}/immobilienmakler/${loc.slug}/#business`,
-    name: `Optimal Immobilien – Immobilienmakler ${loc.name}`,
+    name: `Optimal Immobilien, Immobilienmakler ${loc.name}`,
     url: `${SITE_URL}/immobilienmakler/${loc.slug}`,
     parentOrganization: { "@id": `${SITE_URL}/#organization` },
     image: `${SITE_URL}/projekte/residenz-aussenansicht-1.jpg`,

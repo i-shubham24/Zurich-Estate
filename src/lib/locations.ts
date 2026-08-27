@@ -15,7 +15,7 @@ export type Location = {
   lakeside: boolean;
   /** Short hero descriptor */
   headline: string;
-  /** 2–3 sentence unique intro */
+  /** 2-3 sentence unique intro */
   intro: string;
   /** Local market context */
   market: string;
@@ -35,21 +35,21 @@ export const locations: Location[] = [
     slug: "zuerich",
     name: "Zürich",
     regionLabel: "Stadt Zürich",
-    plz: "8001 – 8064",
+    plz: "8001, 8064",
     lakeside: true,
     headline: "Ihr Immobilienmakler für die Stadt Zürich",
     intro:
-      "Vom Seefeld bis zum Zürichberg, von der Enge bis nach Wollishofen: Der Zürcher Stadtmarkt ist der kompetitivste der Schweiz – und einer der undurchsichtigsten für Verkäufer. Wir bringen Transparenz in Ihren Verkauf und den Höchstpreis auf Ihr Konto, ohne dass Sie prozentuale Provision zahlen.",
+      "Vom Seefeld bis zum Zürichberg, von der Enge bis nach Wollishofen: Der Zürcher Stadtmarkt ist der kompetitivste der Schweiz, und einer der undurchsichtigsten für Verkäufer. Wir bringen Transparenz in Ihren Verkauf und den Höchstpreis auf Ihr Konto, ohne dass Sie prozentuale Provision zahlen.",
     market:
-      "In der Stadt Zürich liegen die Quadratmeterpreise für Eigentumswohnungen je nach Kreis zwischen rund CHF 14'000 und über CHF 22'000. Objekte in guter Lage sind chronisch knapp – wer richtig positioniert und inszeniert, erzielt regelmässig ein Bieterergebnis über dem Angebotspreis.",
+      "In der Stadt Zürich liegen die Quadratmeterpreise für Eigentumswohnungen je nach Kreis zwischen rund CHF 14'000 und über CHF 22'000. Objekte in guter Lage sind chronisch knapp, wer richtig positioniert und inszeniert, erzielt regelmässig ein Bieterergebnis über dem Angebotspreis.",
     whyHere:
-      "Wir kennen die Mikrolagen jedes Kreises und vermarkten Ihr Objekt gezielt an geprüfte, kaufkräftige Interessenten – diskret und ohne unnötige Massenbesichtigungen.",
+      "Wir kennen die Mikrolagen jedes Kreises und vermarkten Ihr Objekt gezielt an geprüfte, kaufkräftige Interessenten, diskret und ohne unnötige Massenbesichtigungen.",
     neighborhoods: ["Seefeld", "Enge", "Wollishofen", "Zürichberg", "Witikon", "Höngg"],
     nearby: ["zollikon", "kilchberg", "kuesnacht", "duebendorf"],
     faq: [
       {
         q: "Was kostet ein Immobilienmakler in Zürich?",
-        a: "Bei klassischen Maklern zahlen Sie in Zürich meist 2–3 % des Verkaufspreises plus MwSt. Bei Optimal Immobilien verkaufen Sie provisionsfrei zum Fixpreis von CHF 12'000 – bei einem Objekt von CHF 2 Mio. sparen Sie so schnell CHF 40'000 und mehr.",
+        a: "Bei klassischen Maklern zahlen Sie in Zürich meist 2 bis 3 % des Verkaufspreises plus MwSt. Bei Optimal Immobilien verkaufen Sie provisionsfrei zum Fixpreis von CHF 12'000, bei einem Objekt von CHF 2 Mio. sparen Sie so schnell CHF 40'000 und mehr.",
       },
       {
         q: "Wie lange dauert ein Immobilienverkauf in der Stadt Zürich?",
@@ -64,22 +64,22 @@ export const locations: Location[] = [
     regionLabel: "Zürcher Goldküste",
     plz: "8700",
     lakeside: true,
-    headline: "Immobilienmakler an der Goldküste – Küsnacht",
+    headline: "Immobilienmakler an der Goldküste, Küsnacht",
     intro:
-      "Küsnacht ZH gehört zu den begehrtesten Wohnlagen der Schweiz. Zwischen Seeufer und Forch treffen sonnenverwöhnte Hanglagen, Steuervorteile und internationale Nachfrage aufeinander. Genau hier zahlt sich eine Vermarktung aus, die den maximalen Preis herausholt – ohne Provision.",
+      "Küsnacht ZH gehört zu den begehrtesten Wohnlagen der Schweiz. Zwischen Seeufer und Forch treffen sonnenverwöhnte Hanglagen, Steuervorteile und internationale Nachfrage aufeinander. Genau hier zahlt sich eine Vermarktung aus, die den maximalen Preis herausholt, ohne Provision.",
     market:
-      "An der Goldküste werden für Villen und Seesicht-Liegenschaften regelmässig zweistellige Millionenbeträge erzielt. Der Käuferkreis ist international und diskret – Off-Market-Vermarktung ist hier oft der Schlüssel zum Bestpreis.",
+      "An der Goldküste werden für Villen und Seesicht-Liegenschaften regelmässig zweistellige Millionenbeträge erzielt. Der Käuferkreis ist international und diskret, Off Market-Vermarktung ist hier oft der Schlüssel zum Bestpreis.",
     whyHere:
-      "Wir vermarkten Küsnachter Objekte über ein Netzwerk geprüfter Kaufinteressenten und diskrete Kanäle – nicht über anonyme Massenportale.",
+      "Wir vermarkten Küsnachter Objekte über ein Netzwerk geprüfter Kaufinteressenten und diskrete Kanäle, nicht über anonyme Massenportale.",
     neighborhoods: ["Küsnacht Dorf", "Itschnach", "Goldbach", "Heslibach", "Forch"],
     nearby: ["zollikon", "erlenbach", "zumikon", "herrliberg"],
     faq: [
       {
         q: "Lohnt sich ein provisionsfreier Verkauf auch bei teuren Objekten in Küsnacht?",
-        a: "Gerade dort. Bei einem Verkaufspreis von CHF 5 Mio. betragen klassische 3 % Provision CHF 150'000. Bei Optimal zahlen Sie den Fixpreis von CHF 12'000 – die gesamte Differenz bleibt bei Ihnen.",
+        a: "Gerade dort. Bei einem Verkaufspreis von CHF 5 Mio. betragen klassische 3 % Provision CHF 150'000. Bei Optimal zahlen Sie den Fixpreis von CHF 12'000, die gesamte Differenz bleibt bei Ihnen.",
       },
       {
-        q: "Verkaufen Sie auch diskret / Off-Market in Küsnacht?",
+        q: "Verkaufen Sie auch diskret / Off Market in Küsnacht?",
         a: "Ja. Auf Wunsch vermarkten wir Ihre Liegenschaft vollständig diskret an einen ausgewählten Kreis solventer Interessenten, ohne öffentliches Inserat.",
       },
     ],
@@ -93,11 +93,11 @@ export const locations: Location[] = [
     lakeside: true,
     headline: "Immobilienmakler Zollikon",
     intro:
-      "Zollikon verbindet Stadtnähe mit Goldküsten-Charme: In wenigen Minuten ist man im Zürcher Seefeld, und doch geniesst man Seesicht, tiefe Steuern und ruhige Wohnquartiere. Eigentum ist hier rar – umso wichtiger ist eine Vermarktung, die den vollen Wert ausschöpft.",
+      "Zollikon verbindet Stadtnähe mit Goldküsten-Charme: In wenigen Minuten ist man im Zürcher Seefeld, und doch geniesst man Seesicht, tiefe Steuern und ruhige Wohnquartiere. Eigentum ist hier rar, umso wichtiger ist eine Vermarktung, die den vollen Wert ausschöpft.",
     market:
       "Zollikon und Zollikerberg zählen zu den steuergünstigsten und teuersten Gemeinden im Kanton. Freistehende Häuser mit Seeblick erreichen Spitzenpreise; die Nachfrage übersteigt das Angebot deutlich.",
     whyHere:
-      "Wir positionieren Ihr Objekt in Zollikon so, dass es die zahlungskräftigsten Käufer erreicht – und begleiten Sie von der Bewertung bis zur Beurkundung.",
+      "Wir positionieren Ihr Objekt in Zollikon so, dass es die zahlungskräftigsten Käufer erreicht, und begleiten Sie von der Bewertung bis zur Beurkundung.",
     neighborhoods: ["Zollikon Dorf", "Zollikerberg", "Rüterwis", "Buechholz"],
     nearby: ["kuesnacht", "zuerich", "zumikon", "erlenbach"],
     faq: [
@@ -107,7 +107,7 @@ export const locations: Location[] = [
       },
       {
         q: "Betreuen Sie auch den Zollikerberg?",
-        a: "Selbstverständlich – wir sind für ganz Zollikon inklusive Zollikerberg tätig.",
+        a: "Selbstverständlich, wir sind für ganz Zollikon inklusive Zollikerberg tätig.",
       },
     ],
     featured: true,
@@ -120,21 +120,21 @@ export const locations: Location[] = [
     lakeside: false,
     headline: "Immobilienmakler Zumikon",
     intro:
-      "Zumikon steht für grosszügige Einfamilienhäuser, viel Grün und familienfreundliche Ruhe – bei hervorragender Anbindung an die Stadt über die Forchbahn. Wer hier verkauft, verkauft an Familien und Selbständige mit hohen Ansprüchen.",
+      "Zumikon steht für grosszügige Einfamilienhäuser, viel Grün und familienfreundliche Ruhe, bei hervorragender Anbindung an die Stadt über die Forchbahn. Wer hier verkauft, verkauft an Familien und Selbständige mit hohen Ansprüchen.",
     market:
       "Der Markt in Zumikon ist geprägt von grossen Grundstücken und exklusiven Neubauten. Objekte mit Weitsicht und moderner Architektur erzielen deutliche Aufschläge gegenüber dem Standard.",
     whyHere:
-      "Wir inszenieren Ihr Haus in Zumikon so, dass sein Lebensgefühl spürbar wird – und erzielen so den Preis, den die Lage verdient.",
+      "Wir inszenieren Ihr Haus in Zumikon so, dass sein Lebensgefühl spürbar wird, und erzielen so den Preis, den die Lage verdient.",
     neighborhoods: ["Zumikon Dorf", "Waltikon", "Chapf"],
     nearby: ["zollikon", "kuesnacht", "zuerich"],
     faq: [
       {
         q: "Was macht den Immobilienmarkt in Zumikon besonders?",
-        a: "Die Kombination aus grossen Parzellen, tiefer Steuerbelastung und Nähe zur Stadt Zürich. Familien zahlen für das richtige Objekt gerne einen Aufpreis – vorausgesetzt, es wird professionell präsentiert.",
+        a: "Die Kombination aus grossen Parzellen, tiefer Steuerbelastung und Nähe zur Stadt Zürich. Familien zahlen für das richtige Objekt gerne einen Aufpreis, vorausgesetzt, es wird professionell präsentiert.",
       },
       {
         q: "Verkaufen Sie in Zumikon wirklich ohne Provision?",
-        a: "Ja. Sie zahlen den transparenten Fixpreis von CHF 12'000 statt einer prozentualen Provision – unabhängig vom Verkaufspreis.",
+        a: "Ja. Sie zahlen den transparenten Fixpreis von CHF 12'000 statt einer prozentualen Provision, unabhängig vom Verkaufspreis.",
       },
     ],
     featured: false,
@@ -147,7 +147,7 @@ export const locations: Location[] = [
     lakeside: true,
     headline: "Immobilienmakler Meilen",
     intro:
-      "Meilen ist das Herz der oberen Goldküste – mit direktem Seezugang, Rebbergen und einer wachsenden, kaufkräftigen Nachfrage. Zwischen Feldmeilen und Obermeilen entsteht laufend hochwertiger Neubau, der überregional Interessenten anzieht.",
+      "Meilen ist das Herz der oberen Goldküste, mit direktem Seezugang, Rebbergen und einer wachsenden, kaufkräftigen Nachfrage. Zwischen Feldmeilen und Obermeilen entsteht laufend hochwertiger Neubau, der überregional Interessenten anzieht.",
     market:
       "In Meilen reichen die Preise von soliden Eigentumswohnungen bis zu Seeliegenschaften im zweistelligen Millionenbereich. Neubauprojekte am Hang mit Seesicht sind besonders gefragt.",
     whyHere:
@@ -174,21 +174,21 @@ export const locations: Location[] = [
     lakeside: true,
     headline: "Immobilienmakler Herrliberg",
     intro:
-      "Herrliberg gilt als eine der exklusivsten Wohngemeinden am rechten Zürichseeufer – sonnige Hanglagen, unverbaute Seesicht und absolute Ruhe. Verkäufe sind hier selten und entsprechend gefragt.",
+      "Herrliberg gilt als eine der exklusivsten Wohngemeinden am rechten Zürichseeufer, sonnige Hanglagen, unverbaute Seesicht und absolute Ruhe. Verkäufe sind hier selten und entsprechend gefragt.",
     market:
-      "Die Nachfrage nach Herrliberger Liegenschaften ist konstant hoch, das Angebot minimal. Für Objekte mit Seesicht werden Spitzenpreise bezahlt – Diskretion ist im Verkaufsprozess oft entscheidend.",
+      "Die Nachfrage nach Herrliberger Liegenschaften ist konstant hoch, das Angebot minimal. Für Objekte mit Seesicht werden Spitzenpreise bezahlt, Diskretion ist im Verkaufsprozess oft entscheidend.",
     whyHere:
-      "Wir verkaufen in Herrliberg mit dem nötigen Feingefühl für hochpreisige, private Transaktionen – und maximaler Preisdurchsetzung.",
+      "Wir verkaufen in Herrliberg mit dem nötigen Feingefühl für hochpreisige, private Transaktionen, und maximaler Preisdurchsetzung.",
     neighborhoods: ["Herrliberg Dorf", "Wetzwil", "Schipf"],
     nearby: ["meilen", "erlenbach", "kuesnacht"],
     faq: [
       {
         q: "Warum sind Objekte in Herrliberg so gefragt?",
-        a: "Steilhang-Lagen mit unverbaubarer Seesicht, tiefe Steuern und Seltenheitswert. Wer hier verkauft, verhandelt aus einer starken Position – wir sorgen dafür, dass diese Position voll ausgeschöpft wird.",
+        a: "Steilhang-Lagen mit unverbaubarer Seesicht, tiefe Steuern und Seltenheitswert. Wer hier verkauft, verhandelt aus einer starken Position, wir sorgen dafür, dass diese Position voll ausgeschöpft wird.",
       },
       {
         q: "Ist ein diskreter Verkauf in Herrliberg möglich?",
-        a: "Ja, Off-Market-Verkäufe sind hier besonders verbreitet. Wir vermitteln gezielt an einen ausgewählten, geprüften Käuferkreis.",
+        a: "Ja, Off Market-Verkäufe sind hier besonders verbreitet. Wir vermitteln gezielt an einen ausgewählten, geprüften Käuferkreis.",
       },
     ],
     featured: false,
@@ -201,7 +201,7 @@ export const locations: Location[] = [
     lakeside: true,
     headline: "Immobilienmakler Erlenbach",
     intro:
-      "Erlenbach ZH ist klein, exklusiv und begehrt: direkter Seeanschluss, kurze Wege nach Zürich und eine der schönsten Uferpromenaden der Goldküste. Eigentum wechselt hier selten die Hand – umso wichtiger ist eine erstklassige Vermarktung.",
+      "Erlenbach ZH ist klein, exklusiv und begehrt: direkter Seeanschluss, kurze Wege nach Zürich und eine der schönsten Uferpromenaden der Goldküste. Eigentum wechselt hier selten die Hand, umso wichtiger ist eine erstklassige Vermarktung.",
     market:
       "Von der modernen Eigentumswohnung bis zur Ufervilla: Erlenbach deckt das obere Preissegment ab. Lage und Seesicht bestimmen den Preis stärker als anderswo.",
     whyHere:
@@ -215,7 +215,7 @@ export const locations: Location[] = [
       },
       {
         q: "Was sparen Verkäufer in Erlenbach mit dem Fixpreis?",
-        a: "Bei einem Verkaufspreis von CHF 4 Mio. liegt die klassische 3 %-Provision bei CHF 120'000. Mit dem Fixpreis von CHF 12'000 bleibt dieser Betrag fast vollständig bei Ihnen.",
+        a: "Bei einem Verkaufspreis von CHF 4 Mio. liegt die klassische 3 % Provision bei CHF 120'000. Mit dem Fixpreis von CHF 12'000 bleibt dieser Betrag fast vollständig bei Ihnen.",
       },
     ],
     featured: false,
@@ -228,11 +228,11 @@ export const locations: Location[] = [
     lakeside: true,
     headline: "Immobilienmakler Kilchberg",
     intro:
-      "Kilchberg am linken Seeufer verbindet Stadtnähe, tiefe Steuern und Seelage – nur wenige Minuten vom Zürcher Zentrum entfernt. Die Gemeinde ist bei Familien und Führungskräften gleichermassen beliebt.",
+      "Kilchberg am linken Seeufer verbindet Stadtnähe, tiefe Steuern und Seelage, nur wenige Minuten vom Zürcher Zentrum entfernt. Die Gemeinde ist bei Familien und Führungskräften gleichermassen beliebt.",
     market:
       "Kilchberg zählt zu den steuergünstigsten Gemeinden am See. Eigentum ist begehrt und knapp; hochwertige Objekte erzielen konstant starke Preise.",
     whyHere:
-      "Wir vermarkten Ihre Liegenschaft in Kilchberg zielgerichtet und provisionsfrei – mit voller Preistransparenz.",
+      "Wir vermarkten Ihre Liegenschaft in Kilchberg zielgerichtet und provisionsfrei, mit voller Preistransparenz.",
     neighborhoods: ["Kilchberg Dorf", "Bendlikon", "Hornhaldenstrasse"],
     nearby: ["thalwil", "zuerich", "horgen"],
     faq: [
@@ -242,7 +242,7 @@ export const locations: Location[] = [
       },
       {
         q: "Bewerten Sie mein Haus in Kilchberg kostenlos?",
-        a: "Ja, die Ersteinschätzung des Marktwerts ist kostenlos und unverbindlich – vor Ort oder auf Basis Ihrer Objektdaten.",
+        a: "Ja, die Ersteinschätzung des Marktwerts ist kostenlos und unverbindlich, vor Ort oder auf Basis Ihrer Objektdaten.",
       },
     ],
     featured: false,
@@ -259,7 +259,7 @@ export const locations: Location[] = [
     market:
       "Von der Familienwohnung bis zum Hausobjekt mit Seesicht bietet Thalwil ein breites Spektrum. Die gute Erreichbarkeit von Zürich hält die Nachfrage konstant hoch.",
     whyHere:
-      "Wir treffen in Thalwil den richtigen Preis und die richtige Zielgruppe – vom Ersterwerber bis zur investierenden Familie.",
+      "Wir treffen in Thalwil den richtigen Preis und die richtige Zielgruppe, vom Ersterwerber bis zur investierenden Familie.",
     neighborhoods: ["Thalwil Zentrum", "Gattikon", "Ludretikon", "Oberdorf"],
     nearby: ["kilchberg", "horgen", "zuerich"],
     faq: [
@@ -269,7 +269,7 @@ export const locations: Location[] = [
       },
       {
         q: "Fallen bei Optimal versteckte Kosten an?",
-        a: "Nein. Sie zahlen ausschliesslich den Fixpreis von CHF 12'000 – Fotos, Vermarktung und Beratung sind darin enthalten.",
+        a: "Nein. Sie zahlen ausschliesslich den Fixpreis von CHF 12'000, Fotos, Vermarktung und Beratung sind darin enthalten.",
       },
     ],
     featured: false,
@@ -282,11 +282,11 @@ export const locations: Location[] = [
     lakeside: true,
     headline: "Immobilienmakler Horgen",
     intro:
-      "Horgen ist eine der grössten Seegemeinden am linken Ufer – mit Zentrumsfunktion, Seezugang und einem vielfältigen Wohnungsmarkt. Hier verkaufen Sie an eine breite, kaufkräftige Nachfrage.",
+      "Horgen ist eine der grössten Seegemeinden am linken Ufer, mit Zentrumsfunktion, Seezugang und einem vielfältigen Wohnungsmarkt. Hier verkaufen Sie an eine breite, kaufkräftige Nachfrage.",
     market:
       "Horgen bietet vom Neubau am Hang bis zum charmanten Altbau alles. Die Preise sind im Vergleich zur oberen Goldküste moderater, die Nachfrage jedoch robust.",
     whyHere:
-      "Wir verkaufen in Horgen datenbasiert und zielgerichtet – mit einer Preisstrategie, die den Markt trifft.",
+      "Wir verkaufen in Horgen datenbasiert und zielgerichtet, mit einer Preisstrategie, die den Markt trifft.",
     neighborhoods: ["Horgen Zentrum", "Käpfnach", "Horgenberg", "Arn"],
     nearby: ["thalwil", "waedenswil", "kilchberg"],
     faq: [
@@ -296,7 +296,7 @@ export const locations: Location[] = [
       },
       {
         q: "Wie starte ich den Verkauf in Horgen?",
-        a: "Mit unserer kostenlosen Bewertung. Danach erstellen wir eine Vermarktungsstrategie und starten – provisionsfrei zum Fixpreis.",
+        a: "Mit unserer kostenlosen Bewertung. Danach erstellen wir eine Vermarktungsstrategie und starten, provisionsfrei zum Fixpreis.",
       },
     ],
     featured: false,
@@ -309,7 +309,7 @@ export const locations: Location[] = [
     lakeside: true,
     headline: "Immobilienmakler Wädenswil",
     intro:
-      "Wädenswil überzeugt mit Seelage, Hochschulstandort und wachsender Attraktivität für Familien. Die Gemeinde entwickelt sich dynamisch – ein guter Zeitpunkt, um den Wert Ihrer Immobilie professionell zu realisieren.",
+      "Wädenswil überzeugt mit Seelage, Hochschulstandort und wachsender Attraktivität für Familien. Die Gemeinde entwickelt sich dynamisch, ein guter Zeitpunkt, um den Wert Ihrer Immobilie professionell zu realisieren.",
     market:
       "Wädenswil bietet noch vergleichsweise attraktive Einstiegspreise am See, bei steigender Nachfrage. Neubauprojekte und sanierte Objekte erzielen deutliche Aufschläge.",
     whyHere:
@@ -323,7 +323,7 @@ export const locations: Location[] = [
       },
       {
         q: "Übernehmen Sie die komplette Vermarktung?",
-        a: "Ja – von Fotos und Exposé über Besichtigungen bis zur Vertragsabwicklung. Sie haben einen festen Ansprechpartner.",
+        a: "Ja, von Fotos und Exposé über Besichtigungen bis zur Vertragsabwicklung. Sie haben einen festen Ansprechpartner.",
       },
     ],
     featured: false,
@@ -336,11 +336,11 @@ export const locations: Location[] = [
     lakeside: false,
     headline: "Immobilienmakler Uster",
     intro:
-      "Uster ist die drittgrösste Stadt im Kanton Zürich und das Zentrum des Zürcher Oberlands – grün, familienfreundlich und mit direkter S-Bahn-Anbindung an die Stadt. Ein Markt mit hoher, verlässlicher Nachfrage.",
+      "Uster ist die drittgrösste Stadt im Kanton Zürich und das Zentrum des Zürcher Oberlands, grün, familienfreundlich und mit direkter S-Bahn-Anbindung an die Stadt. Ein Markt mit hoher, verlässlicher Nachfrage.",
     market:
       "Uster bietet ein breites Angebot vom Reihenhaus bis zur Eigentumswohnung am Greifensee. Familien schätzen das Preis-Leistungs-Verhältnis gegenüber der Seeregion.",
     whyHere:
-      "Wir vermarkten in Uster mit klarer Zielgruppenansprache und erzielen so den optimalen Preis – ohne Provision.",
+      "Wir vermarkten in Uster mit klarer Zielgruppenansprache und erzielen so den optimalen Preis, ohne Provision.",
     neighborhoods: ["Uster Zentrum", "Nänikon", "Werrikon", "Nossikon", "Riedikon"],
     nearby: ["duebendorf", "meilen"],
     faq: [
@@ -363,7 +363,7 @@ export const locations: Location[] = [
     lakeside: false,
     headline: "Immobilienmakler Dübendorf",
     intro:
-      "Dübendorf im Glattal ist einer der dynamischsten Standorte der Region Zürich – stadtnah, wirtschaftsstark und im Wandel. Für Verkäufer bedeutet das: eine breite, aktive Käuferschaft.",
+      "Dübendorf im Glattal ist einer der dynamischsten Standorte der Region Zürich, stadtnah, wirtschaftsstark und im Wandel. Für Verkäufer bedeutet das: eine breite, aktive Käuferschaft.",
     market:
       "Rund um das Innovationsareal und die gute Verkehrsanbindung wächst die Nachfrage. Eigentumswohnungen und Häuser wechseln zügig die Hand, wenn Preis und Präsentation stimmen.",
     whyHere:
@@ -373,11 +373,11 @@ export const locations: Location[] = [
     faq: [
       {
         q: "Wie entwickelt sich der Markt in Dübendorf?",
-        a: "Positiv – die wirtschaftliche Entwicklung im Glattal und die Stadtnähe treiben die Nachfrage. Das ist ein günstiges Umfeld für Verkäufer.",
+        a: "Positiv, die wirtschaftliche Entwicklung im Glattal und die Stadtnähe treiben die Nachfrage. Das ist ein günstiges Umfeld für Verkäufer.",
       },
       {
         q: "Kann ich mein Objekt in Dübendorf online bewerten lassen?",
-        a: "Ja, starten Sie mit unserer kostenlosen Online-Ersteinschätzung – in unter zwei Minuten.",
+        a: "Ja, starten Sie mit unserer kostenlosen Online-Ersteinschätzung, in unter zwei Minuten.",
       },
     ],
     featured: false,
@@ -390,11 +390,11 @@ export const locations: Location[] = [
     lakeside: false,
     headline: "Immobilienmakler Wallisellen",
     intro:
-      "Wallisellen ist Einkaufs- und Wirtschaftszentrum des Glattals – mit Glattzentrum, Richti-Areal und exzellenter ÖV-Anbindung. Urbanes Wohnen bei kurzer Distanz zur Stadt zieht eine junge, kaufkräftige Nachfrage an.",
+      "Wallisellen ist Einkaufs- und Wirtschaftszentrum des Glattals, mit Glattzentrum, Richti-Areal und exzellenter �-V-Anbindung. Urbanes Wohnen bei kurzer Distanz zur Stadt zieht eine junge, kaufkräftige Nachfrage an.",
     market:
       "Moderne Eigentumswohnungen im Richti-Quartier und gepflegte Häuser sind gefragt. Die Nähe zu Flughafen und Stadt macht Wallisellen für Berufstätige attraktiv.",
     whyHere:
-      "Wir vermarkten in Wallisellen mit dem richtigen Gespür für urbane Käufer – provisionsfrei und transparent.",
+      "Wir vermarkten in Wallisellen mit dem richtigen Gespür für urbane Käufer, provisionsfrei und transparent.",
     neighborhoods: ["Wallisellen Zentrum", "Richti", "Rieden", "Herti"],
     nearby: ["duebendorf", "kloten", "zuerich"],
     faq: [
@@ -404,7 +404,7 @@ export const locations: Location[] = [
       },
       {
         q: "Wie hoch ist die Provision bei Optimal?",
-        a: "Es gibt keine prozentuale Provision – nur den Fixpreis von CHF 12'000 für den kompletten Verkauf.",
+        a: "Es gibt keine prozentuale Provision, nur den Fixpreis von CHF 12'000 für den kompletten Verkauf.",
       },
     ],
     featured: false,
@@ -417,17 +417,17 @@ export const locations: Location[] = [
     lakeside: false,
     headline: "Ihr lokaler Immobilienmakler in Bassersdorf",
     intro:
-      "Bassersdorf ist unser Zuhause: Von hier aus betreuen wir Eigentümerinnen und Eigentümer im ganzen Zürcher Unterland. Kein anderer Makler kennt den lokalen Markt besser – und keiner ist schneller vor Ort.",
+      "Bassersdorf ist unser Zuhause: Von hier aus betreuen wir Eigentümerinnen und Eigentümer im ganzen Zürcher Unterland. Kein anderer Makler kennt den lokalen Markt besser, und keiner ist schneller vor Ort.",
     market:
       "Das Unterland punktet mit Flughafennähe, familienfreundlichen Gemeinden und moderaten Preisen gegenüber der Seeregion. Die Nachfrage von Familien und Pendlern ist stabil hoch.",
     whyHere:
-      "Als ansässiger Makler sind wir in Bassersdorf, Nürensdorf und Umgebung schnell zur Stelle – mit lokalem Wissen und persönlicher Betreuung.",
+      "Als ansässiger Makler sind wir in Bassersdorf, Nürensdorf und Umgebung schnell zur Stelle, mit lokalem Wissen und persönlicher Betreuung.",
     neighborhoods: ["Bassersdorf Dorf", "Baltenswil", "Birchwil", "Nürensdorf"],
     nearby: ["kloten", "wallisellen", "duebendorf"],
     faq: [
       {
         q: "Warum ist Optimal Immobilien in Bassersdorf besonders stark?",
-        a: "Weil hier unser Büro ist. Wir kennen jede Strasse, jedes Quartier und die lokale Nachfrage – und sind für Besichtigungen und Beratung sofort vor Ort.",
+        a: "Weil hier unser Büro ist. Wir kennen jede Strasse, jedes Quartier und die lokale Nachfrage, und sind für Besichtigungen und Beratung sofort vor Ort.",
       },
       {
         q: "Betreuen Sie das ganze Zürcher Unterland?",
@@ -444,7 +444,7 @@ export const locations: Location[] = [
     lakeside: false,
     headline: "Immobilienmakler Kloten",
     intro:
-      "Kloten ist geprägt vom Flughafen Zürich – wirtschaftsstark, gut erschlossen und mit stabiler Wohnnachfrage. Für Verkäufer ein verlässlicher Markt mit breiter Käuferschaft.",
+      "Kloten ist geprägt vom Flughafen Zürich, wirtschaftsstark, gut erschlossen und mit stabiler Wohnnachfrage. Für Verkäufer ein verlässlicher Markt mit breiter Käuferschaft.",
     market:
       "Die Flughafennähe sorgt für konstante Nachfrage von Berufstätigen und internationalen Käufern. Eigentumswohnungen und Häuser in ruhigeren Lagen sind besonders gefragt.",
     whyHere:
@@ -454,11 +454,11 @@ export const locations: Location[] = [
     faq: [
       {
         q: "Ist die Flughafennähe ein Vor- oder Nachteil beim Verkauf?",
-        a: "Meist ein Vorteil: Sie sorgt für Arbeitsplätze und konstante Nachfrage. In ruhigeren Quartieren spielt der Fluglärm eine untergeordnete Rolle – wir positionieren Ihr Objekt entsprechend.",
+        a: "Meist ein Vorteil: Sie sorgt für Arbeitsplätze und konstante Nachfrage. In ruhigeren Quartieren spielt der Fluglärm eine untergeordnete Rolle, wir positionieren Ihr Objekt entsprechend.",
       },
       {
         q: "Wie schnell sind Sie in Kloten vor Ort?",
-        a: "Sehr schnell – unser Büro in Bassersdorf liegt nur wenige Minuten entfernt.",
+        a: "Sehr schnell, unser Büro in Bassersdorf liegt nur wenige Minuten entfernt.",
       },
     ],
     featured: false,
@@ -471,11 +471,11 @@ export const locations: Location[] = [
     lakeside: false,
     headline: "Immobilienmakler Winterthur",
     intro:
-      "Winterthur ist die sechstgrösste Stadt der Schweiz – urban, kulturell und deutlich erschwinglicher als die Stadt Zürich. Für Familien und Investoren einer der spannendsten Märkte der Region.",
+      "Winterthur ist die sechstgrösste Stadt der Schweiz, urban, kulturell und deutlich erschwinglicher als die Stadt Zürich. Für Familien und Investoren einer der spannendsten Märkte der Region.",
     market:
       "Vom charmanten Altstadt-Objekt bis zum Neubau in Töss oder Seen bietet Winterthur ein breites Spektrum. Das gute Preis-Leistungs-Verhältnis hält die Nachfrage hoch.",
     whyHere:
-      "Wir verkaufen in Winterthur mit lokalem Marktverständnis und einer Preisstrategie, die den Bestpreis erzielt – ohne Provision.",
+      "Wir verkaufen in Winterthur mit lokalem Marktverständnis und einer Preisstrategie, die den Bestpreis erzielt, ohne Provision.",
     neighborhoods: ["Altstadt", "Töss", "Seen", "Oberwinterthur", "Wülflingen"],
     nearby: ["uster"],
     faq: [
@@ -485,7 +485,7 @@ export const locations: Location[] = [
       },
       {
         q: "Verkaufen Sie in Winterthur auch Renditeobjekte?",
-        a: "Ja, wir vermitteln sowohl Eigenheime als auch Mehrfamilien- und Renditeobjekte – auf Wunsch diskret.",
+        a: "Ja, wir vermitteln sowohl Eigenheime als auch Mehrfamilien und Renditeobjekte, auf Wunsch diskret.",
       },
     ],
     featured: false,

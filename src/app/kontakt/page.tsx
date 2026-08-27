@@ -11,14 +11,14 @@ import { site, SITE_URL } from "@/lib/site";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "Kontakt – Optimal Immobilien AG",
+  title: "Kontakt, Optimal Immobilien AG",
   description:
-    "Kontaktieren Sie Optimal Immobilien AG – Ihr provisionsfreier Immobilienmakler in Zürich. Telefon, E-Mail und Adresse für eine persönliche Beratung.",
+    "Kontaktieren Sie Optimal Immobilien AG, Ihr provisionsfreier Immobilienmakler in Zürich. Telefon, E-Mail und Adresse für eine persönliche Beratung.",
   alternates: { canonical: "/kontakt" },
   openGraph: {
-    title: "Kontakt – Optimal Immobilien AG",
+    title: "Kontakt, Optimal Immobilien AG",
     description:
-      "Sprechen Sie mit uns – persönlich, ehrlich und unverbindlich. Telefon, E-Mail oder Besuch in Bassersdorf.",
+      "Sprechen Sie mit uns, persönlich, ehrlich und unverbindlich. Telefon, E-Mail oder Besuch in Bassersdorf.",
     url: `${SITE_URL}/kontakt`,
   },
 };
@@ -29,7 +29,7 @@ const contactCards = [
     label: "Telefon",
     value: site.phone,
     href: site.phoneHref,
-    description: "Mo–Fr 08:00–18:30",
+    description: "Mo bis Fr 08:00-18:30",
   },
   {
     icon: Mail,
@@ -71,7 +71,7 @@ export default function KontaktPage() {
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/65">
               Ob eine erste Einschätzung Ihrer Immobilie, eine Frage zu unserem
-              Fixpreis-Modell oder ein persönliches Kennenlernen – wir sind für
+              Fixpreis Modell oder ein persönliches Kennenlernen, wir sind für
               Sie da.
             </p>
           </Reveal>
@@ -87,7 +87,7 @@ export default function KontaktPage() {
               <Reveal>
                 <h2 className="font-serif text-3xl text-ink md:text-4xl">Wir sind für Sie da</h2>
                 <p className="mt-4 text-graphite/80 leading-relaxed mb-10">
-                  Haben Sie Fragen zum Fixpreis-Modell oder möchten Sie eine erste Einschätzung 
+                  Haben Sie Fragen zum Fixpreis Modell oder möchten Sie eine erste Einschätzung 
                   Ihrer Immobilie? Zögern Sie nicht, uns zu kontaktieren.
                 </p>
                 <div className="space-y-6">
@@ -114,7 +114,7 @@ export default function KontaktPage() {
                 </div>
 
                 <div className="mt-12 bg-sand/50 p-8 border border-line">
-                  <h3 className="font-serif text-xl text-ink mb-6">Öffnungszeiten</h3>
+                  <h3 className="font-serif text-xl text-ink mb-6">�-ffnungszeiten</h3>
                   <div className="divide-y divide-ink/10">
                     {site.openingHours.map((slot) => (
                       <div key={slot.days} className="flex items-center justify-between py-3">

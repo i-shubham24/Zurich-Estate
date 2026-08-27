@@ -13,7 +13,7 @@ import { guides } from "@/lib/guides";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "Immobilien-Ratgeber Zürich – Marktwissen & Experten-Tipps",
+  title: "Immobilien-Ratgeber Zürich, Marktwissen & Experten-Tipps",
   description:
     "Marktberichte, Verkaufs-Tipps und Quartier-Guides für Eigentümer in Zürich. Fundiertes Immobilienwissen von Optimal Immobilien AG.",
   alternates: { canonical: "/ratgeber" },

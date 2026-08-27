@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -29,6 +29,12 @@ export default function FloatingGallery({
     target: containerRef,
     // Pin for a reasonable amount of scroll (not too much empty space)
     offset: ["start start", "end end"], 
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
   });
 
   return (
@@ -62,13 +68,13 @@ export default function FloatingGallery({
           const hideFull = 0.95;
           
           // eslint-disable-next-line react-hooks/rules-of-hooks
-          const xTransform = useTransform(scrollYProgress, [popStart, popFull, hideStart, hideFull], ["50%", img.left, img.left, img.left]);
+          const xTransform = useTransform(smoothProgress, [popStart, popFull, hideStart, hideFull], ["50%", img.left, img.left, img.left]);
           // eslint-disable-next-line react-hooks/rules-of-hooks
-          const yTransform = useTransform(scrollYProgress, [popStart, popFull, hideStart, hideFull], ["50%", img.top, img.top, "150%"]);
+          const yTransform = useTransform(smoothProgress, [popStart, popFull, hideStart, hideFull], ["50%", img.top, img.top, "150%"]);
           // eslint-disable-next-line react-hooks/rules-of-hooks
-          const scale = useTransform(scrollYProgress, [popStart, popFull, hideStart, hideFull], [0, 1, 1, 0.8]);
+          const scale = useTransform(smoothProgress, [popStart, popFull, hideStart, hideFull], [0, 1, 1, 0.8]);
           // eslint-disable-next-line react-hooks/rules-of-hooks
-          const opacity = useTransform(scrollYProgress, [popStart, popFull, hideStart, hideFull], [0, 1, 1, 0]);
+          const opacity = useTransform(smoothProgress, [popStart, popFull, hideStart, hideFull], [0, 1, 1, 0]);
 
           return (
             <motion.div

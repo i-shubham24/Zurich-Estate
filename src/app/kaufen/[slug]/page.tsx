@@ -24,7 +24,7 @@ export async function generateMetadata({
   const p = getProject(slug);
   if (!p) return {};
   return {
-    title: `${p.title} – ${p.location}`,
+    title: `${p.title}, ${p.location}`,
     description: p.description,
     alternates: { canonical: `/kaufen/${p.slug}` },
     openGraph: {
@@ -166,7 +166,7 @@ export default async function ProjectPage({
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image
                       src={src}
-                      alt={`${project.title} – Ansicht ${i + 1}`}
+                      alt={`${project.title}, Ansicht ${i + 1}`}
                       fill
                       quality={75}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

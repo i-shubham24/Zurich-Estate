@@ -18,17 +18,10 @@ export default function IntroCurtain() {
 
   const dismiss = useCallback(() => {
     unlockBody();
-    try {
-      sessionStorage.setItem("intro_played", "true");
-    } catch {}
     setShouldRender(false);
   }, [unlockBody]);
 
   useEffect(() => {
-    if (sessionStorage.getItem("intro_played")) {
-      setShouldRender(false);
-      return;
-    }
 
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";

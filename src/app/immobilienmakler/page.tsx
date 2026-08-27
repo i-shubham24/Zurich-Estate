@@ -13,7 +13,7 @@ import { breadcrumbJsonLd } from "@/lib/jsonld";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Standorte – Immobilienmakler in Zürich & Umgebung",
+  title: "Standorte, Immobilienmakler in Zürich & Umgebung",
   description:
     "Optimal Immobilien AG ist Ihr Immobilienmakler in Zürich, an der Goldküste, am Zürichsee und im Unterland. Finden Sie Ihren Standort und verkaufen Sie provisionsfrei.",
   alternates: { canonical: "/immobilienmakler" },
@@ -56,7 +56,7 @@ export default function StandortePage() {
             <span className="italic text-gold"><Typewriter text="Zürich & Umgebung" /></span>
           </>
         }
-        subtitle={`Lokale Marktkenntnis entscheidet über den Preis. Wählen Sie Ihre Gemeinde – wir verkaufen Ihre Immobilie provisionsfrei zum Fixpreis von ${site.fixedPrice}.`}
+        subtitle={`Lokale Marktkenntnis entscheidet über den Preis. Wählen Sie Ihre Gemeinde, wir verkaufen Ihre Immobilie provisionsfrei zum Fixpreis von ${site.fixedPrice}.`}
       >
         <ButtonLink href="/#bewertung" variant="gold">
           Kostenlose Bewertung

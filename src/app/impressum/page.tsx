@@ -6,12 +6,12 @@ import { site, SITE_URL } from "@/lib/site";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "Impressum – Optimal Immobilien AG",
+  title: "Impressum, Optimal Immobilien AG",
   description:
     "Impressum und rechtliche Angaben der Optimal Immobilien AG, Bassersdorf, Kanton Zürich.",
   alternates: { canonical: "/impressum" },
   openGraph: {
-    title: "Impressum – Optimal Immobilien AG",
+    title: "Impressum, Optimal Immobilien AG",
     url: `${SITE_URL}/impressum`,
   },
 };
