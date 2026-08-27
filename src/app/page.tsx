@@ -15,8 +15,12 @@ import Reveal from "@/components/Reveal";
 import ParallaxImage from "@/components/ParallaxImage";
 import Marquee from "@/components/Marquee";
 import ArticleCard from "@/components/ArticleCard";
+import ArticleCarousel from "@/components/ArticleCarousel";
+import ScrollTextHero from "@/components/ScrollTextHero";
+import VerticalStrips from "@/components/VerticalStrips";
+import FloatingGallery from "@/components/FloatingGallery";
 import { Eyebrow, SectionHeading, ButtonLink, Stat } from "@/components/ui";
-import LocationsGrid from "@/components/LocationsGrid";
+import LocationsCarousel from "@/components/LocationsCarousel";
 import ValuationCta from "@/components/ValuationCta";
 import CtaBanner from "@/components/CtaBanner";
 import FaqAccordion from "@/components/FaqAccordion";
@@ -80,69 +84,43 @@ export default function HomePage() {
       />
 
       {/* ===================================================== *
-       * 1. HOOK — one clear promise, above the fold
+       * 1. HOOK — Scroll Text Hero
        * ===================================================== */}
-      <section className="relative flex min-h-[100svh] items-center overflow-hidden">
-        <Image
-          src="/projekte/residenz-aussenansicht-1.jpg"
-          alt="Moderne Neubau-Residenz mit Seesicht in der Region Zürich"
-          fill
-          priority
-          quality={82}
-          sizes="100vw"
-          className="animate-slow-zoom object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/80 via-ink/55 to-ink/85" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/70 to-transparent" />
+      <ScrollTextHero 
+        title1="IHR IMMOBILIENMAKLER"
+        title2="PROVISIONSFREI"
+        subtitle={`Wir verkaufen Ihre Immobilie zum Fixpreis von ${site.fixedPrice}. Kein Risiko, keine versteckten Kosten.`}
+      />
 
-        <div className="container-lux relative z-10 pt-28 pb-16">
-          <div className="max-w-3xl">
-            <p className="eyebrow flex items-center gap-3 text-gold-bright">
-              <span className="h-px w-8 bg-gold" />
-              Optimal Immobilien AG · Zürich &amp; Goldküste
-            </p>
-            <h1 className="mt-6 font-serif text-[2.6rem] leading-[1.05] text-white sm:text-6xl lg:text-7xl">
-              Ihr Immobilienmakler
-              <br />
-              in Zürich –{" "}
-              <span className="italic text-gold"><Typewriter text="provisionsfrei" /></span>
-              <br className="hidden sm:block" /> zum Höchstpreis.
-            </h1>
-            <p className="mt-7 max-w-xl text-lg leading-relaxed text-white/80 md:text-xl">
-              Wir verkaufen Ihre Immobilie zum Fixpreis von{" "}
-              <strong className="font-semibold text-white">{site.fixedPrice}</strong>{" "}
-              – 0 % Provision, 100 % Transparenz und der beste Preis für Ihr Objekt.
-            </p>
-
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <ButtonLink href="/#bewertung" variant="gold">
-                Kostenlose Bewertung
-              </ButtonLink>
-              <ButtonLink href="/immobilie-verkaufen" variant="ghost">
-                So verkaufen wir
-              </ButtonLink>
+      <section className="bg-ink border-t border-white/10 py-2">
+        <Marquee speed={30} className="py-2">
+          {[...Array(5)].map((_, i) => (
+            <div key={i} className="flex items-center text-xs uppercase tracking-[0.16em] text-white/70">
+              <span className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-gold" /> 0 % Provision</span>
+              <span className="mx-8 h-1 w-1 rounded-full bg-white/20" />
+              <span className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-gold" /> {site.fixedPrice} Fixpreis</span>
+              <span className="mx-8 h-1 w-1 rounded-full bg-white/20" />
+              <span className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-gold" /> 480+ verkaufte Objekte</span>
+              <span className="mx-8 h-1 w-1 rounded-full bg-white/20" />
+              <span className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-gold" /> Experten für die Region Zürich</span>
+              <span className="mx-8 h-1 w-1 rounded-full bg-white/20" />
             </div>
-          </div>
-        </div>
-
-        {/* Trust ticker / Marquee */}
-        <div className="absolute inset-x-0 bottom-0 z-10 border-t border-white/10 bg-ink/40 backdrop-blur-sm">
-          <Marquee speed={30} className="py-4">
-            {[...Array(5)].map((_, i) => (
-              <div key={i} className="flex items-center text-xs uppercase tracking-[0.16em] text-white/70">
-                <span className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-gold" /> 0 % Provision</span>
-                <span className="mx-8 h-1 w-1 rounded-full bg-white/20" />
-                <span className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-gold" /> {site.fixedPrice} Fixpreis</span>
-                <span className="mx-8 h-1 w-1 rounded-full bg-white/20" />
-                <span className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-gold" /> 480+ verkaufte Objekte</span>
-                <span className="mx-8 h-1 w-1 rounded-full bg-white/20" />
-                <span className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-gold" /> Experten für die Region Zürich</span>
-                <span className="mx-8 h-1 w-1 rounded-full bg-white/20" />
-              </div>
-            ))}
-          </Marquee>
-        </div>
+          ))}
+        </Marquee>
       </section>
+
+      {/* ===================================================== *
+       * FEATURED PROJECTS — Vertical Strips
+       * ===================================================== */}
+      <VerticalStrips 
+        title="UNSERE OBJEKTE"
+        strips={[
+          { id: "1", title: "RESIDENZ AM SEE", image: "/projekte/residenz-aussenansicht-1.jpg", href: "/kaufen/residenz-am-see" },
+          { id: "2", title: "ATTIKA SEEFELD", image: "/projekte/attika-wohnen-1.jpg", href: "/kaufen/attikawohnung-seefeld" },
+          { id: "3", title: "VILLA KÜSNACHT", image: "/projekte/residenz-aussenansicht-2.jpg", href: "/kaufen/villa-seesicht-kuesnacht" },
+          { id: "4", title: "STADTHAUS", image: "/projekte/erdgeschoss-wohnbereich.jpg", href: "/kaufen/stadthaus-zuerichberg" },
+        ]}
+      />
 
       {/* ===================================================== *
        * 2. TRUST — proof & numbers
@@ -219,16 +197,16 @@ export default function HomePage() {
         <div className="container-lux">
           <div className="mx-auto max-w-4xl text-center">
             <Reveal>
-              <Eyebrow className="justify-center">Philosophie</Eyebrow>
+              <Eyebrow className="justify-center">Ihre lokalen Experten</Eyebrow>
               <h2 className="mt-6 font-serif text-3xl leading-[1.15] text-ink md:text-5xl">
-                Volle Transparenz statt versteckter Kosten.
+                Ehrliche Beratung. Verwurzelt in Zürich.
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-graphite/75 md:text-xl">
-                Wir glauben, dass eine exzellente Immobilienvermarktung nicht 3 % Ihres Verkaufserlöses kosten muss. Mit unserem Fixpreis von {site.fixedPrice} erhalten Sie denselben umfassenden Service wie bei einem klassischen Makler – aber Sie behalten den gesamten Mehrwert Ihres Objekts.
+                Als lokales Zürcher Immobilienunternehmen kennen wir die Quartiere, die Strassen und die Menschen. Wir verzichten auf leere Versprechen und teure Maklerprovisionen. Bei uns zahlen Sie einen fairen Fixpreis von {site.fixedPrice} – so bleibt der wahre Wert Ihrer Immobilie dort, wo er hingehört: bei Ihnen.
               </p>
               <div className="mt-10 flex justify-center">
                 <ButtonLink href="/ueber-uns" variant="outline">
-                  Unsere Werte kennenlernen
+                  Unser Team kennenlernen
                 </ButtonLink>
               </div>
             </Reveal>
@@ -247,19 +225,20 @@ export default function HomePage() {
               <ParallaxImage
                 src={flagshipProject.image}
                 alt="Neubau-Residenz mit Seesicht – Referenzprojekt von Optimal Immobilien"
+                priority={true}
               />
               <span className="absolute left-5 top-5 bg-gold px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-ink z-10">
                 Referenzprojekt
               </span>
             </div>
             </Reveal>
-            <Reveal delay={120}>
+            <Reveal>
               <Eyebrow tone="onDark">Das Resultat, nicht die Dienstleistung</Eyebrow>
               <h2 className="mt-5 font-serif text-3xl leading-[1.12] md:text-4xl lg:text-[2.9rem]">
                 {flagshipProject.title}
               </h2>
               <p className="mt-5 max-w-lg text-lg leading-relaxed text-white/65">
-                {flagshipProject.description}
+                Wir könnten Ihnen viel über unser Marketing erzählen. Aber am Ende zählen für Sie nur echte Resultate. Dieses Projekt steht stellvertretend für die Qualität und den Einsatz, den wir für jede uns anvertraute Liegenschaft an den Tag legen.
               </p>
               <ul className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {flagshipProject.highlights?.map((h) => (
@@ -323,7 +302,7 @@ export default function HomePage() {
                   <span className="italic text-gold">Ihrer Region</span>
                 </>
               }
-              intro="Lokale Marktkenntnis entscheidet über den Preis. Wir kennen jede Gemeinde rund um Zürich – finden Sie Ihren Standort."
+              intro="Lokale Marktkenntnis entscheidet über den Preis. Wir kennen jede Gemeinde rund um Zürich — finden Sie Ihren Standort."
             />
             <Link
               href="/immobilienmakler"
@@ -333,8 +312,8 @@ export default function HomePage() {
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </Link>
           </div>
-          <div className="mt-12">
-            <LocationsGrid items={featuredLocations} />
+          <div className="mt-24">
+            <LocationsCarousel items={featuredLocations} />
           </div>
         </div>
       </section>
@@ -346,24 +325,30 @@ export default function HomePage() {
         <div className="container-lux">
           <SectionHeading
             eyebrow="Ratgeber & Marktwissen"
-            title="Wissen, das Ihren Verkauf besser macht"
-            intro="Aktuelle Marktberichte, Experten-Tipps und Quartier-Guides für Eigentümerinnen und Eigentümer in Zürich."
+            title="Wissen, das sich für Sie auszahlt"
+            intro="Wir teilen unser tiefes Wissen über den Zürcher Immobilienmarkt offen mit Ihnen. Keine Geheimnisse, sondern ehrliche Marktberichte und Tipps für Eigentümer, die den Wert ihrer Immobilie verstehen wollen."
           />
-          <div className="mt-12 grid grid-cols-1 gap-12 md:grid-cols-3">
-            {(featuredGuides.length ? featuredGuides : guides).slice(0, 3).map((g, i) => (
-              <Reveal key={g.slug} delay={i * 90}>
-                <ArticleCard
-                  href={`/ratgeber/${g.slug}`}
-                  image={g.image}
-                  title={g.title}
-                  category={g.category}
-                  excerpt={g.excerpt}
-                />
-              </Reveal>
-            ))}
+          <div className="mt-24">
+            <ArticleCarousel items={(featuredGuides.length ? featuredGuides : guides).slice(0, 5)} />
           </div>
         </div>
       </section>
+
+      {/* ===================================================== *
+       * FLOATING GALLERY — See all properties
+       * ===================================================== */}
+      <FloatingGallery 
+        title="ALLE IMMOBILIEN"
+        href="/kaufen"
+        images={[
+          { src: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80", alt: "Property 1", width: "26vw", height: "48vh", left: "15%", top: "25%" },
+          { src: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80", alt: "Property 2", width: "24vw", height: "42vh", left: "75%", top: "20%" },
+          { src: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80", alt: "Property 3", width: "30vw", height: "36vh", left: "50%", top: "15%" },
+          { src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", alt: "Property 4", width: "33vw", height: "54vh", left: "20%", top: "75%" },
+          { src: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80", alt: "Property 5", width: "30vw", height: "50vh", left: "80%", top: "70%" },
+          { src: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80", alt: "Property 6", width: "28vw", height: "45vh", left: "50%", top: "85%" },
+        ]}
+      />
 
       {/* ===================================================== *
        * 5. ACTION — valuation form

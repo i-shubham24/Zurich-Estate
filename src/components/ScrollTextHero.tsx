@@ -1,0 +1,80 @@
+"use client";
+
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import Image from "next/image";
+import Typewriter from "@/components/Typewriter";
+
+export default function ScrollTextHero({
+  title1 = "WHERE LIGHT MEETS",
+  title2 = "STRUCTURE",
+  subtitle = "Every shadow, every beam of light — crafted with intention and precision.",
+  image = "/projekte/residenz-aussenansicht-1.jpg",
+}: {
+  title1?: string;
+  title2?: string;
+  subtitle?: string;
+  image?: string;
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Background image moves slightly slower than normal scroll
+  const imageY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  
+  // Text moves up much faster, creating a strong parallax overlap effect
+  const textY = useTransform(scrollYProgress, [0, 1], ["20%", "-40%"]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 1, 1, 0]);
+
+  return (
+    <section 
+      ref={containerRef} 
+      className="relative flex h-[120vh] w-full flex-col items-center justify-center overflow-hidden bg-ink"
+    >
+      <motion.div style={{ y: imageY }} className="absolute inset-0 z-0 h-[120%] w-full">
+        <Image
+          src={image}
+          alt="Hero Architecture"
+          fill
+          priority
+          className="object-cover opacity-60"
+          sizes="100vw"
+        />
+        {/* Dark gradient overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink via-transparent to-transparent" />
+      </motion.div>
+
+      <motion.div 
+        style={{ y: textY, opacity: textOpacity }} 
+        className="relative z-10 flex w-full flex-col items-center px-4 text-center"
+      >
+        <h2 className="font-sans text-[clamp(2rem,6vw,5rem)] font-bold leading-[1] tracking-wide text-white/90 uppercase mix-blend-overlay">
+          <span className="block drop-shadow-2xl">{title1}</span>
+          <span className="block drop-shadow-2xl italic text-gold">
+            <Typewriter text={title2 || ""} delay={50} />
+          </span>
+        </h2>
+        <p className="mt-8 max-w-2xl text-sm font-medium tracking-widest text-white/80 md:text-base">
+          {subtitle}
+        </p>
+      </motion.div>
+
+      {/* Scroll indicator at the bottom */}
+      <div className="absolute bottom-10 z-20 flex flex-col items-center text-xs tracking-[0.2em] text-white/60">
+        <span>SCROLL</span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+          className="mt-2 text-white/40"
+        >
+          ↓
+        </motion.div>
+      </div>
+    </section>
+  );
+}

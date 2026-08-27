@@ -1,0 +1,83 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+
+interface Strip {
+  id: string;
+  title: string;
+  image: string;
+  href: string;
+}
+
+export default function VerticalStrips({
+  title = "FEATURED PROJECTS",
+  strips,
+}: {
+  title?: string;
+  strips: Strip[];
+}) {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(0);
+
+  return (
+    <section className="bg-ink py-24 text-white overflow-hidden">
+      <div className="container-lux">
+        <h2 className="mb-12 font-sans text-4xl font-bold uppercase tracking-tight md:text-6xl">
+          {title}
+        </h2>
+        
+        <div className="flex h-[85vh] w-full flex-col gap-2 md:h-[75vh] md:flex-row md:gap-4">
+          {strips.map((strip, index) => {
+            const isHovered = hoveredIndex === index;
+            
+            return (
+              <motion.div
+                key={strip.id}
+                onHoverStart={() => setHoveredIndex(index)}
+                onClick={() => setHoveredIndex(index)}
+                layout
+                initial={false}
+                animate={{
+                  flex: isHovered ? 3 : 1,
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                className="group relative h-full w-full cursor-pointer overflow-hidden rounded-sm"
+              >
+                <Link href={strip.href} className="absolute inset-0 block h-full w-full">
+                  <Image
+                    src={strip.image}
+                    alt={strip.title}
+                    fill
+                    priority
+                    className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  {/* Overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-500 group-hover:opacity-75" />
+                  
+                  {/* Title text */}
+                  <div className="absolute bottom-0 left-0 flex h-full w-full flex-col justify-end p-4 md:p-8">
+                    <div className="relative w-full">
+                      <motion.h3
+                        layout="position"
+                        className={`absolute bottom-0 left-0 font-sans text-xl font-bold uppercase tracking-widest text-white transition-all duration-500 md:text-4xl ${
+                          isHovered 
+                            ? "rotate-0 origin-bottom-left" 
+                            : "origin-bottom-left whitespace-nowrap md:-rotate-90 md:translate-y-[200px]"
+                        }`}
+                      >
+                        {strip.title}
+                      </motion.h3>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}

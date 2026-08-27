@@ -6,6 +6,12 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
     // Next.js 16 requires an explicit qualities allowlist
     qualities: [70, 82, 90],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+    ],
   },
 };
 
