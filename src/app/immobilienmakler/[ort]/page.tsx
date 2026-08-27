@@ -199,9 +199,9 @@ export default async function LocationPage({
 
       {/* Valuation */}
       <ValuationCta
-        eyebrow={`Bewertung ${loc.name}`}
-        title={`Was ist Ihre Immobilie in ${loc.name} wert?`}
-        intro={`Erhalten Sie eine fundierte, kostenlose Ersteinschätzung für Ihr Objekt in ${loc.name}, in unter zwei Minuten und unverbindlich.`}
+        eyebrow={`Beratung ${loc.name}`}
+        title={`Verkaufen, kaufen oder investieren in ${loc.name}?`}
+        intro={`Sagen Sie uns Ihr Anliegen für ${loc.name}. Wir melden uns mit einer kostenlosen, unverbindlichen Ersteinschätzung, in unter zwei Minuten ausgefüllt.`}
       />
 
       {/* FAQ */}

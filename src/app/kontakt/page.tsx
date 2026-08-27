@@ -4,7 +4,6 @@ import Reveal from "@/components/Reveal";
 import Typewriter from "@/components/Typewriter";
 import { Eyebrow, SectionHeading } from "@/components/ui";
 import ContactForm from "@/components/ContactForm";
-import ValuationCta from "@/components/ValuationCta";
 import CtaBanner from "@/components/CtaBanner";
 import { JsonLd } from "@/components/StructuredData";
 import { site, SITE_URL } from "@/lib/site";
@@ -114,7 +113,7 @@ export default function KontaktPage() {
                 </div>
 
                 <div className="mt-12 bg-sand/50 p-8 border border-line">
-                  <h3 className="font-serif text-xl text-ink mb-6">�-ffnungszeiten</h3>
+                  <h3 className="font-serif text-xl text-ink mb-6">Öffnungszeiten</h3>
                   <div className="divide-y divide-ink/10">
                     {site.openingHours.map((slot) => (
                       <div key={slot.days} className="flex items-center justify-between py-3">
@@ -142,8 +141,31 @@ export default function KontaktPage() {
         </div>
       </section>
 
-      {/* ── Valuation CTA ── */}
-      <ValuationCta />
+      {/* ── Map ── */}
+      <section className="bg-cream pb-20 md:pb-28">
+        <div className="container-lux">
+          <Reveal>
+            <div className="mb-6 flex items-center gap-3 text-graphite/70">
+              <MapPin className="h-5 w-5 text-gold-deep" />
+              <span className="text-sm font-medium">
+                {site.address.street}, {site.address.postalCode} {site.address.city}
+              </span>
+            </div>
+            <div className="overflow-hidden border border-line shadow-[var(--shadow-luxe)]">
+              <iframe
+                title={`Standort ${site.legalName} in ${site.address.city}`}
+                src={`https://maps.google.com/maps?q=${encodeURIComponent(
+                  `${site.address.street}, ${site.address.postalCode} ${site.address.city}, ${site.address.countryName}`
+                )}&z=15&output=embed`}
+                className="h-[380px] w-full md:h-[460px]"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                aria-label={`Karte mit dem Standort von ${site.legalName}`}
+              />
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
       {/* ── CTA Banner ── */}
       <CtaBanner />

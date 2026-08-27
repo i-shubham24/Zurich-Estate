@@ -5,7 +5,6 @@ import { useState, useEffect, useCallback } from "react";
 
 export default function IntroCurtain() {
   const [shouldRender, setShouldRender] = useState(true);
-  const [progress, setProgress] = useState(0);
   const [wiping, setWiping] = useState(false);
 
   const unlockBody = useCallback(() => {
@@ -19,10 +18,13 @@ export default function IntroCurtain() {
   const dismiss = useCallback(() => {
     unlockBody();
     setShouldRender(false);
+    // The page was position:fixed while the curtain was up, so the smooth-scroll
+    // library cached a zero-height document. Nudge it to re-measure now that the
+    // page is scrollable again, otherwise anchor scrolls (e.g. #bewertung) clamp.
+    requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
   }, [unlockBody]);
 
   useEffect(() => {
-
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
@@ -35,15 +37,14 @@ export default function IntroCurtain() {
     document.body.style.overflow = "hidden";
     window.scrollTo({ top: 0, behavior: "instant" });
 
-    const controls = animate(0, 100, {
-      duration: 0.8,
-      ease: [0.33, 1, 0.68, 1],
-      onUpdate: (val) => setProgress(Math.round(val)),
-      onComplete: () => setTimeout(() => setWiping(true), 250),
+    // Hold long enough for the logo to draw, then wipe up.
+    const controls = animate(0, 1, {
+      duration: 1.5,
+      onComplete: () => setTimeout(() => setWiping(true), 200),
     });
 
-    // Hard safety net: no matter what, never leave the page locked/covered.
-    const failsafe = setTimeout(dismiss, 4000);
+    // Hard safety net: never leave the page locked/covered.
+    const failsafe = setTimeout(dismiss, 4200);
 
     return () => {
       controls.stop();
@@ -52,8 +53,7 @@ export default function IntroCurtain() {
     };
   }, [dismiss, unlockBody]);
 
-  // Once the wipe starts, guarantee dismissal even if the animation callback
-  // is missed for any reason.
+  // Once the wipe starts, guarantee dismissal even if the callback is missed.
   useEffect(() => {
     if (!wiping) return;
     const t = setTimeout(dismiss, 1600);
@@ -73,13 +73,57 @@ export default function IntroCurtain() {
       className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-ink"
     >
       <motion.div
-        animate={{ opacity: wiping ? 0 : 1, y: wiping ? -50 : 0 }}
+        animate={{ opacity: wiping ? 0 : 1, y: wiping ? -40 : 0 }}
         transition={{ duration: 0.6 }}
-        className="flex flex-col items-center"
+        className="flex flex-col items-center gap-7"
       >
-        <div className="font-sans text-[clamp(2.5rem,8vw,6rem)] font-bold leading-none tracking-tighter text-gold">
-          {progress}%
-        </div>
+        {/* OI monogram drawing itself in */}
+        <svg
+          width="92"
+          height="92"
+          viewBox="0 0 40 40"
+          fill="none"
+          aria-label="Optimal Immobilien AG"
+        >
+          <motion.circle
+            cx="15"
+            cy="20"
+            r="11"
+            stroke="#b8935e"
+            strokeWidth="2"
+            strokeLinecap="round"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: 1 }}
+            transition={{ duration: 1.15, ease: "easeInOut" }}
+          />
+          <motion.line
+            x1="30"
+            y1="9"
+            x2="30"
+            y2="31"
+            stroke="#b8935e"
+            strokeWidth="2"
+            strokeLinecap="round"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 0.6, delay: 0.6, ease: "easeInOut" }}
+          />
+        </svg>
+
+        {/* Wordmark fading up */}
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
+          <div className="font-sans text-xl font-semibold tracking-[0.32em] text-white sm:text-2xl">
+            OPTIMAL
+          </div>
+          <div className="mt-2 font-sans text-[0.6rem] font-medium tracking-[0.4em] text-white/55 sm:text-xs">
+            IMMOBILIEN AG
+          </div>
+        </motion.div>
       </motion.div>
     </motion.div>
   );

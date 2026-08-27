@@ -4,16 +4,16 @@ import Reveal from "./Reveal";
 import { Eyebrow } from "./ui";
 
 const points = [
+  "Verkaufen, kaufen oder investieren",
   "Kostenlos & unverbindlich",
-  "Ergebnis innert 24 Stunden",
+  "Antwort innert 24 Stunden",
   "Diskret, keine Weitergabe an Dritte",
-  "Von echten Marktdaten gestützt",
 ];
 
 export default function ValuationCta({
-  eyebrow = "Kostenlose Bewertung",
-  title = "Was ist Ihre Immobilie heute wert?",
-  intro = "Erhalten Sie eine fundierte Ersteinschätzung des Marktwerts, in weniger als zwei Minuten und ohne Verpflichtung.",
+  eyebrow = "Kostenlose Beratung",
+  title = "Wie können wir Ihnen helfen?",
+  intro = "Sagen Sie uns Ihr Anliegen, ob verkaufen, kaufen oder investieren. Wir melden uns mit einer kostenlosen, unverbindlichen Ersteinschätzung, in unter zwei Minuten ausgefüllt.",
 }: {
   eyebrow?: string;
   title?: string;

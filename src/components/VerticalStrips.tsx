@@ -56,10 +56,10 @@ export default function VerticalStrips({
                   <div className="absolute bottom-0 left-0 flex h-full w-full flex-col justify-end p-4 md:p-8">
                     <div className="relative w-full">
                       <h3
-                        className={`absolute bottom-0 left-0 font-sans text-xl font-bold uppercase tracking-widest text-white transition-all duration-700 ease-out md:text-4xl ${
-                          isHovered 
-                            ? "rotate-0 origin-bottom-left opacity-100" 
-                            : "origin-bottom-left whitespace-nowrap opacity-0 md:opacity-100 md:-rotate-90 md:translate-y-[200px]"
+                        className={`absolute bottom-0 left-0 origin-bottom-left transform-gpu whitespace-nowrap font-sans text-xl font-bold uppercase tracking-widest text-white transition-[transform,opacity] duration-700 ease-out [backface-visibility:hidden] [will-change:transform,opacity] md:text-4xl ${
+                          isHovered
+                            ? "rotate-0 opacity-100"
+                            : "opacity-0 md:opacity-100 md:-rotate-90 md:translate-y-[200px]"
                         }`}
                       >
                         {strip.title}

@@ -3,13 +3,12 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import Logo from "./Logo";
 import Magnetic from "./Magnetic";
-import { site } from "@/lib/site";
+import { site, services } from "@/lib/site";
 
 const nav = [
-  { label: "Verkaufen", href: "/immobilie-verkaufen" },
   { label: "Standorte", href: "/immobilienmakler" },
   { label: "Immobilien", href: "/kaufen" },
   { label: "Ratgeber", href: "/ratgeber" },
@@ -19,6 +18,7 @@ const nav = [
 export default function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -28,8 +28,11 @@ export default function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mobile menu on route change
-  useEffect(() => setOpen(false), [pathname]);
+  // Close menus on route change
+  useEffect(() => {
+    setOpen(false);
+    setServicesOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -37,6 +40,10 @@ export default function SiteHeader() {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  const servicesActive = services.some(
+    (s) => pathname === s.href || pathname.startsWith(s.href + "/")
+  );
 
   return (
     <header
@@ -50,6 +57,49 @@ export default function SiteHeader() {
         <Logo tone="onDark" />
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Hauptnavigation">
+          {/* Services dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setServicesOpen(true)}
+            onMouseLeave={() => setServicesOpen(false)}
+          >
+            <button
+              type="button"
+              onClick={() => setServicesOpen((v) => !v)}
+              aria-expanded={servicesOpen}
+              className={`eyebrow flex items-center gap-1.5 rounded-full px-4 py-3 tracking-[0.14em] transition-colors ${
+                servicesActive ? "text-gold-bright" : "text-white/75 hover:text-gold-bright"
+              }`}
+            >
+              Dienstleistungen
+              <ChevronDown
+                className={`h-3.5 w-3.5 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            <div
+              className={`absolute left-0 top-full pt-3 transition-all duration-200 ${
+                servicesOpen
+                  ? "pointer-events-auto translate-y-0 opacity-100"
+                  : "pointer-events-none -translate-y-1 opacity-0"
+              }`}
+            >
+              <div className="w-72 overflow-hidden border border-white/10 bg-slate/95 shadow-2xl backdrop-blur-md">
+                {services.map((s) => (
+                  <Link
+                    key={s.slug}
+                    href={s.href}
+                    className="block border-b border-white/5 px-5 py-3.5 transition-colors last:border-0 hover:bg-white/[0.05]"
+                  >
+                    <span className="block text-sm font-medium text-white/90">{s.title}</span>
+                    <span className="mt-0.5 block text-[0.72rem] leading-snug text-white/45">
+                      {s.short}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
           {nav.map((item) => {
             const active = pathname === item.href || pathname.startsWith(item.href + "/");
             return (
@@ -96,11 +146,27 @@ export default function SiteHeader() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="lg:hidden">
+        <div className="max-h-[calc(100vh-72px)] overflow-y-auto lg:hidden">
           <nav
-            className="container-lux flex flex-col gap-1 border-t border-white/10 pb-8 pt-4"
+            className="container-lux flex flex-col border-t border-white/10 pb-8 pt-4"
             aria-label="Mobile Navigation"
           >
+            {/* Services group */}
+            <div className="border-b border-white/10 pb-4">
+              <span className="eyebrow text-gold">Dienstleistungen</span>
+              <div className="mt-3 flex flex-col">
+                {services.map((s) => (
+                  <Link
+                    key={s.slug}
+                    href={s.href}
+                    className="py-2.5 font-serif text-xl text-white/90 transition-colors hover:text-gold-bright"
+                  >
+                    {s.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
             {nav.map((item) => (
               <Link
                 key={item.href}
@@ -115,7 +181,7 @@ export default function SiteHeader() {
                 href="/#bewertung"
                 className="rounded-full bg-gold px-6 py-4 text-center text-sm font-semibold uppercase tracking-[0.14em] text-ink"
               >
-                Kostenlose Bewertung
+                Kostenlose Beratung
               </Link>
               <a
                 href={site.phoneHref}

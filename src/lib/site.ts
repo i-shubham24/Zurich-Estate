@@ -70,19 +70,19 @@ export const services = [
   {
     slug: "immobilie-bewerten",
     title: "Immobilie bewerten",
-    short: "Kostenlose Marktwert­einschätzung in 2 Minuten",
-    href: "/#bewertung",
+    short: "Kostenlose Marktwerteinschätzung in 2 Minuten",
+    href: "/immobilie-bewerten",
   },
   {
     slug: "immobilie-kaufen",
     title: "Immobilie kaufen",
-    short: "Exklusive Objekte & Neubau­projekte am Zürichsee",
-    href: "/kaufen",
+    short: "Ihr Zuhause finden, ohne Maklergebühren",
+    href: "/immobilie-kaufen",
   },
   {
     slug: "investieren",
     title: "In Immobilien investieren",
-    short: "Renditeobjekte und Off Market-Chancen",
-    href: "/kontakt",
+    short: "Renditeobjekte und Off-Market-Chancen",
+    href: "/investieren",
   },
 ] as const;
