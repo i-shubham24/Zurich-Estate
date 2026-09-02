@@ -57,30 +57,35 @@ export default function SiteHeader() {
         <Logo tone="onDark" />
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Hauptnavigation">
-          {/* Services dropdown */}
+          {/* Services dropdown — CSS hover for instant, state for click/keyboard */}
           <div
-            className="relative"
-            onMouseEnter={() => setServicesOpen(true)}
-            onMouseLeave={() => setServicesOpen(false)}
+            className="group relative"
+            onFocus={() => setServicesOpen(true)}
+            onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setServicesOpen(false); }}
           >
             <button
               type="button"
               onClick={() => setServicesOpen((v) => !v)}
               aria-expanded={servicesOpen}
-              className={`eyebrow flex items-center gap-1.5 rounded-full px-4 py-3 tracking-[0.14em] transition-colors ${
-                servicesActive ? "text-gold-bright" : "text-white/75 hover:text-gold-bright"
+              aria-haspopup="true"
+              aria-controls="services-menu"
+              onKeyDown={(e) => { if (e.key === "Escape") setServicesOpen(false); }}
+              className={`eyebrow flex items-center gap-1.5 rounded-full px-4 py-3 tracking-[0.14em] transition-colors focus-visible:ring-2 focus-visible:ring-gold ${
+                servicesActive ? "text-gold-bright" : "text-white/75 hover:text-gold-bright group-hover:text-gold-bright"
               }`}
             >
               Dienstleistungen
               <ChevronDown
-                className={`h-3.5 w-3.5 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`}
+                className={`h-3.5 w-3.5 transition-transform duration-200 ${servicesOpen ? "rotate-180" : "group-hover:rotate-180"}`}
               />
             </button>
             <div
-              className={`absolute left-0 top-full pt-3 transition-all duration-200 ${
+              id="services-menu"
+              role="menu"
+              className={`absolute left-0 top-full pt-3 transition-all duration-150 ${
                 servicesOpen
                   ? "pointer-events-auto translate-y-0 opacity-100"
-                  : "pointer-events-none -translate-y-1 opacity-0"
+                  : "pointer-events-none -translate-y-1 opacity-0 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100"
               }`}
             >
               <div className="w-72 overflow-hidden border border-white/10 bg-slate/95 shadow-2xl backdrop-blur-md">
@@ -137,7 +142,8 @@ export default function SiteHeader() {
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Menü schliessen" : "Menü öffnen"}
             aria-expanded={open}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:bg-white/10 lg:hidden"
+            onKeyDown={(e) => { if (e.key === "Escape") setOpen(false); }}
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-gold lg:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>

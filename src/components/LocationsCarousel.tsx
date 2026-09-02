@@ -33,14 +33,14 @@ export default function LocationsCarousel({ items }: { items: Location[] }) {
       <div className="absolute -top-16 right-0 hidden items-center gap-2 md:flex">
         <button
           onClick={scrollLeft}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-gold hover:text-gold"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-gold hover:text-gold focus-visible:ring-2 focus-visible:ring-gold"
           aria-label="Scroll left"
         >
           <ChevronLeft className="h-5 w-5" />
         </button>
         <button
           onClick={scrollRight}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-gold hover:text-gold"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-gold hover:text-gold focus-visible:ring-2 focus-visible:ring-gold"
           aria-label="Scroll right"
         >
           <ChevronRight className="h-5 w-5" />
@@ -82,12 +82,7 @@ export default function LocationsCarousel({ items }: { items: Location[] }) {
         })}
       </div>
       
-      {/* Hide scrollbar with inline style for webkit */}
-      <style dangerouslySetInnerHTML={{__html: `
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-      `}} />
+      {/* scrollbar-hide defined in globals.css */}
     </div>
   );
 }

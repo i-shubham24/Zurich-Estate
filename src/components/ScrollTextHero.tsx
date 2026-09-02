@@ -42,12 +42,12 @@ export default function ScrollTextHero({
   return (
     <section 
       ref={containerRef} 
-      className="relative flex h-[120vh] w-full flex-col items-center justify-center overflow-hidden bg-ink"
+      className="relative flex h-[100dvh] min-h-[600px] w-full flex-col items-center justify-center overflow-hidden bg-ink"
     >
       <motion.div style={{ y: imageY }} className="absolute inset-0 z-0 h-[120%] w-full">
         <Image
           src={image}
-          alt="Hero Architecture"
+          alt="Luxuriöse Immobilie in Zürich mit Seesicht – Optimal Immobilien AG, Fixpreis CHF 12'000"
           fill
           priority
           className="object-cover opacity-60"

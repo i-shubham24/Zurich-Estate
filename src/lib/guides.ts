@@ -26,7 +26,7 @@ export const guides: Guide[] = [
     title: "Haus verkaufen in Zürich: Die 7 teuersten Fehler",
     metaTitle: "Haus verkaufen Zürich: 7 teure Fehler vermeiden (2026)",
     excerpt:
-      "Viele Eigentümer verschenken beim Verkauf zehntausende Franken. Diese sieben Fehler kosten in Zürich am meisten, und so vermeiden Sie sie.",
+      "Viele Eigentümer verschenken beim Hausverkauf in Zürich zehntausende Franken durch vermeidbare Fehler – vom falschen Startpreis bis zur Provisionsfalle. Diese sieben Punkte kosten am meisten, und so vermeiden Sie sie provisionsfrei.",
     category: "Ratgeber",
     readTime: "6 Min.",
     date: "2026-07-14",
@@ -77,7 +77,7 @@ export const guides: Guide[] = [
     title: "Maklerprovision in der Schweiz: So viel zahlen Sie wirklich",
     metaTitle: "Maklerprovision Schweiz 2026: Kosten, Prozente & Alternativen",
     excerpt:
-      "2 %, 3 % oder Fixpreis? Wir zeigen transparent, was ein Immobilienmakler in der Schweiz kostet, und wie Sie beim Verkauf tausende Franken sparen.",
+      "2 %, 3 % oder Fixpreis CHF 12'000? Wir zeigen transparent, was ein Immobilienmakler in der Schweiz wirklich kostet, wie die Provision berechnet wird und wie Sie mit Fixpreis-Modell tausende Franken sparen.",
     category: "Kosten",
     readTime: "5 Min.",
     date: "2026-06-28",
@@ -124,7 +124,7 @@ export const guides: Guide[] = [
     title: "Immobilienbewertung: So ermitteln Sie den echten Marktwert",
     metaTitle: "Immobilie bewerten in Zürich: Marktwert richtig ermitteln",
     excerpt:
-      "Online-Rechner, hedonische Bewertung oder Gutachten? So finden Sie heraus, was Ihre Immobilie in Zürich wirklich wert ist.",
+      "Online-Rechner, hedonische Bewertung, Vergleichswert oder Gutachten? Wir erklären, wie Sie den echten Marktwert Ihrer Immobilie in Zürich mit lokalen Marktdaten fundiert und realistisch ermitteln.",
     category: "Bewertung",
     readTime: "5 Min.",
     date: "2026-06-05",
@@ -167,7 +167,7 @@ export const guides: Guide[] = [
     title: "Immobilienpreise Zürich 2026: Der grosse Marktbericht",
     metaTitle: "Immobilienpreise Zürich 2026: Marktbericht & Prognose",
     excerpt:
-      "Wie entwickeln sich die Preise in Stadt, an der Goldküste und im Unterland? Zahlen, Trends und was das für Verkäufer bedeutet.",
+      "Wie entwickeln sich die Immobilienpreise 2026 in Stadt Zürich, an der Goldküste und im Unterland? Unser Marktbericht liefert aktuelle Zahlen, Trends und eine klare Einschätzung für Eigentümer, die verkaufen wollen.",
     category: "Marktbericht",
     readTime: "7 Min.",
     date: "2026-05-19",
@@ -213,7 +213,7 @@ export const guides: Guide[] = [
     title: "Wohnen an der Goldküste: Warum die Lagen so begehrt sind",
     metaTitle: "Goldküste Zürich: Küsnacht, Zollikon, Meilen & Co.",
     excerpt:
-      "Sonnenhänge, Seesicht und tiefe Steuern: Ein Quartier-Guide zur begehrtesten Wohnregion am rechten Zürichseeufer.",
+      "Sonnenhänge, unverbaubare Seesicht und tiefe Steuern: Unser Quartier-Guide erklärt, warum die Zürcher Goldküste von Zollikon bis Meilen die begehrteste Wohnregion am rechten Seeufer bleibt und was das für Verkäufer bedeutet.",
     category: "Quartier-Guide",
     readTime: "4 Min.",
     date: "2026-04-30",

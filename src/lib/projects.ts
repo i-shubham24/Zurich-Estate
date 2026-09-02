@@ -30,7 +30,7 @@ export const projects: Project[] = [
     type: "Attika · Neubau-Erstvermarktung",
     rooms: 5.5,
     area: 208,
-    price: "Auf Anfrage",
+    price: "Preis auf Anfrage",
     status: "In Vermarktung",
     image: "/projekte/residenz-aussenansicht-1.jpg",
     gallery: [
@@ -61,7 +61,7 @@ export const projects: Project[] = [
     type: "Eigentumswohnung",
     rooms: 4.5,
     area: 145,
-    price: "CHF 2'450'000",
+    price: "Preis auf Anfrage",
     status: "Verfügbar",
     image: "/projekte/attika-wohnen-1.jpg",
     description:
@@ -75,7 +75,7 @@ export const projects: Project[] = [
     type: "Einfamilienhaus",
     rooms: 6.5,
     area: 280,
-    price: "Auf Anfrage",
+    price: "Preis auf Anfrage",
     status: "Verfügbar",
     image: "/projekte/residenz-aussenansicht-2.jpg",
     description:
@@ -89,7 +89,7 @@ export const projects: Project[] = [
     type: "Eigentumswohnung",
     rooms: 4.5,
     area: 132,
-    price: "CHF 1'890'000",
+    price: "Preis auf Anfrage",
     status: "Reserviert",
     image: "/projekte/erdgeschoss-wohnbereich.jpg",
     description:
@@ -103,7 +103,7 @@ export const projects: Project[] = [
     type: "Attika",
     rooms: 5.5,
     area: 176,
-    price: "CHF 3'250'000",
+    price: "Preis auf Anfrage",
     status: "Verkauft",
     image: "/projekte/obergeschoss-wohnbereich.jpg",
     description:

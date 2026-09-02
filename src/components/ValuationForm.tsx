@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Home, KeyRound, TrendingUp, MapPin, ArrowRight, ArrowLeft, CheckCircle2, ShieldCheck } from "lucide-react";
+import { z } from "zod";
 
 type Step = 1 | 2 | 3 | 4 | 5;
 
@@ -19,6 +20,15 @@ const timeframes = [
   "Ich informiere mich nur",
 ];
 
+const valuationSchema = z.object({
+  intent: z.string().min(1),
+  timeframe: z.string().min(1),
+  location: z.string().min(2).max(100),
+  name: z.string().min(2).max(80),
+  contact: z.string().min(5).max(120),
+  website: z.string().max(0).optional(), // honeypot
+});
+
 export default function ValuationForm() {
   const [step, setStep] = useState<Step>(1);
   const [formData, setFormData] = useState({
@@ -27,19 +37,42 @@ export default function ValuationForm() {
     location: "",
     name: "",
     contact: "",
+    website: "",
   });
+  const [error, setError] = useState<string | null>(null);
+  const timers = useRef<number[]>([]);
+  useEffect(() => () => { timers.current.forEach((t) => clearTimeout(t)); }, []);
 
   const next = () => setStep((s) => Math.min(s + 1, 5) as Step);
   const prev = () => setStep((s) => Math.max(s - 1, 1) as Step);
 
   const select = (field: string, value: string) => {
     setFormData((d) => ({ ...d, [field]: value }));
-    setTimeout(next, 350);
+    const t = window.setTimeout(next, 350);
+    timers.current.push(t);
   };
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    setTimeout(next, 700);
+    setError(null);
+    // Honeypot
+    if (formData.website) return;
+    // Rate-limit: 1 submission per 30s (client-side; server should enforce with arcjet/upstash)
+    const last = typeof window !== "undefined" ? Number(localStorage.getItem("valuation_last") || 0) : 0;
+    if (Date.now() - last < 30_000) {
+      setError("Bitte warten Sie kurz vor der nächsten Anfrage.");
+      return;
+    }
+    const parsed = valuationSchema.safeParse(formData);
+    if (!parsed.success) {
+      setError("Bitte füllen Sie alle Felder korrekt aus.");
+      return;
+    }
+    // TODO: replace setTimeout with Server Action + Turnstile/arcjet
+    // await fetch("/api/bewertung", { method:"POST", body: JSON.stringify(parsed.data) })
+    localStorage.setItem("valuation_last", String(Date.now()));
+    const t = window.setTimeout(next, 700);
+    timers.current.push(t);
   };
 
   const optionBase =
@@ -136,25 +169,44 @@ export default function ValuationForm() {
                   required
                   value={formData.name}
                   onChange={(e) => setFormData((d) => ({ ...d, name: e.target.value }))}
-                  className="w-full border border-line bg-sand/50 px-4 py-4 text-ink outline-none transition-colors focus:border-gold focus:bg-white"
+                  name="name"
+                  autoComplete="name"
+                  maxLength={80}
+                  className="w-full border border-line bg-sand/50 px-4 py-4 text-ink outline-none transition-colors focus:border-gold focus:bg-white focus-visible:ring-2 focus-visible:ring-gold"
                   placeholder="Ihr Name"
                 />
                 <input
                   required
                   value={formData.contact}
                   onChange={(e) => setFormData((d) => ({ ...d, contact: e.target.value }))}
-                  className="w-full border border-line bg-sand/50 px-4 py-4 text-ink outline-none transition-colors focus:border-gold focus:bg-white"
-                  placeholder="Telefonnummer"
+                  name="contact"
+                  autoComplete="tel"
+                  inputMode="tel"
+                  maxLength={120}
+                  className="w-full border border-line bg-sand/50 px-4 py-4 text-ink outline-none transition-colors focus:border-gold focus:bg-white focus-visible:ring-2 focus-visible:ring-gold"
+                  placeholder="Telefon oder E-Mail"
                 />
+                {/* Honeypot - hidden from users */}
+                <input
+                  type="text"
+                  value={formData.website}
+                  onChange={(e) => setFormData((d) => ({ ...d, website: e.target.value }))}
+                  className="hidden"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
+                {error && <p className="text-sm text-red-600" role="alert">{error}</p>}
                 <button
                   type="submit"
-                  className="w-full bg-gold py-4 font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-gold-bright"
+                  className="w-full bg-gold py-4 font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-gold-bright focus-visible:ring-2 focus-visible:ring-gold"
                 >
                   Kostenlose Beratung anfragen
                 </button>
                 <p className="flex items-center justify-center gap-2 pt-1 text-xs text-graphite/60">
                   <ShieldCheck className="h-4 w-4 text-gold" /> Diskret &amp; unverbindlich. Keine Weitergabe an Dritte.
                 </p>
+                {/* Turnstile placeholder: <div className="cf-turnstile" data-sitekey="..." /> */}
               </form>
             </motion.div>
           )}

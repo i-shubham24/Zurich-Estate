@@ -2,6 +2,7 @@
 
 import { motion, animate } from "framer-motion";
 import { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 
 export default function IntroCurtain() {
   const [shouldRender, setShouldRender] = useState(true);
@@ -37,14 +38,14 @@ export default function IntroCurtain() {
     document.body.style.overflow = "hidden";
     window.scrollTo({ top: 0, behavior: "instant" });
 
-    // Hold long enough for the logo to draw, then wipe up.
+    // Fast curtain for prod — show logo briefly then wipe
     const controls = animate(0, 1, {
-      duration: 1.5,
-      onComplete: () => setTimeout(() => setWiping(true), 200),
+      duration: 0.9,
+      onComplete: () => setTimeout(() => setWiping(true), 150),
     });
 
     // Hard safety net: never leave the page locked/covered.
-    const failsafe = setTimeout(dismiss, 4200);
+    const failsafe = setTimeout(dismiss, 2500);
 
     return () => {
       controls.stop();
@@ -56,7 +57,7 @@ export default function IntroCurtain() {
   // Once the wipe starts, guarantee dismissal even if the callback is missed.
   useEffect(() => {
     if (!wiping) return;
-    const t = setTimeout(dismiss, 1600);
+    const t = setTimeout(dismiss, 900);
     return () => clearTimeout(t);
   }, [wiping, dismiss]);
 
@@ -66,7 +67,7 @@ export default function IntroCurtain() {
     <motion.div
       initial={{ clipPath: "inset(0% 0% 0% 0%)" }}
       animate={{ clipPath: wiping ? "inset(0% 0% 100% 0%)" : "inset(0% 0% 0% 0%)" }}
-      transition={{ duration: 1.4, ease: [0.76, 0, 0.24, 1] }}
+      transition={{ duration: 0.85, ease: [0.76, 0, 0.24, 1] }}
       onAnimationComplete={() => {
         if (wiping) dismiss();
       }}
@@ -75,55 +76,30 @@ export default function IntroCurtain() {
       <motion.div
         animate={{ opacity: wiping ? 0 : 1, y: wiping ? -40 : 0 }}
         transition={{ duration: 0.6 }}
-        className="flex flex-col items-center gap-7"
+        className="flex flex-col items-center gap-8"
       >
-        {/* OI monogram drawing itself in */}
-        <svg
-          width="92"
-          height="92"
-          viewBox="0 0 40 40"
-          fill="none"
-          aria-label="Optimal Immobilien AG"
-        >
-          <motion.circle
-            cx="15"
-            cy="20"
-            r="11"
-            stroke="#b8935e"
-            strokeWidth="2"
-            strokeLinecap="round"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: 1 }}
-            transition={{ duration: 1.15, ease: "easeInOut" }}
-          />
-          <motion.line
-            x1="30"
-            y1="9"
-            x2="30"
-            y2="31"
-            stroke="#b8935e"
-            strokeWidth="2"
-            strokeLinecap="round"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 0.6, delay: 0.6, ease: "easeInOut" }}
-          />
-        </svg>
-
-        {/* Wordmark fading up */}
         <motion.div
-          className="text-center"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className="font-sans text-xl font-semibold tracking-[0.32em] text-white sm:text-2xl">
-            OPTIMAL
-          </div>
-          <div className="mt-2 font-sans text-[0.6rem] font-medium tracking-[0.4em] text-white/55 sm:text-xs">
-            IMMOBILIEN AG
-          </div>
+          <Image
+            src="/brand/optimal-logo-transparent.png"
+            alt="Optimal Immobilien AG"
+            width={916}
+            height={220}
+            priority
+            className="h-[52px] w-auto object-contain md:h-[64px]"
+          />
         </motion.div>
+        <motion.p
+          className="eyebrow text-gold-bright/70"
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+        >
+          Provisionsfrei · Fixpreis CHF 12'000
+        </motion.p>
       </motion.div>
     </motion.div>
   );

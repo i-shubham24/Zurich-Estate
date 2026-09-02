@@ -1,6 +1,14 @@
 import { organizationJsonLd, websiteJsonLd } from "@/lib/jsonld";
 
-/** Renders a JSON-LD script block. Server Component. */
+/** Renders a JSON-LD script block. Server Component. Escapes < > to prevent </script> breakout. */
+function safeJsonLd(obj: object): string {
+  return JSON.stringify(obj)
+    .replace(/</g, "\\u003c")
+    .replace(/>/g, "\\u003e")
+    .replace(/\u2028/g, "\\u2028")
+    .replace(/\u2029/g, "\\u2029");
+}
+
 export function JsonLd({ data }: { data: object | object[] }) {
   const payload = Array.isArray(data) ? data : [data];
   return (
@@ -9,7 +17,7 @@ export function JsonLd({ data }: { data: object | object[] }) {
         <script
           key={i}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(d) }}
+          dangerouslySetInnerHTML={{ __html: safeJsonLd(d) }}
         />
       ))}
     </>

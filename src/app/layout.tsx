@@ -6,7 +6,6 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import SmoothScrolling from "@/components/SmoothScrolling";
 import ScrollToTop from "@/components/ScrollToTop";
-import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
 import { OrganizationJsonLd } from "@/components/StructuredData";
 import IntroCurtain from "@/components/IntroCurtain";
@@ -96,14 +95,16 @@ export default function RootLayout({
             __html: "document.documentElement.classList.add('js')",
           }}
         />
+        <a href="#main" className="sr-only left-4 top-4 z-[9999] bg-ink px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white focus:not-sr-only focus:absolute focus:outline-none focus:ring-2 focus:ring-gold">
+          Zum Inhalt springen
+        </a>
         <SmoothScrolling>
           <ScrollToTop />
           <ScrollProgress />
-          <CustomCursor />
           <OrganizationJsonLd />
           <IntroCurtain />
           <SiteHeader />
-          {children}
+          <main id="main">{children}</main>
           <SiteFooter />
         </SmoothScrolling>
       </body>

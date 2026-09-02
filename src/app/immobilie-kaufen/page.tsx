@@ -135,8 +135,8 @@ export default function ImmobilieKaufenPage() {
                 <div className="text-xs uppercase tracking-[0.16em] text-graphite/60">Transparenz</div>
               </div>
               <div>
-                <div className="font-serif text-3xl text-ink">480+</div>
-                <div className="text-xs uppercase tracking-[0.16em] text-graphite/60">Vermittelte Objekte</div>
+                <div className="font-serif text-3xl text-ink">70+</div>
+                <div className="text-xs uppercase tracking-[0.16em] text-graphite/60">Vermittelte Immobilien</div>
               </div>
             </div>
           </Reveal>

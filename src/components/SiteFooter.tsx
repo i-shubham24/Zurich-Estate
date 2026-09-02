@@ -116,7 +116,7 @@ export default function SiteFooter() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container-lux flex flex-col items-center justify-between gap-4 py-6 text-xs text-white/45 md:flex-row">
+        <div className="container-lux flex flex-col items-center justify-between gap-4 py-6 text-xs text-white/60 md:flex-row">
           <p>© {year} {site.legalName} · {site.address.city} · Alle Rechte vorbehalten.</p>
           <p className="flex items-center gap-2">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold" />

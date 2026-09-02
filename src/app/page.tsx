@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  BadgeCheck,
   TrendingUp,
   Clock,
   Lock,
@@ -13,7 +12,6 @@ import {
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import ParallaxImage from "@/components/ParallaxImage";
-import Marquee from "@/components/Marquee";
 import ArticleCard from "@/components/ArticleCard";
 import ArticleCarousel from "@/components/ArticleCarousel";
 import ScrollTextHero from "@/components/ScrollTextHero";
@@ -26,6 +24,7 @@ import ValuationCta from "@/components/ValuationCta";
 import CtaBanner from "@/components/CtaBanner";
 import FaqAccordion from "@/components/FaqAccordion";
 import Typewriter from "@/components/Typewriter";
+import HomeBackToTop from "@/components/HomeBackToTop";
 import { JsonLd } from "@/components/StructuredData";
 import { site, stats } from "@/lib/site";
 import { featuredLocations } from "@/lib/locations";
@@ -91,30 +90,15 @@ export default function HomePage() {
         title1="IHR IMMOBILIENMAKLER"
         title2="PROVISIONSFREI"
         subtitle={`Wir verkaufen Ihre Immobilie zum Fixpreis von ${site.fixedPrice}. Kein Risiko, keine versteckten Kosten.`}
+        image="/projekte/hero-real.jpg"
       />
 
-      <section className="bg-ink border-t border-white/10 py-2">
-        <Marquee speed={30} className="py-2">
-          {[...Array(5)].map((_, i) => (
-            <div key={i} className="flex items-center text-xs uppercase tracking-[0.16em] text-white/70">
-              <span className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-gold" /> 0 % Provision</span>
-              <span className="mx-8 h-1 w-1 rounded-full bg-white/20" />
-              <span className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-gold" /> {site.fixedPrice} Fixpreis</span>
-              <span className="mx-8 h-1 w-1 rounded-full bg-white/20" />
-              <span className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-gold" /> 480+ verkaufte Objekte</span>
-              <span className="mx-8 h-1 w-1 rounded-full bg-white/20" />
-              <span className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-gold" /> Experten für die Region Zürich</span>
-              <span className="mx-8 h-1 w-1 rounded-full bg-white/20" />
-            </div>
-          ))}
-        </Marquee>
-      </section>
-
       {/* ===================================================== *
-       * FEATURED PROJECTS, Vertical Strips
+       * Selected objects, de-emphasized (few objects available)
        * ===================================================== */}
       <VerticalStrips 
-        title="UNSERE OBJEKTE"
+        title="Aktuelle Auswahl"
+        subtitle="Wenige, aktuell verfügbare Objekte – unser Fokus liegt auf dem provisionsfreien Verkauf Ihrer Immobilie."
         strips={[
           { id: "1", title: "RESIDENZ AM SEE", image: "/projekte/residenz-aussenansicht-1.jpg", href: "/kaufen/residenz-am-see" },
           { id: "2", title: "ATTIKA SEEFELD", image: "/projekte/attika-wohnen-1.jpg", href: "/kaufen/attikawohnung-seefeld" },
@@ -149,7 +133,7 @@ export default function HomePage() {
               title={
                 <>
                   Warum Prozente zahlen,
-                  <br /> wenn ein <span className="italic text-gold">Fixpreis</span> reicht?
+                  <br /> wenn ein <span className="italic text-gold-deep">Fixpreis</span> reicht?
                 </>
               }
               intro="Klassische Makler verlangen 2 bis 3 % des Verkaufspreises, für denselben Aufwand, egal wie teuer Ihr Objekt ist. Wir drehen das um: ein fairer Fixpreis, dieselbe erstklassige Vermarktung."
@@ -300,7 +284,7 @@ export default function HomePage() {
               title={
                 <>
                   Immobilienmakler in{" "}
-                  <span className="italic text-gold">Ihrer Region</span>
+                  <span className="italic text-gold-deep">Ihrer Region</span>
                 </>
               }
               intro="Lokale Marktkenntnis entscheidet über den Preis. Wir kennen jede Gemeinde rund um Zürich, finden Sie Ihren Standort."
@@ -339,7 +323,7 @@ export default function HomePage() {
        * FLOATING GALLERY, See all properties
        * ===================================================== */}
       <FloatingGallery 
-        title="ALLE IMMOBILIEN"
+        title="Portfolio"
         href="/kaufen"
         images={[
           { src: "/projekte/residenz-aussenansicht-1.jpg", alt: "Neubau-Residenz mit Seesicht", width: "26vw", height: "48vh", left: "15%", top: "25%" },
@@ -370,6 +354,7 @@ export default function HomePage() {
       </section>
 
       <CtaBanner />
+      <HomeBackToTop />
     </main>
   );
 }

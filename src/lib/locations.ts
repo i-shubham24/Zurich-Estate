@@ -13,6 +13,7 @@ export type Location = {
   regionLabel: string;
   plz: string;
   lakeside: boolean;
+  heroImage?: string;
   /** Short hero descriptor */
   headline: string;
   /** 2-3 sentence unique intro */
@@ -33,6 +34,7 @@ export type Location = {
 export const locations: Location[] = [
   {
     slug: "zuerich",
+    heroImage: "https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?w=1200&q=82&auto=format&fit=crop",
     name: "Zürich",
     regionLabel: "Stadt Zürich",
     plz: "8001, 8064",
@@ -60,6 +62,7 @@ export const locations: Location[] = [
   },
   {
     slug: "kuesnacht",
+    heroImage: "https://images.unsplash.com/photo-1521292270410-a8c4d716d518?w=1200&q=82&auto=format&fit=crop",
     name: "Küsnacht",
     regionLabel: "Zürcher Goldküste",
     plz: "8700",
@@ -87,6 +90,7 @@ export const locations: Location[] = [
   },
   {
     slug: "zollikon",
+    heroImage: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1200&q=82&auto=format&fit=crop",
     name: "Zollikon",
     regionLabel: "Zürcher Goldküste",
     plz: "8702",
@@ -114,6 +118,7 @@ export const locations: Location[] = [
   },
   {
     slug: "zumikon",
+    heroImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=82&auto=format&fit=crop",
     name: "Zumikon",
     regionLabel: "Zürcher Goldküste",
     plz: "8126",
@@ -141,6 +146,7 @@ export const locations: Location[] = [
   },
   {
     slug: "meilen",
+    heroImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=82&auto=format&fit=crop",
     name: "Meilen",
     regionLabel: "Zürcher Goldküste",
     plz: "8706",
@@ -168,6 +174,7 @@ export const locations: Location[] = [
   },
   {
     slug: "herrliberg",
+    heroImage: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1200&q=82&auto=format&fit=crop",
     name: "Herrliberg",
     regionLabel: "Zürcher Goldküste",
     plz: "8704",
@@ -195,6 +202,7 @@ export const locations: Location[] = [
   },
   {
     slug: "erlenbach",
+    heroImage: "https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=1200&q=82&auto=format&fit=crop",
     name: "Erlenbach",
     regionLabel: "Zürcher Goldküste",
     plz: "8703",
@@ -222,6 +230,7 @@ export const locations: Location[] = [
   },
   {
     slug: "kilchberg",
+    heroImage: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200&q=82&auto=format&fit=crop",
     name: "Kilchberg",
     regionLabel: "Linkes Zürichseeufer",
     plz: "8802",
@@ -249,6 +258,7 @@ export const locations: Location[] = [
   },
   {
     slug: "thalwil",
+    heroImage: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1200&q=82&auto=format&fit=crop",
     name: "Thalwil",
     regionLabel: "Linkes Zürichseeufer",
     plz: "8800",
@@ -276,6 +286,7 @@ export const locations: Location[] = [
   },
   {
     slug: "horgen",
+    heroImage: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=1200&q=82&auto=format&fit=crop",
     name: "Horgen",
     regionLabel: "Linkes Zürichseeufer",
     plz: "8810",
@@ -303,6 +314,7 @@ export const locations: Location[] = [
   },
   {
     slug: "waedenswil",
+    heroImage: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=1200&q=82&auto=format&fit=crop",
     name: "Wädenswil",
     regionLabel: "Linkes Zürichseeufer",
     plz: "8820",
@@ -330,6 +342,7 @@ export const locations: Location[] = [
   },
   {
     slug: "uster",
+    heroImage: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=82&auto=format&fit=crop",
     name: "Uster",
     regionLabel: "Zürcher Oberland",
     plz: "8610",
@@ -357,6 +370,7 @@ export const locations: Location[] = [
   },
   {
     slug: "duebendorf",
+    heroImage: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&q=82&auto=format&fit=crop",
     name: "Dübendorf",
     regionLabel: "Glattal",
     plz: "8600",
@@ -384,6 +398,7 @@ export const locations: Location[] = [
   },
   {
     slug: "wallisellen",
+    heroImage: "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?w=1200&q=82&auto=format&fit=crop",
     name: "Wallisellen",
     regionLabel: "Glattal",
     plz: "8304",
@@ -411,6 +426,7 @@ export const locations: Location[] = [
   },
   {
     slug: "bassersdorf",
+    heroImage: "https://images.unsplash.com/photo-1520637102912-2df6bb2aec6d?w=1200&q=82&auto=format&fit=crop",
     name: "Bassersdorf",
     regionLabel: "Zürcher Unterland",
     plz: "8303",
@@ -438,6 +454,7 @@ export const locations: Location[] = [
   },
   {
     slug: "kloten",
+    heroImage: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=82&auto=format&fit=crop",
     name: "Kloten",
     regionLabel: "Zürcher Unterland",
     plz: "8302",
@@ -465,6 +482,7 @@ export const locations: Location[] = [
   },
   {
     slug: "winterthur",
+    heroImage: "https://images.unsplash.com/photo-1513346940221-97493479d1b6?w=1200&q=82&auto=format&fit=crop",
     name: "Winterthur",
     regionLabel: "Winterthur & Umgebung",
     plz: "8400",

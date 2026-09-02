@@ -181,6 +181,10 @@ h1, h2, h3, h4 {
   color: var(--color-ink);
 }
 
+/* Hide scrollbar util */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { scrollbar-width: none; -ms-overflow-style: none; }
+
 /* Lenis base CSS */
 html.lenis, html.lenis body {
   height: auto;
@@ -198,9 +202,32 @@ html.lenis, html.lenis body {
   pointer-events: none;
 }
 
-/* Hide default cursor for custom cursor */
-@media (pointer: fine) {
-  body, a, button, input, textarea, select {
-    cursor: none !important;
-  }
+/* Custom cursor removed — restore standard pointer */
+
+/* Focus visible — keyboard nav */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+.sr-only:focus,
+.focus\:not-sr-only:focus {
+  position: absolute;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
 }

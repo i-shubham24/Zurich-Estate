@@ -2,57 +2,82 @@ import type { MetadataRoute } from 'next';
 import { SITE_URL } from '@/lib/site';
 import { locations } from '@/lib/locations';
 import { guides } from '@/lib/guides';
+import { projects } from '@/lib/projects';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  const staticLastMod = new Date('2026-08-01');
 
   /* ── Static routes ────────────────────────────────────────────── */
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: SITE_URL,
-      lastModified: now,
+      lastModified: staticLastMod,
       changeFrequency: 'weekly',
       priority: 1,
     },
     {
       url: `${SITE_URL}/immobilie-verkaufen`,
-      lastModified: now,
+      lastModified: staticLastMod,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
+      url: `${SITE_URL}/immobilie-bewerten`,
+      lastModified: staticLastMod,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/immobilie-kaufen`,
+      lastModified: staticLastMod,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/investieren`,
+      lastModified: staticLastMod,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/immobilienmakler`,
+      lastModified: staticLastMod,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${SITE_URL}/kaufen`,
-      lastModified: now,
+      lastModified: staticLastMod,
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
       url: `${SITE_URL}/ueber-uns`,
-      lastModified: now,
+      lastModified: staticLastMod,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${SITE_URL}/ratgeber`,
-      lastModified: now,
+      lastModified: staticLastMod,
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
       url: `${SITE_URL}/kontakt`,
-      lastModified: now,
+      lastModified: staticLastMod,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${SITE_URL}/impressum`,
-      lastModified: now,
+      lastModified: staticLastMod,
       changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
       url: `${SITE_URL}/datenschutz`,
-      lastModified: now,
+      lastModified: staticLastMod,
       changeFrequency: 'yearly',
       priority: 0.3,
     },
@@ -61,9 +86,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
   /* ── Location landing pages  /immobilienmakler/[slug] ─────────── */
   const locationRoutes: MetadataRoute.Sitemap = locations.map((loc) => ({
     url: `${SITE_URL}/immobilienmakler/${loc.slug}`,
-    lastModified: now,
+    lastModified: staticLastMod,
     changeFrequency: 'monthly' as const,
     priority: 0.8,
+  }));
+
+  /* ── Property listings  /kaufen/[slug] ─────────────────────────── */
+  const projectRoutes: MetadataRoute.Sitemap = projects.map((p) => ({
+    url: `${SITE_URL}/kaufen/${p.slug}`,
+    lastModified: staticLastMod,
+    changeFrequency: 'weekly' as const,
+    priority: 0.7,
   }));
 
   /* ── Guide articles  /ratgeber/[slug] ─────────────────────────── */
@@ -74,5 +107,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...locationRoutes, ...guideRoutes];
+  return [...staticRoutes, ...locationRoutes, ...projectRoutes, ...guideRoutes];
 }

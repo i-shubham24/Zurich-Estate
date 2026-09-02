@@ -25,7 +25,7 @@ export default function PageHero({
   align?: "left" | "center";
 }) {
   return (
-    <section className="relative flex min-h-[62vh] items-end overflow-hidden bg-ink pb-14 pt-36 md:min-h-[70vh] md:pb-20 md:pt-40">
+    <section className="relative flex min-h-[62dvh] items-end overflow-hidden bg-ink pb-14 pt-36 md:min-h-[70dvh] md:pb-20 md:pt-40">
       {image ? (
         <>
           <Image

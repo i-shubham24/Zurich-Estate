@@ -46,7 +46,7 @@ export const stats = [
   { value: "CHF 12'000", label: "Fixpreis statt Prozente" },
   { value: "0 %", label: "Maklerprovision" },
   { value: "3.8 %", label: "Über Marktwert (Ø)" },
-  { value: "480+", label: "Verkaufte Objekte" },
+  { value: "70+", label: "Vermittelte Immobilien" },
 ] as const;
 
 export type NavItem = { label: string; href: string };

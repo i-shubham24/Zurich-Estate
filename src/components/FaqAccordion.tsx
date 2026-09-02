@@ -14,10 +14,13 @@ export default function FaqAccordion({ faqs }: { faqs: Faq[] }) {
         const isOpen = open === i;
         return (
           <div key={i}>
+            <h3 className="m-0">
             <button
+              id={`faq-btn-${i}`}
               onClick={() => setOpen(isOpen ? null : i)}
               aria-expanded={isOpen}
-              className="flex w-full items-center justify-between gap-6 py-6 text-left"
+              aria-controls={`faq-panel-${i}`}
+              className="flex w-full items-center justify-between gap-6 py-6 text-left focus-visible:ring-2 focus-visible:ring-gold"
             >
               <span className="font-serif text-lg text-ink md:text-xl">{faq.q}</span>
               <Plus
@@ -26,7 +29,11 @@ export default function FaqAccordion({ faqs }: { faqs: Faq[] }) {
                 }`}
               />
             </button>
+            </h3>
             <div
+              id={`faq-panel-${i}`}
+              role="region"
+              aria-labelledby={`faq-btn-${i}`}
               className={`grid transition-all duration-300 ease-out ${
                 isOpen ? "grid-rows-[1fr] pb-6 opacity-100" : "grid-rows-[0fr] opacity-0"
               }`}

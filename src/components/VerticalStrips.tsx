@@ -14,19 +14,27 @@ interface Strip {
 
 export default function VerticalStrips({
   title = "FEATURED PROJECTS",
+  subtitle,
   strips,
 }: {
   title?: string;
+  subtitle?: string;
   strips: Strip[];
 }) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(0);
 
   return (
-    <section className="bg-ink py-24 text-white overflow-hidden">
+    <section className="bg-ink py-16 text-white overflow-hidden md:py-20">
       <div className="container-lux">
-        <h2 className="mb-12 font-sans text-4xl font-bold uppercase tracking-tight md:text-6xl">
+        <p className="eyebrow text-gold-bright/80">Aktuell verfügbar</p>
+        <h2 className="mt-3 mb-3 font-serif text-3xl font-medium tracking-tight md:text-4xl">
           {title}
         </h2>
+        {subtitle && (
+          <p className="mb-8 max-w-2xl text-sm leading-relaxed text-white/60">
+            {subtitle}
+          </p>
+        )}
         
         <div className="flex h-[85vh] w-full flex-col gap-2 md:h-[75vh] md:flex-row md:gap-4">
           {strips.map((strip, index) => {
@@ -52,14 +60,14 @@ export default function VerticalStrips({
                   {/* Overlay gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-500 group-hover:opacity-75" />
                   
-                  {/* Title text */}
+                  {/* Title text - always visible on mobile, rotated only on desktop */}
                   <div className="absolute bottom-0 left-0 flex h-full w-full flex-col justify-end p-4 md:p-8">
                     <div className="relative w-full">
                       <h3
                         className={`absolute bottom-0 left-0 origin-bottom-left transform-gpu whitespace-nowrap font-sans text-xl font-bold uppercase tracking-widest text-white transition-[transform,opacity] duration-700 ease-out [backface-visibility:hidden] [will-change:transform,opacity] md:text-4xl ${
                           isHovered
                             ? "rotate-0 opacity-100"
-                            : "opacity-0 md:opacity-100 md:-rotate-90 md:translate-y-[200px]"
+                            : "rotate-0 opacity-100 md:-rotate-90 md:translate-y-[200px]"
                         }`}
                       >
                         {strip.title}

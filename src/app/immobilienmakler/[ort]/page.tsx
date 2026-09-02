@@ -35,6 +35,15 @@ export async function generateMetadata({
       title: `${title} | Optimal Immobilien AG`,
       description,
       url: `${SITE_URL}/immobilienmakler/${loc.slug}`,
+      images: loc.heroImage ? [{ url: loc.heroImage, width: 1200, height: 630, alt: `Immobilienmakler ${loc.name}` }] : undefined,
+      locale: "de_CH",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | Optimal Immobilien AG`,
+      description,
+      images: loc.heroImage ? [loc.heroImage] : undefined,
     },
   };
 }
@@ -66,8 +75,8 @@ export default async function LocationPage({
 
       <PageHero
         eyebrow={loc.regionLabel}
-        image="/projekte/residenz-aussenansicht-2.jpg"
-        imageAlt={`Immobilienmakler ${loc.name}, Optimal Immobilien AG`}
+        image={loc.heroImage ?? "/projekte/hero-real.jpg"}
+        imageAlt={`Immobilienmakler ${loc.name}, Optimal Immobilien AG - ${loc.name} Stadtansicht`}
         crumbs={[
           { name: "Start", href: "/" },
           { name: "Standorte", href: "/immobilienmakler" },
@@ -80,6 +89,12 @@ export default async function LocationPage({
         }
         subtitle={`Provisionsfrei verkaufen zum Fixpreis von ${site.fixedPrice}, mit einem Makler, der ${loc.name} und den lokalen Markt genau kennt.`}
       >
+        <div className="mb-2 flex flex-wrap items-center gap-3">
+          <span className="inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-xs font-bold uppercase tracking-[0.14em] text-ink shadow-[var(--shadow-luxe)]">
+            <span className="h-2 w-2 rounded-full bg-ink/20" /> Fixpreis {site.fixedPrice} · 0 % Provision
+          </span>
+          <span className="hidden text-xs uppercase tracking-[0.16em] text-white/60 md:inline">Alle Leistungen inklusive</span>
+        </div>
         <ButtonLink href="/#bewertung" variant="gold">
           Kostenlose Bewertung
         </ButtonLink>
@@ -87,6 +102,17 @@ export default async function LocationPage({
           Markt in {loc.name}
         </ButtonLink>
       </PageHero>
+
+      {/* Highlight bar - CHF 12k on every city page */}
+      <div className="bg-gold py-3">
+        <div className="container-lux flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-center text-sm font-semibold tracking-[0.04em] text-ink md:justify-between">
+          <span className="inline-flex items-center gap-2"><Check className="h-4 w-4" /> Fixpreis {site.fixedPrice} statt 2–3 % Provision</span>
+          <span className="hidden h-4 w-px bg-ink/15 md:block" />
+          <span>Provision 0 % · Transparenz 100 %</span>
+          <span className="hidden h-4 w-px bg-ink/15 md:block" />
+          <span>Ihre Ersparnis bleibt bei Ihnen</span>
+        </div>
+      </div>
 
       {/* Intro */}
       <section className="bg-cream py-20 md:py-24">
