@@ -56,7 +56,7 @@ export default function SiteHeader() {
       <div className="container-lux flex items-center justify-between py-4 md:py-5">
         <Logo tone="onDark" />
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Hauptnavigation">
+        <nav className="hidden items-center gap-0.5 xl:gap-1 xl:flex" aria-label="Hauptnavigation">
           {/* Services dropdown — CSS hover for instant, state for click/keyboard */}
           <div
             className="group relative"
@@ -70,7 +70,7 @@ export default function SiteHeader() {
               aria-haspopup="true"
               aria-controls="services-menu"
               onKeyDown={(e) => { if (e.key === "Escape") setServicesOpen(false); }}
-              className={`eyebrow flex items-center gap-1.5 rounded-full px-4 py-3 tracking-[0.14em] transition-colors focus-visible:ring-2 focus-visible:ring-gold ${
+              className={`eyebrow flex items-center gap-1.5 rounded-full px-3 py-3 2xl:px-4 tracking-[0.14em] transition-colors focus-visible:ring-2 focus-visible:ring-gold ${
                 servicesActive ? "text-gold-bright" : "text-white/75 hover:text-gold-bright group-hover:text-gold-bright"
               }`}
             >
@@ -111,7 +111,7 @@ export default function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`eyebrow rounded-full px-4 py-3 tracking-[0.14em] transition-colors ${
+                className={`eyebrow rounded-full px-3 py-3 2xl:px-4 tracking-[0.14em] transition-colors ${
                   active ? "text-gold-bright" : "text-white/75 hover:text-gold-bright"
                 }`}
               >
@@ -121,12 +121,12 @@ export default function SiteHeader() {
           })}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 xl:gap-3">
           <a
             href={site.phoneHref}
-            className="hidden items-center gap-2 text-sm font-semibold text-white/85 transition-colors hover:text-white xl:flex"
+            className="hidden items-center gap-2 whitespace-nowrap text-sm font-semibold text-white/85 transition-colors hover:text-white xl:flex"
           >
-            <Phone className="h-4 w-4 text-gold" />
+            <Phone className="h-4 w-4 shrink-0 text-gold" />
             {site.phone}
           </a>
           <Magnetic>
@@ -143,7 +143,7 @@ export default function SiteHeader() {
             aria-label={open ? "Menü schliessen" : "Menü öffnen"}
             aria-expanded={open}
             onKeyDown={(e) => { if (e.key === "Escape") setOpen(false); }}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-gold lg:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-gold xl:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -152,7 +152,7 @@ export default function SiteHeader() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="max-h-[calc(100vh-72px)] overflow-y-auto lg:hidden">
+        <div className="max-h-[calc(100vh-72px)] overflow-y-auto xl:hidden">
           <nav
             className="container-lux flex flex-col border-t border-white/10 pb-8 pt-4"
             aria-label="Mobile Navigation"

@@ -77,6 +77,8 @@ export default function ValuationForm() {
 
   const optionBase =
     "p-6 border text-left transition-all duration-200 hover:border-gold hover:bg-gold/[0.04]";
+  const optionCenter =
+    "p-6 border text-center transition-all duration-200 hover:border-gold hover:bg-gold/[0.04]";
 
   return (
     <div
@@ -103,13 +105,13 @@ export default function ValuationForm() {
                   <button
                     key={v}
                     onClick={() => select("intent", v)}
-                    className={`${optionBase} flex flex-col items-center gap-3 text-center ${
+                    className={`${optionCenter} flex min-h-[158px] flex-col items-center justify-center gap-3 ${
                       formData.intent === v ? "border-gold bg-gold/[0.06]" : "border-line"
                     }`}
                   >
                     <Icon className="h-9 w-9 text-graphite" strokeWidth={1.3} />
-                    <span className="font-medium text-ink">{v}</span>
-                    <span className="text-xs leading-tight text-graphite/60">{hint}</span>
+                    <span className="font-medium text-ink text-center">{v}</span>
+                    <span className="text-center text-xs leading-tight text-graphite/60 w-full px-2">{hint}</span>
                   </button>
                 ))}
               </div>

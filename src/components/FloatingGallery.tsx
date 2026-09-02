@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, useSpring, MotionValue, useReducedMoti
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useLanguage } from "./LanguageContext";
 
 interface FloatingImage {
   src: string;
@@ -79,6 +80,15 @@ export default function FloatingGallery({
   href?: string;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { lang } = useLanguage();
+  const isEn = lang === "en";
+  // Localized titles — large & capital, different words per language (not same)
+  const displayTitle = title === "Portfolio" ? (isEn ? "PROPERTIES" : "IMMOBILIEN") : title.toUpperCase();
+  // alternative: use PROJECTS/PROJEKTE if preferred: isEn ? "PROJECTS" : "PROJEKTE"
+  const eyebrowDe = "Ausgewählte Projekte";
+  const eyebrowEn = "Selected Properties";
+  const ctaDe = "Alle ansehen →";
+  const ctaEn = "View all →";
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -98,15 +108,15 @@ export default function FloatingGallery({
     >
       <div className="sticky top-0 flex h-[100dvh] w-full items-center justify-center overflow-hidden">
         
-        {/* Solid Text Behind Images - de-emphasized */}
+        {/* Solid Text Behind Images - large & capital */}
         <div className="absolute inset-0 flex flex-col items-center justify-center z-0 pointer-events-none">
-          <p className="eyebrow mb-4 text-gold-bright/70">Ausgewählte Objekte</p>
-          <h2 className="text-center font-serif text-[clamp(2rem,5vw,5.5rem)] font-medium leading-[0.9] tracking-tight text-white">
-            {title.split(' ').map((word, i) => (
+          <p className="eyebrow mb-4 text-gold-bright/70">{isEn ? eyebrowEn : eyebrowDe}</p>
+          <h2 className="text-center font-sans text-[clamp(3rem,9vw,9.5rem)] font-bold uppercase leading-[0.85] tracking-tighter text-white">
+            {displayTitle.split(' ').map((word, i) => (
               <span key={i} className="block">{word}</span>
             ))}
           </h2>
-          <span className="mt-4 text-xs uppercase tracking-[0.18em] text-transparent">Alle ansehen →</span>
+          <span className="mt-4 text-xs uppercase tracking-[0.18em] text-transparent">{isEn ? ctaEn : ctaDe}</span>
         </div>
 
         {images.map((img, i) => {
@@ -115,18 +125,18 @@ export default function FloatingGallery({
           return <FloatingItem key={i} img={img} progress={smoothProgress} delay={delay} />;
         })}
 
-        {/* Hollow Text In Front of Images (z-20) - de-emphasized */}
+        {/* Hollow Text In Front of Images (z-20) - large & capital */}
         <Link href={href} className="absolute inset-0 flex flex-col items-center justify-center z-20 group">
-          <p className="eyebrow mb-4 text-transparent">Ausgewählte Objekte</p>
+          <p className="eyebrow mb-4 text-transparent">{isEn ? eyebrowEn : eyebrowDe}</p>
           <h2 
-            className="text-center font-serif text-[clamp(2rem,5vw,5.5rem)] font-medium leading-[0.9] tracking-tight text-transparent transition-colors duration-500 group-hover:text-gold/20"
-            style={{ WebkitTextStroke: "1px rgba(255,255,255,0.7)" }}
+            className="text-center font-sans text-[clamp(3rem,9vw,9.5rem)] font-bold uppercase leading-[0.85] tracking-tighter text-transparent transition-colors duration-500 group-hover:text-gold/20"
+            style={{ WebkitTextStroke: "1.2px rgba(255,255,255,0.85)" }}
           >
-            {title.split(' ').map((word, i) => (
+            {displayTitle.split(' ').map((word, i) => (
               <span key={i} className="block">{word}</span>
             ))}
           </h2>
-          <span className="mt-4 text-xs uppercase tracking-[0.18em] text-white/50 group-hover:text-gold-bright">Alle ansehen →</span>
+          <span className="mt-4 text-xs uppercase tracking-[0.18em] text-white/60 group-hover:text-gold-bright">{isEn ? ctaEn : ctaDe}</span>
         </Link>
       </div>
     </section>

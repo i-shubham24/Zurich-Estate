@@ -36,7 +36,7 @@ export default function VerticalStrips({
           </p>
         )}
         
-        <div className="flex h-[85vh] w-full flex-col gap-2 md:h-[75vh] md:flex-row md:gap-4">
+        <div className="flex h-[68vh] w-full flex-col gap-2 lg:h-[75vh] lg:flex-row lg:gap-4">
           {strips.map((strip, index) => {
             const isHovered = hoveredIndex === index;
             
@@ -60,19 +60,17 @@ export default function VerticalStrips({
                   {/* Overlay gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-500 group-hover:opacity-75" />
                   
-                  {/* Title text - always visible on mobile, rotated only on desktop */}
-                  <div className="absolute bottom-0 left-0 flex h-full w-full flex-col justify-end p-4 md:p-8">
-                    <div className="relative w-full">
-                      <h3
-                        className={`absolute bottom-0 left-0 origin-bottom-left transform-gpu whitespace-nowrap font-sans text-xl font-bold uppercase tracking-widest text-white transition-[transform,opacity] duration-700 ease-out [backface-visibility:hidden] [will-change:transform,opacity] md:text-4xl ${
-                          isHovered
-                            ? "rotate-0 opacity-100"
-                            : "rotate-0 opacity-100 md:-rotate-90 md:translate-y-[200px]"
-                        }`}
-                      >
-                        {strip.title}
-                      </h3>
-                    </div>
+                  {/* Title text - left bottom, small, straight up */}
+                  <div className="absolute inset-0">
+                    <h3
+                      className={`absolute whitespace-nowrap font-sans font-semibold uppercase tracking-[0.14em] text-white transition-all duration-700 ease-out [backface-visibility:hidden] [will-change:transform,opacity] text-[1.1rem] lg:text-[1.15rem] xl:text-[1.3rem] ${
+                        isHovered
+                          ? "bottom-8 left-8 lg:bottom-10 lg:left-8 rotate-0 origin-bottom-left opacity-100"
+                          : "bottom-8 left-8 rotate-0 origin-bottom-left opacity-100 lg:bottom-6 lg:left-8 lg:-rotate-90 lg:origin-bottom-left"
+                      }`}
+                    >
+                      {strip.title}
+                    </h3>
                   </div>
                 </Link>
               </div>

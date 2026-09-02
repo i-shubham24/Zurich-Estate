@@ -61,9 +61,14 @@ export default function LocationsCarousel({ items }: { items: Location[] }) {
               href={`/immobilienmakler/${loc.slug}`}
               className="group relative flex h-[220px] w-[85vw] min-w-[280px] max-w-[320px] shrink-0 snap-start flex-col justify-between overflow-hidden border border-line bg-white p-6 transition-all duration-300 hover:border-gold hover:shadow-[var(--shadow-luxe)] sm:w-[320px]"
             >
-              <div className="absolute -bottom-8 -right-8 opacity-[0.03] transition-transform duration-500 group-hover:scale-110 group-hover:opacity-[0.05] pointer-events-none">
-                <BgIcon className="h-48 w-48 text-ink" strokeWidth={1} />
+              {/* subtle sand wash + dot grid */}
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-sand/35 via-transparent to-transparent" />
+              <div className="pointer-events-none absolute inset-0 opacity-[0.032]" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, #b8935e 1px, transparent 0)", backgroundSize: "22px 22px" }} />
+              <div className="pointer-events-none absolute right-3 top-12 opacity-[0.05]" style={{ width: "160px", height: "90px", backgroundImage: `url("data:image/svg+xml,%3Csvg width='160' height='90' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 45 Q 40 15 80 45 T 160 45' stroke='%23b8935e' stroke-width='1.1' fill='none'/%3E%3Cpath d='M0 65 Q 40 35 80 65 T 160 65' stroke='%23b8935e' stroke-width='1.1' fill='none'/%3E%3C/svg%3E")` }} />
+              <div className="pointer-events-none absolute bottom-3 right-3 opacity-[0.09] transition-all duration-500 group-hover:scale-[1.04] group-hover:opacity-[0.14]">
+                <BgIcon className="h-48 w-48 text-gold" strokeWidth={1.15} />
               </div>
+              <span className="pointer-events-none absolute left-0 top-0 h-[2px] w-0 bg-gold transition-all duration-500 group-hover:w-full" />
 
               <div className="relative z-10 flex items-start justify-between">
                 <MapPin className="h-5 w-5 text-gold" />

@@ -50,8 +50,10 @@ export default function ScrollTextHero({
           alt="Luxuriöse Immobilie in Zürich mit Seesicht – Optimal Immobilien AG, Fixpreis CHF 12'000"
           fill
           priority
-          className="object-cover opacity-60"
+          fetchPriority="high"
           sizes="100vw"
+          quality={75}
+          className="object-cover opacity-60"
         />
         {/* Dark gradient overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent" />
