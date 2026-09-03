@@ -22,7 +22,7 @@ export const site = {
   phone: "+41 43 540 82 27",
   phoneHref: "tel:+41435408227",
   email: "info@optimal-immobilien.ch",
-  emailHref: "mailto:info@optimal-immobilien.ch",
+  emailHref: "https://mail.google.com/mail/?view=cm&fs=1&to=info@optimal-immobilien.ch",
 
   address: {
     street: "Holzacherweg 18a",
