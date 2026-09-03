@@ -182,16 +182,10 @@ export default function SiteHeader() {
                 {item.label}
               </Link>
             ))}
-            <div className="mt-6 flex flex-col gap-3">
-              <Link
-                href="/#bewertung"
-                className="rounded-full bg-gold px-6 py-4 text-center text-sm font-semibold uppercase tracking-[0.14em] text-ink"
-              >
-                Kostenlose Beratung
-              </Link>
+            <div className="mt-6 flex">
               <a
                 href={site.phoneHref}
-                className="flex items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-4 text-white"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-4 text-white hover:bg-white/5 transition-colors"
               >
                 <Phone className="h-4 w-4 text-gold" />
                 {site.phone}
