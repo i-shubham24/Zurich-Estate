@@ -74,10 +74,10 @@ export const projects: Project[] = [
     area: 280,
     price: "Preis auf Anfrage",
     status: "Erfolgreich vermittelt",
-    image: "/projekte/residenz-aussenansicht-2.jpg",
+    image: "/projekte/villa-kuesnacht-exterior.jpg",
     gallery: [
-      "/projekte/residenz-aussenansicht-2.jpg",
-      "/projekte/erdgeschoss-wohnbereich.jpg",
+      "/projekte/villa-kuesnacht-exterior.jpg",
+      "/projekte/villa-kuesnacht-interior.jpg",
     ],
     description:
       "Freistehende Villa an bester Goldküsten-Lage mit Panoramablick über den Zürichsee. Erfolgreich über dem Marktwert vermittelt.",
