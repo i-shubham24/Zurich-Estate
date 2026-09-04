@@ -34,7 +34,7 @@ export type Location = {
 export const locations: Location[] = [
   {
     slug: "zuerich",
-    heroImage: "/locations/zurich-panorama.jpg",
+    heroImage: "/locations/zurich-panorama-2.jpg",
     name: "Zürich",
     regionLabel: "Stadt Zürich",
     plz: "8001, 8064",
@@ -258,7 +258,7 @@ export const locations: Location[] = [
   },
   {
     slug: "thalwil",
-    heroImage: "/locations/city-fountain.jpg",
+    heroImage: "/locations/bern-clock-tower.jpg",
     name: "Thalwil",
     regionLabel: "Linkes Zürichseeufer",
     plz: "8800",
@@ -370,7 +370,7 @@ export const locations: Location[] = [
   },
   {
     slug: "duebendorf",
-    heroImage: "/locations/zurich-panorama.jpg",
+    heroImage: "/locations/bern-fountain.jpg",
     name: "Dübendorf",
     regionLabel: "Glattal",
     plz: "8600",
@@ -398,7 +398,7 @@ export const locations: Location[] = [
   },
   {
     slug: "wallisellen",
-    heroImage: "/locations/mega-mansion.jpg",
+    heroImage: "/locations/swiss-village.jpg",
     name: "Wallisellen",
     regionLabel: "Glattal",
     plz: "8304",
@@ -426,7 +426,7 @@ export const locations: Location[] = [
   },
   {
     slug: "bassersdorf",
-    heroImage: "/locations/swiss-waterfront.jpg",
+    heroImage: "/locations/zurich-limmat.jpg",
     name: "Bassersdorf",
     regionLabel: "Zürcher Unterland",
     plz: "8303",
@@ -454,7 +454,7 @@ export const locations: Location[] = [
   },
   {
     slug: "kloten",
-    heroImage: "/locations/curved-apartments.jpg",
+    heroImage: "/locations/city-fountain.jpg",
     name: "Kloten",
     regionLabel: "Zürcher Unterland",
     plz: "8302",
@@ -482,7 +482,7 @@ export const locations: Location[] = [
   },
   {
     slug: "winterthur",
-    heroImage: "/locations/luxury-chalet.jpg",
+    heroImage: "/locations/zurich-panorama-2.jpg",
     name: "Winterthur",
     regionLabel: "Winterthur & Umgebung",
     plz: "8400",
