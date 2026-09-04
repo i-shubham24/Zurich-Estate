@@ -13,7 +13,7 @@ export type Project = {
   rooms: number;
   area: number;
   price: string;
-  status: "Verfügbar" | "Reserviert" | "Verkauft" | "In Vermarktung";
+  status: "Erfolgreich vermittelt" | "Referenzprojekt";
   image: string;
   gallery?: string[];
   description: string;
@@ -24,14 +24,14 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "residenz-am-see",
-    title: "Residenz am See, Neubau-Attika",
+    title: "Residenz am See, 5 Exklusive Wohnungen",
     location: "Region Zürichsee",
     region: "Zürichsee",
-    type: "Attika · Neubau-Erstvermarktung",
+    type: "Neubau-Erstvermarktung",
     rooms: 5.5,
     area: 208,
     price: "Preis auf Anfrage",
-    status: "In Vermarktung",
+    status: "Referenzprojekt",
     image: "/projekte/residenz-aussenansicht-1.jpg",
     gallery: [
       "/projekte/residenz-aussenansicht-1.jpg",
@@ -42,14 +42,14 @@ export const projects: Project[] = [
       "/projekte/obergeschoss-wohnbereich.jpg",
     ],
     description:
-      "Eine architektonische Ausnahme­erscheinung in sonniger Hanglage: bodentiefe Verglasungen, ein fliessender Grundriss über zwei Ebenen und eine Attika mit weitem Blick über See und Landschaft. Erstklassiger Ausbau mit Eichenparkett, Designküche und grosszügiger Dachterrasse.",
+      "Ein herausragendes Neubauprojekt in sonniger Hanglage, bestehend aus 5 exklusiven Eigentumswohnungen. Jede Einheit besticht durch bodentiefe Verglasungen, durchdachte Grundrisse und einen erstklassigen Ausbau. Ein Paradebeispiel für unsere umfassende Expertise in der Vermarktung von hochwertigen Neubauprojekten.",
     highlights: [
+      "5 individuelle Einheiten",
       "Unverbaubare See- und Weitsicht",
       "Bodentiefe Fenster & viel Tageslicht",
-      "Attika mit umlaufender Dachterrasse",
-      "Hochwertige Designküche & Eichenparkett",
-      "Zwei Wohnebenen mit offener Treppe",
-      "Provisionsfreie Vermarktung",
+      "Hochwertige Designküchen & Eichenparkett",
+      "Umfassende Erstvermarktung",
+      "Provisionsfreie Abwicklung",
     ],
     flagship: true,
   },
@@ -62,10 +62,10 @@ export const projects: Project[] = [
     rooms: 4.5,
     area: 145,
     price: "Preis auf Anfrage",
-    status: "Verfügbar",
+    status: "Erfolgreich vermittelt",
     image: "/projekte/attika-wohnen-1.jpg",
     description:
-      "Grosszügige Attika im begehrten Seefeld, hell, ruhig und nur wenige Schritte vom See entfernt.",
+      "Grosszügige Attika im begehrten Seefeld. Ein hervorragendes Beispiel unserer schnellen und diskreten Immobilienvermittlung in der Stadt Zürich.",
   },
   {
     slug: "villa-seesicht-kuesnacht",
@@ -76,38 +76,10 @@ export const projects: Project[] = [
     rooms: 6.5,
     area: 280,
     price: "Preis auf Anfrage",
-    status: "Verfügbar",
+    status: "Erfolgreich vermittelt",
     image: "/projekte/residenz-aussenansicht-2.jpg",
     description:
-      "Freistehende Villa an bester Goldküsten-Lage mit Panoramablick über den Zürichsee.",
-  },
-  {
-    slug: "gartenwohnung-meilen",
-    title: "Gartenwohnung am Hang",
-    location: "8706 Meilen",
-    region: "Goldküste",
-    type: "Eigentumswohnung",
-    rooms: 4.5,
-    area: 132,
-    price: "Preis auf Anfrage",
-    status: "Reserviert",
-    image: "/projekte/erdgeschoss-wohnbereich.jpg",
-    description:
-      "Lichtdurchflutete Gartenwohnung mit eigenem Sitzplatz und Blick ins Grüne.",
-  },
-  {
-    slug: "penthouse-kilchberg",
-    title: "Penthouse mit Weitblick",
-    location: "8802 Kilchberg",
-    region: "Linkes Ufer",
-    type: "Attika",
-    rooms: 5.5,
-    area: 176,
-    price: "Preis auf Anfrage",
-    status: "Verkauft",
-    image: "/projekte/obergeschoss-wohnbereich.jpg",
-    description:
-      "Exklusives Penthouse in Kilchberg, verkauft in nur 18 Tagen über dem Angebotspreis.",
+      "Freistehende Villa an bester Goldküsten-Lage mit Panoramablick über den Zürichsee. Erfolgreich über dem Marktwert vermittelt.",
   },
 ];
 

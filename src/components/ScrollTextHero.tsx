@@ -14,7 +14,7 @@ export default function ScrollTextHero({
 }: {
   title1?: string;
   title2?: string;
-  subtitle?: string;
+  subtitle?: string | React.ReactNode;
   image?: string;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -24,7 +24,7 @@ export default function ScrollTextHero({
     offset: ["start end", "end start"],
   });
 
-  // Spring-smoothed progress → glassy parallax instead of frame jitter
+  // Spring-smoothed progress — glassy parallax instead of frame jitter
   const progress = useSpring(scrollYProgress, {
     stiffness: 120,
     damping: 30,
@@ -47,7 +47,7 @@ export default function ScrollTextHero({
       <motion.div style={{ y: imageY }} className="absolute inset-0 z-0 h-[120%] w-full">
         <Image
           src={image}
-          alt="Luxuriöse Immobilie in Zürich mit Seesicht – Optimal Immobilien AG, Fixpreis CHF 12'000"
+          alt="Luxuriöse Immobilie in Zürich mit Seesicht — Optimal Immobilien AG, Fixpreis CHF 12&apos;000"
           fill
           priority
           fetchPriority="high"
@@ -64,7 +64,7 @@ export default function ScrollTextHero({
         style={{ y: textY, opacity: textOpacity }} 
         className="relative z-10 flex w-full flex-col items-center px-4 text-center"
       >
-        <h1 className="font-sans text-[clamp(2rem,6vw,5rem)] font-bold uppercase leading-[1] tracking-wide text-white drop-shadow-2xl">
+        <h1 className="font-sans text-[clamp(1.5rem,4.5vw,4rem)] font-bold uppercase leading-[1] tracking-wide text-white drop-shadow-2xl">
           <span className="block">{title1}</span>
           <span className="block italic text-gold">
             {title2}

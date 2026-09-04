@@ -79,17 +79,21 @@ export default function IntroCurtain() {
         className="flex flex-col items-center gap-8"
       >
         <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
+          initial={{ opacity: 0, scale: 0.90 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <Image
-            src="/brand/optimal-logo-transparent.png"
-            alt="Optimal Immobilien AG"
-            width={916}
-            height={220}
-            priority
-            className="h-[52px] w-auto object-contain md:h-[64px]"
+          {/* Large OI Logo */}
+          <div 
+            className="h-[100px] w-[90px] md:h-[120px] md:w-[110px]"
+            style={{
+              backgroundColor: "#b8935e",
+              WebkitMask: "url('/brand/optimal-logo-transparent.png') no-repeat left center",
+              mask: "url('/brand/optimal-logo-transparent.png') no-repeat left center",
+              WebkitMaskSize: "auto 100%",
+              maskSize: "auto 100%"
+            }}
+            aria-label="Optimal Immobilien AG"
           />
         </motion.div>
         <motion.p
@@ -98,7 +102,7 @@ export default function IntroCurtain() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          Provisionsfrei · Fixpreis CHF 12'000
+          Provisionsfrei · Fixpreis CHF 12&apos;000
         </motion.p>
       </motion.div>
     </motion.div>

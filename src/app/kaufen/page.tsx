@@ -14,9 +14,9 @@ import { projects, flagshipProject } from "@/lib/projects";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "Immobilien kaufen in Zürich & am Zürichsee",
+  title: "Unsere Referenzen & Immobilienprojekte",
   description:
-    "Exklusive Wohnungen, Häuser und Neubauprojekte in Zürich, an der Goldküste und am Zürichsee. Entdecken Sie aktuelle Objekte von Optimal Immobilien AG.",
+    "Erfolgreich vermittelte Wohnungen, Häuser und Neubauprojekte in Zürich, an der Goldküste und am Zürichsee. Entdecken Sie die Referenzen der Optimal Immobilien AG.",
   alternates: { canonical: "/kaufen" },
 };
 
@@ -25,6 +25,8 @@ const statusStyles: Record<string, string> = {
   "In Vermarktung": "bg-gold text-ink",
   Reserviert: "bg-gold/90 text-ink",
   Verkauft: "bg-graphite/80 text-white",
+  "Erfolgreich vermittelt": "bg-graphite/80 text-white",
+  "Referenzprojekt": "bg-gold text-ink",
 };
 
 export default function KaufenPage() {
@@ -40,23 +42,23 @@ export default function KaufenPage() {
       />
 
       <PageHero
-        eyebrow="Aktuelle Objekte"
+        eyebrow="Unsere Referenzen"
         image="/projekte/attika-kueche-seeblick.jpg"
         imageAlt="Exklusive Immobilie mit Seesicht am Zürichsee"
         crumbs={[
           { name: "Start", href: "/" },
-          { name: "Immobilien", href: "/kaufen" },
+          { name: "Projekte", href: "/kaufen" },
         ]}
         title={
           <>
-            Immobilien kaufen in{" "}
-            <span className="italic text-gold"><Typewriter text="Zürich & am See" /></span>
+            Unsere Projekte in{" "}
+            <span className="italic text-gold">Zürich & am See</span>
           </>
         }
-        subtitle="Sorgfältig ausgewählte Wohnungen, Häuser und Neubauprojekte in den besten Lagen der Region Zürich."
+        subtitle="Ein Überblick über unsere erfolgreich vermittelten Wohnungen, Häuser und Neubauprojekte in den besten Lagen der Region Zürich."
       >
-        <ButtonLink href="/kontakt" variant="gold">
-          Suchauftrag erteilen
+        <ButtonLink href="/#bewertung" variant="gold">
+          Immobilie bewerten lassen
         </ButtonLink>
       </PageHero>
 
@@ -74,7 +76,7 @@ export default function KaufenPage() {
                   alt={flagshipProject.title}
                 />
                 <span
-                  className={`absolute left-5 top-5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] z-10 ${statusStyles[flagshipProject.status]}`}
+                  className={`absolute left-5 top-5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] z-10 ${statusStyles[flagshipProject.status] || "bg-ink text-white"}`}
                 >
                   {flagshipProject.status}
                 </span>
@@ -111,26 +113,25 @@ export default function KaufenPage() {
       <section className="bg-sand py-16 md:py-24">
         <div className="container-lux">
           <SectionHeading
-            eyebrow="Weitere Objekte"
-            title="Aktuelle Angebote"
-            intro="Ein Auszug aus unserem Portfolio in Zürich und Umgebung."
+            eyebrow="Weitere Projekte"
+            title="Erfolgreich vermittelt"
+            intro="Ein Auszug aus unseren vergangenen Projekten und Mandaten."
           />
           <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 perspective-[2000px]">
             {others.map((p, i) => (
               <Reveal key={p.slug} delay={(i % 2) * 90}>
-                <TiltCard>
-                  <Link href={`/kaufen/${p.slug}`} className="group flex h-full flex-col bg-white">
-                    <div className="relative aspect-[3/2] overflow-hidden">
+                <TiltCard className="group flex h-full flex-col bg-white">
+                  <Link href={`/kaufen/${p.slug}`} className="flex h-full flex-col">
+                    <div className="relative aspect-[4/3] w-full overflow-hidden">
                       <Image
                         src={p.image}
                         alt={p.title}
                         fill
-                        quality={70}
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, 50vw"
-                        className={`object-cover transition-transform duration-700 group-hover:scale-105 ${p.status === "Verkauft" ? "grayscale-[0.35]" : ""}`}
                       />
                       <span
-                        className={`absolute left-4 top-4 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.14em] ${statusStyles[p.status]}`}
+                        className={`absolute left-4 top-4 px-3 py-1 text-[0.7rem] font-bold uppercase tracking-wider z-10 ${statusStyles[p.status] || "bg-ink text-white"}`}
                       >
                         {p.status}
                       </span>

@@ -35,7 +35,7 @@ import { faqJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 const homeFaqs = [
   {
     q: "Was kostet ein Immobilienmakler in Zürich bei Optimal Immobilien?",
-    a: "Sie verkaufen provisionsfrei zum Fixpreis von CHF 12'000, unabhängig vom Verkaufspreis. Keine prozentuale Provision, keine versteckten Kosten. Bei einem Objekt von CHF 2 Mio. sparen Sie so gegenüber einer klassischen 3 % Provision rund CHF 48'000.",
+    a: "Sie verkaufen provisionsfrei zum Fixpreis von CHF 12&apos;000, unabhängig vom Verkaufspreis. Keine prozentuale Provision, keine versteckten Kosten. Bei einem Objekt von CHF 2 Mio. sparen Sie so gegenüber einer klassischen 3 % Provision rund CHF 48'000.",
   },
   {
     q: "In welchen Regionen ist Optimal Immobilien tätig?",
@@ -88,9 +88,9 @@ export default function HomePage() {
        * ===================================================== */}
       <ScrollTextHero 
         title1="IHR IMMOBILIENMAKLER"
-        title2="PROVISIONSFREI"
-        subtitle={`Wir verkaufen Ihre Immobilie zum Fixpreis von ${site.fixedPrice}. Kein Risiko, keine versteckten Kosten.`}
-        image="/projekte/hero-real.jpg"
+        title2="CHF 12&apos;000"
+        subtitle={<>Wir verkaufen Ihre Immobilie zum Fixpreis von <strong className="font-bold text-white">CHF 12&apos;000</strong>. Kein Risiko, keine versteckten Kosten.</>}
+        image="/projekte/attika-wohnen-1.jpg"
       />
 
       {/* ===================================================== *
@@ -103,7 +103,6 @@ export default function HomePage() {
           { id: "1", title: "RESIDENZ AM SEE", image: "/projekte/residenz-aussenansicht-1.jpg", href: "/kaufen/residenz-am-see" },
           { id: "2", title: "ATTIKA SEEFELD", image: "/projekte/attika-wohnen-1.jpg", href: "/kaufen/attikawohnung-seefeld" },
           { id: "3", title: "VILLA KÜSNACHT", image: "/projekte/residenz-aussenansicht-2.jpg", href: "/kaufen/villa-seesicht-kuesnacht" },
-          { id: "4", title: "GARTENWOHNUNG MEILEN", image: "/projekte/erdgeschoss-wohnbereich.jpg", href: "/kaufen/gartenwohnung-meilen" },
         ]}
       />
 
@@ -157,7 +156,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="font-semibold text-ink">Optimal Immobilien</span>
-                  <span className="font-serif text-3xl text-ink">CHF 12'000</span>
+                  <span className="font-serif text-3xl text-ink">CHF 12&apos;000</span>
                 </div>
               </div>
               <div className="mt-8 flex items-center justify-between bg-gold/10 px-6 py-5">
