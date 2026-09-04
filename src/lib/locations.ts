@@ -34,7 +34,7 @@ export type Location = {
 export const locations: Location[] = [
   {
     slug: "zuerich",
-    heroImage: "/locations/zurich-river.jpg",
+    heroImage: "/locations/zurich-panorama.jpg",
     name: "Zürich",
     regionLabel: "Stadt Zürich",
     plz: "8001, 8064",
@@ -90,7 +90,7 @@ export const locations: Location[] = [
   },
   {
     slug: "zollikon",
-    heroImage: "/locations/city-fountain.jpg",
+    heroImage: "/locations/swiss-waterfront.jpg",
     name: "Zollikon",
     regionLabel: "Zürcher Goldküste",
     plz: "8702",
@@ -146,7 +146,7 @@ export const locations: Location[] = [
   },
   {
     slug: "meilen",
-    heroImage: "/locations/luxury-construction.jpg",
+    heroImage: "/locations/luxury-chalet.jpg",
     name: "Meilen",
     regionLabel: "Zürcher Goldküste",
     plz: "8706",
@@ -202,7 +202,7 @@ export const locations: Location[] = [
   },
   {
     slug: "erlenbach",
-    heroImage: "/locations/city-street.jpg",
+    heroImage: "/locations/alpine-chalet.jpg",
     name: "Erlenbach",
     regionLabel: "Zürcher Goldküste",
     plz: "8703",
@@ -258,7 +258,7 @@ export const locations: Location[] = [
   },
   {
     slug: "thalwil",
-    heroImage: "/locations/zurich-river.jpg",
+    heroImage: "/locations/city-fountain.jpg",
     name: "Thalwil",
     regionLabel: "Linkes Zürichseeufer",
     plz: "8800",
@@ -286,7 +286,7 @@ export const locations: Location[] = [
   },
   {
     slug: "horgen",
-    heroImage: "/locations/mega-mansion.jpg",
+    heroImage: "/locations/luxury-construction.jpg",
     name: "Horgen",
     regionLabel: "Linkes Zürichseeufer",
     plz: "8810",
@@ -314,7 +314,7 @@ export const locations: Location[] = [
   },
   {
     slug: "waedenswil",
-    heroImage: "/locations/city-fountain.jpg",
+    heroImage: "/locations/city-street.jpg",
     name: "Wädenswil",
     regionLabel: "Linkes Zürichseeufer",
     plz: "8820",
@@ -342,7 +342,7 @@ export const locations: Location[] = [
   },
   {
     slug: "uster",
-    heroImage: "/locations/curved-apartments.jpg",
+    heroImage: "/locations/zurich-river.jpg",
     name: "Uster",
     regionLabel: "Zürcher Oberland",
     plz: "8610",
@@ -370,7 +370,7 @@ export const locations: Location[] = [
   },
   {
     slug: "duebendorf",
-    heroImage: "/locations/luxury-construction.jpg",
+    heroImage: "/locations/zurich-panorama.jpg",
     name: "Dübendorf",
     regionLabel: "Glattal",
     plz: "8600",
@@ -398,7 +398,7 @@ export const locations: Location[] = [
   },
   {
     slug: "wallisellen",
-    heroImage: "/locations/mansion-topdown.jpg",
+    heroImage: "/locations/mega-mansion.jpg",
     name: "Wallisellen",
     regionLabel: "Glattal",
     plz: "8304",
@@ -426,7 +426,7 @@ export const locations: Location[] = [
   },
   {
     slug: "bassersdorf",
-    heroImage: "/locations/city-street.jpg",
+    heroImage: "/locations/swiss-waterfront.jpg",
     name: "Bassersdorf",
     regionLabel: "Zürcher Unterland",
     plz: "8303",
@@ -454,7 +454,7 @@ export const locations: Location[] = [
   },
   {
     slug: "kloten",
-    heroImage: "/locations/heavy-construction.jpg",
+    heroImage: "/locations/curved-apartments.jpg",
     name: "Kloten",
     regionLabel: "Zürcher Unterland",
     plz: "8302",
@@ -482,7 +482,7 @@ export const locations: Location[] = [
   },
   {
     slug: "winterthur",
-    heroImage: "/locations/zurich-river.jpg",
+    heroImage: "/locations/luxury-chalet.jpg",
     name: "Winterthur",
     regionLabel: "Winterthur & Umgebung",
     plz: "8400",
