@@ -3,7 +3,7 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ReactNode } from "react";
 
-export default function TiltCard({ children }: { children: ReactNode }) {
+export default function TiltCard({ children, className = "" }: { children: ReactNode; className?: string }) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -47,7 +47,7 @@ export default function TiltCard({ children }: { children: ReactNode }) {
       whileHover={{ scale: 1.02 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
-      <div style={{ transform: "translateZ(30px)" }} className="h-full w-full shadow-lg">
+      <div style={{ transform: "translateZ(30px)" }} className={`h-full w-full shadow-lg ${className}`}>
         {children}
       </div>
     </motion.div>
