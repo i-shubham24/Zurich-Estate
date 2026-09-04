@@ -36,10 +36,7 @@ export const projects: Project[] = [
     gallery: [
       "/projekte/residenz-aussenansicht-1.jpg",
       "/projekte/attika-kueche-seeblick.jpg",
-      "/projekte/attika-wohnen-1.jpg",
       "/projekte/attika-wohnen-3.jpg",
-      "/projekte/residenz-aussenansicht-2.jpg",
-      "/projekte/obergeschoss-wohnbereich.jpg",
     ],
     description:
       "Ein herausragendes Neubauprojekt in sonniger Hanglage, bestehend aus 5 exklusiven Eigentumswohnungen. Jede Einheit besticht durch bodentiefe Verglasungen, durchdachte Grundrisse und einen erstklassigen Ausbau. Ein Paradebeispiel für unsere umfassende Expertise in der Vermarktung von hochwertigen Neubauprojekten.",
@@ -63,7 +60,7 @@ export const projects: Project[] = [
     area: 145,
     price: "Preis auf Anfrage",
     status: "Erfolgreich vermittelt",
-    image: "/projekte/attika-wohnen-1.jpg",
+    image: "/projekte/obergeschoss-wohnbereich.jpg",
     description:
       "Grosszügige Attika im begehrten Seefeld. Ein hervorragendes Beispiel unserer schnellen und diskreten Immobilienvermittlung in der Stadt Zürich.",
   },
@@ -78,6 +75,10 @@ export const projects: Project[] = [
     price: "Preis auf Anfrage",
     status: "Erfolgreich vermittelt",
     image: "/projekte/residenz-aussenansicht-2.jpg",
+    gallery: [
+      "/projekte/residenz-aussenansicht-2.jpg",
+      "/projekte/erdgeschoss-wohnbereich.jpg",
+    ],
     description:
       "Freistehende Villa an bester Goldküsten-Lage mit Panoramablick über den Zürichsee. Erfolgreich über dem Marktwert vermittelt.",
   },

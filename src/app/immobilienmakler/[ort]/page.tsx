@@ -59,13 +59,6 @@ export default async function LocationPage({
 
   const nearby = getNearby(loc);
 
-  const fallbackImages = [
-    "/projekte/residenz-aussenansicht-1.jpg",
-    "/projekte/attika-wohnen-1.jpg",
-    "/projekte/residenz-aussenansicht-2.jpg",
-  ];
-  const fallbackImage = fallbackImages[loc.slug.length % fallbackImages.length];
-
   return (
     <main>
       <JsonLd
@@ -82,7 +75,7 @@ export default async function LocationPage({
 
       <PageHero
         eyebrow={loc.regionLabel}
-        image={loc.heroImage ?? fallbackImage}
+        image={loc.heroImage ?? "/projekte/hero-real.jpg"}
         imageAlt={`Immobilienmakler ${loc.name}, Optimal Immobilien AG - ${loc.name} Stadtansicht`}
         crumbs={[
           { name: "Start", href: "/" },
