@@ -13,14 +13,17 @@ export default function Logo({ tone = "onDark", className = "" }: LogoProps) {
       aria-label="Optimal Immobilien AG, Startseite"
       className={`group inline-flex items-center ${className}`}
     >
-      <div 
-        className="h-[36px] w-[150px] md:h-[40px] md:w-[166px]"
+      <Image
+        src="/brand/optimal-logo-transparent.png"
+        alt="Optimal Immobilien AG"
+        width={916}
+        height={220}
+        priority
+        className="h-[36px] w-auto object-contain md:h-[40px] drop-shadow-md"
         style={{
-          backgroundColor: "#b8935e",
-          WebkitMask: "url('/brand/optimal-logo-transparent.png') no-repeat left center / contain",
-          mask: "url('/brand/optimal-logo-transparent.png') no-repeat left center / contain"
+          filter: "brightness(0) saturate(100%) invert(73%) sepia(43%) saturate(541%) hue-rotate(6deg) brightness(95%) contrast(88%)"
         }}
-        aria-label="Optimal Immobilien AG"
+        sizes="200px"
       />
     </Link>
   );

@@ -84,17 +84,19 @@ export default function IntroCurtain() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           {/* Large OI Logo */}
-          <div 
-            className="h-[100px] w-[90px] md:h-[120px] md:w-[110px]"
-            style={{
-              backgroundColor: "#b8935e",
-              WebkitMask: "url('/brand/optimal-logo-transparent.png') no-repeat left center",
-              mask: "url('/brand/optimal-logo-transparent.png') no-repeat left center",
-              WebkitMaskSize: "auto 100%",
-              maskSize: "auto 100%"
-            }}
-            aria-label="Optimal Immobilien AG"
-          />
+          <div className="relative h-[100px] w-[90px] md:h-[120px] md:w-[110px] overflow-hidden">
+            <Image
+              src="/brand/optimal-logo-transparent.png"
+              alt="Optimal Immobilien AG"
+              width={916}
+              height={220}
+              priority
+              className="absolute left-0 top-0 h-full w-auto object-cover object-left drop-shadow-lg"
+              style={{
+                filter: "brightness(0) saturate(100%) invert(73%) sepia(43%) saturate(541%) hue-rotate(6deg) brightness(95%) contrast(88%)"
+              }}
+            />
+          </div>
         </motion.div>
         <motion.p
           className="eyebrow text-gold-bright/70"
