@@ -84,17 +84,14 @@ export default function IntroCurtain() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           {/* Large OI Logo */}
-          <div className="relative h-[100px] w-[90px] md:h-[120px] md:w-[110px] overflow-hidden">
+          <div className="relative h-[120px] w-[110px] md:h-[150px] md:w-[130px] overflow-hidden">
             <Image
-              src="/brand/optimal-logo-transparent.png"
+              src="/brand/real-logo-transparent.png"
               alt="Optimal Immobilien AG"
               width={916}
               height={220}
               priority
-              className="absolute left-0 top-0 h-full w-auto object-cover object-left drop-shadow-lg"
-              style={{
-                filter: "brightness(0) saturate(100%) invert(73%) sepia(43%) saturate(541%) hue-rotate(6deg) brightness(95%) contrast(88%)"
-              }}
+              className="absolute left-0 top-0 h-full w-auto object-cover object-left drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] brightness-[1.2] contrast-[1.3]"
             />
           </div>
         </motion.div>

@@ -60,8 +60,8 @@ export default function SiteHeader() {
           {/* Services dropdown — CSS hover for instant, state for click/keyboard */}
           <div
             className="group relative"
-            onFocus={() => setServicesOpen(true)}
-            onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setServicesOpen(false); }}
+            onMouseEnter={() => setServicesOpen(true)}
+            onMouseLeave={() => setServicesOpen(false)}
           >
             <button
               type="button"
@@ -69,14 +69,13 @@ export default function SiteHeader() {
               aria-expanded={servicesOpen}
               aria-haspopup="true"
               aria-controls="services-menu"
-              onKeyDown={(e) => { if (e.key === "Escape") setServicesOpen(false); }}
               className={`eyebrow flex items-center gap-1.5 rounded-full px-3 py-3 2xl:px-4 tracking-[0.14em] transition-colors focus-visible:ring-2 focus-visible:ring-gold ${
-                servicesActive ? "text-gold-bright" : "text-white/75 hover:text-gold-bright group-hover:text-gold-bright"
+                servicesActive ? "text-gold-bright" : "text-white/75 hover:text-gold-bright"
               }`}
             >
               Dienstleistungen
               <ChevronDown
-                className={`h-3.5 w-3.5 transition-transform duration-200 ${servicesOpen ? "rotate-180" : "group-hover:rotate-180"}`}
+                className={`h-3.5 w-3.5 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`}
               />
             </button>
             <div
@@ -85,7 +84,7 @@ export default function SiteHeader() {
               className={`absolute left-0 top-full pt-3 transition-all duration-150 ${
                 servicesOpen
                   ? "pointer-events-auto translate-y-0 opacity-100"
-                  : "pointer-events-none -translate-y-1 opacity-0 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100"
+                  : "pointer-events-none -translate-y-1 opacity-0"
               }`}
             >
               <div className="w-72 overflow-hidden border border-white/10 bg-slate/95 shadow-2xl backdrop-blur-md">
@@ -93,6 +92,7 @@ export default function SiteHeader() {
                   <Link
                     key={s.slug}
                     href={s.href}
+                    onClick={() => setServicesOpen(false)}
                     className="block border-b border-white/5 px-5 py-3.5 transition-colors last:border-0 hover:bg-white/[0.05]"
                   >
                     <span className="block text-sm font-medium text-white/90">{s.title}</span>
