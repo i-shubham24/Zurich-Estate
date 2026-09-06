@@ -29,8 +29,6 @@ function FloatingItem({
   const popFull = 0.2 + delay;
   const hideStart = 0.8;
   const hideFull = 0.95;
-  const xTransform = useTransform(progress, [popStart, popFull, hideStart, hideFull], ["50%", img.left, img.left, img.left]);
-  const yTransform = useTransform(progress, [popStart, popFull, hideStart, hideFull], ["50%", img.top, img.top, "150%"]);
   const scale = useTransform(progress, [popStart, popFull, hideStart, hideFull], [0, 1, 1, 0.8]);
   const opacity = useTransform(progress, [popStart, popFull, hideStart, hideFull], [0, 1, 1, 0]);
 
@@ -54,14 +52,16 @@ function FloatingItem({
   return (
     <motion.div
       style={{
-        left: xTransform,
-        top: yTransform,
+        left: img.left,
+        top: img.top,
         scale,
         opacity,
         width: img.width,
         height: img.height,
         x: "-50%",
         y: "-50%",
+        willChange: "transform, opacity",
+        WebkitTransform: "translate3d(0,0,0)"
       }}
       className="absolute z-10 overflow-hidden shadow-2xl brightness-90 transition-all duration-300 hover:z-50 hover:brightness-110 hover:scale-105"
     >
@@ -95,11 +95,8 @@ export default function FloatingGallery({
     offset: ["start start", "end end"], 
   });
 
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
+  // Disable useSpring to prevent iOS rubber-band double-smoothing conflicts
+  const smoothProgress = scrollYProgress;
 
   return (
     <section 

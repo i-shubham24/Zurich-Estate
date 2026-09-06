@@ -25,12 +25,7 @@ export default function ScrollTextHero({
   });
 
   // Spring-smoothed progress — glassy parallax instead of frame jitter
-  const progress = useSpring(scrollYProgress, {
-    stiffness: 120,
-    damping: 30,
-    mass: 0.4,
-    restDelta: 0.001,
-  });
+  const progress = scrollYProgress;
 
   // Background image moves slightly slower than normal scroll
   const imageY = useTransform(progress, [0, 1], ["-8%", "8%"]);
@@ -44,7 +39,7 @@ export default function ScrollTextHero({
       ref={containerRef} 
       className="relative flex h-[100dvh] min-h-[600px] w-full flex-col items-center justify-center overflow-hidden bg-ink"
     >
-      <motion.div style={{ y: imageY }} className="absolute inset-0 z-0 h-[120%] w-full">
+      <motion.div style={{ y: imageY, willChange: "transform", WebkitTransform: "translate3d(0,0,0)" }} className="absolute inset-0 z-0 h-[120%] w-full">
         <Image
           src={image}
           alt="Luxuriöse Immobilie in Zürich mit Seesicht — Optimal Immobilien AG, Fixpreis CHF 12&apos;000"
@@ -61,7 +56,7 @@ export default function ScrollTextHero({
       </motion.div>
 
       <motion.div 
-        style={{ y: textY, opacity: textOpacity }} 
+        style={{ y: textY, opacity: textOpacity, willChange: "transform, opacity", WebkitTransform: "translate3d(0,0,0)" }} 
         className="relative z-10 flex w-full flex-col items-center px-4 text-center"
       >
         <h1 className="font-sans text-[clamp(1.5rem,4.5vw,4rem)] font-bold uppercase leading-[1] tracking-wide text-white drop-shadow-2xl">
