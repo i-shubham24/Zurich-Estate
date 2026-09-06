@@ -35,7 +35,7 @@ function FloatingItem({
   if (shouldReduce) {
     return (
       <div
-        className="absolute overflow-hidden shadow-2xl brightness-90"
+        className="absolute overflow-hidden shadow-md md:shadow-2xl brightness-90"
         style={{
           left: img.left,
           top: img.top,
@@ -63,7 +63,7 @@ function FloatingItem({
         willChange: "transform, opacity",
         WebkitTransform: "translate3d(0,0,0)"
       }}
-      className="absolute z-10 overflow-hidden shadow-2xl brightness-90 transition-all duration-300 hover:z-50 hover:brightness-110 hover:scale-105"
+      className="absolute z-10 overflow-hidden shadow-md md:shadow-2xl brightness-90 transition-all duration-300 hover:z-50 hover:brightness-110 hover:scale-105"
     >
       <Image src={img.src} alt={img.alt} fill className="object-cover" sizes="(max-width: 768px) 50vw, 33vw" />
     </motion.div>

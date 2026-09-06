@@ -47,9 +47,9 @@ export default function SiteHeader() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 will-change-transform [transform:translate3d(0,0,0)] ${
         scrolled || open
-          ? "bg-slate backdrop-blur-md shadow-[0_10px_30px_-20px_rgba(0,0,0,0.8)]"
+          ? "bg-slate/95 md:bg-slate/90 md:backdrop-blur-md shadow-[0_10px_30px_-20px_rgba(0,0,0,0.8)]"
           : "bg-gradient-to-b from-black/60 to-transparent"
       }`}
     >
