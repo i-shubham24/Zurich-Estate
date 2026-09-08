@@ -60,8 +60,6 @@ function FloatingItem({
         height: img.height,
         x: "-50%",
         y: "-50%",
-        willChange: "transform, opacity",
-        WebkitTransform: "translate3d(0,0,0)"
       }}
       className="absolute z-10 overflow-hidden shadow-md md:shadow-2xl brightness-90 transition-all duration-300 hover:z-50 hover:brightness-110 hover:scale-105"
     >
@@ -101,9 +99,9 @@ export default function FloatingGallery({
   return (
     <section 
       ref={containerRef} 
-      className="relative flex h-[180dvh] w-full items-start justify-center bg-ink"
+      className="relative flex h-[180svh] w-full items-start justify-center bg-ink"
     >
-      <div className="sticky top-0 flex h-[100dvh] w-full items-center justify-center overflow-hidden">
+      <div className="sticky top-0 flex h-[100svh] w-full items-center justify-center overflow-hidden">
         
         {/* Solid Text Behind Images - large & capital */}
         <div className="absolute inset-0 flex flex-col items-center justify-center z-0 pointer-events-none">

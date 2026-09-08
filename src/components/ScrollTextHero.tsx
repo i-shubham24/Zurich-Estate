@@ -1,9 +1,8 @@
 "use client";
 
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import Typewriter from "@/components/Typewriter";
 import { ButtonLink } from "@/components/ui";
 
 export default function ScrollTextHero({
@@ -18,28 +17,40 @@ export default function ScrollTextHero({
   image?: string;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    const checkTouch = () => {
+      setIsTouchDevice(
+        window.matchMedia("(max-width: 767px), (pointer: coarse)").matches
+      );
+    };
+    checkTouch();
+    window.addEventListener("resize", checkTouch);
+    return () => window.removeEventListener("resize", checkTouch);
+  }, []);
+
+  // Track the hero section from the top of the page until it exits the viewport
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"],
+    offset: ["start start", "end start"],
   });
 
-  // Spring-smoothed progress — glassy parallax instead of frame jitter
-  const progress = scrollYProgress;
-
-  // Background image moves slightly slower than normal scroll
-  const imageY = useTransform(progress, [0, 1], ["-8%", "8%"]);
-
-  // Text drifts up, creating a gentle parallax overlap effect
-  const textY = useTransform(progress, [0, 1], ["12%", "-28%"]);
-  const textOpacity = useTransform(progress, [0, 0.35, 0.7, 1], [1, 1, 1, 0]);
+  // Desktop parallax transforms: smooth 0 -> target translation
+  const desktopImageY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+  const desktopTextY = useTransform(scrollYProgress, [0, 1], ["0%", "-18%"]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.45, 0.9], [1, 1, 0]);
 
   return (
     <section 
       ref={containerRef} 
-      className="relative flex h-[100dvh] min-h-[600px] w-full flex-col items-center justify-center overflow-hidden bg-ink"
+      className="relative flex h-[100svh] min-h-[600px] md:h-screen w-full flex-col items-center justify-center overflow-hidden bg-ink"
     >
-      <motion.div style={{ y: imageY, willChange: "transform", WebkitTransform: "translate3d(0,0,0)" }} className="absolute inset-0 z-0 h-[120%] w-full">
+      {/* Background Image: Static on mobile to prevent compositor/JS desync jitter; parallax on desktop */}
+      <motion.div 
+        style={isTouchDevice ? undefined : { y: desktopImageY }} 
+        className="absolute inset-0 z-0 h-full w-full md:-top-[10%] md:h-[120%]"
+      >
         <Image
           src={image}
           alt="Luxuriöse Immobilie in Zürich mit Seesicht — Optimal Immobilien AG, Fixpreis CHF 12&apos;000"
@@ -55,8 +66,9 @@ export default function ScrollTextHero({
         <div className="absolute inset-0 bg-gradient-to-b from-ink via-transparent to-transparent" />
       </motion.div>
 
+      {/* Hero content: Native 120fps scroll momentum on mobile; subtle parallax on desktop */}
       <motion.div 
-        style={{ y: textY, opacity: textOpacity, willChange: "transform, opacity", WebkitTransform: "translate3d(0,0,0)" }} 
+        style={isTouchDevice ? { opacity: textOpacity } : { y: desktopTextY, opacity: textOpacity }} 
         className="relative z-10 flex w-full flex-col items-center px-4 text-center"
       >
         <h1 className="font-sans text-[clamp(1.5rem,4.5vw,4rem)] font-bold uppercase leading-[1] tracking-wide text-white drop-shadow-2xl">
@@ -79,7 +91,10 @@ export default function ScrollTextHero({
       </motion.div>
 
       {/* Scroll indicator at the bottom */}
-      <div className="absolute bottom-10 z-20 flex flex-col items-center text-xs tracking-[0.2em] text-white/60">
+      <motion.div 
+        style={{ opacity: textOpacity }}
+        className="absolute bottom-10 z-20 flex flex-col items-center text-xs tracking-[0.2em] text-white/60"
+      >
         <span>SCROLL</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
@@ -88,7 +103,7 @@ export default function ScrollTextHero({
         >
           ↓
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }
