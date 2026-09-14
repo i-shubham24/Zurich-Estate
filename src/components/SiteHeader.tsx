@@ -56,7 +56,7 @@ export default function SiteHeader() {
       <div className="container-lux flex items-center justify-between py-4 md:py-5">
         <Logo tone="onDark" />
 
-        <nav className="hidden items-center gap-0.5 xl:gap-1 xl:flex" aria-label="Hauptnavigation">
+        <nav className="hidden items-center gap-1 xl:gap-2 xl:flex shrink-0" aria-label="Hauptnavigation">
           {/* Services dropdown — CSS hover for instant, state for click/keyboard */}
           <div
             className="group relative"
@@ -69,7 +69,7 @@ export default function SiteHeader() {
               aria-expanded={servicesOpen}
               aria-haspopup="true"
               aria-controls="services-menu"
-              className={`eyebrow flex items-center gap-1.5 rounded-full px-3 py-3 2xl:px-4 tracking-[0.14em] transition-colors focus-visible:ring-2 focus-visible:ring-gold ${
+              className={`eyebrow flex items-center gap-1.5 rounded-full px-3 py-3 2xl:px-4 tracking-[0.14em] whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-gold ${
                 servicesActive ? "text-gold-bright" : "text-white/75 hover:text-gold-bright"
               }`}
             >
@@ -111,7 +111,7 @@ export default function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`eyebrow rounded-full px-3 py-3 2xl:px-4 tracking-[0.14em] transition-colors ${
+                className={`eyebrow rounded-full px-3 py-3 2xl:px-4 tracking-[0.14em] whitespace-nowrap transition-colors ${
                   active ? "text-gold-bright" : "text-white/75 hover:text-gold-bright"
                 }`}
               >
@@ -121,25 +121,29 @@ export default function SiteHeader() {
           })}
         </nav>
 
-        <div className="flex items-center gap-2 xl:gap-3">
-          <a
-            href={site.phoneHref}
-            className="hidden items-center gap-2 whitespace-nowrap text-sm font-semibold text-white/85 transition-colors hover:text-white xl:flex"
-          >
-            <Phone className="h-4 w-4 shrink-0 text-gold" />
-            {site.phone}
-          </a>
-          <a
-            href={site.emailHref}
-            className="hidden items-center gap-2 whitespace-nowrap text-sm font-semibold text-white/85 transition-colors hover:text-white xl:flex ml-2"
-          >
-            <Mail className="h-4 w-4 shrink-0 text-gold" />
-            {site.email}
-          </a>
+        <div className="flex items-center gap-3 xl:gap-5 shrink-0">
+          <div className="hidden xl:flex items-center gap-1">
+            <a
+              href={site.phoneHref}
+              aria-label="Anrufen"
+              className="flex h-10 w-10 items-center justify-center text-gold transition-colors hover:bg-white/10 hover:text-gold-bright"
+            >
+              <Phone className="h-5 w-5 shrink-0" />
+            </a>
+            <a
+              href={site.emailHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="E-Mail schreiben"
+              className="flex h-10 w-10 items-center justify-center text-gold transition-colors hover:bg-white/10 hover:text-gold-bright"
+            >
+              <Mail className="h-5 w-5 shrink-0" />
+            </a>
+          </div>
           <Magnetic>
             <Link
               href="/kontakt"
-              className="hidden rounded-full bg-gold px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-ink transition-all hover:bg-gold-bright sm:inline-flex"
+              className="hidden bg-gold px-6 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-ink transition-all hover:bg-gold-bright sm:inline-flex"
             >
               Kontakt
             </Link>
@@ -199,6 +203,8 @@ export default function SiteHeader() {
               </a>
               <a
                 href={site.emailHref}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-4 text-white hover:bg-white/5 transition-colors"
               >
                 <Mail className="h-4 w-4 text-gold" />

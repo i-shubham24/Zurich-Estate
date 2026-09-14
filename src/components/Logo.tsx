@@ -11,10 +11,10 @@ export default function Logo({ tone = "onDark", className = "" }: LogoProps) {
     <Link
       href="/"
       aria-label="Optimal Immobilien AG, Startseite"
-      className={`group inline-flex items-center ${className}`}
+      className={`group inline-flex items-center shrink-0 ${className}`}
     >
       <div
-        className="h-[75px] w-[310px] md:h-[90px] md:w-[375px] bg-gold drop-shadow-md"
+        className="h-[65px] w-[270px] md:h-[75px] md:w-[312px] bg-gold drop-shadow-md"
         style={{
           WebkitMaskImage: 'url(/brand/real-logo-transparent.png)',
           WebkitMaskSize: 'contain',
