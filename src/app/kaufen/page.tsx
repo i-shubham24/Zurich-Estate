@@ -25,7 +25,7 @@ const statusStyles: Record<string, string> = {
   "In Vermarktung": "bg-gold text-ink",
   Reserviert: "bg-gold/90 text-ink",
   Verkauft: "bg-graphite/80 text-white",
-  "Erfolgreich vermittelt": "bg-graphite/80 text-white",
+  "Kürzlich erfolgreich vermittelt": "bg-graphite/80 text-white",
   "Referenzprojekt": "bg-gold text-ink",
 };
 
@@ -114,7 +114,7 @@ export default function KaufenPage() {
         <div className="container-lux">
           <SectionHeading
             eyebrow="Weitere Projekte"
-            title="Erfolgreich vermittelt"
+            title="Kürzlich erfolgreich vermittelt"
             intro="Ein Auszug aus unseren vergangenen Projekten und Mandaten."
           />
           <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 perspective-[2000px]">
@@ -144,8 +144,8 @@ export default function KaufenPage() {
                         {p.title}
                       </h3>
                       <div className="mt-auto flex items-center gap-x-6 gap-y-2 border-t border-line pt-5 text-sm text-graphite/70">
-                        <span className="flex items-center gap-2"><BedDouble className="h-4 w-4 text-graphite/40" /> {p.rooms} Zi.</span>
-                        <span className="flex items-center gap-2"><Maximize className="h-4 w-4 text-graphite/40" /> {p.area} m²</span>
+                        <span className="flex items-center gap-2"><BedDouble className="h-4 w-4 text-graphite/40" /> {typeof p.rooms === 'number' ? `${p.rooms} Zi.` : p.rooms}</span>
+                        <span className="flex items-center gap-2"><Maximize className="h-4 w-4 text-graphite/40" /> {typeof p.area === 'number' ? `${p.area} m²` : p.area}</span>
                         <span className="ml-auto font-semibold text-ink">{p.price}</span>
                       </div>
                     </div>

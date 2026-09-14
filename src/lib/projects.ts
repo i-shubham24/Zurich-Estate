@@ -10,10 +10,10 @@ export type Project = {
   location: string;
   region: string;
   type: string;
-  rooms: number;
-  area: number;
+  rooms: number | string;
+  area: number | string;
   price: string;
-  status: "Erfolgreich vermittelt" | "Referenzprojekt";
+  status: "Kürzlich erfolgreich vermittelt" | "Referenzprojekt";
   image: string;
   gallery?: string[];
   description: string;
@@ -51,36 +51,56 @@ export const projects: Project[] = [
     flagship: true,
   },
   {
-    slug: "attikawohnung-seefeld",
-    title: "Moderne Attikawohnung im Seefeld",
-    location: "8008 Zürich Seefeld",
-    region: "Stadt Zürich",
-    type: "Eigentumswohnung",
-    rooms: 4.5,
-    area: 145,
-    price: "Preis auf Anfrage",
-    status: "Erfolgreich vermittelt",
-    image: "/projekte/obergeschoss-wohnbereich.jpg",
-    description:
-      "Grosszügige Attika im begehrten Seefeld. Ein hervorragendes Beispiel unserer schnellen und diskreten Immobilienvermittlung in der Stadt Zürich.",
-  },
-  {
-    slug: "villa-seesicht-kuesnacht",
-    title: "Villa mit Seesicht",
-    location: "8700 Küsnacht",
-    region: "Goldküste",
-    type: "Einfamilienhaus",
-    rooms: 6.5,
-    area: 280,
-    price: "Preis auf Anfrage",
-    status: "Erfolgreich vermittelt",
-    image: "/projekte/villa-kuesnacht-exterior.jpg",
+    slug: "neubau-nuerensdorf",
+    title: "Neubauprojekt Nürensdorf",
+    location: "8309 Nürensdorf",
+    region: "Zürcher Unterland",
+    type: "Neubau-Erstvermarktung",
+    rooms: "3 Einheiten",
+    area: "Auf Anfrage",
+    price: "Erfolgreich verkauft",
+    status: "Kürzlich erfolgreich vermittelt",
+    image: "/locations/heavy-construction.jpg",
     gallery: [
-      "/projekte/villa-kuesnacht-exterior.jpg",
-      "/projekte/villa-kuesnacht-interior.jpg",
+      "/locations/heavy-construction.jpg",
     ],
     description:
-      "Freistehende Villa an bester Goldküsten-Lage mit Panoramablick über den Zürichsee. Erfolgreich über dem Marktwert vermittelt.",
+      "In Nürensdorf entsteht ein moderner Neubau mit 3 hochwertigen Eigentumswohnungen. Das Projekt befindet sich derzeit in der Bauphase und nimmt mit den laufenden Aushubarbeiten erste sichtbare Formen an. Bereits in diesem frühen Stadium sind alle Einheiten erfolgreich verkauft worden. Ein grosser Meilenstein, während das Projekt noch im Bau ist.",
+    highlights: [
+      "Neubauprojekt mit 3 Eigentumswohnungen",
+      "Vollständig verkauft während der Bauphase",
+      "Bau- und Aushubarbeiten derzeit im Gange",
+      "Attraktive Lage in Nürensdorf",
+      "Erfolgreich vermarktet vor Fertigstellung",
+      "Professioneller Verkaufsprozess",
+    ],
+  },
+  {
+    slug: "neubau-birchwil",
+    title: "Neubauprojekt Birchwil",
+    location: "Birchwil / Nürensdorf",
+    region: "Zürcher Unterland",
+    type: "Neubau-Erstvermarktung",
+    rooms: "3 Einheiten",
+    area: "Auf Anfrage",
+    price: "Erfolgreich verkauft",
+    status: "Kürzlich erfolgreich vermittelt",
+    image: "/projekte/obergeschoss-wohnbereich.jpg",
+    gallery: [
+      "/projekte/obergeschoss-wohnbereich.jpg",
+      "/projekte/attika-wohnen-1.jpg",
+      "/projekte/erdgeschoss-wohnbereich.jpg",
+    ],
+    description:
+      "In Birchwil entsteht ein exklusiver Neubau mit 3 individuell gestalteten Eigentumswohnungen. Das Projekt befindet sich derzeit in der Bauphase und verbindet moderne Architektur mit grosszügigen Wohnkonzepten und einem hochwertigen Ausbau. Alle Einheiten wurden von uns während der Bauphase erfolgreich verkauft.\n\nDie Wohnungen umfassen eine exklusive Attikawohnung, eine grosszügige 3.5-Zimmer-Wohnung im mittleren Geschoss und eine 4.5-Zimmer-Gartenwohnung mit privatem Aussenbereich.",
+    highlights: [
+      "Neubauprojekt mit 3 Eigentumswohnungen",
+      "Exklusive Attikawohnung",
+      "Grosszügige 3.5-Zimmer-Wohnung",
+      "4.5-Zimmer-Gartenwohnung",
+      "Moderne Architektur und hochwertiger Ausbau",
+      "Vollständig von uns verkauft während der Bauphase",
+    ],
   },
 ];
 

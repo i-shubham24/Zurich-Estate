@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
 import Logo from "./Logo";
 import Magnetic from "./Magnetic";
 import { site, services } from "@/lib/site";
@@ -129,12 +129,19 @@ export default function SiteHeader() {
             <Phone className="h-4 w-4 shrink-0 text-gold" />
             {site.phone}
           </a>
+          <a
+            href={site.emailHref}
+            className="hidden items-center gap-2 whitespace-nowrap text-sm font-semibold text-white/85 transition-colors hover:text-white xl:flex ml-2"
+          >
+            <Mail className="h-4 w-4 shrink-0 text-gold" />
+            {site.email}
+          </a>
           <Magnetic>
             <Link
-              href="/#bewertung"
+              href="/kontakt"
               className="hidden rounded-full bg-gold px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-ink transition-all hover:bg-gold-bright sm:inline-flex"
             >
-              Gratis-Bewertung
+              Kontakt
             </Link>
           </Magnetic>
           <button
@@ -182,13 +189,20 @@ export default function SiteHeader() {
                 {item.label}
               </Link>
             ))}
-            <div className="mt-6 flex">
+            <div className="mt-6 flex flex-col gap-3">
               <a
                 href={site.phoneHref}
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-4 text-white hover:bg-white/5 transition-colors"
               >
                 <Phone className="h-4 w-4 text-gold" />
                 {site.phone}
+              </a>
+              <a
+                href={site.emailHref}
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-4 text-white hover:bg-white/5 transition-colors"
+              >
+                <Mail className="h-4 w-4 text-gold" />
+                {site.email}
               </a>
             </div>
           </nav>

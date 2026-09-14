@@ -34,7 +34,7 @@ export type Location = {
 export const locations: Location[] = [
   {
     slug: "zuerich",
-    heroImage: "/locations/zurich-limmat.jpg",
+    heroImage: "/locations/zurich-river.jpg",
     name: "Zürich",
     regionLabel: "Stadt Zürich",
     plz: "8001, 8064",
@@ -286,7 +286,7 @@ export const locations: Location[] = [
   },
   {
     slug: "horgen",
-    heroImage: "/locations/swiss-waterfront.jpg",
+    heroImage: "/locations/bern-clock-tower-2.jpg",
     name: "Horgen",
     regionLabel: "Linkes Zürichseeufer",
     plz: "8810",

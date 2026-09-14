@@ -47,8 +47,8 @@ export default async function ProjectPage({
 
   const specs = [
     { icon: Building2, label: "Objektart", value: project.type },
-    { icon: BedDouble, label: "Zimmer", value: `${project.rooms}` },
-    { icon: Maximize, label: "Wohnfläche", value: `${project.area} m²` },
+    { icon: BedDouble, label: "Zimmer", value: typeof project.rooms === 'number' ? `${project.rooms}` : project.rooms },
+    { icon: Maximize, label: "Wohnfläche", value: typeof project.area === 'number' ? `${project.area} m²` : project.area },
     { icon: MapPin, label: "Lage", value: project.location },
   ];
 

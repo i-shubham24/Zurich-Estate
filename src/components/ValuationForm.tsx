@@ -1,4 +1,5 @@
 "use client";
+import { submitValuation } from "@/actions/valuation";
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -52,27 +53,35 @@ export default function ValuationForm() {
     timers.current.push(t);
   };
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
     // Honeypot
     if (formData.website) return;
-    // Rate-limit: 1 submission per 30s (client-side; server should enforce with arcjet/upstash)
+    
+    // Rate-limit check (client-side)
     const last = typeof window !== "undefined" ? Number(localStorage.getItem("valuation_last") || 0) : 0;
     if (Date.now() - last < 30_000) {
       setError("Bitte warten Sie kurz vor der nächsten Anfrage.");
       return;
     }
+
     const parsed = valuationSchema.safeParse(formData);
     if (!parsed.success) {
       setError("Bitte füllen Sie alle Felder korrekt aus.");
       return;
     }
-    // TODO: replace setTimeout with Server Action + Turnstile/arcjet
-    // await fetch("/api/bewertung", { method:"POST", body: JSON.stringify(parsed.data) })
+
+    // Call secure server action (anti-injection and strict validation)
+    const result = await submitValuation(parsed.data);
+    
+    if (result.error) {
+      setError(result.error);
+      return;
+    }
+
     localStorage.setItem("valuation_last", String(Date.now()));
-    const t = window.setTimeout(next, 700);
-    timers.current.push(t);
+    next();
   };
 
   const optionBase =
