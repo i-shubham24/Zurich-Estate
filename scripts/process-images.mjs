@@ -1,7 +1,8 @@
 import sharp from "sharp";
-import { mkdirSync } from "node:fs";
+import { mkdirSync, existsSync } from "node:fs";
 
 const RAW = "_rawimages";
+const ASSETS = "src/assets";
 const OUT = "public/projekte";
 const BRAND = "public/brand";
 mkdirSync(OUT, { recursive: true });
@@ -20,8 +21,8 @@ const jobs = [
 ];
 
 for (const [src, name] of jobs) {
+  if (!existsSync(`${RAW}/${src}`)) continue;
   const input = sharp(`${RAW}/${src}`).rotate();
-  // Full-quality web hero source (next/image downsizes further per breakpoint)
   await input
     .clone()
     .resize({ width: 2400, withoutEnlargement: true })
@@ -31,10 +32,58 @@ for (const [src, name] of jobs) {
   console.log(`${name}.jpg  ${meta.width}x${meta.height}`);
 }
 
-// Optimize the brand logo (transparent-friendly PNG kept, plus a trimmed copy)
-await sharp("_rawimages/Optimal Immobilien Logo Bild.png")
-  .resize({ width: 600, withoutEnlargement: true })
-  .png({ quality: 90 })
-  .toFile(`${BRAND}/optimal-immobilien-logo.png`);
+// Process Birchwil Visualisierungen
+if (existsSync(`${RAW}/birchwil_vis_page_1.png`)) {
+  await sharp(`${RAW}/birchwil_vis_page_1.png`)
+    .resize({ width: 2400, withoutEnlargement: true })
+    .jpeg({ quality: 86, mozjpeg: true, chromaSubsampling: "4:4:4" })
+    .toFile(`${OUT}/birchwil-residenz-aussenansicht-1.jpg`);
+}
+if (existsSync(`${RAW}/birchwil_vis_page_2.png`)) {
+  await sharp(`${RAW}/birchwil_vis_page_2.png`)
+    .resize({ width: 2400, withoutEnlargement: true })
+    .jpeg({ quality: 86, mozjpeg: true, chromaSubsampling: "4:4:4" })
+    .toFile(`${OUT}/birchwil-residenz-aussenansicht-2.jpg`);
+}
 
-console.log("Images processed.");
+// Process Birchwil Floor Plan
+if (existsSync(`${RAW}/birchwil_grundriss_page_1.png`)) {
+  await sharp(`${RAW}/birchwil_grundriss_page_1.png`)
+    .trim()
+    .resize({ width: 2600, withoutEnlargement: true })
+    .png({ quality: 90, compressionLevel: 8 })
+    .toFile(`${OUT}/birchwil-grundriss-erdgeschoss.png`);
+}
+
+// Process Nürensdorf real site photos
+if (existsSync(`${ASSETS}/Neubau Bilder Nürensdorf (2).jpeg`)) {
+  await sharp(`${ASSETS}/Neubau Bilder Nürensdorf (2).jpeg`)
+    .rotate()
+    .resize({ width: 2400, withoutEnlargement: true })
+    .jpeg({ quality: 85, mozjpeg: true })
+    .toFile(`${OUT}/nuerensdorf-baustelle-uebersicht.jpg`);
+}
+if (existsSync(`${ASSETS}/Bilder Neubau Nürensdorf.jpeg`)) {
+  await sharp(`${ASSETS}/Bilder Neubau Nürensdorf.jpeg`)
+    .rotate()
+    .resize({ width: 2000, withoutEnlargement: true })
+    .jpeg({ quality: 85, mozjpeg: true })
+    .toFile(`${OUT}/nuerensdorf-baustelle-kran.jpg`);
+}
+if (existsSync(`${ASSETS}/Neubau Bilder Nürensdorf.jpeg`)) {
+  await sharp(`${ASSETS}/Neubau Bilder Nürensdorf.jpeg`)
+    .rotate()
+    .resize({ width: 2000, withoutEnlargement: true })
+    .jpeg({ quality: 85, mozjpeg: true })
+    .toFile(`${OUT}/nuerensdorf-baustelle-bauwerk.jpg`);
+}
+
+// Optimize the brand logo
+if (existsSync(`${RAW}/Optimal Immobilien Logo Bild.png`)) {
+  await sharp(`${RAW}/Optimal Immobilien Logo Bild.png`)
+    .resize({ width: 600, withoutEnlargement: true })
+    .png({ quality: 90 })
+    .toFile(`${BRAND}/optimal-immobilien-logo.png`);
+}
+
+console.log("All project images processed.");

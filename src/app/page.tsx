@@ -98,11 +98,11 @@ export default function HomePage() {
        * ===================================================== */}
       <VerticalStrips 
         title="Aktuelle Auswahl"
-        subtitle="Wenige, aktuell verfügbare Objekte – unser Fokus liegt auf dem provisionsfreien Verkauf Ihrer Immobilie."
+        subtitle="Unsere exklusiven Referenzen und Neubauprojekte – von der Erstvermarktung bis zum erfolgreichen Verkauf."
         strips={[
           { id: "1", title: "RESIDENZ AM SEE", image: "/projekte/residenz-aussenansicht-1.jpg", href: "/kaufen/residenz-am-see" },
-          { id: "2", title: "ATTIKA SEEFELD", image: "/projekte/obergeschoss-wohnbereich.jpg", href: "/kaufen/attikawohnung-seefeld" },
-          { id: "3", title: "VILLA KÜSNACHT", image: "/projekte/villa-kuesnacht-exterior.jpg", href: "/kaufen/villa-seesicht-kuesnacht" },
+          { id: "2", title: "NEUBAU BIRCHWIL", image: "/projekte/birchwil-residenz-aussenansicht-1.jpg", href: "/kaufen/neubau-birchwil" },
+          { id: "3", title: "NEUBAU NÜRENSDORF", image: "/projekte/nuerensdorf-baustelle-uebersicht.jpg", href: "/kaufen/neubau-nuerensdorf" },
         ]}
       />
 
@@ -326,11 +326,11 @@ export default function HomePage() {
         href="/kaufen"
         images={[
           { src: "/projekte/residenz-aussenansicht-1.jpg", alt: "Neubau-Residenz mit Seesicht", width: "26vw", height: "48vh", left: "15%", top: "25%" },
-          { src: "/locations/mega-mansion.jpg", alt: "Mega Mansion properties", width: "24vw", height: "42vh", left: "75%", top: "20%" },
-          { src: "/locations/curved-apartments.jpg", alt: "Modern architecture", width: "30vw", height: "36vh", left: "50%", top: "15%" },
-          { src: "/projekte/villa-kuesnacht-exterior.jpg", alt: "Villa an der Goldküste", width: "33vw", height: "54vh", left: "20%", top: "75%" },
+          { src: "/projekte/birchwil-residenz-aussenansicht-1.jpg", alt: "Neubauprojekt Birchwil", width: "24vw", height: "42vh", left: "75%", top: "20%" },
+          { src: "/projekte/birchwil-residenz-aussenansicht-2.jpg", alt: "Moderne Architektur Birchwil", width: "30vw", height: "36vh", left: "50%", top: "15%" },
+          { src: "/projekte/nuerensdorf-baustelle-uebersicht.jpg", alt: "Neubauprojekt Nürensdorf Baustelle", width: "33vw", height: "54vh", left: "20%", top: "75%" },
           { src: "/projekte/obergeschoss-wohnbereich.jpg", alt: "Wohnbereich im Obergeschoss", width: "30vw", height: "50vh", left: "80%", top: "70%" },
-          { src: "/locations/mansion-topdown.jpg", alt: "Luxury living", width: "28vw", height: "45vh", left: "50%", top: "85%" },
+          { src: "/projekte/birchwil-grundriss-erdgeschoss.png", alt: "Architektur Grundriss Erdgeschoss", width: "28vw", height: "45vh", left: "50%", top: "85%" },
         ]}
       />
 
