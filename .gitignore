@@ -24,6 +24,9 @@
 .DS_Store
 *.pem
 
+# client file drops (source lives in src/assets + _rawimages)
+*.zip
+
 # debug
 npm-debug.log*
 yarn-debug.log*

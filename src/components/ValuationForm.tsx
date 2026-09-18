@@ -22,11 +22,11 @@ const timeframes = [
 ];
 
 const valuationSchema = z.object({
-  intent: z.string().min(1),
-  timeframe: z.string().min(1),
-  location: z.string().min(2).max(100),
-  name: z.string().min(2).max(80),
-  contact: z.string().min(5).max(120),
+  intent: z.string().trim().min(1),
+  timeframe: z.string().trim().min(1),
+  location: z.string().trim().min(2).max(100),
+  name: z.string().trim().min(2).max(80),
+  contact: z.string().trim().min(5).max(120),
   website: z.string().max(0).optional(), // honeypot
 });
 

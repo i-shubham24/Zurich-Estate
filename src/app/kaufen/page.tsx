@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BedDouble, Maximize, MapPin } from "lucide-react";
+import { ArrowRight, BedDouble, Maximize, MapPin, Sparkles } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import Typewriter from "@/components/Typewriter";
@@ -9,6 +9,7 @@ import ParallaxImage from "@/components/ParallaxImage";
 import TiltCard from "@/components/TiltCard";
 import { SectionHeading, ButtonLink } from "@/components/ui";
 import CtaBanner from "@/components/CtaBanner";
+import UnifiedMediaGallery from "@/components/UnifiedMediaGallery";
 import { JsonLd } from "@/components/StructuredData";
 import { projects, flagshipProject } from "@/lib/projects";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
@@ -57,9 +58,17 @@ export default function KaufenPage() {
         }
         subtitle="Ein Überblick über unsere erfolgreich vermittelten Wohnungen, Häuser und Neubauprojekte in den besten Lagen der Region Zürich."
       >
-        <ButtonLink href="/#bewertung" variant="gold">
-          Immobilie bewerten lassen
-        </ButtonLink>
+        <div className="flex flex-wrap items-center gap-4">
+          <ButtonLink href="/#bewertung" variant="gold">
+            Immobilie bewerten lassen
+          </ButtonLink>
+          <a
+            href="#media-galerie"
+            className="inline-flex items-center gap-2 border border-white/30 bg-white/10 px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-sm transition-colors hover:bg-white hover:text-ink"
+          >
+            <Sparkles className="h-4 w-4 text-gold" /> Gesamte Mediathek ansehen
+          </a>
+        </div>
       </PageHero>
 
       {/* Flagship */}
@@ -110,7 +119,7 @@ export default function KaufenPage() {
       </section>
 
       {/* Other listings */}
-      <section className="bg-sand py-16 md:py-24">
+      <section className="bg-sand py-16 md:py-24 border-b border-line">
         <div className="container-lux">
           <SectionHeading
             eyebrow="Weitere Projekte"
@@ -156,6 +165,9 @@ export default function KaufenPage() {
           </div>
         </div>
       </section>
+
+      {/* ── ALL IMAGES & ASSETS IN ONE PLACE ── */}
+      <UnifiedMediaGallery />
 
       <CtaBanner
         title="Nicht das Richtige dabei?"

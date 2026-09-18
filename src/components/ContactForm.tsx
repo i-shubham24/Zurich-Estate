@@ -1,25 +1,31 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { z } from "zod";
+import { submitContact } from "@/actions/valuation";
 
 const contactSchema = z.object({
-  firstName: z.string().min(2).max(50),
-  lastName: z.string().min(2).max(50),
-  email: z.string().email().max(100),
-  phone: z.string().max(30).optional(),
-  message: z.string().min(10).max(2000),
+  firstName: z.string().trim().min(2).max(50),
+  lastName: z.string().trim().min(2).max(50),
+  email: z.string().trim().email().max(100),
+  phone: z
+    .string()
+    .trim()
+    .max(30)
+    .refine((v) => v === "" || /^[+()\-.\s\d]{5,30}$/.test(v), {
+      message: "invalid phone",
+    })
+    .optional(),
+  message: z.string().trim().min(10).max(2000),
   website: z.string().max(0).optional(),
 });
 
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
   const [error, setError] = useState<string | null>(null);
-  const timer = useRef<number | null>(null);
-  useEffect(() => () => { if (timer.current) clearTimeout(timer.current); }, []);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
     const fd = new FormData(e.currentTarget);
@@ -39,15 +45,32 @@ export default function ContactForm() {
     }
     const parsed = contactSchema.safeParse(data);
     if (!parsed.success) {
-      setError("Bitte prüfen Sie Ihre Eingaben.");
+      const first = parsed.error.issues[0];
+      setError(
+        first?.path?.[0] === "email"
+          ? "Bitte geben Sie eine gültige E-Mail-Adresse ein."
+          : first?.path?.[0] === "phone"
+            ? "Bitte geben Sie eine gültige Telefonnummer ein."
+            : first?.path?.[0] === "message"
+              ? "Ihre Nachricht ist zu kurz (min. 10 Zeichen)."
+              : "Bitte prüfen Sie Ihre Eingaben."
+      );
       return;
     }
     setStatus("loading");
-    localStorage.setItem("contact_last", String(Date.now()));
-    // TODO: replace with Server Action + Turnstile/arcjet: await fetch("/api/kontakt", ...)
-    timer.current = window.setTimeout(() => {
+    try {
+      const result = await submitContact(parsed.data);
+      if (result.error) {
+        setError(result.error);
+        setStatus("idle");
+        return;
+      }
+      localStorage.setItem("contact_last", String(Date.now()));
       setStatus("success");
-    }, 1000);
+    } catch {
+      setError("Senden fehlgeschlagen. Bitte versuchen Sie es erneut.");
+      setStatus("idle");
+    }
   };
 
   if (status === "success") {
