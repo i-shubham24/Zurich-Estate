@@ -90,7 +90,7 @@ export default function HomePage() {
         title1="IHR IMMOBILIENMAKLER"
         title2="– ZUM FIXPREIS"
         subtitle={<>Wir verkaufen Ihre Immobilie zum Fixpreis von <strong className="font-bold text-white">CHF 12&apos;000</strong>. Kein Risiko, keine versteckten Kosten.</>}
-        image="/projekte/attika-wohnen-1.jpg"
+        image="/projekte/hero-penthouse.jpg"
       />
 
       {/* ===================================================== *

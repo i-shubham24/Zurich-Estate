@@ -60,9 +60,11 @@ export const projects: Project[] = [
     area: "Auf Anfrage",
     price: "Erfolgreich verkauft",
     status: "Kürzlich erfolgreich vermittelt",
-    image: "/locations/heavy-construction.jpg",
+    image: "/projekte/neubau-nuerensdorf-1.jpg",
     gallery: [
-      "/locations/heavy-construction.jpg",
+      "/projekte/neubau-nuerensdorf-1.jpg",
+      "/projekte/neubau-nuerensdorf-2.jpg",
+      "/projekte/neubau-nuerensdorf-3.jpg",
     ],
     description:
       "In Nürensdorf entsteht ein moderner Neubau mit 3 hochwertigen Eigentumswohnungen. Das Projekt befindet sich derzeit in der Bauphase und nimmt mit den laufenden Aushubarbeiten erste sichtbare Formen an. Bereits in diesem frühen Stadium sind alle Einheiten erfolgreich verkauft worden. Ein grosser Meilenstein, während das Projekt noch im Bau ist.",
@@ -85,11 +87,12 @@ export const projects: Project[] = [
     area: "Auf Anfrage",
     price: "Erfolgreich verkauft",
     status: "Kürzlich erfolgreich vermittelt",
-    image: "/projekte/obergeschoss-wohnbereich.jpg",
+    image: "/projekte/birchwil-visual-1.jpg",
     gallery: [
-      "/projekte/obergeschoss-wohnbereich.jpg",
-      "/projekte/attika-wohnen-1.jpg",
-      "/projekte/erdgeschoss-wohnbereich.jpg",
+      "/projekte/birchwil-visual-1.jpg",
+      "/projekte/birchwil-visual-2.jpg",
+      "/projekte/birchwil-visual-3.jpg",
+      "/projekte/birchwil-visual-4.jpg",
     ],
     description:
       "In Birchwil entsteht ein exklusiver Neubau mit 3 individuell gestalteten Eigentumswohnungen. Das Projekt befindet sich derzeit in der Bauphase und verbindet moderne Architektur mit grosszügigen Wohnkonzepten und einem hochwertigen Ausbau. Alle Einheiten wurden von uns während der Bauphase erfolgreich verkauft.\n\nDie Wohnungen umfassen eine exklusive Attikawohnung, eine grosszügige 3.5-Zimmer-Wohnung im mittleren Geschoss und eine 4.5-Zimmer-Gartenwohnung mit privatem Aussenbereich.",
