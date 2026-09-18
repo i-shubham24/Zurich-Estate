@@ -411,21 +411,12 @@ export default function UnifiedMediaGallery() {
                 tabIndex={0}
                 onClick={() => openLightbox(index)}
                 onKeyDown={(e) => e.key === "Enter" && openLightbox(index)}
-                className={`group relative flex h-full flex-col overflow-hidden border border-line bg-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl cursor-pointer ${
-                  item.aspect === "floorplan" ? "sm:col-span-2 lg:col-span-2" : ""
-                }`}
+                className="group relative flex h-full flex-col overflow-hidden border border-line bg-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl cursor-pointer"
               >
-                {/* Media frame — uniform ratio so every card row stays linear,
-                    regardless of source orientation (portrait site photos crop via object-cover;
-                    full image still opens in the lightbox). Floorplan spans 2 cols:
-                    8/3 at double width = same height as single-col 4/3. */}
-                <div
-                  className={`relative w-full overflow-hidden bg-[#fafafa] ${
-                    item.aspect === "floorplan"
-                      ? "aspect-[16/10] sm:aspect-[8/3]"
-                      : "aspect-[4/3]"
-                  }`}
-                >
+                {/* Media frame — identical 4/3 ratio on every card so all
+                    frames (and rows) match; portrait/site photos and the plan
+                    fill via object-cover, full view in the lightbox. */}
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#fafafa]">
                   <Image
                     src={item.src}
                     alt={item.title}
