@@ -90,11 +90,11 @@ export const projects: Project[] = [
     area: "135 – 195 m²",
     price: "Erfolgreich verkauft",
     status: "Kürzlich erfolgreich vermittelt",
-    image: "/projekte/birchwil-residenz-aussenansicht-1.jpg",
+    image: "/projekte/birchwil-pool-skizze.jpg",
     gallery: [
-      "/projekte/birchwil-residenz-aussenansicht-1.jpg",
-      "/projekte/birchwil-residenz-aussenansicht-2.jpg",
-      "/projekte/birchwil-grundriss-erdgeschoss.png",
+      "/projekte/birchwil-pool-skizze.jpg",
+      "/projekte/birchwil-fassade-visualisierung.jpg",
+      "/projekte/birchwil-grundriss-eg.png",
       "/projekte/obergeschoss-wohnbereich.jpg",
       "/projekte/attika-wohnen-1.jpg",
       "/projekte/erdgeschoss-wohnbereich.jpg",
@@ -102,7 +102,7 @@ export const projects: Project[] = [
     floorplans: [
       {
         title: "Grundriss Erdgeschoss · 4.5-Zimmer-Gartenwohnung",
-        image: "/projekte/birchwil-grundriss-erdgeschoss.png",
+        image: "/projekte/birchwil-grundriss-eg.png",
         badge: "Erdgeschoss / Gartenresidenz",
         rooms: "4.5 Zimmer",
         area: "ca. 142 m² Wohnfläche",

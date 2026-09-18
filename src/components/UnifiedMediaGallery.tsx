@@ -36,7 +36,7 @@ export const ALL_MEDIA_ASSETS: MediaItem[] = [
   // ── 1. Birchwil Visualizations & Floor Plan ──
   {
     id: "birchwil-vis-1",
-    src: "/projekte/birchwil-residenz-aussenansicht-1.jpg",
+    src: "/projekte/birchwil-pool-skizze.jpg",
     title: "Neubau Birchwil – Architektur & Aussenansicht",
     category: "visualisierung",
     categoryLabel: "Architektur-Visualisierung",
@@ -48,7 +48,7 @@ export const ALL_MEDIA_ASSETS: MediaItem[] = [
   },
   {
     id: "birchwil-vis-2",
-    src: "/projekte/birchwil-residenz-aussenansicht-2.jpg",
+    src: "/projekte/birchwil-fassade-visualisierung.jpg",
     title: "Neubau Birchwil – Garten- & Terrassenperspektive",
     category: "visualisierung",
     categoryLabel: "Architektur-Visualisierung",
@@ -60,7 +60,7 @@ export const ALL_MEDIA_ASSETS: MediaItem[] = [
   },
   {
     id: "birchwil-grundriss",
-    src: "/projekte/birchwil-grundriss-erdgeschoss.png",
+    src: "/projekte/birchwil-grundriss-eg.png",
     title: "Grundrissplan Erdgeschoss – 4.5-Zimmer-Gartenwohnung",
     category: "grundriss",
     categoryLabel: "Grundrissplan",
@@ -405,13 +405,13 @@ export default function UnifiedMediaGallery() {
         {/* Gallery Grid */}
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filteredItems.map((item, index) => (
-            <Reveal key={item.id} delay={(index % 4) * 60}>
+            <Reveal key={item.id} delay={(index % 4) * 60} className="h-full">
               <div
                 role="button"
                 tabIndex={0}
                 onClick={() => openLightbox(index)}
                 onKeyDown={(e) => e.key === "Enter" && openLightbox(index)}
-                className={`group relative flex flex-col overflow-hidden border border-line bg-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl cursor-pointer ${
+                className={`group relative flex h-full flex-col overflow-hidden border border-line bg-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl cursor-pointer ${
                   item.aspect === "floorplan" ? "sm:col-span-2 lg:col-span-2" : ""
                 }`}
               >

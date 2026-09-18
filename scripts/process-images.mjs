@@ -47,7 +47,7 @@ if (existsSync(`${RAW}/birchwil_vis_page_1.png`)) {
       left: Math.round(w * 0.033), top: Math.round(h * 0.024),
       width: Math.round(w * 0.933), height: Math.round(h * 0.872),
     })
-    .toFile(`${OUT}/birchwil-residenz-aussenansicht-1.jpg`);
+    .toFile(`${OUT}/birchwil-pool-skizze.jpg`);
 }
 if (existsSync(`${RAW}/birchwil_vis_page_2.png`)) {
   const buf = await sharp(`${RAW}/birchwil_vis_page_2.png`)
@@ -61,7 +61,7 @@ if (existsSync(`${RAW}/birchwil_vis_page_2.png`)) {
       left: Math.round(w * 0.025), top: Math.round(h * 0.035),
       width: Math.round(w * 0.95), height: Math.round(h * 0.607),
     })
-    .toFile(`${OUT}/birchwil-residenz-aussenansicht-2.jpg`);
+    .toFile(`${OUT}/birchwil-fassade-visualisierung.jpg`);
 }
 
 // Process Birchwil Floor Plan (trim sheet margins + drop title/caption block)
@@ -78,7 +78,7 @@ if (existsSync(`${RAW}/birchwil_grundriss_page_1.png`)) {
       left: Math.round(w * 0.046), top: Math.round(h * 0.211),
       width: Math.round(w * 0.939), height: Math.round(h * 0.676),
     })
-    .toFile(`${OUT}/birchwil-grundriss-erdgeschoss.png`);
+    .toFile(`${OUT}/birchwil-grundriss-eg.png`);
 }
 
 // Process Nürensdorf real site photos
