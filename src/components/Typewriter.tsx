@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 type Phase = "typing" | "holdFull" | "deleting" | "holdEmpty";
 
@@ -27,8 +27,9 @@ export default function Typewriter({
   const [phase, setPhase] = useState<Phase>("typing");
   const [mounted, setMounted] = useState(false);
 
-  // Only start on client after mount to avoid hydration mismatch
-  useEffect(() => {
+  // useLayoutEffect fires synchronously before the browser paints
+  // → no visible flash when switching from SSR invisible text to typed output
+  useLayoutEffect(() => {
     const t = setTimeout(() => setMounted(true), delay);
     return () => clearTimeout(t);
   }, [delay]);
@@ -68,10 +69,12 @@ export default function Typewriter({
     <span className={`inline-block ${className}`}>
       <span>{displayed}</span>
       <span className="invisible" aria-hidden="true">{hidden}</span>
-      <span
-        aria-hidden="true"
-        className="typewriter-caret ml-[2px] inline-block h-[0.9em] w-[2px] translate-y-[0.06em] bg-current align-baseline"
-      />
+      {mounted && (
+        <span
+          aria-hidden="true"
+          className="typewriter-caret ml-[2px] inline-block h-[0.9em] w-[2px] translate-y-[0.06em] bg-current align-baseline"
+        />
+      )}
     </span>
   );
 }
