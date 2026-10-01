@@ -46,7 +46,6 @@ export const metadata: Metadata = {
     "Immobilienbewertung Zürich",
     "Makler Goldküste",
   ],
-  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "de_CH",
@@ -88,14 +87,14 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="de-CH" suppressHydrationWarning>
-      <body className={`${montserrat.variable} ${playfair.variable} antialiased`}>
-        {/* Progressive-enhancement flag: only when JS is present do we arm
-            the scroll-reveal (content stays visible for crawlers / no-JS). */}
+      <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: "document.documentElement.classList.add('js')",
+            __html: "document.documentElement.classList.add('js');",
           }}
         />
+      </head>
+      <body className={`${montserrat.variable} ${playfair.variable} antialiased`}>
         <a href="#main" className="sr-only left-4 top-4 z-[9999] bg-ink px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white focus:not-sr-only focus:absolute focus:outline-none focus:ring-2 focus:ring-gold">
           Zum Inhalt springen
         </a>

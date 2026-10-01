@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import Typewriter from "@/components/Typewriter";
-import { Eyebrow, SectionHeading } from "@/components/ui";
+import { Eyebrow } from "@/components/ui";
 import ContactForm from "@/components/ContactForm";
+import MailLink from "@/components/MailLink";
 import CtaBanner from "@/components/CtaBanner";
 import { JsonLd } from "@/components/StructuredData";
 import { site, SITE_URL } from "@/lib/site";
@@ -90,26 +91,42 @@ export default function KontaktPage() {
                   Ihrer Immobilie? Zögern Sie nicht, uns zu kontaktieren.
                 </p>
                 <div className="space-y-6">
-                  {contactCards.map((card) => (
-                    <a
-                      key={card.label}
-                      href={card.href}
-                      target={card.icon === MapPin ? "_blank" : undefined}
-                      rel={card.icon === MapPin ? "noopener noreferrer" : undefined}
-                      className="group flex items-start gap-5 border border-ink/8 bg-white p-6 transition-shadow hover:shadow-md"
-                    >
-                      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gold/10">
-                        <card.icon className="h-5 w-5 text-gold-deep" />
-                      </span>
-                      <div>
-                        <h3 className="font-serif text-lg text-ink">{card.label}</h3>
-                        <p className="mt-1 text-base font-medium text-ink group-hover:text-gold-deep">
-                          {card.value}
-                        </p>
-                        <p className="mt-1 text-sm text-graphite/70">{card.description}</p>
-                      </div>
-                    </a>
-                  ))}
+                  {contactCards.map((card) => {
+                    const cardClass =
+                      "group flex items-start gap-5 border border-ink/8 bg-white p-6 transition-shadow hover:shadow-md";
+                    const inner = (
+                      <>
+                        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gold/10">
+                          <card.icon className="h-5 w-5 text-gold-deep" />
+                        </span>
+                        <div>
+                          <h3 className="font-serif text-lg text-ink">{card.label}</h3>
+                          <p className="mt-1 text-base font-medium text-ink group-hover:text-gold-deep">
+                            {card.value}
+                          </p>
+                          <p className="mt-1 text-sm text-graphite/70">{card.description}</p>
+                        </div>
+                      </>
+                    );
+                    if (card.icon === Mail) {
+                      return (
+                        <MailLink key={card.label} className={cardClass}>
+                          {inner}
+                        </MailLink>
+                      );
+                    }
+                    return (
+                      <a
+                        key={card.label}
+                        href={card.href}
+                        target={card.icon === MapPin ? "_blank" : undefined}
+                        rel={card.icon === MapPin ? "noopener noreferrer" : undefined}
+                        className={cardClass}
+                      >
+                        {inner}
+                      </a>
+                    );
+                  })}
                 </div>
 
                 <div className="mt-12 bg-sand/50 p-8 border border-line">

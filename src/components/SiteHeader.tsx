@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
 import Logo from "./Logo";
 import Magnetic from "./Magnetic";
+import MailLink from "./MailLink";
 import { site, services } from "@/lib/site";
 
 const nav = [
@@ -47,17 +48,30 @@ export default function SiteHeader() {
 
   return (
     <header
+      style={!scrolled && !open ? { textShadow: "0 1px 6px rgba(0,0,0,0.55)" } : undefined}
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 will-change-transform [transform:translate3d(0,0,0)] ${
         scrolled || open
           ? "bg-slate/95 md:bg-slate/90 md:backdrop-blur-md shadow-[0_10px_30px_-20px_rgba(0,0,0,0.8)]"
-          : "bg-gradient-to-b from-black/60 to-transparent"
+          : "bg-gradient-to-b from-black/40 to-transparent"
       }`}
     >
       <div className="container-lux flex items-center justify-between py-4 md:py-5">
-        <Logo tone="onDark" />
+        <div className="relative flex items-center">
+          {!scrolled && !open && (
+            <span
+              aria-hidden
+              className="pointer-events-none absolute left-0 top-1/2 h-[150%] w-[118%] -translate-y-1/2"
+              style={{
+                backgroundImage:
+                  "radial-gradient(ellipse at left center, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.32) 48%, rgba(0,0,0,0) 76%)",
+              }}
+            />
+          )}
+          <Logo fill="gold" className="relative z-[1]" />
+        </div>
 
         <nav className="hidden items-center gap-1 xl:gap-2 xl:flex shrink-0" aria-label="Hauptnavigation">
-          {/* Services dropdown — CSS hover for instant, state for click/keyboard */}
+          {/* Services dropdown, CSS hover for instant, state for click/keyboard */}
           <div
             className="group relative"
             onMouseEnter={() => setServicesOpen(true)}
@@ -70,7 +84,7 @@ export default function SiteHeader() {
               aria-haspopup="true"
               aria-controls="services-menu"
               className={`eyebrow flex items-center gap-1.5 rounded-full px-3 py-3 2xl:px-4 tracking-[0.14em] whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-gold ${
-                servicesActive ? "text-gold-bright" : "text-white/75 hover:text-gold-bright"
+                servicesActive ? "text-gold-bright" : "text-white/90 hover:text-gold-bright"
               }`}
             >
               Dienstleistungen
@@ -112,7 +126,7 @@ export default function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 className={`eyebrow rounded-full px-3 py-3 2xl:px-4 tracking-[0.14em] whitespace-nowrap transition-colors ${
-                  active ? "text-gold-bright" : "text-white/75 hover:text-gold-bright"
+                  active ? "text-gold-bright" : "text-white/90 hover:text-gold-bright"
                 }`}
               >
                 {item.label}
@@ -130,15 +144,12 @@ export default function SiteHeader() {
             >
               <Phone className="h-5 w-5 shrink-0" />
             </a>
-            <a
-              href={site.emailHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="E-Mail schreiben"
+            <MailLink
+              ariaLabel="E-Mail schreiben"
               className="flex h-10 w-10 items-center justify-center text-gold transition-colors hover:bg-white/10 hover:text-gold-bright"
             >
               <Mail className="h-5 w-5 shrink-0" />
-            </a>
+            </MailLink>
           </div>
           <Magnetic>
             <Link
@@ -201,15 +212,10 @@ export default function SiteHeader() {
                 <Phone className="h-4 w-4 text-gold" />
                 {site.phone}
               </a>
-              <a
-                href={site.emailHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-4 text-white hover:bg-white/5 transition-colors"
-              >
+              <MailLink className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-4 text-white hover:bg-white/5 transition-colors">
                 <Mail className="h-4 w-4 text-gold" />
                 {site.email}
-              </a>
+              </MailLink>
             </div>
           </nav>
         </div>

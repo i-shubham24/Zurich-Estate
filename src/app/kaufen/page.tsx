@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BedDouble, Maximize, MapPin, Sparkles } from "lucide-react";
+import { ArrowRight, BedDouble, Maximize, MapPin, Lock, Compass, Handshake } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import Typewriter from "@/components/Typewriter";
@@ -9,7 +9,6 @@ import ParallaxImage from "@/components/ParallaxImage";
 import TiltCard from "@/components/TiltCard";
 import { SectionHeading, ButtonLink } from "@/components/ui";
 import CtaBanner from "@/components/CtaBanner";
-import UnifiedMediaGallery from "@/components/UnifiedMediaGallery";
 import { JsonLd } from "@/components/StructuredData";
 import { projects, flagshipProject } from "@/lib/projects";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
@@ -62,12 +61,12 @@ export default function KaufenPage() {
           <ButtonLink href="/#bewertung" variant="gold">
             Immobilie bewerten lassen
           </ButtonLink>
-          <a
-            href="#media-galerie"
+          <Link
+            href="/kontakt"
             className="inline-flex items-center gap-2 border border-white/30 bg-white/10 px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-sm transition-colors hover:bg-white hover:text-ink"
           >
-            <Sparkles className="h-4 w-4 text-gold" /> Gesamte Mediathek ansehen
-          </a>
+            <Handshake className="h-4 w-4 text-gold" /> Suchauftrag erteilen
+          </Link>
         </div>
       </PageHero>
 
@@ -166,8 +165,45 @@ export default function KaufenPage() {
         </div>
       </section>
 
-      {/* ── ALL IMAGES & ASSETS IN ONE PLACE ── */}
-      <UnifiedMediaGallery />
+      {/* ── Why us / off-market value (replaces the former media library:
+             client has limited listings and prefers not to over-show objects) ── */}
+      <section className="bg-cream py-20 md:py-24">
+        <div className="container-lux">
+          <SectionHeading
+            align="center"
+            eyebrow="Ihr Vorteil mit uns"
+            title="So finden wir Ihr Objekt"
+            intro="Auch wenn das passende Objekt gerade nicht öffentlich ausgeschrieben ist: Über unser Netzwerk und unsere lokale Marktkenntnis finden wir die richtige Immobilie für Sie."
+          />
+          <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
+            {[
+              {
+                icon: Lock,
+                title: "Off-Market-Zugang",
+                desc: "Viele Transaktionen finden nie öffentlich statt. Über unser etabliertes Netzwerk erhalten Sie Zugang zu Objekten abseits der Portale.",
+              },
+              {
+                icon: Compass,
+                title: "Lokale Marktkenntnis",
+                desc: "Wir kennen die Lagen rund um Zürich, den Zürichsee und die Goldküste aus erster Hand und wissen, wo sich der Einstieg lohnt.",
+              },
+              {
+                icon: Handshake,
+                title: "Persönliche Begleitung",
+                desc: "Von der ersten Besichtigung bis zur Beurkundung begleiten wir Sie ehrlich, diskret und ohne Verkaufsdruck.",
+              },
+            ].map((item, i) => (
+              <Reveal key={item.title} delay={i * 90}>
+                <div className="flex h-full flex-col border border-line bg-white p-8">
+                  <item.icon className="h-7 w-7 text-gold" strokeWidth={1.5} />
+                  <h3 className="mt-5 font-serif text-xl text-ink">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-graphite/70">{item.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <CtaBanner
         title="Nicht das Richtige dabei?"

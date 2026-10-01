@@ -35,7 +35,7 @@ export async function generateMetadata({
       title: `${title} | Optimal Immobilien AG`,
       description,
       url: `${SITE_URL}/immobilienmakler/${loc.slug}`,
-      images: loc.heroImage ? [{ url: loc.heroImage, width: 1200, height: 630, alt: `Immobilienmakler ${loc.name}` }] : undefined,
+      images: [{ url: `${SITE_URL}/projekte/hero-real.jpg`, width: 1200, height: 630, alt: `Immobilienmakler ${loc.name}` }],
       locale: "de_CH",
       type: "website",
     },
@@ -43,7 +43,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `${title} | Optimal Immobilien AG`,
       description,
-      images: loc.heroImage ? [loc.heroImage] : undefined,
+      images: [`${SITE_URL}/projekte/hero-real.jpg`],
     },
   };
 }
@@ -75,8 +75,6 @@ export default async function LocationPage({
 
       <PageHero
         eyebrow={loc.regionLabel}
-        image={loc.heroImage ?? "/projekte/hero-real.jpg"}
-        imageAlt={`Immobilienmakler ${loc.name}, Optimal Immobilien AG - ${loc.name} Stadtansicht`}
         crumbs={[
           { name: "Start", href: "/" },
           { name: "Standorte", href: "/immobilienmakler" },
@@ -106,7 +104,7 @@ export default async function LocationPage({
       {/* Highlight bar - CHF 12k on every city page */}
       <div className="bg-gold py-3">
         <div className="container-lux flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-center text-sm font-semibold tracking-[0.04em] text-ink md:justify-between">
-          <span className="inline-flex items-center gap-2"><Check className="h-4 w-4" /> Fixpreis {site.fixedPrice} statt 2–3 % Provision</span>
+          <span className="inline-flex items-center gap-2"><Check className="h-4 w-4" /> Fixpreis {site.fixedPrice} statt 2 bis 3 % Provision</span>
           <span className="hidden h-4 w-px bg-ink/15 md:block" />
           <span>Provision 0 % · Transparenz 100 %</span>
           <span className="hidden h-4 w-px bg-ink/15 md:block" />

@@ -12,8 +12,7 @@ export type Location = {
   name: string;
   regionLabel: string;
   plz: string;
-  lakeside: boolean;
-  heroImage?: string;
+  lakeside: boolean;
   /** Short hero descriptor */
   headline: string;
   /** 2-3 sentence unique intro */
@@ -33,8 +32,7 @@ export type Location = {
 
 export const locations: Location[] = [
   {
-    slug: "zuerich",
-    heroImage: "/locations/zurich-river.jpg",
+    slug: "zuerich",
     name: "Zürich",
     regionLabel: "Stadt Zürich",
     plz: "8001, 8064",
@@ -61,8 +59,7 @@ export const locations: Location[] = [
     featured: true,
   },
   {
-    slug: "kuesnacht",
-    heroImage: "/locations/kusnacht.jfif",
+    slug: "kuesnacht",
     name: "Küsnacht",
     regionLabel: "Zürcher Goldküste",
     plz: "8700",
@@ -89,8 +86,7 @@ export const locations: Location[] = [
     featured: true,
   },
   {
-    slug: "zollikon",
-    heroImage: "/locations/mega-mansion.jpg",
+    slug: "zollikon",
     name: "Zollikon",
     regionLabel: "Zürcher Goldküste",
     plz: "8702",
@@ -117,8 +113,7 @@ export const locations: Location[] = [
     featured: true,
   },
   {
-    slug: "zumikon",
-    heroImage: "/locations/zumikon.jfif",
+    slug: "zumikon",
     name: "Zumikon",
     regionLabel: "Zürcher Goldküste",
     plz: "8126",
@@ -145,8 +140,7 @@ export const locations: Location[] = [
     featured: false,
   },
   {
-    slug: "meilen",
-    heroImage: "/locations/meilen.jpg",
+    slug: "meilen",
     name: "Meilen",
     regionLabel: "Zürcher Goldküste",
     plz: "8706",
@@ -173,8 +167,7 @@ export const locations: Location[] = [
     featured: true,
   },
   {
-    slug: "herrliberg",
-    heroImage: "/locations/herrliberg.jpg",
+    slug: "herrliberg",
     name: "Herrliberg",
     regionLabel: "Zürcher Goldküste",
     plz: "8704",
@@ -201,8 +194,7 @@ export const locations: Location[] = [
     featured: false,
   },
   {
-    slug: "erlenbach",
-    heroImage: "/locations/erlenbach.webp",
+    slug: "erlenbach",
     name: "Erlenbach",
     regionLabel: "Zürcher Goldküste",
     plz: "8703",
@@ -229,8 +221,7 @@ export const locations: Location[] = [
     featured: false,
   },
   {
-    slug: "kilchberg",
-    heroImage: "/locations/kilchberg.jfif",
+    slug: "kilchberg",
     name: "Kilchberg",
     regionLabel: "Linkes Zürichseeufer",
     plz: "8802",
@@ -257,8 +248,7 @@ export const locations: Location[] = [
     featured: false,
   },
   {
-    slug: "thalwil",
-    heroImage: "/locations/thalwil.jpg",
+    slug: "thalwil",
     name: "Thalwil",
     regionLabel: "Linkes Zürichseeufer",
     plz: "8800",
@@ -285,8 +275,7 @@ export const locations: Location[] = [
     featured: false,
   },
   {
-    slug: "horgen",
-    heroImage: "/locations/bern-clock-tower-2.jpg",
+    slug: "horgen",
     name: "Horgen",
     regionLabel: "Linkes Zürichseeufer",
     plz: "8810",
@@ -313,8 +302,7 @@ export const locations: Location[] = [
     featured: false,
   },
   {
-    slug: "waedenswil",
-    heroImage: "/locations/wadenswil.jpg",
+    slug: "waedenswil",
     name: "Wädenswil",
     regionLabel: "Linkes Zürichseeufer",
     plz: "8820",
@@ -341,8 +329,7 @@ export const locations: Location[] = [
     featured: false,
   },
   {
-    slug: "uster",
-    heroImage: "/locations/curved-apartments.jpg",
+    slug: "uster",
     name: "Uster",
     regionLabel: "Zürcher Oberland",
     plz: "8610",
@@ -369,8 +356,7 @@ export const locations: Location[] = [
     featured: false,
   },
   {
-    slug: "duebendorf",
-    heroImage: "/locations/dubendorf.jfif",
+    slug: "duebendorf",
     name: "Dübendorf",
     regionLabel: "Glattal",
     plz: "8600",
@@ -397,8 +383,7 @@ export const locations: Location[] = [
     featured: false,
   },
   {
-    slug: "wallisellen",
-    heroImage: "/locations/walliselen.webp",
+    slug: "wallisellen",
     name: "Wallisellen",
     regionLabel: "Glattal",
     plz: "8304",
@@ -425,8 +410,7 @@ export const locations: Location[] = [
     featured: false,
   },
   {
-    slug: "bassersdorf",
-    heroImage: "/locations/bassersdorf.webp",
+    slug: "bassersdorf",
     name: "Bassersdorf",
     regionLabel: "Zürcher Unterland",
     plz: "8303",
@@ -453,8 +437,7 @@ export const locations: Location[] = [
     featured: true,
   },
   {
-    slug: "kloten",
-    heroImage: "/locations/kloten.jpg",
+    slug: "kloten",
     name: "Kloten",
     regionLabel: "Zürcher Unterland",
     plz: "8302",
@@ -481,8 +464,7 @@ export const locations: Location[] = [
     featured: false,
   },
   {
-    slug: "winterthur",
-    heroImage: "/locations/winterthur.jpg",
+    slug: "winterthur",
     name: "Winterthur",
     regionLabel: "Winterthur & Umgebung",
     plz: "8400",

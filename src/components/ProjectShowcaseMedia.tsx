@@ -82,52 +82,52 @@ export default function ProjectShowcaseMedia({
   }, [lightboxIndex]);
 
   const hasFloorplans = floorplans && floorplans.length > 0;
-  const hasConstruction = constructionUpdates && constructionUpdates.images.length > 0;
+  const hasConstruction = !!(constructionUpdates?.images?.length);
 
   return (
     <div className="container-lux mt-16 md:mt-24">
       {/* Navigation tabs if multiple media types exist */}
       {(hasFloorplans || hasConstruction) && (
         <div className="mb-10 flex flex-wrap items-center gap-3 border-b border-line pb-4">
-          <button
-            type="button"
-            onClick={() => setActiveTab("gallery")}
-            className={`inline-flex items-center gap-2 rounded-sm px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all ${
-              activeTab === "gallery"
-                ? "bg-ink text-white shadow-sm"
-                : "bg-cream text-graphite/70 hover:bg-gold/10 hover:text-ink"
-            }`}
-          >
-            <Eye className="h-4 w-4 text-gold" /> Impressionen & Visualisierungen ({gallery.length})
-          </button>
-
-          {hasFloorplans && (
             <button
               type="button"
-              onClick={() => setActiveTab("floorplan")}
-              className={`inline-flex items-center gap-2 rounded-sm px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all ${
-                activeTab === "floorplan"
+              onClick={() => setActiveTab("gallery")}
+              className={`inline-flex min-h-[44px] items-center gap-2 rounded-sm px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] transition-all ${
+                activeTab === "gallery"
                   ? "bg-ink text-white shadow-sm"
                   : "bg-cream text-graphite/70 hover:bg-gold/10 hover:text-ink"
               }`}
             >
-              <Layers className="h-4 w-4 text-gold" /> Grundrisse & Pläne ({floorplans.length})
+              <Eye className="h-4 w-4 text-gold" /> Impressionen & Visualisierungen ({gallery.length})
             </button>
-          )}
 
-          {hasConstruction && (
-            <button
-              type="button"
-              onClick={() => setActiveTab("construction")}
-              className={`inline-flex items-center gap-2 rounded-sm px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all ${
-                activeTab === "construction"
-                  ? "bg-ink text-white shadow-sm"
-                  : "bg-cream text-graphite/70 hover:bg-gold/10 hover:text-ink"
-              }`}
-            >
-              <HardHat className="h-4 w-4 text-gold" /> Baufortschritt & Baustelle ({constructionUpdates.images.length})
-            </button>
-          )}
+            {hasFloorplans && (
+              <button
+                type="button"
+                onClick={() => setActiveTab("floorplan")}
+                className={`inline-flex min-h-[44px] items-center gap-2 rounded-sm px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] transition-all ${
+                  activeTab === "floorplan"
+                    ? "bg-ink text-white shadow-sm"
+                    : "bg-cream text-graphite/70 hover:bg-gold/10 hover:text-ink"
+                }`}
+              >
+                <Layers className="h-4 w-4 text-gold" /> Grundrisse & Pläne ({floorplans.length})
+              </button>
+            )}
+
+            {hasConstruction && (
+              <button
+                type="button"
+                onClick={() => setActiveTab("construction")}
+                className={`inline-flex min-h-[44px] items-center gap-2 rounded-sm px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] transition-all ${
+                  activeTab === "construction"
+                    ? "bg-ink text-white shadow-sm"
+                    : "bg-cream text-graphite/70 hover:bg-gold/10 hover:text-ink"
+                }`}
+              >
+                <HardHat className="h-4 w-4 text-gold" /> Baufortschritt & Baustelle ({constructionUpdates?.images.length ?? 0})
+              </button>
+            )}
         </div>
       )}
 
@@ -160,21 +160,24 @@ export default function ProjectShowcaseMedia({
                     src={src}
                     alt={`${title}, Ansicht ${i + 1}`}
                     fill
-                    quality={80}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className={`${
+                      src.includes("grundriss") ? "object-contain p-3" : "object-cover"
+                    } transition-transform duration-700 group-hover:scale-105`}
                   />
                   <div className="absolute inset-0 bg-ink/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   <div className="absolute bottom-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-ink opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100">
                     <Maximize2 className="h-4 w-4 text-ink" />
                   </div>
                   <span className="absolute left-3 top-3 bg-ink/80 px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-widest text-white backdrop-blur-sm">
-                    {src.includes("aussen")
+                    {src.includes("aussen") || src.includes("fassade")
                       ? "Aussenansicht"
                       : src.includes("grundriss")
                       ? "Grundriss"
                       : src.includes("baustelle")
                       ? "Baustelle"
+                      : src.includes("pool")
+                      ? "Visualisierung"
                       : src.includes("kueche")
                       ? "Küche & Essen"
                       : "Innenraum"}
@@ -206,7 +209,6 @@ export default function ProjectShowcaseMedia({
                         src={fp.image}
                         alt={fp.title}
                         fill
-                        priority
                         className="object-contain transition-transform duration-500 group-hover:scale-[1.02]"
                         sizes="(max-width: 1024px) 100vw, 60vw"
                       />
@@ -284,7 +286,7 @@ export default function ProjectShowcaseMedia({
       )}
 
       {/* ── TAB 3: Construction Documentation ── */}
-      {activeTab === "construction" && hasConstruction && (
+      {activeTab === "construction" && constructionUpdates && (
         <Reveal>
           <div className="border border-line bg-white p-8 md:p-12 shadow-sm">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-line pb-6">

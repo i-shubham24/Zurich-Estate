@@ -83,7 +83,7 @@ export function ButtonLink({
     gold: "bg-gold text-ink hover:bg-gold-bright",
     dark: "bg-ink text-white hover:bg-slate",
     outline: "border border-current text-ink hover:bg-ink hover:text-white",
-    ghost: "border border-white/30 text-white hover:bg-white hover:text-ink",
+    ghost: "border border-white/70 bg-black/25 text-white backdrop-blur-sm hover:border-white hover:bg-white hover:text-ink",
   };
   return (
     <Magnetic>

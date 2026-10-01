@@ -53,15 +53,15 @@ export default function ScrollTextHero({
       >
         <Image
           src={image}
-          alt="Luxuriöse Immobilie in Zürich mit Seesicht — Optimal Immobilien AG, Fixpreis CHF 12&apos;000"
+          alt="Luxuriöse Immobilie in Zürich mit Seesicht, Optimal Immobilien AG, Fixpreis CHF 12&apos;000"
           fill
           priority
           fetchPriority="high"
           sizes="100vw"
-          quality={75}
+          quality={90}
           className="object-cover opacity-60"
         />
-        {/* Dark gradient overlay for text readability */}
+        {/* Dark gradient overlay for text/nav readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-b from-ink via-transparent to-transparent" />
       </motion.div>
@@ -71,13 +71,19 @@ export default function ScrollTextHero({
         style={isTouchDevice ? { opacity: textOpacity } : { y: desktopTextY, opacity: textOpacity }} 
         className="relative z-10 flex w-full flex-col items-center px-4 text-center"
       >
-        <h1 className="font-sans text-[clamp(1.5rem,4.5vw,4rem)] font-bold uppercase leading-[1] tracking-wide text-white drop-shadow-2xl">
+        <h1
+          className="font-sans text-[clamp(1.5rem,4.5vw,4rem)] font-bold uppercase leading-[1] tracking-wide text-white"
+          style={{ textShadow: "0 2px 22px rgba(0,0,0,0.70), 0 1px 4px rgba(0,0,0,0.55)" }}
+        >
           <span className="block">{title1}</span>
           <span className="block italic text-gold">
             {title2}
           </span>
         </h1>
-        <p className="mt-8 max-w-2xl text-sm font-medium tracking-widest text-white/80 md:text-base">
+        <p
+          className="mt-8 max-w-2xl text-sm font-medium tracking-widest text-white/95 md:text-base"
+          style={{ textShadow: "0 2px 14px rgba(0,0,0,0.60)" }}
+        >
           {subtitle}
         </p>
         <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">

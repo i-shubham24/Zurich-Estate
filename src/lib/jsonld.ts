@@ -114,7 +114,7 @@ export function localBusinessJsonLd(loc: Location) {
     name: `Optimal Immobilien, Immobilienmakler ${loc.name}`,
     url: `${SITE_URL}/immobilienmakler/${loc.slug}`,
     parentOrganization: { "@id": `${SITE_URL}/#organization` },
-    image: loc.heroImage ?? `${SITE_URL}/projekte/hero-real.jpg`,
+    image: `${SITE_URL}/projekte/hero-real.jpg`,
     telephone: site.phone,
     email: site.email,
     priceRange: "CHF 12'000 Fixpreis",

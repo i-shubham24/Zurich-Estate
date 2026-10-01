@@ -50,34 +50,24 @@ if (existsSync(`${RAW}/birchwil_vis_page_1.png`)) {
     .toFile(`${OUT}/birchwil-pool-skizze.jpg`);
 }
 if (existsSync(`${RAW}/birchwil_vis_page_2.png`)) {
-  const buf = await sharp(`${RAW}/birchwil_vis_page_2.png`)
+  await sharp(`${RAW}/birchwil_vis_page_2.png`)
+    .extract({ left: 144, top: 145, width: 2175, height: 1760 })
     .resize({ width: 2400, withoutEnlargement: true })
-    .jpeg({ quality: 86, mozjpeg: true, chromaSubsampling: "4:4:4" })
-    .toBuffer();
-  const meta = await sharp(buf).metadata();
-  const w = meta.width, h = meta.height;
-  await sharp(buf)
-    .extract({
-      left: Math.round(w * 0.025), top: Math.round(h * 0.035),
-      width: Math.round(w * 0.95), height: Math.round(h * 0.607),
-    })
+    .jpeg({ quality: 90, mozjpeg: true, chromaSubsampling: "4:4:4" })
     .toFile(`${OUT}/birchwil-fassade-visualisierung.jpg`);
 }
 
-// Process Birchwil Floor Plan (trim sheet margins + drop title/caption block)
+// Process Birchwil Floor Plan (crop to main building site plan only, excluding right-hand calculation table and architect title block)
 if (existsSync(`${RAW}/birchwil_grundriss_page_1.png`)) {
-  const buf = await sharp(`${RAW}/birchwil_grundriss_page_1.png`)
-    .trim()
-    .resize({ width: 2600, withoutEnlargement: true })
-    .png({ quality: 90, compressionLevel: 8 })
-    .toBuffer();
-  const meta = await sharp(buf).metadata();
-  const w = meta.width, h = meta.height;
-  await sharp(buf)
+  await sharp(`${RAW}/birchwil_grundriss_page_1.png`)
     .extract({
-      left: Math.round(w * 0.046), top: Math.round(h * 0.211),
-      width: Math.round(w * 0.939), height: Math.round(h * 0.676),
+      left: 501,
+      top: 1802,
+      width: 8714,
+      height: 6959,
     })
+    .resize({ width: 2400, withoutEnlargement: true })
+    .png({ quality: 90, compressionLevel: 8 })
     .toFile(`${OUT}/birchwil-grundriss-eg.png`);
 }
 

@@ -9,7 +9,6 @@ import {
   ChevronLeft,
   ChevronRight,
   Filter,
-  Layers,
   HardHat,
   Eye,
   Home,
@@ -37,7 +36,7 @@ export const ALL_MEDIA_ASSETS: MediaItem[] = [
   {
     id: "birchwil-vis-1",
     src: "/projekte/birchwil-pool-skizze.jpg",
-    title: "Neubau Birchwil – Architektur & Aussenansicht",
+    title: "Neubau Birchwil, Architektur & Aussenansicht",
     category: "visualisierung",
     categoryLabel: "Architektur-Visualisierung",
     projectSlug: "neubau-birchwil",
@@ -49,7 +48,7 @@ export const ALL_MEDIA_ASSETS: MediaItem[] = [
   {
     id: "birchwil-vis-2",
     src: "/projekte/birchwil-fassade-visualisierung.jpg",
-    title: "Neubau Birchwil – Garten- & Terrassenperspektive",
+    title: "Neubau Birchwil, Garten- & Terrassenperspektive",
     category: "visualisierung",
     categoryLabel: "Architektur-Visualisierung",
     projectSlug: "neubau-birchwil",
@@ -58,19 +57,6 @@ export const ALL_MEDIA_ASSETS: MediaItem[] = [
     description: "Grosszügige private Aussenbereiche, bodentiefe Fensterfronten und harmonische Einbettung ins Quartier.",
     aspect: "landscape",
   },
-  {
-    id: "birchwil-grundriss",
-    src: "/projekte/birchwil-grundriss-eg.png",
-    title: "Grundrissplan Erdgeschoss – 4.5-Zimmer-Gartenwohnung",
-    category: "grundriss",
-    categoryLabel: "Grundrissplan",
-    projectSlug: "neubau-birchwil",
-    projectName: "Neubauprojekt Birchwil",
-    location: "Birchwil / Nürensdorf",
-    description: "Detaillierter Architekturplan mit Wohn-/Essbereich, Master-Suite, gedecktem Sitzplatz und Gartenanteil.",
-    aspect: "floorplan",
-  },
-
   // ── 2. Nürensdorf Real On-Site Construction Photos ──
   {
     id: "nuerensdorf-bau-1",
@@ -113,7 +99,7 @@ export const ALL_MEDIA_ASSETS: MediaItem[] = [
   {
     id: "residenz-ext-1",
     src: "/projekte/residenz-aussenansicht-1.jpg",
-    title: "Residenz am See – Fassade & Hanglage",
+    title: "Residenz am See, Fassade & Hanglage",
     category: "visualisierung",
     categoryLabel: "Architektur-Visualisierung",
     projectSlug: "residenz-am-see",
@@ -125,7 +111,7 @@ export const ALL_MEDIA_ASSETS: MediaItem[] = [
   {
     id: "residenz-ext-2",
     src: "/projekte/residenz-aussenansicht-2.jpg",
-    title: "Residenz am See – Panoramablick Seeseite",
+    title: "Residenz am See, Panoramablick Seeseite",
     category: "visualisierung",
     categoryLabel: "Architektur-Visualisierung",
     projectSlug: "residenz-am-see",
@@ -185,7 +171,7 @@ export const ALL_MEDIA_ASSETS: MediaItem[] = [
   {
     id: "residenz-og-wohnen",
     src: "/projekte/obergeschoss-wohnbereich.jpg",
-    title: "Obergeschoss – Moderner Wohnraum",
+    title: "Obergeschoss, Moderner Wohnraum",
     category: "interior",
     categoryLabel: "Interior & Wohnwelten",
     projectSlug: "residenz-am-see",
@@ -197,7 +183,7 @@ export const ALL_MEDIA_ASSETS: MediaItem[] = [
   {
     id: "residenz-eg-wohnen",
     src: "/projekte/erdgeschoss-wohnbereich.jpg",
-    title: "Erdgeschoss – Wohnen mit Gartenzugang",
+    title: "Erdgeschoss, Wohnen mit Gartenzugang",
     category: "interior",
     categoryLabel: "Interior & Wohnwelten",
     projectSlug: "residenz-am-see",
@@ -270,7 +256,7 @@ export default function UnifiedMediaGallery() {
           <SectionHeading
             eyebrow="Gesamte Mediathek"
             title="Alle Projekte, Visualisierungen & Pläne"
-            intro="Entdecken Sie alle Visualisierungen, Grundrisse und Live-Baustellenaufnahmen unserer Neubau- und Referenzprojekte an einem zentralen Ort."
+            intro="Entdecken Sie alle Visualisierungen und Live-Baustellenaufnahmen unserer Neubau- und Referenzprojekte an einem zentralen Ort."
           />
           <div className="flex items-center gap-2 rounded-full border border-line bg-white px-4 py-2 text-xs font-semibold uppercase tracking-wider text-graphite/70 shadow-sm">
             <Sparkles className="h-4 w-4 text-gold" /> {filteredItems.length} von {ALL_MEDIA_ASSETS.length} Aufnahmen
@@ -307,18 +293,6 @@ export default function UnifiedMediaGallery() {
               }`}
             >
               <Eye className="h-3.5 w-3.5 text-gold" /> Visualisierungen (4)
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setActiveCategory("grundriss")}
-              className={`inline-flex items-center gap-1.5 rounded-sm px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all ${
-                activeCategory === "grundriss"
-                  ? "bg-ink text-white shadow-sm"
-                  : "bg-white text-graphite/70 hover:bg-gold/10 hover:text-ink border border-line"
-              }`}
-            >
-              <Layers className="h-3.5 w-3.5 text-gold" /> Grundrisse (1)
             </button>
 
             <button
@@ -413,7 +387,7 @@ export default function UnifiedMediaGallery() {
                 onKeyDown={(e) => e.key === "Enter" && openLightbox(index)}
                 className="group relative flex h-full flex-col overflow-hidden border border-line bg-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl cursor-pointer"
               >
-                {/* Media frame — identical 4/3 ratio on every card so all
+                {/* Media frame, identical 4/3 ratio on every card so all
                     frames (and rows) match; portrait/site photos and the plan
                     fill via object-cover, full view in the lightbox. */}
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#fafafa]">

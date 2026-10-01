@@ -66,7 +66,10 @@ export default function Typewriter({
   const hidden = mounted ? text.slice(count) : text;
 
   return (
-    <span className={`inline-block ${className}`}>
+    // translate="no" keeps browser auto-translation (e.g. Chrome) from rewriting
+    // these text nodes while the animation is mutating them, which otherwise
+    // collides with React and produces duplicated / glitched text.
+    <span translate="no" className={`notranslate inline-block ${className}`}>
       <span>{displayed}</span>
       <span className="invisible" aria-hidden="true">{hidden}</span>
       {mounted && (

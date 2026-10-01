@@ -51,8 +51,6 @@ export default function StandortePage() {
 
       <PageHero
         eyebrow="Standorte"
-        image="/projekte/residenz-aussenansicht-2.jpg"
-        imageAlt="Immobilien in Zürich und an der Goldküste"
         crumbs={[
           { name: "Start", href: "/" },
           { name: "Standorte", href: "/immobilienmakler" },

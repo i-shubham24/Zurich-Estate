@@ -1,4 +1,4 @@
-import Image from "next/image";
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -7,12 +7,9 @@ import {
   Lock,
   Building2,
   ArrowUpRight,
-  Check,
-  MapPin,
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import ParallaxImage from "@/components/ParallaxImage";
-import ArticleCard from "@/components/ArticleCard";
 import ArticleCarousel from "@/components/ArticleCarousel";
 import ScrollTextHero from "@/components/ScrollTextHero";
 import VerticalStrips from "@/components/VerticalStrips";
@@ -26,11 +23,23 @@ import FaqAccordion from "@/components/FaqAccordion";
 import Typewriter from "@/components/Typewriter";
 import HomeBackToTop from "@/components/HomeBackToTop";
 import { JsonLd } from "@/components/StructuredData";
-import { site, stats } from "@/lib/site";
+import { site, stats, SITE_URL } from "@/lib/site";
 import { featuredLocations } from "@/lib/locations";
 import { flagshipProject } from "@/lib/projects";
 import { featuredGuides, guides } from "@/lib/guides";
 import { faqJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
+
+export const metadata: Metadata = {
+  title: "Immobilienmakler Zürich – provisionsfrei zum Fixpreis verkaufen | Optimal Immobilien AG",
+  description: site.description,
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "Immobilienmakler Zürich – provisionsfrei zum Fixpreis verkaufen | Optimal Immobilien AG",
+    description: site.description,
+    url: SITE_URL,
+  },
+};
+
 
 const homeFaqs = [
   {
@@ -39,7 +48,7 @@ const homeFaqs = [
   },
   {
     q: "In welchen Regionen ist Optimal Immobilien tätig?",
-    a: "In der Stadt Zürich, an der Goldküste (Küsnacht, Zollikon, Meilen, Herrliberg, Erlenbach), am linken Seeufer, im Glattal, im Zürcher Unterland sowie in Winterthur und Uster.",
+    a: "Wir sind schweizweit für unsere Kunden tätig und insbesondere in der Region Zürich stark vertreten. Dazu gehören die Stadt Zürich, die Goldküste, der linke Zürichsee, das Glattal, das Zürcher Unterland sowie Winterthur und Uster.",
   },
   {
     q: "Ist die Immobilienbewertung wirklich kostenlos?",
@@ -47,11 +56,11 @@ const homeFaqs = [
   },
   {
     q: "Wie läuft der Verkauf ab?",
-    a: "Nach der kostenlosen Bewertung erstellen wir eine Vermarktungsstrategie, professionelle Fotos und ein Exposé, sprechen gezielt geprüfte Käufer an und begleiten Sie bis zur Beurkundung, nach der bewährten Adi Kavzani Sales Engine.",
+    a: "Nach der kostenlosen Bewertung erstellen wir eine Vermarktungsstrategie, professionelle Fotos und ein Exposé, sprechen gezielt geprüfte Käufer an und begleiten Sie bis zur Beurkundung, nach unserer bewährten Verkaufsmethodik.",
   },
   {
     q: "Verkaufen Sie Immobilien auch diskret / off market?",
-    a: "Ja. Gerade bei hochpreisigen Objekten an der Goldküste vermarkten wir auf Wunsch vollständig diskret an einen ausgewählten Kreis solventer Interessenten, ohne öffentliches Inserat.",
+    a: "Ja. Dank unseres etablierten Off-Market-Netzwerks können wir Immobilien auf Wunsch diskret und gezielt an ausgewählte Interessenten vermitteln, ohne öffentliche Vermarktung. Neben dem klassischen Verkauf ist eine Off-Market-Vermarktung somit jederzeit eine mögliche Option.",
   },
 ];
 
@@ -88,7 +97,7 @@ export default function HomePage() {
        * ===================================================== */}
       <ScrollTextHero 
         title1="IHR IMMOBILIENMAKLER"
-        title2="– ZUM FIXPREIS"
+        title2="ZUM FIXPREIS"
         subtitle={<>Wir verkaufen Ihre Immobilie zum Fixpreis von <strong className="font-bold text-white">CHF 12&apos;000</strong>. Kein Risiko, keine versteckten Kosten.</>}
         image="/projekte/hero-penthouse.jpg"
       />
@@ -98,10 +107,10 @@ export default function HomePage() {
        * ===================================================== */}
       <VerticalStrips 
         title="Aktuelle Auswahl"
-        subtitle="Unsere exklusiven Referenzen und Neubauprojekte – von der Erstvermarktung bis zum erfolgreichen Verkauf."
+        subtitle="Unsere exklusiven Referenzen und Neubauprojekte, von der Erstvermarktung bis zum erfolgreichen Verkauf."
         strips={[
           { id: "1", title: "RESIDENZ AM SEE", image: "/projekte/residenz-aussenansicht-1.jpg", href: "/kaufen/residenz-am-see" },
-          { id: "2", title: "NEUBAU BIRCHWIL", image: "/projekte/birchwil-pool-skizze.jpg", href: "/kaufen/neubau-birchwil" },
+          { id: "2", title: "NEUBAU BIRCHWIL", image: "/projekte/birchwil-fassade-visualisierung.jpg", href: "/kaufen/neubau-birchwil" },
           { id: "3", title: "NEUBAU NÜRENSDORF", image: "/projekte/nuerensdorf-baustelle-uebersicht.jpg", href: "/kaufen/neubau-nuerensdorf" },
         ]}
       />
@@ -190,7 +199,7 @@ export default function HomePage() {
               </p>
               <div className="mt-10 flex justify-center">
                 <ButtonLink href="/ueber-uns" variant="outline">
-                  Unser Team kennenlernen
+                  Über uns
                 </ButtonLink>
               </div>
             </Reveal>
@@ -209,7 +218,6 @@ export default function HomePage() {
               <ParallaxImage
                 src={flagshipProject.image}
                 alt="Neubau-Residenz mit Seesicht, Referenzprojekt von Optimal Immobilien"
-                priority={true}
               />
               <span className="absolute left-5 top-5 bg-gold px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-ink z-10">
                 Referenzprojekt
@@ -246,7 +254,7 @@ export default function HomePage() {
 
           {/* thumbnail strip */}
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
-            {flagshipProject.gallery?.slice(1, 5).map((src, i) => (
+            {flagshipProject.gallery?.slice(1, 4).map((src, i) => (
               <Reveal key={src} delay={i * 70}>
                 <div className="relative aspect-square w-full">
                   <ParallaxImage
@@ -330,7 +338,6 @@ export default function HomePage() {
           { src: "/projekte/birchwil-fassade-visualisierung.jpg", alt: "Moderne Architektur Birchwil", width: "30vw", height: "36vh", left: "50%", top: "15%" },
           { src: "/projekte/nuerensdorf-baustelle-uebersicht.jpg", alt: "Neubauprojekt Nürensdorf Baustelle", width: "33vw", height: "54vh", left: "20%", top: "75%" },
           { src: "/projekte/obergeschoss-wohnbereich.jpg", alt: "Wohnbereich im Obergeschoss", width: "30vw", height: "50vh", left: "80%", top: "70%" },
-          { src: "/projekte/birchwil-grundriss-eg.png", alt: "Architektur Grundriss Erdgeschoss", width: "28vw", height: "45vh", left: "50%", top: "85%" },
         ]}
       />
 

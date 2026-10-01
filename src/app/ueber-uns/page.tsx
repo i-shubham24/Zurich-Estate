@@ -108,8 +108,8 @@ export default function UeberUnsPage() {
               intro="Wir glauben, dass ein Immobilienverkauf kein Luxusprodukt sein muss. Unser provisionsfreies Modell beweist, dass erstklassige Vermarktung und faire Konditionen Hand in Hand gehen."
             />
             <p className="mt-5 text-base leading-relaxed text-graphite/80">
-              Gegründet von Adi Kavzani, vereint Optimal Immobilien AG
-              datenbasierte Marktanalyse mit persönlicher Betreuung. Jedes
+              Optimal Immobilien AG vereint datenbasierte Marktanalyse mit
+              persönlicher Betreuung. Jedes
               Objekt wird individuell aufbereitet, mit professioneller
               Fotografie, massgeschneidertem Exposé und gezieltem Marketing. Das
               Ergebnis: Über 480 erfolgreich verkaufte Objekte und ein

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail } from "lucide-react";
 import Logo from "./Logo";
+import MailLink from "./MailLink";
 import { site, services } from "@/lib/site";
 import { locations } from "@/lib/locations";
 
@@ -71,15 +72,10 @@ export default function SiteFooter() {
               <Phone className="h-4 w-4 shrink-0 text-gold" />
               {site.phone}
             </a>
-            <a
-              href={site.emailHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 transition-colors hover:text-white"
-            >
+            <MailLink className="flex items-center gap-3 transition-colors hover:text-white">
               <Mail className="h-4 w-4 shrink-0 text-gold" />
               {site.email}
-            </a>
+            </MailLink>
             {site.instagram && (
               <a
                 href={site.instagram}

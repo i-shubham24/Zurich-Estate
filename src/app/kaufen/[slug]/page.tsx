@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, BedDouble, Maximize, Building2, ArrowLeft, Phone, Mail, CheckCircle2 } from "lucide-react";
+import { MapPin, BedDouble, Maximize, Building2, ArrowLeft, Phone, Mail } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import { Eyebrow } from "@/components/ui";
 import CtaBanner from "@/components/CtaBanner";
 import ProjectShowcaseMedia from "@/components/ProjectShowcaseMedia";
+import MailLink from "@/components/MailLink";
 import { JsonLd } from "@/components/StructuredData";
 import { projects, getProject } from "@/lib/projects";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
@@ -117,6 +118,7 @@ export default async function ProjectPage({
         <div className="container-lux grid grid-cols-1 gap-12 lg:grid-cols-[1.4fr_0.6fr] lg:gap-16">
           <Reveal>
             <Eyebrow>Das Objekt</Eyebrow>
+            <h2 className="sr-only">Projektbeschreibung</h2>
             <div className="mt-6 space-y-4 text-lg leading-relaxed text-graphite/85">
               {project.description.split("\n\n").map((para, idx) => (
                 <p key={idx}>{para}</p>
@@ -142,7 +144,7 @@ export default async function ProjectPage({
           <Reveal delay={120}>
             <div className="sticky top-28 border border-line bg-white p-8 shadow-sm">
               <div className="text-xs uppercase tracking-[0.14em] text-graphite/50">Interesse?</div>
-              <h3 className="mt-2 font-serif text-2xl text-ink">Projekt-Referenz</h3>
+              <h2 className="mt-2 font-serif text-2xl text-ink">Projekt-Referenz</h2>
               <p className="mt-3 text-sm leading-relaxed text-graphite/70">
                 Sie besitzen ein vergleichbares Grundstück oder möchten ein Neubauprojekt
                 im Grossraum Zürich vermarkten? Wir beraten Sie persönlich und provisionsfrei.
@@ -153,12 +155,9 @@ export default async function ProjectPage({
               >
                 <Phone className="h-4 w-4" /> {site.phone}
               </a>
-              <a
-                href={site.emailHref}
-                className="mt-3 flex items-center justify-center gap-2 border border-line py-4 text-sm font-medium text-ink transition-colors hover:border-gold"
-              >
+              <MailLink className="mt-3 flex items-center justify-center gap-2 border border-line py-4 text-sm font-medium text-ink transition-colors hover:border-gold">
                 <Mail className="h-4 w-4 text-gold" /> E-Mail schreiben
-              </a>
+              </MailLink>
             </div>
           </Reveal>
         </div>
