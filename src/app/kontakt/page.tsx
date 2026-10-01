@@ -67,7 +67,7 @@ export default function KontaktPage() {
               <Eyebrow tone="onDark">Kontakt</Eyebrow>
             </div>
             <h1 className="mt-6 font-serif text-4xl leading-[1.12] text-white md:text-5xl lg:text-[3.3rem]">
-              <Typewriter text="Sprechen Sie mit uns" />
+              <Typewriter text="Sprechen Sie mit uns" textEn="Get in touch with us" />
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/65">
               Ob eine erste Einschätzung Ihrer Immobilie, eine Frage zu unserem

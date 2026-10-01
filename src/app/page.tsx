@@ -30,11 +30,11 @@ import { featuredGuides, guides } from "@/lib/guides";
 import { faqJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "Immobilienmakler Zürich – provisionsfrei zum Fixpreis verkaufen | Optimal Immobilien AG",
+  title: "Optimal Immobilien AG | Immobilienmakler Zürich",
   description: site.description,
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Immobilienmakler Zürich – provisionsfrei zum Fixpreis verkaufen | Optimal Immobilien AG",
+    title: "Optimal Immobilien AG | Immobilienmakler Zürich",
     description: site.description,
     url: SITE_URL,
   },

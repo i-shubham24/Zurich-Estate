@@ -1,11 +1,21 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useState } from "react";
+import { useLanguage } from "./LanguageContext";
 
 type Phase = "typing" | "holdFull" | "deleting" | "holdEmpty";
 
+const DICTIONARY: Record<string, string> = {
+  "Sprechen Sie mit uns": "Get in touch with us",
+  "provisionsfrei": "commission-free",
+  "Zürich & Umgebung": "Zurich & surroundings",
+  "Zürich": "Zurich",
+  "Immobilienverkauf": "Property sales",
+};
+
 export default function Typewriter({
   text,
+  textEn,
   className = "",
   speed = 85,
   deleteSpeed = 40,
@@ -15,6 +25,7 @@ export default function Typewriter({
   holdEmpty = 500,
 }: {
   text: string;
+  textEn?: string;
   className?: string;
   speed?: number;
   deleteSpeed?: number;
@@ -23,12 +34,45 @@ export default function Typewriter({
   holdFull?: number;
   holdEmpty?: number;
 }) {
+  const { lang } = useLanguage();
+  const [isBrowserTranslated, setIsBrowserTranslated] = useState(false);
+
+  // Detect browser translation (e.g. Google Chrome translate, which sets html.translated-ltr or lang="en")
+  useEffect(() => {
+    const checkTranslated = () => {
+      if (typeof document === "undefined") return;
+      const html = document.documentElement;
+      const htmlLang = html.getAttribute("lang")?.toLowerCase() || "";
+      const isEn =
+        html.classList.contains("translated-ltr") ||
+        html.classList.contains("translated-rtl") ||
+        htmlLang.startsWith("en");
+      setIsBrowserTranslated(!!isEn);
+    };
+
+    checkTranslated();
+    const observer = new MutationObserver(checkTranslated);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class", "lang"],
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  const effectiveEn = textEn || DICTIONARY[text];
+  const activeText = (isBrowserTranslated || lang === "en") && effectiveEn ? effectiveEn : text;
+
   const [count, setCount] = useState(0);
   const [phase, setPhase] = useState<Phase>("typing");
   const [mounted, setMounted] = useState(false);
 
+  // Reset typing when language changes
+  useEffect(() => {
+    setCount(0);
+    setPhase("typing");
+  }, [activeText]);
+
   // useLayoutEffect fires synchronously before the browser paints
-  // → no visible flash when switching from SSR invisible text to typed output
   useLayoutEffect(() => {
     const t = setTimeout(() => setMounted(true), delay);
     return () => clearTimeout(t);
@@ -40,7 +84,7 @@ export default function Typewriter({
     let t: ReturnType<typeof setTimeout>;
 
     if (phase === "typing") {
-      if (count < text.length) {
+      if (count < activeText.length) {
         t = setTimeout(() => setCount((c) => c + 1), speed);
       } else {
         setPhase("holdFull");
@@ -58,18 +102,14 @@ export default function Typewriter({
     }
 
     return () => clearTimeout(t);
-  }, [phase, count, mounted, text.length, speed, deleteSpeed, loop, holdFull, holdEmpty]);
+  }, [phase, count, mounted, activeText.length, speed, deleteSpeed, loop, holdFull, holdEmpty]);
 
   // Server and pre-mount: render the full text invisibly to reserve space
-  // Client after mount: show typed characters
-  const displayed = mounted ? text.slice(0, count) : "";
-  const hidden = mounted ? text.slice(count) : text;
+  const displayed = mounted ? activeText.slice(0, count) : "";
+  const hidden = mounted ? activeText.slice(count) : activeText;
 
   return (
-    // translate="no" keeps browser auto-translation (e.g. Chrome) from rewriting
-    // these text nodes while the animation is mutating them, which otherwise
-    // collides with React and produces duplicated / glitched text.
-    <span translate="no" className={`notranslate inline-block ${className}`}>
+    <span className={`inline-block ${className}`}>
       <span>{displayed}</span>
       <span className="invisible" aria-hidden="true">{hidden}</span>
       {mounted && (

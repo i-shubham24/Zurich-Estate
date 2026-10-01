@@ -29,7 +29,7 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Immobilienmakler Zürich, provisionsfrei verkaufen | Optimal Immobilien AG",
+    default: "Optimal Immobilien AG | Immobilienmakler Zürich",
     template: "%s | Optimal Immobilien AG",
   },
   description: site.description,
