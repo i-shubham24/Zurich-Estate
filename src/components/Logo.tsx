@@ -25,8 +25,6 @@ export default function Logo({ tone = "onDark", className = "", fill }: LogoProp
           maskSize: 'contain',
           maskRepeat: 'no-repeat',
           maskPosition: 'center left',
-          filter:
-            'drop-shadow(0 1px 3px rgba(0,0,0,0.55)) drop-shadow(0 2px 10px rgba(0,0,0,0.40))',
         }}
       />
     </Link>

@@ -56,18 +56,8 @@ export default function SiteHeader() {
       }`}
     >
       <div className="container-lux flex items-center justify-between py-4 md:py-5">
-        <div className="relative flex items-center">
-          {!scrolled && !open && (
-            <span
-              aria-hidden
-              className="pointer-events-none absolute left-0 top-1/2 h-[150%] w-[118%] -translate-y-1/2"
-              style={{
-                backgroundImage:
-                  "radial-gradient(ellipse at left center, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.32) 48%, rgba(0,0,0,0) 76%)",
-              }}
-            />
-          )}
-          <Logo fill="gold" className="relative z-[1]" />
+        <div className="flex items-center">
+          <Logo fill="gold" />
         </div>
 
         <nav className="hidden items-center gap-1 xl:gap-2 xl:flex shrink-0" aria-label="Hauptnavigation">
