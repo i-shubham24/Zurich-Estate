@@ -109,15 +109,24 @@ export default function Typewriter({
   const hidden = mounted ? activeText.slice(count) : activeText;
 
   return (
-    <span className={`inline-block ${className}`}>
-      <span>{displayed}</span>
-      <span className="invisible" aria-hidden="true">{hidden}</span>
-      {mounted && (
-        <span
-          aria-hidden="true"
-          className="typewriter-caret ml-[2px] inline-block h-[0.9em] w-[2px] translate-y-[0.06em] bg-current align-baseline"
-        />
-      )}
+    // aria-label exposes the full intended text to screen readers while the
+    // animated children are all aria-hidden.
+    <span aria-label={text} className={`inline-block ${className}`}>
+      <span aria-hidden="true">{displayed}</span>
+      {/* invisible span reserves width – layout never reflows */}
+      <span aria-hidden="true" className="invisible select-none">
+        {hidden}
+      </span>
+      {/*
+       * Caret is always in the DOM so its 4 px footprint is included in the
+       * reserved width from the very first render. Toggling opacity (not
+       * mounting/unmounting) means no layout shift when it first appears.
+       */}
+      <span
+        aria-hidden="true"
+        className="typewriter-caret ml-[2px] inline-block h-[0.9em] w-[2px] translate-y-[0.06em] bg-current align-baseline"
+        style={{ opacity: mounted ? undefined : 0 }}
+      />
     </span>
   );
 }
