@@ -41,6 +41,7 @@ export default function ValuationForm() {
     website: "",
   });
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
   const timers = useRef<number[]>([]);
   useEffect(() => () => { timers.current.forEach((t) => clearTimeout(t)); }, []);
 
@@ -72,16 +73,21 @@ export default function ValuationForm() {
       return;
     }
 
-    // Call secure server action (anti-injection and strict validation)
-    const result = await submitValuation(parsed.data);
-    
-    if (result.error) {
-      setError(result.error);
-      return;
+    setLoading(true);
+    try {
+      const result = await submitValuation(parsed.data);
+      if (result.error) {
+        setError(result.error);
+        setLoading(false);
+        return;
+      }
+      localStorage.setItem("valuation_last", String(Date.now()));
+      setLoading(false);
+      next();
+    } catch {
+      setError("Senden fehlgeschlagen. Bitte versuchen Sie es erneut.");
+      setLoading(false);
     }
-
-    localStorage.setItem("valuation_last", String(Date.now()));
-    next();
   };
 
   const optionBase =
@@ -210,9 +216,10 @@ export default function ValuationForm() {
                 {error && <p className="text-sm text-red-600" role="alert">{error}</p>}
                 <button
                   type="submit"
-                  className="w-full bg-gold py-4 font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-gold-bright focus-visible:ring-2 focus-visible:ring-gold"
+                  disabled={loading}
+                  className="w-full bg-gold py-4 font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-gold-bright focus-visible:ring-2 focus-visible:ring-gold disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Kostenlose Beratung anfragen
+                  {loading ? "Wird gesendet..." : "Kostenlose Beratung anfragen"}
                 </button>
                 <p className="flex items-center justify-center gap-2 pt-1 text-xs text-graphite/60">
                   <ShieldCheck className="h-4 w-4 text-gold" /> Diskret &amp; unverbindlich. Keine Weitergabe an Dritte.
