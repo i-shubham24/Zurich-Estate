@@ -2,6 +2,61 @@
 
 import { z } from "zod";
 import nodemailer from "nodemailer";
+import { headers } from "next/headers";
+
+// In-memory sliding window rate limiter: max 5 submissions per 60 seconds per IP
+const rateLimitMap = new Map<string, { count: number; firstReq: number }>();
+const RATE_LIMIT_WINDOW_MS = 60_000;
+const MAX_REQUESTS_PER_WINDOW = 5;
+
+async function checkRateLimitAndCsrf(): Promise<{ allowed: boolean; error?: string }> {
+  try {
+    const reqHeaders = await headers();
+
+    // 1. CSRF Origin Verification
+    const origin = reqHeaders.get("origin");
+    const host = reqHeaders.get("host");
+    if (origin && host) {
+      try {
+        const originHost = new URL(origin).host;
+        if (originHost !== host) {
+          return { allowed: false, error: "Ungültige Anfragequelle (CSRF Schutz)." };
+        }
+      } catch {}
+    }
+
+    // 2. Server-Side IP Rate Limiting
+    const forwarded = reqHeaders.get("x-forwarded-for");
+    const realIp = reqHeaders.get("x-real-ip");
+    const ip = (forwarded ? forwarded.split(",")[0].trim() : realIp) || "127.0.0.1";
+
+    const now = Date.now();
+    const entry = rateLimitMap.get(ip);
+
+    if (rateLimitMap.size > 500) {
+      for (const [key, val] of rateLimitMap.entries()) {
+        if (now - val.firstReq > RATE_LIMIT_WINDOW_MS) rateLimitMap.delete(key);
+      }
+    }
+
+    if (!entry || now - entry.firstReq > RATE_LIMIT_WINDOW_MS) {
+      rateLimitMap.set(ip, { count: 1, firstReq: now });
+      return { allowed: true };
+    }
+
+    if (entry.count >= MAX_REQUESTS_PER_WINDOW) {
+      return {
+        allowed: false,
+        error: "Zu viele Anfragen. Bitte warten Sie einen Moment vor dem nächsten Absenden.",
+      };
+    }
+
+    entry.count += 1;
+    return { allowed: true };
+  } catch {
+    return { allowed: true };
+  }
+}
 
 /** Escape HTML entities to prevent XSS in email templates */
 function esc(str: string): string {
@@ -119,15 +174,19 @@ async function sendMailInternal(opts: SendMailOptions) {
   }
 
   // Option C: Local development fallback / simulation when credentials not set
-  console.log(`[Email Service Notice] Email dispatched (Simulated / Local Dev):`, {
-    to: opts.to,
-    replyTo: opts.replyTo,
-    subject: opts.subject,
-  });
+  if (process.env.NODE_ENV !== "production") {
+    console.log(`[Email Service Notice] Email simulated in local development environment.`);
+  }
 }
 
 export async function submitValuation(data: unknown) {
-  // 1. Strict Server-Side Validation (Zero-Trust)
+  // 1. Security: Server-side Rate Limiting & CSRF Validation
+  const guard = await checkRateLimitAndCsrf();
+  if (!guard.allowed) {
+    return { error: guard.error || "Anfrage vorübergehend blockiert." };
+  }
+
+  // 2. Strict Server-Side Validation (Zero-Trust)
   const parsed = valuationSchema.safeParse(data);
 
   if (!parsed.success) {
@@ -135,7 +194,7 @@ export async function submitValuation(data: unknown) {
     return { error: first?.message || "Ungültige Eingaben. Bitte überprüfen Sie das Formular." };
   }
 
-  // 2. Anti-Bot Honeypot Validation
+  // 3. Anti-Bot Honeypot Validation
   if (parsed.data.website && parsed.data.website.length > 0) {
     // Fake success to fool bots
     return { success: true };
@@ -223,7 +282,13 @@ export async function submitValuation(data: unknown) {
 }
 
 export async function submitContact(data: unknown) {
-  // 1. Strict Server-Side Validation (Zero-Trust)
+  // 1. Security: Server-side Rate Limiting & CSRF Validation
+  const guard = await checkRateLimitAndCsrf();
+  if (!guard.allowed) {
+    return { error: guard.error || "Anfrage vorübergehend blockiert." };
+  }
+
+  // 2. Strict Server-Side Validation (Zero-Trust)
   const parsed = contactSchema.safeParse(data);
 
   if (!parsed.success) {
@@ -231,7 +296,7 @@ export async function submitContact(data: unknown) {
     return { error: first?.message || "Ungültige Eingaben. Bitte überprüfen Sie das Formular." };
   }
 
-  // 2. Anti-Bot Honeypot Validation
+  // 3. Anti-Bot Honeypot Validation
   if (parsed.data.website && parsed.data.website.length > 0) {
     // Fake success to fool bots
     return { success: true };

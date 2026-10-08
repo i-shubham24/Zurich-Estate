@@ -8,6 +8,7 @@ import { SectionHeading, Eyebrow } from "@/components/ui";
 import FaqAccordion from "@/components/FaqAccordion";
 import ValuationCta from "@/components/ValuationCta";
 import { JsonLd } from "@/components/StructuredData";
+import DOMPurify from "isomorphic-dompurify";
 import { guides, getGuide } from "@/lib/guides";
 import { articleJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 import { SITE_URL } from "@/lib/site";
@@ -108,7 +109,7 @@ export default async function GuidePage({
           </p>
           <div
             className="prose-lux mt-10"
-            dangerouslySetInnerHTML={{ __html: guide.content }}
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(guide.content) }}
           />
 
           <div className="mt-12 border-t border-line pt-8">
