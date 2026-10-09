@@ -114,6 +114,9 @@ function getTransporter() {
     tls: {
       rejectUnauthorized: false,
     },
+    connectionTimeout: 10_000,
+    greetingTimeout: 10_000,
+    socketTimeout: 15_000,
   });
   return _transporter;
 }
@@ -176,7 +179,23 @@ async function sendMailInternal(opts: SendMailOptions) {
   // Option C: Local development fallback / simulation when credentials not set
   if (process.env.NODE_ENV !== "production") {
     console.log(`[Email Service Notice] Email simulated in local development environment.`);
+    return;
   }
+
+  // Production Error: Neither service was configured in hosting environment
+  console.error("[Email Service Error]: Neither RESEND_API_KEY nor SMTP_PASS is configured in production environment variables.");
+  throw new Error("E-Mail Dienst ist auf dem Server nicht konfiguriert (fehlende Umgebungsvariablen).");
+}
+
+function getTargetRecipients(): string {
+  const raw = process.env.CONTACT_TO || "info@optimal-immobilien.ch";
+  // Filter out defunct optimal.immobilien@outlook.com which bounces with 550 Mailbox unavailable
+  const filtered = raw
+    .split(",")
+    .map((s) => s.trim())
+    .filter((s) => s && s.toLowerCase() !== "optimal.immobilien@outlook.com")
+    .join(", ");
+  return filtered || "info@optimal-immobilien.ch";
 }
 
 export async function submitValuation(data: unknown) {
@@ -207,9 +226,7 @@ export async function submitValuation(data: unknown) {
   const emailMatch = contact.match(emailRegex);
   const customerEmail = emailMatch ? emailMatch[0] : null;
 
-  const toAddress =
-    process.env.CONTACT_TO ||
-    "optimal.immobilien@outlook.com, info@optimal-immobilien.ch";
+  const toAddress = getTargetRecipients();
   const fromUser = process.env.SMTP_USER || "info@optimal-immobilien.ch";
 
   try {
@@ -303,9 +320,7 @@ export async function submitContact(data: unknown) {
   }
 
   const { firstName, lastName, email, phone, message } = parsed.data;
-  const toAddress =
-    process.env.CONTACT_TO ||
-    "optimal.immobilien@outlook.com, info@optimal-immobilien.ch";
+  const toAddress = getTargetRecipients();
   const fromUser = process.env.SMTP_USER || "info@optimal-immobilien.ch";
 
   // 3. Send email to Optimal Immobilien
